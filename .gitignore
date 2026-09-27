@@ -4,3 +4,4 @@ Thumbs.db
 node_modules/
 __pycache__/
 *.tmp
+.claude/scheduled_tasks.lock
