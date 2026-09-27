@@ -22,14 +22,25 @@
 - **Leads for step 8** are collected in `work/RECONCILE-LEADS.md`. `work/RECONCILE.md` has R-001 (side storage) and R-002 ("$800") as open questions for Sam.
 - House rules for the ledger are in `work/LEDGER-CONVENTIONS.md`. Batch files and the temp-to-ledger ID map are in `work/ledger-parts/`.
 
+- **Export, first attempt:** my scripted download of the first link got HTTP 403 from a Cloudflare bot check. I stopped without retrying. Sam then downloaded conversations, projects and light_metadata in a browser, and all three zips are valid. memories, design_chats and frames haven't been downloaded yet.
+- **Step 2, parse the export (up to the gate):**
+  - Each zip's structure was inspected, and step 2 was adapted to the six-zip layout (see `work/CONVERSATIONS.md`).
+  - The project docs in `projects.json` are identical to `source/docs/`.
+  - All 10 seed conversations were found.
+  - Two keyword sweeps were run, and `work/CONVERSATIONS.md` was drafted.
+
 ## Waiting on Sam
 
-1. **Export download.** The first link (light_metadata-000.zip) returned HTTP 403, a Cloudflare "Just a moment..." bot check, not an expired link. Per instructions I stopped and didn't try the other five. The failed response is saved at `_raw/light_metadata-000.FAILED-403.html`. Please download all six from the manifest in a browser into `_raw/`.
-2. **R-001 and R-002** in `work/RECONCILE.md`. These can wait until the step 8 gate.
+1. **The conversation-list gate:** confirm `work/CONVERSATIONS.md`. The ASK rows (section F) and the LIMIT row (7c82049f) need a yes or no.
+2. **The 2026-08-27 reconciliation session isn't in the export.** Was it a Cowork or Claude Code session? If so, please supply it or `APP-PROJECT-HANDOFF.md`.
+3. **R-001 and R-002** in `work/RECONCILE.md`. These can wait until the step 8 gate.
 
-## Next (once the export is in)
+## Findings so far (for step 8)
 
-- Check each zip is valid, inspect each one's structure, and report which ones get used.
-- Adapt step 2 to the six-zip layout.
-- Filter conversations by project UUID and keywords, add the 2026-08-27 reconciliation conversation, and write `work/CONVERSATIONS.md`.
-- **Stop at the conversation-list gate.**
+- 63b7028b (2026-08-20) wrote a "session 8" stage-power changelog entry and updated ROADMAP, BACKLOG and OPEN-ITEMS. None of that reached the baseline docs (orphans, S18).
+- The export doesn't include image pixels. The five `.webp` files can't be tied to messages by UUID.
+
+## Next (after the gate)
+
+- Write one transcript per confirmed conversation into `source/transcripts/`, built from `content[]` so the create_file text is kept.
+- Run the size gate, then do step 5 extraction in date order.
