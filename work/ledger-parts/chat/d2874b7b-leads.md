@@ -1,0 +1,37 @@
+# Leads — d2874b7b (Professional power distribution for stage setup)
+
+Conversation runs 2025-12-06 (msgs #0–#25) → 2026-03-23 (msgs #26–#27), well before the 2026-08 AVPRO workstation design chats. Every fact in this transcript predates that design and concerns **stage power** (LED wall, PA towers, stage box, backline), not the AVPRO/Wing workstation build itself.
+
+## 1. Sam corrections
+
+- **#2 (2025-12-06 13:47:39):** Sam rules out the assistant's whole distro-box design — venue power is just standard wall outlets. *"We don't often have power for a distro box. We're just needing to plug into standard wall outlets."*
+- **#6 (2025-12-06 14:05:21):** Sam states the LED panels are grouped in fours. *"The panels are powered in groups of four. Each group has its own long extension cable."*
+- **#8 (2025-12-06 14:06:07), 34 minutes later:** Sam corrects his own #6 statement — it's actually groups of ten. *"The panels are powered in groups of 10 panels per power cord."* (This is the grouping that sticks through the rest of the conversation, including the final #27 summary: "Panels are powered in groups of 10 (4 power cords total)".)
+- **#12 (2025-12-06 14:38:19):** Sam rejects the assistant's "stage backline drop" concept outright and re-derives the whole power layout himself (wall-drop spares feed instruments, PA drops cover drums/piano, lighting drops dropped as unnecessary). *"I don't understand the back line drop and need more detail about how that would be used and who will plug into it."*
+- **#14 (2025-12-06 14:44:28):** Sam catches that the assistant has been recommending the wrong product category (Rapco NBLOX is a multi-box snake, not a single quad box). *"I don't understand what the Rapco Horizon NBLOX-4 is? Is it a quad box for 20A 120V power or what?"*
+- **#16 (2025-12-06 14:55:10):** Sam supplies the actual right product link (CBI QB-R-50) and calls out that the assistant had suggested this earlier and then talked itself out of it. *"Why not just use or make something like these? https://www.planetdj.com/cbi-qb-r-50 ... Didn't you suggest that previously?"*
+- **#18 (2025-12-06 14:59:54):** Sam corrects the assistant's CBI pricing, which was off by more than 2x. *"CBI is $200 for a 50' cable so your pricing needs to be checked for those and the diy option."*
+
+## 2. Contradictions with the baseline
+
+- **S18 — stage power scope.** `source/docs/HARDWARE-ROADMAP.md` line 15 calls stage power **"Matt's separate project"**: *"Stage power (Matt's separate project) sits on this same footing on the band side -- physically powering the instruments properly, off extension cords, is part of the event actually happening."* `ELIMTEAMNOTE.md` line 95 similarly frames it as separate: *"Stage power — a separate effort to get instruments off extension cords and properly powered, which also cuts setup time."* But in this chat, Sam is doing the full engineering himself — load calcs, product selection, DIY vs. buy, pricing — with no mention of Matt anywhere in the transcript. Nothing in this chat says whether it's Matt's project, Sam's, or shared; the baseline docs' attribution to Matt is not confirmed or contradicted here, just silent. Sam needs to decide, per the plan's own framing of S18.
+- **S17 — LED wall panel count.** This chat is unambiguous and repeated: **40 panels total** (#4: *"of which there are 40 in total"*; reaffirmed in #27's audit-prompt summary: *"40 LED wall panels"*). The plan (DISTILLATION-PLAN.md §5, S17) states the Aug 2026 docs give **45**. I grepped `source/docs/*.md` and the two `.jsx` files for "45" near "panel" and could not locate the "45" figure anywhere in the text docs — it isn't in `HARDWARE-ROADMAP.md`, `HARDWARE-CHANGELOG.md`, `HARDWARE-OPEN-ITEMS.md`, `GAPS-AND-ALIGNMENT.md`, `HARDWARE-BACKLOG.md`, `ELIM-FINAL-INDEX.md`, or `HARDWARE-PROJECT-HANDOFF.md`. It's likely in `ELIM-BOM-v5.xlsx` (not grep-able) or in a doc/row already captured under a different ledger prefix — reconciler should pull the actual "45" source line before writing the RECONCILE entry, since I can't quote both sides of this one from what I could read.
+
+## 3. Orphans (decided in this chat, absent from every baseline doc)
+
+Grepped `source/docs/` for: `CBI`, `QB-R`, `quad box`, `NBLOX`, `L6-20`, `L6-30`, `StageSmarts`, `Lex Products`, `10/3`, `voltage drop`, `Stage Ninja`, `Rapco` — **zero matches**, confirming these are pure orphans of this stage-power chat:
+
+- The entire quad-box product decision: **extension cord with a single 4-outlet quad box at the end**, one per power location (#17, decided).
+- The final **5-location topology**: 2 drops for LED wall (spare outlets feed stage instruments), 2 drops for PA towers (one per side), 1 drop for the stage box (#13/#17/#27, decided, repeated consistently).
+- **CBI QB-R-50** as the specific identified/priced product (~$180–240/cable pre-made) and the **DIY 12/3 build at ~$155/cable** (~$775 for 5) that the assignment calls out.
+- The full **LED wall load analysis**: 176W max/panel, 40 panels in 4 groups of 10, 11.7A total at the venue's typical 20% brightness, 2 circuits sufficient (5.8A/circuit, 36–48% of capacity).
+- The **10/3 vs. 12/3 / 240V research**: 10/3 single-phase quad boxes don't exist commercially; voltage-drop tables at 50/75/100ft; 240V infeasible with standard NEMA 5-20R quad boxes (would need L6-20R/L6-30R purpose-built gear); named pro-gear brands (Lex Products, StageSmarts, Motion Labs).
+
+None of this is referenced anywhere in `PANEL-AND-WIRING-v15.md`, `HARDWARE-ROADMAP.md`, `HARDWARE-BACKLOG.md`, `HARDWARE-CHANGELOG.md`, `HARDWARE-OPEN-ITEMS.md`, `ELIMTEAMNOTE.md`, or `ELIM-TEAM-BRIEF.md`. If Sam decides stage power belongs in this build set (resolving S18), this whole chat's content needs a home — it currently has none.
+
+## 4. Seed findings S1–S19
+
+This chat maps to **S17** and **S18** per the plan's own conversation table (DISTILLATION-PLAN.md §6); it doesn't speak to S1–S16 or S19 (those are all AVPRO/Wing workstation, camera, Dante, or antenna topics with nothing in common with this transcript — no cross-reference to connector counts, the Wing panel, cases, cooling, or wireless mics appears anywhere in these 28 messages).
+
+- **S17. LED wall panel count differs (45 in Aug docs vs. 40 here) — CONFIRMED as stated, with a caveat.** This chat consistently says 40 panels (#4: *"of which there are 40 in total"*; #27: *"40 LED wall panels"*). I could not locate the "45" figure in any `source/docs/*.md` file to quote the other side directly (see Contradictions §2 above) — reconciler should track down the exact "45" source before closing this out.
+- **S18. Stage power scope — CHANGED / needs a decision, not confirmed either way.** The plan says ROADMAP calls stage power "Matt's separate project" while this chat "designed stage power (five quad-box extension cords, DIY 12/3 at roughly $155 each)" — both halves of that statement check out: the chat does design exactly that (#13/#17/#25's five-cable cost table: *"12/3 DIY (SOOW, 20A plug) | ~$155 | $775"*), and the ROADMAP line about Matt is real (see §2 above). But this chat itself never mentions Matt or resolves who owns it — it's Sam alone, working the numbers end-to-end, with the final message (#27, 2026-03-23) still open ("Please review the approach critically..."), meaning **no buy/DIY/gauge decision was ever reached in this conversation**, and no decision on whether it folds into the AVPRO build. Sam still needs to decide, exactly as S18 frames it.

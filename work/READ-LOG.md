@@ -129,3 +129,56 @@ Also read, for comparison only (no rows from this fork): `source/docs/avpro-rack
 - Where a reading is uncertain, the row's `notes` says so: the "$[5 or 8]00" figure, "75m $100", the "80-150m $30-60 spool" line, "Box to fem for drums", the 46.4in span on the spec photo, and the unit on 33.5.
 - Status: renders are logged at face value (decided / proposed / info). Photos and handwriting are `info`. The PDF's status follows its own wording.
 - Derived counts (panel positions, etherCON count) are `info`, with "derived count from render" in notes.
+
+## Step 5–7 sources (2026-09-26, session 1)
+
+### Transcripts (read in full by one Sonnet 5 extractor each; coverage re-checked by script against every Sam message)
+
+| Transcript | Rows | Image markers |
+|---|---|---|
+| 2025-12-06_stage-power-distribution_d2874b7b.md | 134 | 1 |
+| 2026-06-26_atem-live-capture-stream_61be4ede.md | 133 | 13 |
+| 2026-07-23_rack-setup-pivot_a5df9d8d.md | 189 | 10 |
+| 2026-08-17_booth-signal-flow-APP_3a43455d.md | 81 | 1 |
+| 2026-08-17_design-review-scope_8d448713.md | 150 | 1 |
+| 2026-08-17_panel-layout-wiring_dbb71760.md | 204 | 3 |
+| 2026-08-18_procurement-strategy-1_c401d6de.md | 195 | 0 |
+| 2026-08-19_procurement-strategy-2_7de49396.md | 138 | 1 |
+| 2026-08-20_wing-finalization-power_63b7028b.md | 119 | 0 |
+| 2026-08-21_hyperdeck-atem-setup_e311e761.md | 153 | 21 |
+| 2026-08-27_app-automation-AUG26-27-ONLY_7c82049f.md | 24 | 21 |
+| 2026-08-30_hyperdeck-audio-levels_4897e910.md | 12 | 0 |
+| 2026-09-08_rig-current-state-brief_0c5615c4.md | 37 | 0 |
+| 2026-09-18_proposal-deliverables-PROCESS_b3a56c0f.md | 51 | 0 |
+| 2026-09-20_stage-wireless-antennas_67b50b98.md | 23 | 2 |
+
+### Export extras (keyword-only skim, capped)
+
+- `_raw/export/memories/memories/*.json`: project_memories (ELIM Hardware Build, ELIM production app v2) and memory_files [4], [68], [78], [79], [88]. 30 rows as `source_type=doc`, note "memory".
+- `_raw/export/design_chats/*/a6a98d45…json` (ELIM app v6 prototype): 3 rows as `source_type=app`. The other design chat, 62ca91d3, is app design only, so no rows.
+- `_raw/export/frames/artifacts/*`: NAS inventory, NAS reorganization and ticket tracker artifacts. No hardware content, so no rows.
+- `_raw/export/projects/projects/019d288a…json`: project docs diffed against source/docs, all identical. The prompt_template was read for S13.
+- Local Claude Code transcripts under `C:\Users\sammh\.claude\projects\` were searched for the 2026-08-27 session. Not found.
+
+### App repo (read-only)
+
+
+App repo `C:\Users\sammh\elim-production` was read-only for this pass. No file in that repo was edited, created, moved, or touched with git.
+
+| # | File | Portion read | Rows produced |
+|---|---|---|---|
+| 1 | `HARDWARE-RUNBOOK.md` | Whole file (305 lines): Network Architecture, ATEM Network Configuration, ATEM SDI Port Map (in/out), Recording — HyperDeck HD Mini, Wing Road Case Contents, Production Box, Video Stream Laptop, Stage Lighting, Cable Bundles, Cable Color Code, Table Cable Management, Wall Spacing Reference, Stage Power Distribution, Other Hardware, Hardware Decisions Log (decisions + rejected ideas). Pelican 1660 Case Contents section was read but not logged — see Pelican note below | 51 |
+| 2 | `SIGNAL-FLOW-PORT-MAP-HANDOFF.md` | Whole file (248 lines): header/confidence legend, Corrections since v2 / since v3, §1 Direct Answers to the Six Questions, §2 Device-by-Device Port Map (ATEM, HD Mini, ProPresenter Mac, Behringer Wing, Resi Mini, Dante AVIO, 5-Port Dante Switch, AX21 Router, LED Wall Transmitter, Confidence Monitor, Converters/Bridges), §3 Cable Color Code, §4 Remaining open/to-verify | 16 |
+| 3 | `CHANGE-INVENTORY.md` | Targeted: full Category 2 table (functional changes, rows 2.1–2.42, hardware-relevant subset: 2.27, 2.31, 2.32, 2.33, 2.37, 2.38, 2.39), Category 3/4/5 headers scanned for hardware relevance (3.2 Networks screen, 3.3 Signal Flow rebuild, 4.1–4.3 visual/copy, "Automation trial" note). ROADMAP.md, PROJECT-BRIEF.md checked by keyword grep — no hardware-facing content beyond a pointer to HARDWARE-RUNBOOK.md as canonical owner (not separately logged as rows) | 5 |
+| 4 | `ELIM-PROJECT.md` | Targeted by keyword grep + full read of §Checklist Sections & Power Sequence (power-sequence 10 steps, renumbering history) and §Equipment & Network Reference (quick-orientation paragraph, canonical-doc-owner note, camera roster/input numbering, production box / stage lighting / production monitor additions) | 3 |
+| 5 | `OPEN-ITEMS.md` | Targeted by keyword grep, then full read of matched regions: "The Next On-Site Pass" list, HD Mini open items (auto-start with Resi, operating process, when it starts), AX21 DHCP/MAC-reservation item, Video Stream Laptop item, LED Wall Data Ports item, Dante Network Questions (config/export/device inventory), Physical Setup Questions (stage box height, LED wall power timing/flow order, fp-4, PA speaker power draw, confidence monitor dimensions, Blackmagic converter height), Resolved Items (router model, HD Mini deployment, AUX port, big-event cameras, stream mix laptop location, ProPresenter multi-network, confidence monitor feed, camera roster, Resi internet path, Wing XLR8, ATEM port assignments, Omar/Mitch Mac), "Which physical box does each output leave from?", "Stage box channel count", "Path 3 talkback mix destination". Pelican-fit items read but not logged — see Pelican note below | 8 |
+| 6 | `index.html` | Grepped, not read whole (387 KB; brief instructs data-only). Matched/read: `const POWER_SEQUENCE` block, `const DEFAULT_IO_LINE_LIST` block (`stageBox`, `wingInputs`, `outputs`, `danteRouting` — full literal), task-text grep hits for `cs-1b`, `cs-1`/`cs-4`, `ss-2`, `ss-2b`. Grepped for `192.168.` (zero hits — no IPs are embedded in the app; confirms IPs live only in HARDWARE-RUNBOOK.md) and for AX21/Hollyland/DL251/Archer/Dante switch/production switch/Resi/Pocket 4K (hits used to locate the task-text lines above) | 9 |
+| — | `CHANGE-INVENTORY.md`, `ELIM-PROJECT.md`, `OPEN-ITEMS.md`, `ROADMAP.md`, `PROJECT-BRIEF.md` | Per the brief's instruction (priority 3: only hardware/network/port/IP/device/power/camera/Dante/Wing/case/AVPRO-build rows), each was first grepped broadly for hardware keywords before any full-section read; `ROADMAP.md` and `PROJECT-BRIEF.md` turned up no hardware-facing content beyond the pointer already logged in `ELIM-PROJECT.md`'s row, so neither produced its own ledger rows | 0 (ROADMAP/PROJECT-BRIEF) |
+
+**Total: 93 rows**, `APP-0001`–`APP-0093`, all `source_type=app`.
+
+**Pelican note:** `LEDGER-CONVENTIONS.md` §Scope states plainly "Pelican is out of scope. Never log it." `HARDWARE-RUNBOOK.md`'s "Pelican 1660 Case Contents" section and `OPEN-ITEMS.md`'s Pelican-fit items (interior layout v9, confidence-monitor-fits-in-Pelican, full-contents inventory) describe the *current* transport case for the ATEM/HD Mini/Hollyland RX/Dante AVIO — a different thing from the hardware-build project's Pelican *stage-kit rezone* that the convention was written about — but the rule as written carries no such carve-out, so those sections were read and then excluded rather than logged, to follow the instruction literally. 6 candidate rows were dropped for this reason (Pelican 1660 contents, HD Mini's missing packing home, Pelican interior dimensions, ATEM wedge height, confidence-monitor-fits-in-Pelican, and the Pelican full-inventory open item), plus one evidence quote ("Pelican-era setup," from the rejected-1U-patch-panel decision) that could not be logged without quoting the word. If this scoping call is wrong for the app-repo case (i.e. Sam wants the *current* Pelican transport tracked, distinct from the stage-kit rezone), flag it back and these rows can be re-added.
+
+- Evidence quotes were spot-checked programmatically: every `evidence` value in `APP.csv` is confirmed (by exact Python substring match) to exist verbatim, including em/en-dash characters, inside the cited source file.
+- `date` fields use the specific date stated inline where the doc gives one (a correction date, "Sam, YYYY-MM-DD", a CHANGE-INVENTORY ship note); otherwise the doc's own header date (`HARDWARE-RUNBOOK.md` "Last updated: 2026-09-19"; `SIGNAL-FLOW-PORT-MAP-HANDOFF.md` "v3 — compiled 2026-08-27"; `OPEN-ITEMS.md` "Last updated: 2026-09-21"); `index.html` rows (no in-file date) use the repo HEAD date 2026-09-23.
+- (Coordinator correction: an earlier draft bullet here said Pelican rows were kept. That was wrong. `APP.csv` has 0 Pelican rows, consistent with the Pelican note above, and with Sam's ruling "Zero consideration needs to be given to the pelican.")

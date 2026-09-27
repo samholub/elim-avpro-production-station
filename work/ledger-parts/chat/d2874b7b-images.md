@@ -1,0 +1,5 @@
+# Images — d2874b7b (Professional power distribution for stage setup)
+
+| msg # | date | filename | surrounding text (1–3 lines, quoted) | what fact the image likely holds | NEEDED / SKIP | reason |
+|---|---|---|---|---|---|---|
+| #4 | 2025-12-06 | image.png (file_uuid cec6aec4-a457-4f36-afcf-370ee88e4364) | "This is the power for 1 wall panel of which there are 40 in total. Normally we split the wall power between 2-4 circuits so it doesn't trip a breaker but that may be overly cautious." | A power/spec label for one LED wall panel — likely shows model, voltage, current draw, wattage, and connector type. | NEEDED | The assistant's reply (#5) only transcribes one figure from it ("Max Power: 176W"). A power-spec label like this typically also shows rated voltage, rated current (A), model/part number, and connector type — none of those are transcribed anywhere in the text, so they aren't recoverable without the pixels. This is not one of the images Sam has already supplied (handwritten notes page, AVPRO/ZCASE spec photo, proxdirect listings, AVPRO rear photo, rack-layout renders), so it is not marked SUPPLIED. |
