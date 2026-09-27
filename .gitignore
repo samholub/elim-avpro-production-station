@@ -1,0 +1,6 @@
+_raw/
+.DS_Store
+Thumbs.db
+node_modules/
+__pycache__/
+*.tmp
