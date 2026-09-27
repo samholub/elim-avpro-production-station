@@ -1,6 +1,30 @@
 # Conversations: In-Scope List
 
-**State:** DRAFT. This is the step 2 gate. Sam confirms what's in and out, and nothing downstream runs until he does.
+**State:** CONFIRMED by Sam 2026-09-26. The rulings below override the recommendations further down.
+
+## Sam's rulings (final in-scope list: 15 conversations)
+
+| ID | Ruling | Transcript |
+|---|---|---|
+| a5df9d8d, dbb71760, 8d448713, c401d6de, 7de49396 | IN (core) | full |
+| 63b7028b | IN, **high priority**: its session-8 updates never reached the docs | full |
+| d2874b7b, 61be4ede, 67b50b98 | IN | full |
+| e311e761 | IN | full |
+| 0c5615c4 | IN, **high priority**: Sam's own current-state rig brief | full |
+| 4897e910 | IN, low priority, ops-config only | full |
+| 3a43455d | IN as `source_type=app`: cross-check evidence, not a design source | full |
+| 7c82049f | IN, **Aug 26–27 portion only** | messages dated 2026-08-26 → 08-27 |
+| b3a56c0f | IN, **process rulings only**. Log Sam's stated decisions (Pelican fully out of scope, PNG renders are primary sources, review/package format decisions, Sunny is a man). The assistant's seed findings are NOT logged as facts | full (extraction scope limited) |
+| 858f4e37 | OUT | — |
+| Remaining section F rows | OUT, as recommended | — |
+
+**The 2026-08-27 session:** I searched the local Claude Code transcripts in `C:\Users\sammh\.claude\projects\`. The only late-August session (elim-production `6c52bbeb`, which started 2026-08-27 03:49 UTC) is app work, and it doesn't write `APP-PROJECT-HANDOFF.md` or edit HARDWAREPROJECT or TEAM-NOTE. **Not found.** Per Sam, the 08-27 edits already in the baseline docs are the record.
+
+**Other zips (memories, design_chats, frames):** checked with a keyword-only pass. The memories hold hardware facts, logged as `source_type=doc` with a "memory" note. Design chat `a6a98d45` (the ELIM app v6 prototype) holds 3 statements from Sam about the rig, logged as `source_type=app`. The frames are NAS and ticket artifacts, so there's nothing hardware-related.
+
+---
+
+*Draft recommendations as originally presented:*
 **Built:** 2026-09-26 from `_raw/export/conversations/conversations.json` (726 conversations, 18,769 messages).
 
 ## How this list was built
