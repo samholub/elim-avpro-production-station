@@ -1,11 +1,11 @@
 {
   "version": "v6",
   "date": "2026-09-28",
-  "first_order": 4480.66,
+  "first_order": 4852.39,
   "wing_block": 100,
-  "all": 4580.66,
+  "all": 4952.39,
   "cases_placeholder": 1650,
-  "first_order_ex_cases": 2830.66,
+  "first_order_ex_cases": 3202.39,
   "groups": {
     "Cases | First order": 1650,
     "AVPRO panel | First order": 301,
@@ -18,7 +18,8 @@
     "Storage | First order": 310,
     "Cable mgmt | First order": 65,
     "Hardware | First order": 25,
-    "Cabling | First order": 465.75,
+    "Cabling | First order": 276.1,
+    "Venue power | First order": 561.38,
     "Monitors | First order": 320,
     "Wing panel | Wing block": 100
   },
@@ -96,6 +97,21 @@
     "SDI-JUMPER": {
       "needed": 8,
       "bom": 8,
+      "pass": true
+    },
+    "EDISON-P": {
+      "needed": 2,
+      "bom": 2,
+      "pass": true
+    },
+    "EDISON-R": {
+      "needed": 2,
+      "bom": 2,
+      "pass": true
+    },
+    "QUADBOX": {
+      "needed": 1,
+      "bom": 1,
       "pass": true
     }
   }

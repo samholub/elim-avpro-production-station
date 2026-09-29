@@ -20,9 +20,11 @@ The whole doc set was audited against every project conversation (15 chats, 3,76
 
 **Wing panel is conditional.** It waits on a physical inspection of the BWING at delivery. Its parts are a separate BOM block ($100.00), not in the first order. Fallback: the umbilical goes direct to the Wing's jacks.
 
-**Umbilical.** The cases always sit side by side, so the data and audio trunks are short (15ft). The power cable stays 125ft 12/3 SOOW until Sam rules on P-04 (15ft).
+**Power correction (D20).** The 125ft 12/3 SO in the older docs was never the AVPRO ↔ Wing umbilical. It's **two venue power drops** from wall outlets: drop 1 feeds the AVPRO (and the Wing through it), drop 2 feeds the AV charging station. Both are 125ft 12/3 SOOW with a 5-15P at the wall and a 5-15R connector body at the rig end; drop 2 ends in a quad box (charging station on its own table by default, open item N19). The AVPRO → Wing power link is a **short powerCON cable**: 15ft of 14/3 SJOOW, because the TRUE1 cable ends take 6–12mm cable and 12/3 SO is 15.1mm. P-04 is closed.
 
-**BOM v6.** One buy list with a Check tab (every connector count ties to BUILD-SPEC §7) and a Changes tab. +RS1215-RA, +TL-SG105, -Etsy mount, -Teranex, shelves 2 -> 3, spares line, etherCON cable ends counted (11) and corrected (NE8FDX-Y6-B was a panel part, P-03), powerCON cable ends split out, umbilical priced per foot, HDMI and power jumpers, blanking plates, trunk cable. **First order $4,480.66** (incl. $1,650 case + freight placeholders, to verify with Matt); **Wing block $100.00**; all lines $4,580.66. The old ~$3,960 is retired.
+**Umbilical.** The cases always sit side by side, so all five trunks are short (15ft). The talkback and IEM XLRs are owned.
+
+**BOM v6.** One buy list with a Check tab (every connector count ties to BUILD-SPEC §7) and a Changes tab. +RS1215-RA, +TL-SG105, -Etsy mount, -Teranex, shelves 2 -> 3, spares line, etherCON cable ends counted (11) and corrected (NE8FDX-Y6-B was a panel part, P-03), powerCON cable ends split out, two venue power drops + quad box, a short 14/3 powerCON umbilical, HDMI and power jumpers, blanking plates, trunk cable. **First order $4,852.39** (incl. $1,650 case + freight placeholders, to verify with Matt); **Wing block $100.00**; all lines $4,952.39. The old ~$3,960 is retired. The Wing case switch line reads "5-port metal gigabit switch (TL-SG105 or equivalent)".
 
 **Wording.** AX21 everywhere (D11). UltraStudio on the desk (D12). Monitors "300 nit matte, fine under a tent or canopy; direct sun needs angling" (D14). Side compartments "not used in the design (confirm on delivery)". Stage power moves to ROADMAP, out of the BOM (D8). Shure RF in ROADMAP (D17).
 

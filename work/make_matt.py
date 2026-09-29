@@ -91,7 +91,7 @@ def main():
     md = f"""# ELIM AVPRO + Wing Build: Pack for Matt
 
 **Generated from the build set on {t['date']} (BOM {t['version']}).** Don't edit this file; it's rebuilt from `build/`.
-Codes like D7, P-04 or M5 point to the build decision log and open-items list; ask if one isn't clear.
+Codes like D7, D20 or M5 point to the build decision log and open-items list; ask if one isn't clear.
 
 ## 1. Scope
 

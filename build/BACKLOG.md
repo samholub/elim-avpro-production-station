@@ -8,12 +8,11 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 
 ## 1. Order
 
-**Close the gate first** (OPEN-ITEMS G1–G7; target order date 2026-10-01):
+**Close the gate first** (OPEN-ITEMS G1, G2, G5–G7; target order date 2026-10-01):
 - [ ] Matt: AVPRO price, BWING price, consolidated freight.
 - [ ] Matt / vendor: one matched powerCON TRUE1 family + the etherCON cable end part. Sam checks both datasheets; then mark those BOM lines firm.
-- [ ] Sam: rule on P-04 (umbilical 125ft or 15ft).
 - [ ] Matt: source the laptop surge strip (utility side).
-- [ ] Sam: confirm the owned short XLRs (and any spare 15ft Cat6A); confirm the CPS1215RM listing.
+- [ ] Sam: confirm the CPS1215RM listing. Say where the charging station sits (N19; default: own table + quad box).
 - [ ] Bianca go/no-go (1:1), then Sunny's sign-off.
 
 **Place the first order** (every BOM line not marked "Wing block"):
@@ -25,7 +24,8 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 - [ ] Cooling: 1U fan, 3 perforated blanks.
 - [ ] Mounting and network: 3 × 1U vented shelves; TL-SG105 (Wing case Dante).
 - [ ] Storage: 2 × 4U drawers. Lacing bar, hook-and-loop.
-- [ ] Cabling: 8 SDI jumpers, Cat6A lot, 2 trunk cables, 3 HDMI jumpers, 6 short power cords, umbilical 12/3 SOOW (length per P-04).
+- [ ] Cabling: 8 SDI jumpers, Cat6A lot, 2 trunk cables, 3 HDMI jumpers, 6 short power cords, 15ft 14/3 SJOOW for the powerCON umbilical.
+- [ ] Venue power: 250ft 12/3 SOOW (two 125ft drops), 2 × 5-15P plugs, 2 × 5-15R connector bodies, 1 quad box (N19 default).
 - [ ] Monitors: 2 × LG 24GS60F-B + right-angle adapters.
 - [ ] Rack screws **after** the rail thread is known (G6).
 
@@ -43,7 +43,8 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 - [ ] Populate the AVPRO panels in the v15 order (BUILD-SPEC §5): IEM jack male, TALKBACK female, POWER a powerCON outlet labeled "POWER > WING". Blank the empty holes.
 - [ ] Wire the outlet feed cord to the POWER > WING outlet.
 - [ ] Wing panel (if the inspection passes): CONTROL, DANTE TRUNK, AES50 etherCON; TALKBACK male; IEM female; POWER inlet with its pigtail to the Wing.
-- [ ] Make the umbilical: PROD and DANTE trunks (etherCON both ends), two XLRs, the 12/3 power cable with TRUE1 male (AVPRO end) and female (Wing end).
+- [ ] Make the umbilical (all 15ft): PROD and DANTE trunks (etherCON both ends), the two owned XLRs, and the 14/3 SJOOW powerCON link with TRUE1 male (AVPRO end) and female (Wing end).
+- [ ] Make the two venue power drops: 125ft 12/3 SOOW each, 5-15P at the wall end, 5-15R connector body at the rig end. Label them DROP 1 (AVPRO) and DROP 2 (CHARGING).
 - [ ] Put etherCON ends on the LED and internet field runs (LED count per M7).
 - [ ] Build the ATEM retention tray (BUILD-SPEC §11).
 - [ ] Mount a converter + AC/DC adapter permanently on the wired Pocket and the DJI.

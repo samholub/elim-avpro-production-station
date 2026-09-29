@@ -5,6 +5,7 @@ Checks every dollar figure in the doc against work/bom_totals.json before render
 Writes review/ELIM-PLAN.pdf, review/ELIM-layout.png, review/layout-overview.png, review/page1.png (preview).
 """
 import json
+import math
 import re
 import shutil
 import sys
@@ -19,8 +20,6 @@ DIA = ROOT / "build" / "diagrams"
 
 # Figures in the doc that don't come from the BOM total/groups, with where they come from.
 OTHER = {
-    "203.75": "BOM umbilical line (125 x $1.63)",
-    "179.30": "P-04 saving (110ft x $1.63)",
     "1,550": "ROADMAP stage power (low)",
     "1,700": "ROADMAP stage power (high)",
 }
@@ -30,28 +29,38 @@ def fmt(x):
     return f"{x:,.2f}"
 
 
+def rounded_up(x):
+    """The page-1 figure: the first-order total rounded UP to the next $100 (Sam, 2026-09-28)."""
+    return f"{math.ceil(x / 100) * 100:,}"
+
+
 def check_numbers(md, t):
     g = t["groups"]
     allowed = {fmt(v) for v in (t["first_order"], t["wing_block"], t["all"], t["cases_placeholder"])}
+    allowed.add(rounded_up(t["first_order"]))
+    page1 = md.split('<div class="pb"></div>')[0]
+    if f"about ${rounded_up(t['first_order'])}" not in page1:
+        raise SystemExit(f"Page 1 must say 'about ${rounded_up(t['first_order'])}'")
     allowed |= {
         fmt(g["Cases | First order"]),
         fmt(g["Power | First order"]),
         fmt(g["AVPRO panel | First order"] + g["Spares | First order"] + g["Cable ends | First order"]),
         fmt(g["Cabling | First order"]),
+        fmt(g["Venue power | First order"]),
         fmt(g["Storage | First order"] + g["Mounting | First order"] + g["Network | First order"]),
         fmt(g["Monitors | First order"]),
         fmt(g["Cooling | First order"]),
         fmt(g["Cable mgmt | First order"] + g["Hardware | First order"]),
     }
     allowed |= set(OTHER)
-    found = re.findall(r"\$([\d,]+(?:\.\d{2})?)", md)
+    found = re.findall(r"\$(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)", md)
     bad = [f for f in found if f not in allowed]
     if bad:
         raise SystemExit(f"Figures not tied to the BOM: {bad}")
     # The cost-by-group rows must sum to the first-order total.
     parts = [g["Cases | First order"], g["Power | First order"],
              g["AVPRO panel | First order"] + g["Spares | First order"] + g["Cable ends | First order"],
-             g["Cabling | First order"], g["Storage | First order"] + g["Mounting | First order"] + g["Network | First order"],
+             g["Cabling | First order"], g["Venue power | First order"], g["Storage | First order"] + g["Mounting | First order"] + g["Network | First order"],
              g["Monitors | First order"], g["Cooling | First order"], g["Cable mgmt | First order"] + g["Hardware | First order"]]
     assert round(sum(parts), 2) == t["first_order"], "groups don't sum to the first order"
     return len(found)

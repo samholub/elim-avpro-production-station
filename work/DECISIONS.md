@@ -96,3 +96,16 @@ Outlines in `work/OUTLINES.md` approved. Answers to Q1–Q7 and rulings on P-03 
 **New proposal raised:** P-04 (shorten the power umbilical). Not applied until Sam rules.
 
 **Cover notes:** `work/COVER-NOTES.md` (Bianca, Sunny, Matt), drafted after review/ and matt/ exist.
+
+---
+
+## Session 2 rulings, round 2 (Sam, 2026-09-28)
+
+| # | Ruling | What it means for the build |
+|---|---|---|
+| **D20** | **Power correction.** The 125ft 12/3 SO was never the AVPRO ↔ Wing umbilical. It's **two venue power drops** from wall outlets to the rig area: drop 1 feeds the AVPRO + Wing, drop 2 feeds the AV charging station next to them. Both 125ft 12/3 SO with Edison ends (5-15P at the wall). The AVPRO → Wing power link is a **short powerCON cable** (~15ft), sized like the other trunks. | BOM: 250ft 12/3 SOOW, 2 × 5-15P, 2 × 5-15R connector bodies (both drops identical), 1 quad box at the charging station; the umbilical becomes 15ft of 14/3 SJOOW with TRUE1 ends. **Why 14/3:** Neutrik lists the NAC3FX-W cable range as 6–12mm; 12/3 SO is 15.1mm, 14/3 SJOOW is 9.4mm, and the Wing draws ~1A. **P-04 closed** (superseded). Removed from the order-blocking list. |
+| N19 (new open item) | **Is the charging station the Bay B CPPDU511 (drop 2 plugs into the AVPRO) or a separate table (drop 2 needs its own outlet box)?** **Default until Sam answers: separate, with its own quad box.** | Default is in the BOM (quad box $89.88). If Bay B, delete that line and drop 2's 5-15R end takes the CPPDU511 cord. |
+| G4 | **Sam owns the two short XLRs.** No BOM line. The 15ft Cat6A trunk lines stay. | Closed. |
+| Review p.1 | **Page-1 cost rounds up to the next $100** ("about $X"). Exact figures stay in the cost section and the BOM. The render check allows the rounded page-1 figure only when it rounds up from the BOM first-order total. | review/ page 1: "about $4,900". |
+| Cover notes | Bianca and Sunny get one line on why the total rose from the ~$3,960 they may have seen: mainly missing parts were added (connector ends, Wing switch, Bay B power strip, power drops, real cable pricing). | `work/COVER-NOTES.md` |
+| BOM wording | Switch line reads "5-port metal gigabit switch (TL-SG105 or equivalent)". | BOM Buy tab. |

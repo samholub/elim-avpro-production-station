@@ -100,22 +100,38 @@
 <!-- matt:power -->
 ## 4. Power
 
-The rig runs on whatever a venue gives. It draws well under one 15A circuit, so one works. **Two are preferred:** the UPS on one, the utility side on the other. Never tie circuits together. *Decided.*
+The rig runs on whatever a venue gives. It draws well under one 15A circuit, so one works. **Two are preferred:** the UPS on one, the charging side on the other. Never tie circuits together. *Decided.*
+
+### Venue power drops
+
+Power reaches the rig area on **two 125ft 12/3 SO drops** from wall outlets. *Decided (D20).*
+
+| Drop | Wall end | Rig end | Feeds |
+|---|---|---|---|
+| Drop 1 | 5-15P plug | one 5-15R connector body | the AVPRO UPS line cord (and the Wing, through the AVPRO) |
+| Drop 2 | 5-15P plug | one 5-15R connector body + a quad box | the AV charging station |
+
+- **Both drops are built the same:** 125ft 12/3 SOOW, a Hubbell HBL5266C plug, a Hubbell HBL5269C connector body. Either one can stand in for the other.
+- **Drop 1 needs one receptacle.** The UPS is the only thing plugged into it; everything else hangs off the UPS.
+- **Drop 2 ends in a quad box** (4 outlets, 2ft 12/3 tail with a 5-15P that plugs into the drop's 5-15R). That's the simplest way to give a charging table several outlets.
+- **Where the charging station sits is open (OPEN-ITEMS N19).** Default until Sam answers: a separate table with its own quad box, and the Bay B strips plug into that quad box too, since it's beside the rig. If the charging station is Bay B, drop 2's 5-15R takes the CPPDU511 cord directly and the quad box comes off the BOM.
+- Voltage drop: 12AWG over 125ft at these loads (2–3A) is about 1%. Fine.
+- Plug each drop into a different wall circuit when the venue has two. If not, both on one is fine; the total is still well under 15A.
 
 ### UPS side (battery-backed)
 
-venue 15A → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → umbilical → Wing.
+drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → short powerCON umbilical → Wing.
 
 - One UPS backs both cases. The BWING can't carry its own UPS, so this is the only way to back the Wing. For standalone use the Wing goes on a wall outlet. *Decided.*
-- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on and why the laptop strip is on the utility side. *Decided.*
+- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on and why the laptop strip is on the charging side. *Decided.*
 - The UPS LCD meters the combined booth + Wing load.
 
-### Utility side (not backed)
+### Charging side (not backed)
 
-venue 15A → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided (D3, D4).*
+drop 2 → quad box → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided (D3, D4); the quad box step is the N19 default.*
 
 - Label both Bay B strips **"chargers + lights + laptops only"**. No high-draw loads. Keep the total under 15A.
-- Laptops run on their own batteries if utility power drops.
+- Laptops run on their own batteries if this side loses power.
 
 ### Estimated draw, UPS side
 
@@ -139,19 +155,19 @@ venue 15A → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights
 
 ### Umbilical (AVPRO ↔ Wing)
 
-Five cables, all color-coded and labeled:
+Five short cables, all color-coded and labeled. The cases always sit side by side. *Decided (Q3, D20).*
 
 | Cable | Length | Ends | Owned? |
 |---|---|---|---|
 | PROD trunk | 15ft | etherCON both ends | buy (BOM trunk cable + ends) |
 | DANTE trunk | 15ft | etherCON both ends | buy (BOM trunk cable + ends) |
-| TALKBACK | 15ft | XLR | assumed owned (standard mic cable), Sam to confirm |
-| IEM | 15ft | XLR | assumed owned (standard mic cable), Sam to confirm |
-| POWER | **125ft** 12/3 SOOW | powerCON TRUE1 male (AVPRO end), female (Wing end) | buy |
+| TALKBACK | 15ft | XLR | owned (Sam) |
+| IEM | 15ft | XLR | owned (Sam) |
+| POWER | 15ft, 14/3 SJOOW | powerCON TRUE1 male (AVPRO end), female (Wing end) | buy |
 
-- **The cases always sit side by side**, so the data and audio trunks are short. *Decided (Q3).* The 15ft length is my sizing; it leaves room to angle the cases.
-- **Flexibility:** if a venue ever needs the cases apart, add longer trunks then. Nothing on either panel changes.
-- **The power cable is still 125ft** because that length is locked. **P-04 proposes 15ft** (saves $179.30 and 24.5 lb). Change it here only if Sam says yes.
+- The 15ft length leaves room to angle the cases.
+- **Why 14/3 for the power link:** Neutrik lists the TRUE1 cable connector (NAC3FX-W) for 6–12mm cable. 12/3 SO is 15.1mm and won't fit; 14/3 SJOOW is 9.4mm, rated 18A. The Wing draws about 1A.
+- **Flexibility:** if a venue ever needs the cases apart, add longer trunks and a longer powerCON link then. Nothing on either panel changes.
 - powerCON family: one matched TRUE1 family for the outlet, both cable ends, and the Wing inlet. Matt or the vendor confirms before ordering (D7).
 <!-- /matt -->
 
@@ -213,7 +229,7 @@ WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
 
 ## 7. Connector stock
 
-This table is what the BOM **Check** tab ties to. Every row passes in BOM v6.
+This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v6.
 
 | Item | AVPRO fitted | Wing fitted | Spares | Runs | Total |
 |---|---|---|---|---|---|
@@ -230,6 +246,9 @@ This table is what the BOM **Check** tab ties to. Every row passes in BOM v6.
 | powerCON cable ends, male | — | — | 1 | 1 | 2 |
 | powerCON cable ends, female | — | — | 1 | 1 | 2 |
 | SDI jumpers, panel → ATEM | — | — | — | 8 | 8 |
+| Edison plug 5-15P (drop wall ends) | — | — | — | 2 | 2 |
+| Edison connector body 5-15R (drop rig ends) | — | — | — | 2 | 2 |
+| Quad box (charging station, N19 default) | — | — | — | 1 | 1 |
 
 **etherCON cable ends, by run (bought to the high count):**
 
@@ -262,7 +281,7 @@ This table is what the BOM **Check** tab ties to. Every row passes in BOM v6.
 | U7 | Cable management (lacing bar) | — | rear I/O panel (3U) on the rear rails behind the upper block |
 | U4–U6 | Vented blanking panels (reserve) | — | airflow + growth |
 | U3 | CPS1215RM distribution strip (from the UPS) | own ears | UPS-backed outlets + the POWER > WING feed |
-| U1–U2 | UPS, CyberPower CP1500PFCRM2U | own ears | one venue 15A in |
+| U1–U2 | UPS, CyberPower CP1500PFCRM2U | own ears | line cord to power drop 1 |
 
 - Shelves are the same AC Infinity 1U vented cantilever model (10in deep). The Teranex Mini Rack Shelf is dropped (D19). The Etsy dual switch mount is dropped (D5).
 - Open check (non-gating): the U10 shelf depth fits the HD Mini, the TL-SG1005P and its brick side by side.
@@ -318,7 +337,7 @@ No signal in Bay B.
 
 ## 11. Internal cabling and dressing
 
-- **Types:** SDI = 75Ω 3G coax (BNC); HDMI 2.0; data = Cat6A (shielded where it runs beside power); audio = XLR; power = short 5-15P → IEC C13 cords from the CPS1215RM, plus the powerCON umbilical.
+- **Types:** SDI = 75Ω 3G coax (BNC); HDMI 2.0; data = Cat6A (shielded where it runs beside power); audio = XLR; power = short 5-15P → IEC C13 cords from the CPS1215RM, plus the short powerCON umbilical. Venue power arrives on the two drops (§4).
 - **Length:** measured length + a 6–12in service loop.
 - **Dressing:** one airflow direction. Power on one side, signal on the other, crossing at 90°. Bundle by signal type. Hook-and-loop and the lacing bar, not zip ties. Strain-relieve at connectors. Keep the open back workable.
 - **Labeling rule: "match the color, match the number."** Every cable has its color (§12) and a number, and the panel jack it lands on carries the same color and number. Source → destination text on both ends. *Decided (Q6).*

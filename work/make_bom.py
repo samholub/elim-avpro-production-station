@@ -89,7 +89,7 @@ LINES = [
     ("Mounting", "1U vented cantilever shelf, 10in deep", "AC Infinity 1U vented (B01C9KYUG8)", 3, 25, "est", FIRST, "",
      "https://www.amazon.com/AC-Infinity-Cantilever-Universal-Heavy-Duty/dp/B01C9KYUG8",
      "U11 Resi; U10 HD Mini + TL-SG1005P + its power brick; U8 TL-SG105 + AX21.", "qty 2 -> 3 (D5, D19)"),
-    ("Network", "Wing case Dante switch (non-PoE)", "TP-Link TL-SG105", 1, 46.99, "est", FIRST, "",
+    ("Network", "Wing case Dante switch (non-PoE)", "5-port metal gigabit switch (TL-SG105 or equivalent)", 1, 46.99, "est", FIRST, "",
      "https://www.tp-link.com/us/business-networking/unmanaged-switch/tl-sg105/",
      "New buy (D1). Best Buy $46.99 on 2026-09-28. TP-Link lists it end of life; any 5-port metal gigabit unmanaged switch works.", "NEW (D1)"),
     # --- Storage ---
@@ -110,15 +110,28 @@ LINES = [
      "https://www.amazon.com/Monoprice-Cat6A-10-Color-10-Pk-Patch/dp/B0DNSQR1D3",
      "Internal jumpers. Trunk cable must suit the etherCON cable end (D7 check).", "unchanged"),
     ("Cabling", "Trunk cable, shielded Cat6A, 15ft", "Shielded Cat6A patch, 15ft", 2, 12, "est", FIRST, "",
-     "", "PROD and DANTE trunks (the cases sit side by side, Q3). etherCON ends on the Cable ends line. Delete if Sam has two spare runs.", "NEW (Q3)"),
+     "", "PROD and DANTE trunks (the cases sit side by side, Q3). etherCON ends on the Cable ends line.", "NEW (Q3)"),
     ("Cabling", "HDMI 2.0 jumper, short", "HDMI 2.0, 6-10ft", 3, 12, "est", FIRST, "",
      "", "ProPresenter > LED Tx; Anker hub > CONF OUT; ATEM multiview > LEFT lid.", "NEW (D2)"),
     ("Cabling", "Short power cord, 5-15P to IEC C13", "2-3ft", 6, 7, "est", FIRST, "",
      "", "Replaces long stock cords on the Bay A gear for dressing.", "NEW (D2)"),
-    ("Cabling", "Umbilical power cable, 12/3 SOOW", "12/3 SOOW, cut to length (ft)", 125, 1.63, "est", FIRST, "",
+    ("Cabling", "Umbilical power cable (AVPRO > Wing), 14/3 SJOOW", "14/3 SJOOW, cut to length (ft)", 15, 0.94, "est", FIRST, "",
+     "https://www.wireandcableyourway.com/14-3-sjoow-portable-cord-300v-ul-csa",
+     "Short: the cases sit side by side (D20). 0.370in OD fits the TRUE1 cable ends (6-12mm); 12/3 SO (0.595in) does not. Ends on the powerCON lines.",
+     "was '125ft 12/3 SO umbilical' $120 (D20: that cable is the venue drops)"),
+    # --- Venue power drops ---
+    ("Venue power", "Power drop cable, 12/3 SOOW (2 x 125ft)", "12/3 SOOW, cut to length (ft)", 250, 1.63, "est", FIRST, "",
      "https://www.wireandcableyourway.com/12-3-soow-portable-cord-600v-ul-csa",
-     "125ft per the locked design. P-04 proposes 15ft. Ends are on the powerCON lines above.",
-     "v5 was $120 lumped with connectors; now cable only, priced per foot"),
+     "Drop 1: wall > AVPRO UPS (and the Wing through it). Drop 2: wall > charging station. Both identical, so either can stand in for the other.",
+     "NEW (D20)"),
+    ("Venue power", "Edison plug, 5-15P (wall end)", "Hubbell HBL5266C", 2, 14, "est", FIRST, "EDISON-P",
+     "https://www.hubbell.com/wiringdevice-kellems/en/products/straight-blade-devices-male-plug-insulgrip-heavy-duty-industrialcommercial-grade-straight-2-pole-3-wire-grounding-15a125v-5-15p-and-white/p/555598",
+     "One per drop. Check the cord range covers 0.595in.", "NEW (D20)"),
+    ("Venue power", "Edison connector body, 5-15R (rig end)", "Hubbell HBL5269C", 2, 18, "est", FIRST, "EDISON-R",
+     "", "One per drop. Drop 1: the UPS line cord plugs in. Drop 2: the quad box plugs in.", "NEW (D20)"),
+    ("Venue power", "Quad box, 4 outlets, 2ft 12/3 tail with 5-15P", "BarnDoor QB-M-2FT metal quad box", 1, 89.88, "quoted 2026-09-28", FIRST, "QUADBOX",
+     "https://www.filmandvideolighting.com/metal-quad-box-hard-wired-12-3-sjoow-2ft-tail-qb-m-2ft.html",
+     "Charging station on its own table (default until Sam answers N19). If the charging station is Bay B, delete this line.", "NEW (D20)"),
     # --- Monitors ---
     ("Monitors", "Lid monitor, 24in matte IPS", "LG UltraGear 24GS60F-B", 2, 150, "est", FIRST, "",
      "https://www.amazon.com/LG-24GS60F-B-Ultragear-Compatible-DisplayPort/dp/B0CYQGRTHX",
@@ -159,6 +172,9 @@ CHECK = [
     ("PCON-END-M", "powerCON cable end, male", 0, 0, 1, 1),
     ("PCON-END-F", "powerCON cable end, female", 0, 0, 1, 1),
     ("SDI-JUMPER", "SDI jumper, panel to ATEM", 0, 0, 0, 8),
+    ("EDISON-P", "Edison plug 5-15P, drop wall ends", 0, 0, 0, 2),
+    ("EDISON-R", "Edison connector 5-15R, drop rig ends", 0, 0, 0, 2),
+    ("QUADBOX", "Quad box at the charging station", 0, 0, 0, 1),
 ]
 
 OWNED = [
@@ -178,20 +194,24 @@ OWNED = [
     ("Internet", "Starlink Standard + router", "Starlink", "Into INTERNET IN. ~50-75W if powered from the UPS."),
     ("Cameras", "Pocket 4K x2, DJI", "various", "Three cameras at every event (D9)."),
     ("Compute", "ProPresenter Mac (Bianca), switcher laptop, Anker hub", "-", "On the desk. Laptop strip on utility (D4)."),
-    ("Cabling", "Short XLR cables x2 (talkback + IEM trunks)", "-", "ASSUMED owned; Sam to confirm (OPEN-ITEMS). Not in the buy total."),
+    ("Cabling", "Short XLR cables x2 (talkback + IEM trunks)", "-", "Owned (Sam confirmed 2026-09-28). Not in the buy total."),
     ("Cabling", "LED wall and internet field runs", "-", "Today's runs; get etherCON ends (Cable ends line). M7 sets the LED end count."),
 ]
 
 CHANGES = [
     ("D3", "+ Tripp Lite RS1215-RA, Bay B rear, camera chargers", "+94.98"),
-    ("D1", "+ TP-Link TL-SG105 for the Wing case Dante switch", "+46.99"),
+    ("D1", "+ 5-port metal gigabit switch (TL-SG105 or equivalent) for the Wing case Dante switch", "+46.99"),
     ("D5", "- Etsy TL-SG105S dual switch mount", "-30.00"),
     ("D19", "- Blackmagic Teranex Mini Rack Shelf", "-49.00"),
     ("D5/D19", "1U vented shelf qty 2 -> 3 (Resi; HD Mini + TL-SG1005P; TL-SG105 + AX21)", "+25.00"),
     ("D2", "+ Spares: 2 BNC, 2 etherCON, 1 XLR-F, 1 XLR-M", "+52.00"),
     ("P-03", "etherCON cable ends: NE8FDX-Y6-B x6 @ $21.43 -> NE8MX6-B (TBC) x11 @ $18.36", "+73.38"),
     ("D2/D7", "+ powerCON TRUE1 cable ends: 2 male + 2 female (umbilical + spares)", "+72.00"),
-    ("D2", "Umbilical: $120 lump -> 125ft 12/3 SOOW @ $1.63/ft (ends now separate)", "+83.75"),
+    ("D20", "v5 '125ft 12/3 SO umbilical' $120 -> short powerCON umbilical, 15ft 14/3 SJOOW @ $0.94/ft (ends on the powerCON lines)", "-105.90"),
+    ("D20", "+ 2 venue power drops: 250ft 12/3 SOOW @ $1.63/ft", "+407.50"),
+    ("D20", "+ 2 x 5-15P plugs (wall ends) @ $14", "+28.00"),
+    ("D20", "+ 2 x 5-15R connector bodies (rig ends) @ $18", "+36.00"),
+    ("D20", "+ quad box for the charging station (default: own table)", "+89.88"),
     ("Q3", "+ trunk cable, 2 x 15ft shielded Cat6A (PROD + DANTE)", "+24.00"),
     ("D2", "+ HDMI jumpers x3", "+36.00"),
     ("D2", "+ short 5-15P to C13 cords x6", "+42.00"),
@@ -233,7 +253,7 @@ def main():
     ws["A2"] = ("One buy list. The first order is everything not marked 'Wing block'. The Wing block is bought only if the BWING "
                 "can take a panel. Owned gear is on the Owned tab and not in any total. Case prices are Matt's estimates, to verify.")
     ws["A3"] = ("Not in this BOM: camera field SDI cable and BNC ends (after the camera-cable trial); stage power (ROADMAP); "
-                "the XLR trunk cables (assumed owned, to confirm).")
+                "the XLR trunk cables (owned).")
     cols = ["Group", "Item", "Model / SKU", "Qty", "Unit", "Ext", "Price status", "Order", "Status", "Link", "Check key", "Notes", "Change vs v5"]
     header(ws, 5, cols)
     first_row = 6

@@ -1,7 +1,7 @@
 # ELIM AVPRO + Wing Build: Pack for Matt
 
 **Generated from the build set on 2026-09-28 (BOM v6).** Don't edit this file; it's rebuilt from `build/`.
-Codes like D7, P-04 or M5 point to the build decision log and open-items list; ask if one isn't clear.
+Codes like D7, D20 or M5 point to the build decision log and open-items list; ask if one isn't clear.
 
 ## 1. Scope
 
@@ -137,22 +137,38 @@ WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
 
 ### Power
 
-The rig runs on whatever a venue gives. It draws well under one 15A circuit, so one works. **Two are preferred:** the UPS on one, the utility side on the other. Never tie circuits together. *Decided.*
+The rig runs on whatever a venue gives. It draws well under one 15A circuit, so one works. **Two are preferred:** the UPS on one, the charging side on the other. Never tie circuits together. *Decided.*
+
+#### Venue power drops
+
+Power reaches the rig area on **two 125ft 12/3 SO drops** from wall outlets. *Decided (D20).*
+
+| Drop | Wall end | Rig end | Feeds |
+|---|---|---|---|
+| Drop 1 | 5-15P plug | one 5-15R connector body | the AVPRO UPS line cord (and the Wing, through the AVPRO) |
+| Drop 2 | 5-15P plug | one 5-15R connector body + a quad box | the AV charging station |
+
+- **Both drops are built the same:** 125ft 12/3 SOOW, a Hubbell HBL5266C plug, a Hubbell HBL5269C connector body. Either one can stand in for the other.
+- **Drop 1 needs one receptacle.** The UPS is the only thing plugged into it; everything else hangs off the UPS.
+- **Drop 2 ends in a quad box** (4 outlets, 2ft 12/3 tail with a 5-15P that plugs into the drop's 5-15R). That's the simplest way to give a charging table several outlets.
+- **Where the charging station sits is open (OPEN-ITEMS N19).** Default until Sam answers: a separate table with its own quad box, and the Bay B strips plug into that quad box too, since it's beside the rig. If the charging station is Bay B, drop 2's 5-15R takes the CPPDU511 cord directly and the quad box comes off the BOM.
+- Voltage drop: 12AWG over 125ft at these loads (2–3A) is about 1%. Fine.
+- Plug each drop into a different wall circuit when the venue has two. If not, both on one is fine; the total is still well under 15A.
 
 #### UPS side (battery-backed)
 
-venue 15A → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → umbilical → Wing.
+drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → short powerCON umbilical → Wing.
 
 - One UPS backs both cases. The BWING can't carry its own UPS, so this is the only way to back the Wing. For standalone use the Wing goes on a wall outlet. *Decided.*
-- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on and why the laptop strip is on the utility side. *Decided.*
+- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on and why the laptop strip is on the charging side. *Decided.*
 - The UPS LCD meters the combined booth + Wing load.
 
-#### Utility side (not backed)
+#### Charging side (not backed)
 
-venue 15A → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided (D3, D4).*
+drop 2 → quad box → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided (D3, D4); the quad box step is the N19 default.*
 
 - Label both Bay B strips **"chargers + lights + laptops only"**. No high-draw loads. Keep the total under 15A.
-- Laptops run on their own batteries if utility power drops.
+- Laptops run on their own batteries if this side loses power.
 
 #### Estimated draw, UPS side
 
@@ -176,26 +192,26 @@ venue 15A → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights
 
 #### Umbilical (AVPRO ↔ Wing)
 
-Five cables, all color-coded and labeled:
+Five short cables, all color-coded and labeled. The cases always sit side by side. *Decided (Q3, D20).*
 
 | Cable | Length | Ends | Owned? |
 |---|---|---|---|
 | PROD trunk | 15ft | etherCON both ends | buy (BOM trunk cable + ends) |
 | DANTE trunk | 15ft | etherCON both ends | buy (BOM trunk cable + ends) |
-| TALKBACK | 15ft | XLR | assumed owned (standard mic cable), Sam to confirm |
-| IEM | 15ft | XLR | assumed owned (standard mic cable), Sam to confirm |
-| POWER | **125ft** 12/3 SOOW | powerCON TRUE1 male (AVPRO end), female (Wing end) | buy |
+| TALKBACK | 15ft | XLR | owned (Sam) |
+| IEM | 15ft | XLR | owned (Sam) |
+| POWER | 15ft, 14/3 SJOOW | powerCON TRUE1 male (AVPRO end), female (Wing end) | buy |
 
-- **The cases always sit side by side**, so the data and audio trunks are short. *Decided (Q3).* The 15ft length is my sizing; it leaves room to angle the cases.
-- **Flexibility:** if a venue ever needs the cases apart, add longer trunks then. Nothing on either panel changes.
-- **The power cable is still 125ft** because that length is locked. **P-04 proposes 15ft** (saves $179.30 and 24.5 lb). Change it here only if Sam says yes.
+- The 15ft length leaves room to angle the cases.
+- **Why 14/3 for the power link:** Neutrik lists the TRUE1 cable connector (NAC3FX-W) for 6–12mm cable. 12/3 SO is 15.1mm and won't fit; 14/3 SJOOW is 9.4mm, rated 18A. The Wing draws about 1A.
+- **Flexibility:** if a venue ever needs the cases apart, add longer trunks and a longer powerCON link then. Nothing on either panel changes.
 - powerCON family: one matched TRUE1 family for the outlet, both cable ends, and the Wing inlet. Matt or the vendor confirms before ordering (D7).
 
 ## 6. Fill hardware
 
 Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, Changes). Cases and freight are left off this list; they're question 1.
 
-- **First order:** $4,480.66, of which $1,650.00 is the case and freight placeholder (AVPRO $500, BWING $900, freight $250). Without cases: $2,830.66.
+- **First order:** $4,852.39, of which $1,650.00 is the case and freight placeholder (AVPRO $500, BWING $900, freight $250). Without cases: $3,202.39.
 - **Wing panel block:** $100.00, bought only if the BWING can take a panel.
 
 ### First order
@@ -226,7 +242,7 @@ Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, C
 | Cooling | 1U thermostatic exhaust fan | AC Infinity CLOUDPLATE T1 | 1 | est |
 | Cooling | 1U perforated blank panel | Steel perforated (Amazon) | 3 | est |
 | Mounting | 1U vented cantilever shelf, 10in deep | AC Infinity 1U vented (B01C9KYUG8) | 3 | est |
-| Network | Wing case Dante switch (non-PoE) | TP-Link TL-SG105 | 1 | est |
+| Network | Wing case Dante switch (non-PoE) | 5-port metal gigabit switch (TL-SG105 or equivalent) | 1 | est |
 | Storage | 4U rack drawer | StarTech 4UDRAWER | 2 | est |
 | Cable mgmt | 1U cable lacing bar | StarTech 12S-CABLE-LACING-BAR | 1 | est |
 | Cable mgmt | Hook-and-loop straps | ONE-WRAP + WrapStrap | 1 | est |
@@ -236,7 +252,11 @@ Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, C
 | Cabling | Trunk cable, shielded Cat6A, 15ft | Shielded Cat6A patch, 15ft | 2 | est |
 | Cabling | HDMI 2.0 jumper, short | HDMI 2.0, 6-10ft | 3 | est |
 | Cabling | Short power cord, 5-15P to IEC C13 | 2-3ft | 6 | est |
-| Cabling | Umbilical power cable, 12/3 SOOW | 12/3 SOOW, cut to length (ft) | 125 | est |
+| Cabling | Umbilical power cable (AVPRO > Wing), 14/3 SJOOW | 14/3 SJOOW, cut to length (ft) | 15 | est |
+| Venue power | Power drop cable, 12/3 SOOW (2 x 125ft) | 12/3 SOOW, cut to length (ft) | 250 | est |
+| Venue power | Edison plug, 5-15P (wall end) | Hubbell HBL5266C | 2 | est |
+| Venue power | Edison connector body, 5-15R (rig end) | Hubbell HBL5269C | 2 | est |
+| Venue power | Quad box, 4 outlets, 2ft 12/3 tail with 5-15P | BarnDoor QB-M-2FT metal quad box | 1 | quoted 2026-09-28 |
 | Monitors | Lid monitor, 24in matte IPS | LG UltraGear 24GS60F-B | 2 | est |
 | Monitors | Right-angle HDMI + DC adapters (lot) | 90-deg HDMI + DC barrel | 1 | est |
 

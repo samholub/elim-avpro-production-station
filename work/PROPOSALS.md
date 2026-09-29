@@ -70,4 +70,4 @@ Nothing here is applied. Each proposal changes something a baseline doc marks as
   - 125ft → 15ft saves **$179.30** in cable and **24.5 lb**.
   - Note the BOM v5 line ($120 for 125ft cable + connectors) was already under the cable's list price. The new BOM prices the cable and the two powerCON ends separately, so the saving shows up as a real line change.
 - **Order impact:** yes, one line (length and price). No part numbers change.
-- Sam: [ ] yes  [ ] no  [ ] other: ______
+- **Closed 2026-09-28 (superseded by D20).** Sam: the 125ft 12/3 SO is the pair of venue power drops, not the umbilical. The umbilical is a short powerCON cable (15ft; 14/3 SJOOW, because TRUE1 cable ends take 6–12mm cable). See `work/DECISIONS.md`.

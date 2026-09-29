@@ -70,7 +70,7 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 | 9 | **Labeling:** "match the color, match the number" | Same (Q6) | 2026-09-28 |
 | 10 | **One UPS** (CP1500PFCRM2U) backs the booth and the Wing over the umbilical | The BWING can't carry a UPS; this is the only way to back the Wing | 2026-08-17 |
 | 11 | **No surge behind the UPS;** the ProX X-PC10ASTRO was passed on | Stacked surge behind a UPS is contraindicated; its meter duplicates the UPS | 2026-08-17 |
-| 12 | Runs on **one 15A** circuit, two preferred, never tied | The whole rig draws well under 15A; venue circuit counts are unknowable | 2026-08-17 |
+| 12 | Runs on **one 15A** circuit, two preferred, never tied. Power arrives on **two 125ft 12/3 SO drops** with Edison ends: drop 1 → AVPRO (and the Wing through it), drop 2 → the charging station | The whole rig draws well under 15A; venue circuit counts are unknowable (D20) | 2026-09-28 |
 | 13 | **Bay B power:** CPPDU511 front (metered, drawer lights) + RS1215-RA rear (camera chargers), chained, utility side | Front lights the drawers; rear outlets face the chargers; one meter (D3) | 2026-08-20 |
 | 14 | **Laptop strip on the utility side,** plain surge strip | Laptops have batteries; keeps surge off the UPS (D4) | 2026-09-26 |
 | 15 | **Switches:** owned TL-SG1005P (PoE) = Bay A Dante satellite, powers the AVIO; owned TL-SG105 = Bay A production switch; **new TL-SG105** = Wing case Dante switch | Keeps PoE for the AVIO with no injector (D1) | 2026-09-26 |
@@ -81,8 +81,8 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 | 20 | **Lid monitors:** 2 × LG 24GS60F-B, 300 nit matte, fine under a tent or canopy, direct sun needs angling | D14; right-angle adapters for lid clearance | 2026-08-18 |
 | 21 | **LEFT lid = ATEM multiview** day one; **RIGHT lid fed in Phase 3** | Multiview can't depend on a laptop | 2026-08-17 |
 | 22 | **Cooling:** open back primary; 1U thermostatic fan at U12 exhausting to the back; vented blanks in reserve U's | Low heat load; blanks stop airflow short-circuits | 2026-08-17 |
-| 23 | **Umbilical = 5 cables:** PROD, DANTE, TALKBACK, IEM, POWER (12/3 SOOW with powerCON TRUE1) | AES50 is stage-side, not on the umbilical | 2026-08-17 |
-| 24 | **Data and audio trunks are short;** the cases always sit side by side | Q3. Longer runs can be added later | 2026-09-28 |
+| 23 | **Umbilical = 5 short cables:** PROD, DANTE, TALKBACK, IEM, POWER (15ft powerCON TRUE1 link, 14/3 SJOOW) | The cases sit side by side; TRUE1 cable ends take 6–12mm cable (D20). AES50 is stage-side | 2026-09-28 |
+| 24 | **All five trunks are short;** the cases always sit side by side | Q3, D20. Longer runs can be added later | 2026-09-28 |
 | 25 | **The Wing panel is conditional:** planned, pending BWING inspection; fallback is the umbilical direct to the Wing's jacks | Nobody has confirmed the BWING takes a panel | 2026-09-26 |
 | 26 | **Stage power is out of the build BOM;** the Drop-PC design lives in ROADMAP | Separate subsystem; doesn't gate the order (D8) | 2026-09-26 |
 | 27 | **Case + freight figure** comes from the BOM ($1,650), labeled placeholder until Matt quotes | One number everywhere (D6) | 2026-09-26 |
@@ -110,8 +110,9 @@ Static IPs and router settings: `OPS-CONFIG.md`.
 
 ## 7. Power
 
-- **UPS side:** one venue 15A → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, and the powerCON outlet feeding the Wing. Estimated load **~275–285W of 1000W**, leaving ~715–725W spare.
-- **Utility side:** a second venue 15A (or the same one) → CPPDU511 → RS1215-RA (camera chargers). The laptop strip is here too. Labeled "chargers + lights + laptops only".
+- **Venue drops:** two 125ft 12/3 SO cords from wall outlets, 5-15P at the wall, 5-15R at the rig. Drop 1 feeds the AVPRO; drop 2 feeds the charging station (a quad box on its own table by default; OPEN-ITEMS N19).
+- **UPS side:** drop 1 → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, and the powerCON outlet feeding the Wing over a short powerCON link. Estimated load **~275–285W of 1000W**, leaving ~715–725W spare.
+- **Charging side:** drop 2 → CPPDU511 → RS1215-RA (camera chargers). The laptop strip is here too. Labeled "chargers + lights + laptops only".
 - Detail and the draw table: `BUILD-SPEC.md` §4.
 
 ---

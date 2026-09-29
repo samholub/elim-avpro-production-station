@@ -7,9 +7,9 @@ This folder is the master for the ELIM AVPRO workstation and Wing case build. Al
 ## Status
 
 1. Design locked. Nothing ordered yet.
-2. BOM v6: **first order $4,480.66** (includes $1,650 case + freight placeholders, to verify with Matt). Wing panel block **$100.00**, only if the BWING can take a panel.
+2. BOM v6: **first order $4,852.39** (includes $1,650 case + freight placeholders, to verify with Matt). Wing panel block **$100.00**, only if the BWING can take a panel.
 3. Target order date: **2026-10-01**, pending Matt's quote.
-4. Waiting on: Matt's case and freight quote; the powerCON and etherCON part check (D7); Sam's call on P-04 (umbilical length).
+4. Waiting on: Matt's case and freight quote; the powerCON and etherCON part check (D7). Sam: where the charging station sits (default: its own table).
 5. Next: order → fabricate → assemble → prove (`BACKLOG.md`).
 
 ## What gates the order
@@ -18,7 +18,6 @@ This folder is the master for the ELIM AVPRO workstation and Wing case build. Al
 |---|---|
 | Case and freight quote (the order gate) | Matt |
 | One matched powerCON TRUE1 family + the etherCON cable end, checked against the datasheets | Matt / vendor, Sam |
-| Umbilical length (P-04) | Sam |
 | Rack rail thread | Sam. Gates the screw line only |
 
 Full list with dates: `OPEN-ITEMS.md`.

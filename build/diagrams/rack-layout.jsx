@@ -6,7 +6,7 @@ import React from "react";
 // Changes vs v15: switch models per D1; U10 on a 1U vented shelf (D19); U8 TL-SG105 + AX21 (D5);
 // Bay B rear strip RS1215-RA (D3); laptop strip on utility (D4); shared jacks CAM 2 + CAM 8 (Q2);
 // monitor wording (D14); HDMI legend swatch fixed; AES50 colored; Wing panel marked conditional;
-// side compartments wording; UPS load ~275-285W; short trunks (Q3).
+// side compartments wording; UPS load ~275-285W; short trunks (Q3); two venue power drops + short powerCON umbilical (D20).
 // Props: mode="full" (default), "phone" (stacked, front + panel only, for review/ELIM-layout.png),
 // or "overview" (one-page, plain names, for review/ELIM-PLAN.pdf page 2).
 
@@ -31,11 +31,11 @@ const BAY_A = [
   { uBottom: 7, h: 1, tag: C.neutral, name: "Cable management", front: "lacing bar", rear: "REAR I/O PANEL (3U) behind the upper block" },
   { uBottom: 4, h: 3, tag: C.neutral, name: "Vented blanks (reserve)", front: "airflow + growth", rear: "" },
   { uBottom: 3, h: 1, tag: C.power, name: "CPS1215RM strip (from UPS)", front: "basic 1U, no surge, no meter", rear: "UPS-backed gear + POWER > WING feed" },
-  { uBottom: 1, h: 2, tag: C.power, name: "UPS - CP1500PFCRM2U (2U)", front: "pure sine; backs booth + Wing", rear: "one venue 15A in; LCD meters ~275-285W" },
+  { uBottom: 1, h: 2, tag: C.power, name: "UPS - CP1500PFCRM2U (2U)", front: "pure sine; backs booth + Wing", rear: "line cord to power drop 1; LCD meters ~275-285W" },
 ];
 
 const BAY_B = [
-  { uBottom: 12, h: 1, tag: C.power, name: "CPPDU511 front / RS1215-RA rear", front: "CPPDU511: metered, drawer lights, utility", rear: "RS1215-RA: camera chargers, plugs into CPPDU511" },
+  { uBottom: 12, h: 1, tag: C.power, name: "CPPDU511 front / RS1215-RA rear", front: "CPPDU511: metered, drawer lights; fed from drop 2", rear: "RS1215-RA: camera chargers, plugs into CPPDU511" },
   { uBottom: 9, h: 3, tag: C.neutral, name: "Reserved", front: "bigger switch or Mac Minis", rear: "" },
   { uBottom: 5, h: 4, tag: C.neutral, name: "4U drawer (upper)", front: "storage", rear: "" },
   { uBottom: 1, h: 4, tag: C.neutral, name: "4U drawer (lower)", front: "heavier items here to balance the case", rear: "" },
@@ -92,9 +92,9 @@ const NOTES = [
   "Colors = the cable color code. Every cable also carries a number and a source > destination label: match the color, match the number.",
   "Bay A is the whole active system. Every network jumper stays in Bay A; nothing crosses bays. Bay B is storage and utility power; no signal.",
   "* Shared jacks: the Hollyland RX and the UltraStudio plug straight into ATEM IN 2 and IN 8. The CAM 2 and CAM 8 jumpers are parked beside them; swap one in to use that jack for a field camera.",
-  "Power: one UPS backs the booth and the Wing (over the umbilical). Estimated load ~275-285W of 1000W, ~715-725W spare. Utility side: CPPDU511 + RS1215-RA (chargers, drawer lights) and the laptop strip. No surge behind the UPS.",
+  "Power: two 125ft 12/3 SO drops from wall outlets (5-15P > 5-15R). Drop 1 feeds the UPS, which backs the booth and the Wing (~275-285W of 1000W, ~715-725W spare). Drop 2 feeds the charging station (a quad box on its own table by default); the Bay B strips (CPPDU511 + RS1215-RA) and the laptop strip are on that side. No surge behind the UPS.",
   "Cooling: the open back is primary. The fan exhausts toward the back. Reserve U's are vented blanks. Keep the back clear at venues.",
-  "Umbilical = 5 cables: PROD, DANTE, TALKBACK, IEM (short, 15ft: the cases sit side by side) and POWER (12/3 SOOW with powerCON TRUE1; 125ft until P-04 is ruled on). AES50 is stage-side.",
+  "Umbilical = 5 short cables (15ft; the cases sit side by side): PROD, DANTE, TALKBACK, IEM and POWER (powerCON TRUE1 on 14/3 SJOOW). AES50 is stage-side.",
   "Wing panel is planned, pending inspection of the BWING at delivery. Without it, the umbilical plugs straight into the Wing's own jacks.",
   "Dimensions: 12U bays 21.65in deep; 4U tops 4.33in; work surface 49.6 x 16.9in. Side compartments are not used in the design (confirm on delivery).",
   "Monitors: 2x LG 24GS60F-B, 300 nit matte, fine under a tent or canopy; direct sun needs angling. Right-angle HDMI/DC adapters for lid clearance.",
@@ -243,7 +243,7 @@ function Overview() {
           <div key={i} style={{ fontSize: 10, border: "1px solid " + C.line, borderTop: "4px solid " + col, borderRadius: 3, padding: "3px 6px", background: C.card }}>{t}</div>
         ))}
       </div>
-      <div style={{ fontSize: 10, color: C.sub, marginTop: 8 }}>Colors are the cable colors. The Wing sits beside the workstation in its own case, joined by five cables.</div>
+      <div style={{ fontSize: 10, color: C.sub, marginTop: 8 }}>Colors are the cable colors. The Wing sits beside the workstation in its own case, joined by five short cables. Two long power cords come from wall outlets: one to the workstation, one to the charging station.</div>
     </div>
   );
 }

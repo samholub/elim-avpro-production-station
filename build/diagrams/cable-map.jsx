@@ -58,9 +58,10 @@ const GROUPS = [
   {
     title: "Power",
     chains: [
-      { nodes: ["Venue 15A", "UPS CP1500PFCRM2U", "CPS1215RM", "Bay A + desk gear, lids"], links: [["mains", C.power], ["mains", C.power], ["5-15P > C13", C.power]] },
-      { nodes: ["CPS1215RM", "POWER > WING outlet", "umbilical 12/3", "Wing"], links: [["feed cord", C.power], ["powerCON", C.power], ["powerCON", C.power]] },
-      { nodes: ["Venue 15A (2nd preferred)", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["mains", C.power], ["chained", C.power], ["mains", C.power]] },
+      { nodes: ["Wall outlet", "Drop 1 (125ft 12/3 SO)", "UPS CP1500PFCRM2U", "CPS1215RM", "Bay A + desk gear, lids"], links: [["5-15P", C.power], ["5-15R", C.power], ["mains", C.power], ["5-15P > C13", C.power]] },
+      { nodes: ["CPS1215RM", "POWER > WING outlet", "Wing"], links: [["feed cord", C.power], ["powerCON 15ft 14/3", C.power]] },
+      { nodes: ["Wall outlet (2nd circuit preferred)", "Drop 2 (125ft 12/3 SO)", "Quad box (charging station)", "Chargers"], links: [["5-15P", C.power], ["5-15R", C.power], ["mains", C.power]] },
+      { nodes: ["Quad box", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["mains", C.power], ["chained", C.power], ["mains", C.power]] },
       { nodes: ["CPPDU511", "Laptop strip", "Laptops"], links: [["mains", C.power], ["mains", C.power]] },
     ],
   },
@@ -121,7 +122,7 @@ export default function CableMap() {
         </div>
       ))}
       <div style={{ marginTop: 22, fontSize: 11, color: C.sub, lineHeight: 1.5 }}>
-        The CAM 2 and CAM 8 panel jumpers are parked at ATEM IN 2 / IN 8 (shared jacks). The Wing panel is conditional; without it the trunks plug straight into the Wing and its switch. Camera control (a return SDI per camera) is parked and not shown.
+        The CAM 2 and CAM 8 panel jumpers are parked at ATEM IN 2 / IN 8 (shared jacks). The Wing panel is conditional; without it the trunks plug straight into the Wing and its switch. The charging station's location is open (N19); the quad box on its own table is the default. Camera control (a return SDI per camera) is parked and not shown.
       </div>
     </div>
   );

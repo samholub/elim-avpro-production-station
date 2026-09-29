@@ -10,9 +10,9 @@
 - The Wing in its own flip case beside it, joined by five cables.
 - One labeled, color-coded panel on the back where every cable plugs in.
 
-**One-time cost: $4,480.66**
+**One-time cost: about $4,900**
 
-- **Includes:** both cases and freight ($1,650.00; Matt's estimates, to verify), battery backup, power, cooling, the connector panel, mounts, drawers, cabling and two screens.
+- **Includes:** both cases and freight ($1,650.00; Matt's estimates, to verify), battery backup, power strips and two long power cords, cooling, the connector panel, mounts, drawers, cabling and two screens.
 - **Not included:** gear we already own; field camera cable (after a trial); stage power (a later project).
 - **Plus $100.00** for a Wing case connector plate, only if the case can take one.
 
@@ -29,7 +29,7 @@
 |---|---|
 | Matt's case and freight price | Yes |
 | Connector part numbers (with Matt) | Yes, those parts |
-| Wing power cable length | Yes, that line |
+| Where the charging station sits | No |
 | Wing case connector plate | No, checked on delivery |
 | Screen fit, rack screws, LED wall count | No |
 
@@ -79,9 +79,10 @@ Keeping audio and control apart means neither can step on the other, and a busy 
 
 ## Power
 
+- **Two long power cords** (125ft) run from wall outlets to the rig: one feeds the workstation and the Wing, the other feeds the charging station.
 - **Battery backup:** one unit backs up the workstation and the Wing, so a power blip doesn't drop the stream or the sound. Our gear uses about 275–285W of its 1000W, which leaves room for Starlink and other extras.
-- **Regular power:** camera chargers, the drawer lights and the laptop strip run on a separate strip, off the backup. The laptops have their own batteries.
-- **Venue power:** the whole rig runs on one normal 15A circuit. Two are nicer (backup on one, charging on the other).
+- **Regular power:** camera chargers, the drawer lights and the laptop strip run off the second cord, not the backup. The laptops have their own batteries.
+- **Venue power:** the whole rig runs on one normal 15A circuit. Two are nicer, one per cord.
 
 ## Cameras
 
@@ -97,21 +98,22 @@ Keeping audio and control apart means neither can step on the other, and a busy 
 | Cases + freight (Matt's estimates, to verify) | $1,650.00 |
 | Power: battery backup and strips | $709.96 |
 | Connector panel, spares and cable ends | $626.96 |
-| Cabling: jumpers, trunks, Wing power cable | $465.75 |
+| Venue power: two 125ft cords + an outlet box | $561.38 |
+| Cabling: jumpers, trunks, short Wing power link | $276.10 |
 | Storage, shelves and a network switch | $431.99 |
 | Screens (2) | $320.00 |
 | Cooling | $186.00 |
 | Cable management and rack hardware | $90.00 |
-| **First order** | **$4,480.66** |
+| **First order** | **$4,852.39** |
 | Wing connector plate (only if the case takes one) | $100.00 |
-| **Everything** | **$4,580.66** |
+| **Everything** | **$4,952.39** |
 
-The Wing power cable is priced at 125ft ($203.75). If we make it 15ft instead, which I've proposed since the cases sit side by side, the total drops by $179.30.
+Page 1 rounds the first order up to about $4,900. The case and freight line is Matt's estimate until he quotes.
 
 ## Risks and what we haven't covered
 
 - **Rain.** We often set up outside with no cover. An open-back rack with power in sudden rain is our one fast path to a big loss. The plan: a fitted rain cover or poly sheet and clamps in the case, and a two-minute cover-and-shut-down routine.
-- **Single points of failure.** The battery backup, the switcher, the router and the Wing power cable can each take down the video, the stream or the sound if they fail. Our fallback is the old kit, kept ready to deploy through the first season. A written "if this dies, do that" sheet is on the roadmap.
+- **Single points of failure.** The battery backup, the switcher, the router and the power cords can each take down the video, the stream or the sound if they fail. Our fallback is the old kit, kept ready to deploy through the first season. A written "if this dies, do that" sheet is on the roadmap.
 - **Heat.** The open back does most of the cooling. At a venue, don't push the case against a wall.
 - **Things still unknown:**
     - whether the Wing case can take a connector plate (checked on delivery; if not, the cables plug straight into the Wing)
@@ -137,6 +139,6 @@ The Wing power cable is priced at 125ft ($203.75). If we make it 15ft instead, w
 
 1. **Bianca:** does the desk layout work for ProPresenter? Is the right screen needed on day one, or is later fine?
 2. **Everyone:** is there anything in how you work today that this would trip on? Now's the time, while it's easy to change.
-3. **Sunny:** is $4,480.66, with the case price still pending Matt, OK to move to a quote and an order?
+3. **Sunny:** is about $4,900, with the case price still pending Matt, OK to move to a quote and an order?
 4. **Any venue** where the open back, 125ft camera cables, or a single power circuit won't work?
 5. **Anything missing** from the "still open" list on page 1?

@@ -13,11 +13,11 @@
 |---|---|---|---|---|
 | G1 | **Case and freight quote:** AVPRO price, BWING price, consolidated freight for both (closed AVPRO is 51.5 × 48.2 × 31.6in). BOM placeholders: $500 / $900 / $250 | Matt | 2026-10-01 | **Yes: the order gate** |
 | G2 | **One matched powerCON TRUE1 family:** AVPRO chassis outlet, both umbilical cable ends, and the Wing chassis inlet (only if the Wing panel happens). **Plus the etherCON cable end** (NE8MX6 family expected), checked against the Neutrik datasheet before the BOM calls it firm (D7, P-03) | Matt / vendor; Sam checks the datasheets | 2026-10-01 | **Yes, for the connector lines** |
-| G3 | **P-04:** shorten the power umbilical from 125ft to 15ft? | Sam | 2026-10-01 | Yes, for the umbilical cable line |
-| G4 | **Owned short cables:** confirm 2 spare XLR mic cables (~15ft) for the talkback and IEM trunks. Say if 2 × 15ft shielded Cat6A already exist (then delete the BOM trunk-cable line) | Sam | 2026-10-01 | Small lines only |
 | G5 | **CPS1215RM listing:** confirm Amazon B00077IG3O is the CPS1215RM | Sam | 2026-10-01 | That line only |
 | G6 | **Rack rail thread:** tapped 10-32, or square-hole for M6 cage nuts? Assumed 10-32. Matt may know; otherwise it's checked on the rails at delivery | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | **Screw line only.** Order it after delivery if Matt doesn't know |
 | G7 | **Laptop power strip:** a plain surge strip for the desk laptops, fed from the utility side (Bay B), never behind the UPS. BOM carries $30 | Matt | 2026-10-01 | That line only |
+
+G3 (P-04) and G4 (owned cables) closed 2026-09-28; the IDs are kept so references stay stable.
 
 ## Active: doesn't gate the order
 
@@ -41,6 +41,7 @@
 | N16 | **Weather: accepted risk.** Setups are often outside with no cover. Keep a fitted rain cover or poly sheet + clamps in the case and a two-minute cover-and-kill plan. A powered open-back rack in sudden rain is the one fast path to a big loss | Sam | before the first live deploy (assumed by 2026-11-15) | No |
 | N17 | **Stage power (ROADMAP):** confirm the used Chauvet cable is TRUE1-style Seetronic (SAC3), or make feeders and jumpers in-house on one TRUE1 standard | Sam | when stage power starts (assumed by 2026-12-31) | No |
 | N18 | **Stage power (ROADMAP):** venue circuit count for the 2 feeders (INST, PROD) is a load-in check | Sam | when stage power starts (assumed by 2026-12-31) | No |
+| N19 | **Where is the AV charging station?** The Bay B CPPDU511 (drop 2 plugs into the AVPRO) or a separate table (drop 2 needs its own outlet box). **Default until answered: separate, with its own quad box** (in the BOM). If Bay B, delete the quad box line | Sam | 2026-10-01 | No (default is already in the BOM) |
 
 ## Active: running config (details in OPS-CONFIG)
 
@@ -58,6 +59,8 @@
 ## Resolved
 
 ### 2026-09-28 (distillation, session 2)
+- **Power correction (D20).** The 125ft 12/3 SO was never the umbilical. It's two venue power drops (drop 1 → AVPRO + Wing, drop 2 → charging station), Edison ends. The AVPRO → Wing link is a short powerCON cable (15ft 14/3 SJOOW; TRUE1 ends take 6–12mm cable). **P-04 closed.**
+- **Short XLRs:** owned (Sam). The 15ft Cat6A trunk lines stay (was G4).
 - **Teranex Mini Rack Shelf dropped (D19).** U10 = HD Mini + TL-SG1005P on a 1U vented shelf, same model as the others. It came back on 08-19 only through the "confirm owned" line.
 - **Shared camera jacks = CAM 2 + CAM 8** (Hollyland RX and UltraStudio direct to ATEM IN 2 / IN 8, jumpers parked). Matches the running ATEM.
 - **Data and audio trunks are short;** the cases always sit side by side.
@@ -109,7 +112,7 @@
 - **Venue circuit count retired:** runs on one 15A, two preferred.
 - **Wing stage connection = one AES50.**
 - **Two lid monitors to buy.** *[Wording now "300 nit matte, fine under a tent or canopy" (D14).]*
-- **Umbilical power = powerCON** on a self-built 125ft 12/3 SO cable. *[P-04 proposes 15ft.]*
+- **Umbilical power = powerCON** on a self-built 125ft 12/3 SO cable. *[Corrected 2026-09-28 (D20): the 125ft 12/3 SO cords are the two venue power drops; the umbilical is a short powerCON link.]*
 - **ProX X-PC10ASTRO PDU evaluated and passed.**
 - **Connector corrections:** IEM jack male XLR; panel POWER jack a powerCON outlet feeding the Wing.
 
