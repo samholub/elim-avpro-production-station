@@ -1,7 +1,7 @@
 # Status
 
 **Updated:** 2026-09-29 (session 4: team-repo design pass)
-**State: team repo built locally, waiting on Sam's review before it's created on GitHub.**
+**State: team repo live at https://github.com/samholub/elim-avpro (private, pushed 2026-09-29). build/ here is no longer the master.**
 
 ## Session 4 (2026-09-29)
 
@@ -9,7 +9,8 @@
 - **Team repo** at `C:\Users\sammh\elim-avpro` (no git yet): README + 13 pages in docs/, data/ (BOM CSVs, open items, panel holes, numbers), tools/ (build, render, check, make_bom, make_pdfs), CI workflow. BOM.xlsx rebuilt from CSV: 0 cell differences.
 - **Coverage** (`work/coverage.py`, `work/COVERAGE.md`, `work/COVERAGE.csv`, `work/coverage_rulings.csv`): 1,443 units; 0 unmapped, 0 forward token misses, 0 status mismatches, 0 new tokens, 0 BOM differences; 19 navigation-only units and 5 tokens adjudicated.
 - **Phone render check** (GitHub's /markdown renderer + github-markdown-css + mermaid.js, 390px, light and dark): no page scrolls sideways, all images load, all Mermaid diagrams render at ≥0.8 scale. Some wide tables scroll inside themselves (buy connector stock, config network, panel, signals).
-- **Next (on Sam's go):** `gh repo create samholub/elim-avpro --private`, one initial commit, push; then a "master moved" line at the top of build/README.md.
+- **Done on Sam's go:** README preview cropped to the first screen of the decision page; `work/COVER-NOTES.md` now links Bianca and Matt to the repo (Sunny still gets `out/ELIM-PLAN.pdf`); repo created and pushed; "master moved" line added to build/README.md.
+- **Sam to do:** add Bianca and Matt as collaborators on the repo before sending their notes.
 
 ## Session 3 (closed 2026-09-28)
 

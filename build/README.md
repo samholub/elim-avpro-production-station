@@ -1,5 +1,7 @@
 # ELIM AVPRO Production Station: Build Set
 
+> **Master moved to [samholub/elim-avpro](https://github.com/samholub/elim-avpro) on 2026-09-29.** Edit the build set there. This folder is the workshop copy it was made from (tag `v1.1-baseline`) and stays as the audit trail.
+
 This folder is the master for the ELIM AVPRO workstation and Wing case build. All edits happen here, in the repo. A decision isn't real until it's in `build/`.
 
 **Updated:** 2026-09-28

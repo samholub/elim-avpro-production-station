@@ -1,6 +1,8 @@
 # Cover notes
 
-Drafts in Sam's voice, 2026-09-28. Sam sends these himself. Each one only frames the attachment; it doesn't repeat it.
+Drafts in Sam's voice, 2026-09-28; links updated 2026-09-29 for the team repo. Sam sends these himself. Each one only frames the link or attachment; it doesn't repeat it.
+
+**Before sending Bianca's and Matt's:** add both as collaborators on the private repo (Settings → Collaborators), or the links won't open for them.
 
 **Send order:** Matt first (his quote is the order gate), then Bianca, then Sunny once Bianca's on board.
 
@@ -8,9 +10,9 @@ Drafts in Sam's voice, 2026-09-28. Sam sends these himself. Each one only frames
 
 ## Bianca
 
-**Attach:** `review/ELIM-PLAN.pdf`, `review/ELIM-layout.png`
+**Link:** https://github.com/samholub/elim-avpro (start at *How it works* and *Your station*: https://github.com/samholub/elim-avpro/blob/master/docs/design.md#biancas-station)
 
-> Hey Bianca, here's the full workstation plan. You're co-driving this, so I want your read before it goes to Sunny.
+> Hey Bianca, here's the full workstation plan: https://github.com/samholub/elim-avpro. Start with "How it works" and "Your station". You're co-driving this, so I want your read before it goes to Sunny.
 >
 > If you saw ~$3,960 earlier: the total went up mainly because parts that were missing got added (connector ends, the Wing's network switch, a Bay B power strip, the two long power cords) and the cable is now priced for real.
 >
@@ -20,7 +22,7 @@ Drafts in Sam's voice, 2026-09-28. Sam sends these himself. Each one only frames
 
 ## Sunny
 
-**Attach:** `review/ELIM-PLAN.pdf`
+**Attach:** `out/ELIM-PLAN.pdf` (built in the team repo by `tools/make_pdfs.py`)
 
 > Hi Sunny, this is the plan for the production workstation Bianca and I have been working on. Page 1 is everything you need to decide; the rest is there if you want it.
 >
@@ -34,9 +36,9 @@ Drafts in Sam's voice, 2026-09-28. Sam sends these himself. Each one only frames
 
 ## Matt
 
-**Attach:** `matt/MATT-PACK.pdf`, `matt/BOM.xlsx`, `matt/ELIM-layout.png`
+**Link:** https://github.com/samholub/elim-avpro (start at *Questions for you*: https://github.com/samholub/elim-avpro/blob/master/docs/open.md#for-matt). Fallback if the repo won't open for him: attach `out/MATT-PACK.pdf` and `BOM.xlsx` from the team repo.
 
-> Hey Matt, the design's locked and I'm ready to order. The pack has everything, with the questions for you up front.
+> Hey Matt, the design's locked and I'm ready to order. Everything's here: https://github.com/samholub/elim-avpro. Your questions are up front under "Questions for you".
 >
 > The one I'm blocked on is the case and freight quote. The connector part numbers are a close second, since I don't want to order the wrong powerCON or etherCON family.
 >
