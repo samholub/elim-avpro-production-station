@@ -1,7 +1,19 @@
 # Status
 
-**Updated:** 2026-09-28 (session 3, closed)
-**State: COMPLETE.** Steps 1–11 are done. Sam signed off on the step 10 fixes on 2026-09-28 (NE8MX-1 accepted). The repo is tagged `v1.0-distilled`, the superseded baseline docs are copied to `archive/superseded/`, `work/PROJECT-INSTRUCTIONS.md` is ready to paste, and `work/HANDOFF.md` lists Sam's remaining manual steps (project sync, cover notes, Matt's numbers, N19).
+**Updated:** 2026-09-29 (session 4: team-repo design pass)
+**State: team repo built locally, waiting on Sam's review before it's created on GitHub.**
+
+## Session 4 (2026-09-29)
+
+- **Rulings applied to build/ first** (`work/DECISIONS.md` session 4; tag `v1.1-baseline`): N19 wording everywhere; drop 2 → CPPDU511 direct, quad box only for a separate table; SPARE jack yellow; "12/3 SOOW" for the drops (also the BOM note); review p.1 gets back "roughly an hour a week" and "10+ loose items become 2"; BOM Check row "etherCON cable carriers"; make_bom docstring v7. Totals unchanged ($4,671.84 / $100.00 / $4,771.84), Check 18/18.
+- **Team repo** at `C:\Users\sammh\elim-avpro` (no git yet): README + 13 pages in docs/, data/ (BOM CSVs, open items, panel holes, numbers), tools/ (build, render, check, make_bom, make_pdfs), CI workflow. BOM.xlsx rebuilt from CSV: 0 cell differences.
+- **Coverage** (`work/coverage.py`, `work/COVERAGE.md`, `work/COVERAGE.csv`, `work/coverage_rulings.csv`): 1,443 units; 0 unmapped, 0 forward token misses, 0 status mismatches, 0 new tokens, 0 BOM differences; 19 navigation-only units and 5 tokens adjudicated.
+- **Phone render check** (GitHub's /markdown renderer + github-markdown-css + mermaid.js, 390px, light and dark): no page scrolls sideways, all images load, all Mermaid diagrams render at ≥0.8 scale. Some wide tables scroll inside themselves (buy connector stock, config network, panel, signals).
+- **Next (on Sam's go):** `gh repo create samholub/elim-avpro --private`, one initial commit, push; then a "master moved" line at the top of build/README.md.
+
+## Session 3 (closed 2026-09-28)
+
+**State then: COMPLETE.** Steps 1–11 are done. Sam signed off on the step 10 fixes on 2026-09-28 (NE8MX-1 accepted). The repo is tagged `v1.0-distilled`, the superseded baseline docs are copied to `archive/superseded/`, `work/PROJECT-INSTRUCTIONS.md` is ready to paste, and `work/HANDOFF.md` lists Sam's remaining manual steps (project sync, cover notes, Matt's numbers, N19).
 
 ## Where things stand
 
