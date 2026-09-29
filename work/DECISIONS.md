@@ -74,3 +74,25 @@ Sam's rulings on `work/RECONCILE.md` and `work/PROPOSALS.md`, given 2026-09-26. 
 | Orphans O-01 to O-18 | Homes as proposed in RECONCILE §4 |
 | Stale S-01 to S-20 | Fixes as proposed in RECONCILE §5 |
 | Dispositions | As proposed in RECONCILE §8 |
+
+---
+
+## Session 2 rulings (Sam, 2026-09-28)
+
+Outlines in `work/OUTLINES.md` approved. Answers to Q1–Q7 and rulings on P-03 and the Teranex shelf:
+
+| # | Ruling | What it means for the build |
+|---|---|---|
+| Q1 | **Page-1 cost = the first-order total.** The Wing block and "cases pending Matt" go underneath. Matt's estimates stay in, marked "to verify". | review/ page 1 shows one figure: BOM first-order total. |
+| Q2 | **CAM 7/8: yes as proposed.** | Hollyland RX and UltraStudio plug straight into ATEM IN 7 and IN 8. The CAM 7/8 panel jumpers are run and parked; swap at the ATEM to use those jacks for a camera. 8 SDI jumpers stay in the BOM. |
+| Q3 | **Umbilical data and audio trunks are short.** The Wing and AVPRO always sit right next to each other. | Talkback XLR, IEM XLR, production and Dante etherCON trunks are sized short. BUILD-SPEC notes which are owned and carries a flexibility note (longer runs can be added later). BOM lines only for what isn't owned. The power umbilical stays 125ft 12/3 SO until P-04 is ruled on. |
+| Q4 | **Pelican-era CHANGELOG entries move to `archive/CHANGELOG-pre-workstation.md`.** | Not in build/. |
+| Q5 | **Keep the O-11 numbers and the 40 → 15 figure in review/,** clearly labeled as estimates to be measured. | review/ page 1 and the rollout section. OPEN-ITEMS keeps "measure today's setup time" (O-10). |
+| Q6 | **Yes:** "match the color, match the number" goes in BUILD-SPEC. | BUILD-SPEC labeling rule. |
+| Q7 | **Target order date: 2026-10-01,** pending firm numbers from Matt's quote. | Gating OPEN-ITEMS are dated against 2026-10-01. |
+| P-03 | **Accepted.** | The etherCON cable-end part joins the D7 vendor check with powerCON. Likely the NE8MX6 family (NE8MC6-MO was the v2 pick). The BOM doesn't say "firm" until it's checked against the datasheet. |
+| D19 | **Teranex Mini Rack Shelf dropped.** On 2026-08-17 Sam said he wasn't committed to the Teranex shelf because of cost and wanted a cheaper option (dbb71760 #8, L3350). The design moved to a plain 1U vented shelf (layout v15 U10 and every render say "1U vented shelf"). The Teranex came back on 08-19 only through the "confirm owned" line and should have been removed, not moved to a buy. | U10 = HD Mini + TL-SG1005P (and its power brick) on a 1U vented shelf, the same AC Infinity model as the other shelves. BOM: vented shelf qty +1, Teranex line removed. Logged in the CHANGELOG. No Teranex fit check. New non-gating OPEN-ITEM: confirm the shelf depth fits the switch plus its brick. |
+
+**New proposal raised:** P-04 (shorten the power umbilical). Not applied until Sam rules.
+
+**Cover notes:** `work/COVER-NOTES.md` (Bianca, Sunny, Matt), drafted after review/ and matt/ exist.

@@ -1,11 +1,15 @@
 # Status
 
-**Updated:** 2026-09-26 (session 1, closed)
-**State:** steps 1–8 are done and the step 8 gate is resolved (`work/DECISIONS.md`). **Next is step 9, in a fresh session.**
+**Updated:** 2026-09-26 (session 2, step 9 started)
+**State:** step 9 is at the outline gate. `work/OUTLINES.md` has the outlines for build/, matt/ and review/, plus questions Q1–Q7. **Waiting on Sam** to approve the outlines, answer Q1–Q7, and rule on **P-03** (etherCON cable-end part, in `work/PROPOSALS.md`). No build/ file is written yet.
+
+Session 2 also added the full Python path to `CLAUDE.md`.
 
 ---
 
 ## Handoff for step 9
+
+**Session 2 note:** read `work/OUTLINES.md` and Sam's answers first. Build to the approved outline.
 
 ### 1. Read these first, in this order
 
