@@ -22,7 +22,7 @@ Sam accepted every finding and ruled on the design points (`work/DECISIONS.md`, 
 | V-10 | LED wall = 45 per the app; N9 closed; ROADMAP notes it. |
 | V-11 | Hubbell and BarnDoor parts marked "assumed, not a ruling" in BUILD-SPEC and the BOM. |
 | V-12 | Cable map: drop 2 feeds the CPPDU511 direct; the quad box is its own row marked TENTATIVE. |
-| V-13 | Review page 1: "May drop about $90 if the charging station moves into the rack." |
+| V-13 | Review page 1: "Minus about $90 if the charging station moves into the rack (no outlet box needed)." |
 | V-14 | Changes tab column retitled "Effect on first-order total"; a note row says the Wing block sits on top. |
 | V-15 | BUILD-SPEC §4 states the 12-outlet strip vs 12 loads and where the overflow goes. |
 
