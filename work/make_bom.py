@@ -119,7 +119,7 @@ LINES = [
      "", "Replaces long stock cords on the Bay A gear for dressing.", "NEW (D2)"),
     ("Cabling", "Umbilical power cable (AVPRO > Wing), 14/3 SJOOW", "14/3 SJOOW, cut to length (ft)", 15, 0.94, "est", FIRST, "",
      "https://www.wireandcableyourway.com/14-3-sjoow-portable-cord-300v-ul-csa",
-     "Short: the cases sit side by side (D20). 0.370in OD fits the TRUE1 cable ends (6-12mm); 12/3 SO (0.595in) does not. Ends on the powerCON lines.",
+     "Short: the cases sit side by side (D20). 0.370in OD fits the TRUE1 cable ends (6-12mm); 12/3 SOOW (0.595in) does not. Ends on the powerCON lines.",
      "was '125ft 12/3 SO umbilical' $120 (D20: that cable is the venue drops)"),
     # --- Venue power drops ---
     ("Venue power", "Power drop cable, 12/3 SOOW (2 x 125ft)", "12/3 SOOW, cut to length (ft)", 250, 1.63, "est", FIRST, "",
