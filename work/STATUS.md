@@ -1,19 +1,19 @@
 # Status
 
 **Updated:** 2026-09-28 (session 2, closed)
-**State:** step 9 is done and pushed (`master`, e3b4006 + this STATUS commit). All three tiers are drafted: `build/`, `matt/` (generated), `review/`, plus `work/COVER-NOTES.md`. **Next is step 10: independent verification, in a fresh session, on Fable 5.1.**
+**State:** step 9 is done and pushed (`master`; round-3 fixes applied 2026-09-28). All three tiers are drafted: `build/`, `matt/` (generated), `review/`, plus `work/COVER-NOTES.md`. **Next is step 10: independent verification, in a fresh session, on Fable 5.1.**
 
 ## Where things stand
 
 - **BOM v6:** first order **$4,852.39** (incl. $1,650.00 case + freight placeholders, Matt to verify), Wing block **$100.00**, all lines **$4,952.39**. Check tab 18/18 PASS; formulas cross-checked with pycel; the Changes tab reconciles line by line from v5's $3,961.56.
-- **review/ELIM-PLAN.pdf:** 6 pages at 5.5 × 11in, body 11pt. Page 1 says "about $4,900" (the first-order total rounded up). All 18 dollar figures tie to the BOM (checked by `work/make_review.py`).
-- **matt/MATT-PACK.pdf:** 11 pages, generated from build/ (7 questions for Matt, 41 first-order lines, 8 Wing lines).
-- **Rulings this session** (all in `work/DECISIONS.md`): outline approval; Q1–Q7; P-03 accepted; D19 (Teranex dropped); Q2 amended to CAM 2 + CAM 8; **D20 power correction** (two 125ft venue drops; short 15ft powerCON umbilical on 14/3 SJOOW because TRUE1 ends take 6–12mm cable); P-04 closed; G4 closed (XLRs owned); page-1 rounding; cover-note line; switch line wording.
+- **review/ELIM-PLAN.pdf:** 6 pages at 5.5 × 11in, body 11pt. Page 1 is whole dollars only: "about $4,900" (the first-order total rounded up), $1,650, $100. The other 15 figures carry cents. All tie to the BOM (checked by `work/make_review.py`).
+- **matt/MATT-PACK.pdf:** generated from build/ (7 questions, 41 first-order lines, 8 Wing lines). Addressed to Matt: no decision codes and no third-person "Matt"; `work/make_matt.py` fails if either slips back in.
+- **Rulings this session** (all in `work/DECISIONS.md`): outline approval; Q1–Q7; P-03 accepted; D19 (Teranex dropped); Q2 amended to CAM 2 + CAM 8; **D20 power correction** (two 125ft venue drops; short 15ft powerCON umbilical on 14/3 SJOOW because TRUE1 ends take 6–12mm cable); P-04 closed; G4 closed (XLRs owned); page-1 rounding; cover-note line; switch line wording; round 3 (whole dollars on page 1, Matt pack scrub, Bay glosses, N19 leaning).
 - Pelican-era changelog entries are in `archive/CHANGELOG-pre-workstation.md`.
 
 ## Waiting on Sam (none of it blocks step 10)
 
-- **N19:** is the charging station the Bay B CPPDU511 or a separate table? Default in the BOM: separate table + quad box ($89.88). If Bay B, delete the quad box line and re-run the scripts.
+- **N19** (open, non-gating; Sam decides at package review): is the charging station the Bay B CPPDU511 or a separate table? **Sam's leaning: drop 2 feeds the Bay B PDU,** which would remove the quad box. The BOM keeps the quad box ($89.88) marked "tentative, may drop (N19)". If Bay B wins, delete that line in `work/make_bom.py` and re-run all four scripts.
 - Read the drafts: `review/ELIM-PLAN.pdf`, `matt/MATT-PACK.pdf`, `work/COVER-NOTES.md`.
 - The order gate itself is Matt's (G1 quote, G2 part family), target order date 2026-10-01.
 
@@ -28,7 +28,9 @@ Per DISTILLATION-PLAN §3 step 10. Give the verifier **only** `source/`, `work/l
 Notes for the verifier:
 - **DECISIONS.md post-dates the ledger.** The 2026-09-26 and 2026-09-28 rulings override older ledger rows (e.g. the "125ft 12/3 SO umbilical", TL-SG105 as the Dante switch, the Teranex shelf, CAM 7/8). Treat those as superseded, not missing.
 - Some BOM lines are new and have no ledger row: blanking plates, the outlet feed cord, the Wing inlet pigtail, the fallback jumper, trunk cable, the drop ends, the quad box. Their prices come from web sources dated 2026-09-28 (links in the BOM).
-- Known assumptions are marked in the docs: 15ft trunk length (Claude's sizing), "on delivery" dates assumed at 2026-11-15, the N19 default.
+- Known assumptions are marked in the docs: 15ft trunk length (Claude's sizing), "on delivery" dates assumed at 2026-11-15, the tentative quad box (N19).
+- Bay A / Bay B are the identifiers everywhere; readers outside the build get a gloss on first use (round-3 ruling).
+- The Matt pack deliberately has no decision codes; build/ keeps them.
 
 ## How to regenerate (Python by full path, see CLAUDE.md)
 
