@@ -70,7 +70,7 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 | 9 | **Labeling:** "match the color, match the number" | Same (Q6) | 2026-09-28 |
 | 10 | **One UPS** (CP1500PFCRM2U) backs the booth and the Wing over the umbilical | The BWING can't carry a UPS; this is the only way to back the Wing | 2026-08-17 |
 | 11 | **No surge behind the UPS;** the ProX X-PC10ASTRO was passed on | Stacked surge behind a UPS is contraindicated; its meter duplicates the UPS | 2026-08-17 |
-| 12 | Runs on **one 15A** circuit, two preferred, never tied. Power arrives on **two 125ft 12/3 SO drops** with Edison ends: drop 1 → AVPRO (and the Wing through it), drop 2 → the charging station | The whole rig draws well under 15A; venue circuit counts are unknowable (D20) | 2026-09-28 |
+| 12 | Runs on **one 15A** circuit, two preferred, never tied. Power arrives on **two 125ft 12/3 SOOW drops** with Edison ends: drop 1 → AVPRO (and the Wing through it), drop 2 → the charging station | The whole rig draws well under 15A; venue circuit counts are unknowable (D20) | 2026-09-28 |
 | 13 | **Bay B power:** CPPDU511 front (metered, drawer lights) + RS1215-RA rear (camera chargers), chained, utility side | Front lights the drawers; rear outlets face the chargers; one meter (D3) | 2026-08-20 |
 | 14 | **Laptop strip on the utility side,** plain surge strip | Laptops have batteries; keeps surge off the UPS (D4) | 2026-09-26 |
 | 15 | **Switches:** owned TL-SG1005P (PoE) = Bay A Dante satellite, powers the AVIO; owned TL-SG105 = Bay A production switch; **new 8-port (TL-SG108 or equivalent)** = Wing case Dante switch | Keeps PoE for the AVIO with no injector (D1). 8 ports because Tyler's ProTools Mac is also a Dante endpoint (Sam, 2026-09-28) | 2026-09-28 |
@@ -110,7 +110,7 @@ Static IPs, router settings and the switch topology rules (one uplink per switch
 
 ## 7. Power
 
-- **Venue drops:** two 125ft 12/3 SO cords from wall outlets, 5-15P at the wall, 5-15R at the rig. Drop 1 feeds the AVPRO; drop 2 feeds the charging station. Where that sits is open (OPEN-ITEMS N19); Sam leans toward drop 2 feeding the Bay B PDU, which would drop the quad box.
+- **Venue drops:** two 125ft 12/3 SOOW cords from wall outlets, 5-15P at the wall, 5-15R at the rig. Drop 1 feeds the AVPRO; drop 2 feeds the charging station. Where that sits is open (OPEN-ITEMS N19); Sam leans toward drop 2 feeding the Bay B PDU, which would drop the quad box.
 - **UPS side:** drop 1 → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, and the powerCON outlet feeding the Wing over a short powerCON link. Estimated load **~275–285W of 1000W**, leaving ~715–725W spare.
 - **Charging side:** drop 2 → CPPDU511 → RS1215-RA (camera chargers). The laptop strip is here too. Labeled "chargers + lights + laptops only".
 - Detail and the draw table: `BUILD-SPEC.md` §4.

@@ -136,3 +136,18 @@ Sam accepted every finding in `work/VERIFY.md` (V-01 to V-15) and ruled:
 | the rest | Fix as listed: blank page in the Matt PDF; remove internal file references from the Matt pack; rename the "Price" column to what it holds; source or mark the venue-drop part numbers; show the quad box as tentative in the cable map; add "may drop about $90 (charging station)" under the page-1 cost; fix the Changes tab header; state the outlet count on the UPS strip. | All done 2026-09-28; see `build/CHANGELOG.md` and the disposition table at the top of `work/VERIFY.md`. |
 
 Then: re-render, re-run all checks, commit, push, update STATUS.md, and stop for Sam's sign-off before step 11.
+
+## Session 4 rulings (Sam, 2026-09-29): team-repo design pass
+
+Given with the approval of the team-repo plan (samholub/elim-avpro). Applied to build/ before the new repo is generated from it.
+
+- **Charging station wording** follows N19 everywhere: leaning Bay B; a quad box only if the station is a separate table. README status line and the CHANGELOG D20 paragraph fixed.
+- **Drop 2 → CPPDU511 direct.** The quad box is only for a separate charging table (tentative, N19), as the cable map already drew it. BUILD-SPEC §4 drop table, quad-box bullet and charging-side chain fixed; the Matt pack follows.
+- **SPARE jack is yellow** (production network, AX21 LAN 4). Grey removed from BUILD-SPEC §5 and the rack layout.
+- **"12/3 SOOW" everywhere** for the venue drops (DESIGN #12 and §7, BUILD-SPEC §4, both diagrams, CHANGELOG D20). Older history entries that quote the pre-D20 "12/3 SO umbilical" are left as history.
+- **Keep "~14 → ~5 devices, one panel instead of four stations"** as an estimate (O-11).
+- **FINAL-CHECK A:** keep the NE8MC-1 → NE8MX-1 successor line.
+- **FINAL-CHECK B:** restore "roughly an hour a week" and "10+ loose items become 2" on review p.1, both under the "estimates" heading. "A lot of them guessed at" stays out.
+- **FINAL-CHECK C:** BOM Check tab row ETH-END relabeled "etherCON cable carriers".
+- `work/make_bom.py` docstring says v7.
+- Team repo: Bianca and Matt get repo access; Sunny gets the PDF by email. Volunteers are out of scope for now (sunday page is a placeholder). GitHub Action on. README shows a generated "as of" date and a PNG preview of the decision page.

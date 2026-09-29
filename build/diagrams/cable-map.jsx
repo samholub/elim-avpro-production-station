@@ -62,7 +62,7 @@ const GROUPS = [
     chains: [
       { nodes: ["Wall outlet", "Drop 1 (125ft 12/3 SO)", "UPS CP1500PFCRM2U", "CPS1215RM", "Bay A + desk gear, lids"], links: [["5-15P", C.power], ["5-15R", C.power], ["mains", C.power], ["5-15P > C13", C.power]] },
       { nodes: ["CPS1215RM", "POWER > WING outlet", "Wing"], links: [["feed cord", C.power], ["powerCON 15ft 14/3", C.power]] },
-      { nodes: ["Wall outlet (2nd circuit preferred)", "Drop 2 (125ft 12/3 SO)", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["5-15P", C.power], ["5-15R (direct, if Bay B)", C.power], ["chained", C.power], ["mains", C.power]] },
+      { nodes: ["Wall outlet (2nd circuit preferred)", "Drop 2 (125ft 12/3 SOOW)", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["5-15P", C.power], ["5-15R (direct, if Bay B)", C.power], ["chained", C.power], ["mains", C.power]] },
       { nodes: ["Drop 2", "Quad box: TENTATIVE, only if the charging station is a separate table (N19)", "Chargers + the CPPDU511 cord"], links: [["5-15R", C.power], ["mains", C.power]] },
       { nodes: ["CPPDU511", "Laptop strip", "Laptops"], links: [["mains", C.power], ["mains", C.power]] },
     ],

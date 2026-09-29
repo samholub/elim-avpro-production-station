@@ -49,7 +49,7 @@ PANEL 3  [ spare / expansion row, 12 holes ]
 | PROD TRUNK | etherCON | both | AX21 LAN 3 | yellow |
 | TALKBACK | XLR **female** | in (a mic plugs in) | trunk to the Wing | orange |
 | IEM | XLR **male** | out (feeds a pack) | from the Wing | orange |
-| SPARE | etherCON | both | AX21 LAN 4 (pre-wired) | grey |
+| SPARE | etherCON | both | AX21 LAN 4 (pre-wired) | yellow |
 | POWER > WING | powerCON TRUE1 **outlet** | out | fed from the CPS1215RM (UPS side) | black |
 
 - Order and labels follow layout v15 (POWER > WING last; TRUNK names). *Decided.*
@@ -139,16 +139,16 @@ The rig runs on whatever a venue gives. It draws well under one 15A circuit, so 
 
 #### Venue power drops
 
-Power reaches the rig area on **two 125ft 12/3 SO drops** from wall outlets. *Decided.*
+Power reaches the rig area on **two 125ft 12/3 SOOW drops** from wall outlets. *Decided.*
 
 | Drop | Wall end | Rig end | Feeds |
 |---|---|---|---|
 | Drop 1 | 5-15P plug | one 5-15R connector body | the AVPRO UPS line cord (and the Wing, through the AVPRO) |
-| Drop 2 | 5-15P plug | one 5-15R connector body (+ a quad box, tentative) | the AV charging station |
+| Drop 2 | 5-15P plug | one 5-15R connector body | the AV charging station: the Bay B CPPDU511 cord direct (Sam's leaning), or a quad box only if the station is a separate table (tentative) |
 
 - **Both drops are built the same:** 125ft 12/3 SOOW, a Hubbell HBL5266C plug, a Hubbell HBL5269C connector body. Either one can stand in for the other. The Hubbell part numbers are assumed, not a ruling; an equal 15A industrial plug and connector body can be substituted.
 - **Drop 1 needs one receptacle.** The UPS is the only thing plugged into it; everything else hangs off the UPS.
-- **Drop 2 ends in a quad box (tentative)** (4 outlets, 2ft 12/3 tail with a 5-15P that plugs into the drop's 5-15R). That's the simplest way to give a separate charging table several outlets. The BarnDoor part is assumed, not a ruling.
+- **Quad box, only if the charging station is a separate table (tentative)** (4 outlets, 2ft 12/3 tail with a 5-15P that plugs into the drop's 5-15R). That's the simplest way to give a separate charging table several outlets. The BarnDoor part is assumed, not a ruling.
 - **Where the charging station sits is open, and it doesn't gate the order.** Sam's current leaning (2026-09-28): drop 2 most likely feeds the second PDU in the rack (the Bay B CPPDU511), which would make the quad box unnecessary. Until Sam decides, the BOM keeps the quad box, marked tentative. If Bay B wins, drop 2's 5-15R takes the CPPDU511 cord directly and the quad box line comes off.
 - Voltage drop: 12AWG over 125ft at these loads (2–3A) is about 1%. Fine.
 - Plug each drop into a different wall circuit when the venue has two. If not, both on one is fine; the total is still well under 15A.
@@ -164,7 +164,7 @@ drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower 
 
 #### Charging side (not backed)
 
-drop 2 → quad box → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided; the quad box step is tentative.*
+drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided.* If the charging station turns out to be a separate table, drop 2 ends in the quad box, which feeds the table's chargers and the CPPDU511 cord (tentative).
 
 - Label both Bay B strips **"chargers + lights + laptops only"**. No high-draw loads. Keep the total under 15A.
 - Laptops run on their own batteries if this side loses power.
@@ -202,7 +202,7 @@ Five short cables, all color-coded and labeled. The cases always sit side by sid
 | POWER | 15ft, 14/3 SJOOW | powerCON TRUE1 male (AVPRO end), female (Wing end) | buy |
 
 - The 15ft length leaves room to angle the cases.
-- **Why 14/3 for the power link:** Neutrik lists the TRUE1 cable connector (NAC3FX-W) for 6–12mm cable. 12/3 SO is 15.1mm and won't fit; 14/3 SJOOW is 9.4mm, rated 18A. The Wing draws about 1A.
+- **Why 14/3 for the power link:** Neutrik lists the TRUE1 cable connector (NAC3FX-W) for 6–12mm cable. 12/3 SOOW (the drop cable) is 15.1mm and won't fit; 14/3 SJOOW is 9.4mm, rated 18A. The Wing draws about 1A.
 - **Flexibility:** if a venue ever needs the cases apart, add longer trunks and a longer powerCON link then. Nothing on either panel changes.
 - powerCON family: one matched TRUE1 family for the outlet, both cable ends, and the Wing inlet. You or the vendor confirm it before we order.
 

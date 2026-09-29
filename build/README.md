@@ -9,7 +9,7 @@ This folder is the master for the ELIM AVPRO workstation and Wing case build. Al
 1. Design locked. Nothing ordered yet.
 2. BOM v7: **first order $4,671.84** (includes $1,650 case + freight placeholders, to verify with Matt; includes a tentative $89.88 quad box). Wing panel block **$100.00**, only if the BWING can take a panel.
 3. Target order date: **2026-10-01**, pending Matt's quote.
-4. Waiting on: Matt's case and freight quote; the powerCON and etherCON part check (D7). Sam: where the charging station sits (default: its own table).
+4. Waiting on: Matt's case and freight quote; the powerCON and etherCON part check (D7). Sam: where the charging station sits (N19: leaning Bay B; quad box only if it's a separate table).
 5. Next: order → fabricate → assemble → prove (`BACKLOG.md`).
 
 ## What gates the order

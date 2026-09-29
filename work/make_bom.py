@@ -1,4 +1,4 @@
-"""Build build/BOM.xlsx (BOM v6) from the line data below.
+"""Build build/BOM.xlsx (BOM v7) from the line data below.
 
 Run:  python work/make_bom.py
 Writes build/BOM.xlsx and work/bom_totals.json (totals + check counts for the docs).
@@ -170,7 +170,7 @@ CHECK = [
     ("DPLATE-WING", "D-series plate, Wing", 0, 1, 0, 0),
     ("BLANK-AVPRO", "Blanking plate, AVPRO holes", 18, 0, 0, 0),
     ("BLANK-WING", "Blanking plate, Wing holes", 0, 2, 0, 0),
-    ("ETH-END", "etherCON cable end", 0, 0, 2, 9),
+    ("ETH-END", "etherCON cable carriers", 0, 0, 2, 9),
     ("PCON-END-M", "powerCON cable end, male", 0, 0, 1, 1),
     ("PCON-END-F", "powerCON cable end, female", 0, 0, 1, 1),
     ("SDI-JUMPER", "SDI jumper, panel to ATEM", 0, 0, 0, 8),

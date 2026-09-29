@@ -20,8 +20,8 @@
 
 **Time saved (estimates; I'll time setup before and after):**
 
-- ~40 loose connections become ~15 labeled cables: about 30 minutes faster to set up and 30 to tear down.
-- ~14 devices to handle become ~5; one panel instead of four stations.
+- ~40 loose connections become ~15 labeled cables: about 30 minutes faster to set up and 30 to tear down, roughly an hour a week.
+- ~14 devices to handle become ~5; 10+ loose items become 2; one panel instead of four stations.
 
 **The ask.** Bianca: go/no-go on ordering once Matt's quote is in. Sunny: final sign-off. Target: order October 1.
 

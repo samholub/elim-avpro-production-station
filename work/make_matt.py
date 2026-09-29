@@ -86,6 +86,7 @@ PLAIN = [
     ("(assumed, verify on the rails, M6)", "(assumed, verify on the rails)"),
     ("**M3:** ", "**Side doors:** "),
     (" (OPEN-ITEMS N19)", ""),
+    ("(tentative, N19)", "(tentative)"),
     ("- Open with Sam: does Omar have a separate Dante device at the drum kit? (R-019)\n", ""),
     ("- Static IPs and router settings are in `OPS-CONFIG.md`.\n", ""),
     ("(see Spare capacity)", "(a bigger production switch is on the roadmap)"),

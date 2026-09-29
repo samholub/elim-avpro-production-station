@@ -36,7 +36,7 @@ The whole doc set was audited against every project conversation (15 chats, 3,76
 
 **Wing panel is conditional.** It waits on a physical inspection of the BWING at delivery. Its parts are a separate BOM block ($100.00), not in the first order. Fallback: the umbilical goes direct to the Wing's jacks.
 
-**Power correction (D20).** The 125ft 12/3 SO in the older docs was never the AVPRO ↔ Wing umbilical. It's **two venue power drops** from wall outlets: drop 1 feeds the AVPRO (and the Wing through it), drop 2 feeds the AV charging station. Both are 125ft 12/3 SOOW with a 5-15P at the wall and a 5-15R connector body at the rig end; drop 2 ends in a quad box (charging station on its own table by default, open item N19). The AVPRO → Wing power link is a **short powerCON cable**: 15ft of 14/3 SJOOW, because the TRUE1 cable ends take 6–12mm cable and 12/3 SO is 15.1mm. P-04 is closed.
+**Power correction (D20).** The 125ft 12/3 SO in the older docs was never the AVPRO ↔ Wing umbilical. It's **two venue power drops** from wall outlets: drop 1 feeds the AVPRO (and the Wing through it), drop 2 feeds the AV charging station. Both are 125ft 12/3 SOOW with a 5-15P at the wall and a 5-15R connector body at the rig end; where drop 2 lands is open (N19: leaning Bay B; a quad box only if the charging station is a separate table). The AVPRO → Wing power link is a **short powerCON cable**: 15ft of 14/3 SJOOW, because the TRUE1 cable ends take 6–12mm cable and 12/3 SOOW is 15.1mm. P-04 is closed.
 
 **Umbilical.** The cases always sit side by side, so all five trunks are short (15ft). The talkback and IEM XLRs are owned.
 

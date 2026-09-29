@@ -73,7 +73,7 @@ const ROW2 = [
   { label: "INTERNET IN", conn: "etherCON", tag: C.net },
   { label: "PROD TRUNK", conn: "etherCON", tag: C.prod },
   { label: "TALKBACK", conn: "XLR-F", tag: C.audio }, { label: "IEM", conn: "XLR-M", tag: C.audio },
-  { label: "SPARE", conn: "etherCON", tag: C.neutral },
+  { label: "SPARE", conn: "etherCON", tag: C.prod },
   { label: "blank", conn: "", tag: C.neutral }, { label: "blank", conn: "", tag: C.neutral }, { label: "blank", conn: "", tag: C.neutral },
   { label: "POWER > WING", conn: "powerCON", tag: C.power },
 ];
@@ -93,7 +93,7 @@ const NOTES = [
   "Colors = the cable color code. Every cable also carries a number and a source > destination label: match the color, match the number.",
   "Bay A is the whole active system. Every network jumper stays in Bay A; nothing crosses bays. Bay B is storage and utility power; no signal.",
   "* Shared jacks: the Hollyland RX and the UltraStudio plug straight into ATEM IN 2 and IN 8. The CAM 2 and CAM 8 jumpers are parked beside them; swap one in to use that jack for a field camera.",
-  "Power: two 125ft 12/3 SO drops from wall outlets (5-15P > 5-15R). Drop 1 feeds the UPS, which backs the booth and the Wing (~275-285W of 1000W, ~715-725W spare). Drop 2 feeds the charging station (most likely the Bay B PDU; a quad box only if it's a separate table); the Bay B strips (CPPDU511 + RS1215-RA) and the laptop strip are on that side. No surge behind the UPS.",
+  "Power: two 125ft 12/3 SOOW drops from wall outlets (5-15P > 5-15R). Drop 1 feeds the UPS, which backs the booth and the Wing (~275-285W of 1000W, ~715-725W spare). Drop 2 feeds the charging station (most likely the Bay B PDU; a quad box only if it's a separate table); the Bay B strips (CPPDU511 + RS1215-RA) and the laptop strip are on that side. No surge behind the UPS.",
   "Cooling: the open back is primary. The fan exhausts toward the back. Reserve U's are vented blanks. Keep the back clear at venues.",
   "Umbilical = 5 short cables (15ft; the cases sit side by side): PROD, DANTE, TALKBACK, IEM and POWER (powerCON TRUE1 on 14/3 SJOOW). AES50 is stage-side.",
   "Wing panel is planned, pending inspection of the BWING at delivery. Without it, the umbilical plugs straight into the Wing's own jacks.",
