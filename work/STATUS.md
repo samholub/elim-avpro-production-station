@@ -1,13 +1,34 @@
 # Status
 
-**Updated:** 2026-09-26 (session 2, step 9 started)
-**State:** step 9 is at the outline gate. `work/OUTLINES.md` has the outlines for build/, matt/ and review/, plus questions Q1–Q7. **Waiting on Sam** to approve the outlines, answer Q1–Q7, and rule on **P-03** (etherCON cable-end part, in `work/PROPOSALS.md`). No build/ file is written yet.
+**Updated:** 2026-09-28 (session 2, closed)
+**State:** step 9 is drafted, all three tiers: `build/`, `matt/` (generated), `review/`, plus `work/COVER-NOTES.md`. **Waiting on Sam** to read the drafts. **Next is step 10** (independent verification, fresh session, Fable 5.1).
 
-Session 2 also added the full Python path to `CLAUDE.md`.
+## Session 2 summary
+
+- Outlines approved (`work/OUTLINES.md`). Rulings Q1–Q7, P-03, D19 (Teranex dropped) and the CAM 2 + CAM 8 amendment are in `work/DECISIONS.md` (Session 2 rulings).
+- **BOM v6:** first order **$4,480.66** (incl. $1,650 case + freight placeholders), Wing block **$100.00**, all **$4,580.66**. Check tab: 15/15 PASS. Formulas verified independently with pycel.
+- Pelican-era changelog entries moved to `archive/CHANGELOG-pre-workstation.md`.
+
+### Waiting on Sam
+- **P-04** (`work/PROPOSALS.md`): shorten the power umbilical 125ft → 15ft (saves $179.30, 24.5 lb). build/ still says 125ft.
+- **OPEN-ITEMS G4:** confirm the 2 short XLRs are owned (assumed; no BOM line) and whether 2 × 15ft shielded Cat6A exist (BOM carries $24).
+- Read the drafts: `review/ELIM-PLAN.pdf` (6 pages, 5.5 × 11in), `matt/MATT-PACK.pdf`, `work/COVER-NOTES.md`.
+
+### How to regenerate (Python by full path, see CLAUDE.md)
+1. `work/make_bom.py` → `build/BOM.xlsx` + `work/bom_totals.json`
+2. `build/diagrams/render.py` → the four PNGs (needs network for cdnjs)
+3. `work/make_matt.py` → `matt/` (never hand-edit matt/)
+4. `work/make_review.py` → `review/ELIM-PLAN.pdf` (fails if a $ figure doesn't tie to the BOM)
+
+Installed this session: pycel (formula check), pypdfium2 (PDF page previews).
+
+### Step 10 inputs
+`source/`, `work/ledger.csv`, `work/DECISIONS.md`, `build/`, `matt/`, `review/`. Note for the verifier: DECISIONS Session 2 rulings post-date the ledger (2026-09-28).
 
 ---
 
-## Handoff for step 9
+## Earlier handoff (step 9, from session 1; kept for reference)
+
 
 **Session 2 note:** read `work/OUTLINES.md` and Sam's answers first. Build to the approved outline.
 

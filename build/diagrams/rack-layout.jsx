@@ -7,7 +7,8 @@ import React from "react";
 // Bay B rear strip RS1215-RA (D3); laptop strip on utility (D4); shared jacks CAM 2 + CAM 8 (Q2);
 // monitor wording (D14); HDMI legend swatch fixed; AES50 colored; Wing panel marked conditional;
 // side compartments wording; UPS load ~275-285W; short trunks (Q3).
-// Props: mode="full" (default) or mode="phone" (stacked, front + panel only, for review/ELIM-layout.png).
+// Props: mode="full" (default), "phone" (stacked, front + panel only, for review/ELIM-layout.png),
+// or "overview" (one-page, plain names, for review/ELIM-PLAN.pdf page 2).
 
 const C = {
   ink: "#1e293b", sub: "#64748b", line: "#cbd5e1", bg: "#f6f7f9", card: "#ffffff",
@@ -189,7 +190,66 @@ function Legend({ big }) {
   );
 }
 
+
+// Compact one-page view for review/ELIM-PLAN.pdf page 2: names only, both bays side by side.
+const SHORT_A = [
+  [12, 1, C.neutral, "Cooling fan"], [11, 1, C.video, "Streaming encoder (Resi)"], [10, 1, C.dante, "Recorder + audio switch"],
+  [9, 1, C.led, "LED wall sender"], [8, 1, C.prod, "Network switch + router"], [7, 1, C.neutral, "Cable management"],
+  [4, 3, C.neutral, "Airflow + growth"], [3, 1, C.power, "Power strip (backed)"], [1, 2, C.power, "Battery backup (UPS)"],
+];
+const SHORT_B = [
+  [12, 1, C.power, "Metered strip + charger strip"], [9, 3, C.neutral, "Growth space"], [5, 4, C.neutral, "Drawer"], [1, 4, C.neutral, "Drawer"],
+];
+
+function MiniBay({ title, rows, top }) {
+  const U = 21;
+  return (
+    <div style={{ flex: 1 }}>
+      <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 4 }}>{title}</div>
+      <div style={{ border: "1px solid " + C.ink, borderRadius: 4, overflow: "hidden", background: C.card }}>
+        <div style={{ fontSize: 10.5, padding: "4px 6px", background: "#eef2f6", borderBottom: "2px solid " + C.ink, minHeight: 26, display: "flex", alignItems: "center" }}>{top}</div>
+        {rows.map(([u, h, col, name], i) => (
+          <div key={i} style={{ display: "flex", height: h * U, borderBottom: "1px solid " + C.line }}>
+            <div style={{ width: 6, background: col, flexShrink: 0 }} />
+            <div style={{ fontSize: 10.5, padding: "0 6px", display: "flex", alignItems: "center", lineHeight: 1.1 }}>{name}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Overview() {
+  const box = (col, name, note) => (
+    <div style={{ border: "1px solid " + C.line, borderLeft: "5px solid " + col, borderRadius: 4, padding: "4px 7px", background: C.card, flex: "1 1 180px" }}>
+      <div style={{ fontSize: 11.5, fontWeight: 600 }}>{name}</div>
+      <div style={{ fontSize: 10, color: C.sub }}>{note}</div>
+    </div>
+  );
+  return (
+    <div id="root-diagram" style={{ fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif", background: C.bg, color: C.ink, padding: "14px 14px 16px", width: 430, boxSizing: "border-box" }}>
+      <div style={{ fontSize: 16, fontWeight: 800 }}>The workstation at a glance</div>
+      <div style={{ fontSize: 10.5, fontWeight: 700, margin: "10px 0 4px" }}>LIDS</div>
+      <div style={{ display: "flex", gap: 6 }}>{box(C.video, "Left screen", "every camera at once")}{box(C.hdmi, "Right screen", "second view, added later")}</div>
+      <div style={{ fontSize: 10.5, fontWeight: 700, margin: "10px 0 4px" }}>DESK</div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{box(C.video, "Switcher", "on a tray")}{box(C.dante, "Audio interface", "beside it")}{box(C.hdmi, "Two laptops", "ProPresenter + switcher")}</div>
+      <div style={{ display: "flex", gap: 10, marginTop: 12 }}>
+        <MiniBay title="Bay A: the active system" rows={SHORT_A} top="Wireless camera receiver" />
+        <MiniBay title="Bay B: storage + charging" rows={SHORT_B} top="reserved" />
+      </div>
+      <div style={{ fontSize: 10.5, fontWeight: 700, margin: "12px 0 4px" }}>BACK OF BAY A: THE PANEL VOLUNTEERS USE</div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+        {[[C.video, "8 camera inputs"], [C.hdmi, "Confidence out"], [C.led, "LED wall x2"], [C.net, "Internet in"], [C.prod, "Network to Wing"], [C.dante, "Audio network to Wing"], [C.audio, "Talkback + in-ears"], [C.power, "Power to Wing"]].map(([col, t], i) => (
+          <div key={i} style={{ fontSize: 10, border: "1px solid " + C.line, borderTop: "4px solid " + col, borderRadius: 3, padding: "3px 6px", background: C.card }}>{t}</div>
+        ))}
+      </div>
+      <div style={{ fontSize: 10, color: C.sub, marginTop: 8 }}>Colors are the cable colors. The Wing sits beside the workstation in its own case, joined by five cables.</div>
+    </div>
+  );
+}
+
 export default function AvproRackLayout({ mode = "full" }) {
+  if (mode === "overview") return <Overview />;
   const phone = mode === "phone";
   const wrap = { fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif", background: C.bg, color: C.ink, padding: phone ? "18px 16px 24px" : "26px 22px 40px", width: phone ? 430 : 1000, boxSizing: "border-box" };
   const bays = { display: "flex", flexDirection: phone ? "column" : "row", gap: phone ? 18 : 26 };

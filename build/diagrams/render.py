@@ -1,7 +1,7 @@
 """Render the diagram JSX files to PNG with Playwright + Chromium.
 
 Run:  python build/diagrams/render.py
-Writes build/diagrams/rack-layout.png, cable-map.png, and ELIM-layout.png (phone mode).
+Writes build/diagrams/rack-layout.png, cable-map.png, ELIM-layout.png (phone mode) and layout-overview.png.
 Loads React 18 and Babel standalone from cdnjs, so it needs network access.
 Screenshots clip to the #root-diagram element (a fullPage screenshot duplicated content once).
 """
@@ -27,6 +27,7 @@ JOBS = [
     ("rack-layout.jsx", "", 1000, 2, "rack-layout.png"),
     ("cable-map.jsx", "", 1000, 2, "cable-map.png"),
     ("rack-layout.jsx", 'mode="phone"', 430, 3, "ELIM-layout.png"),
+    ("rack-layout.jsx", 'mode="overview"', 430, 3, "layout-overview.png"),
 ]
 
 
