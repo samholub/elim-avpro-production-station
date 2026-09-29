@@ -1,0 +1,258 @@
+# ELIM AVPRO + Wing Build: Pack for Matt
+
+**Generated from the build set on 2026-09-28 (BOM v6).** Don't edit this file; it's rebuilt from `build/`.
+Codes like D7, P-04 or M5 point to the build decision log and open-items list; ask if one isn't clear.
+
+## 1. Scope
+
+ELIM Church runs a portable production rig that deploys once or twice a week at different venues, set up and struck by volunteers under time pressure. This build consolidates the video, network and control gear into a ProX AVPRO rolling workstation (two 12U bays, two 4U tops, a work surface and two monitor lids), and puts the Behringer Wing in a ProX BWING flip case beside it. Every field cable (cameras, LED wall, confidence monitor, internet) and the five-cable Wing umbilical lands on one labeled, color-coded Neutrik D-series panel on the back of the AVPRO. Almost all the gear inside is already owned. The new spend is the cases, power, cooling, mounts, connectors, cabling and two lid monitors.
+
+The design is locked. We'd like your quote on the cases and freight, your help pinning a few connector parts, and a sanity check from an outside AV pro.
+
+## 2. Questions for Matt
+
+1. **Case and freight quote:** AVPRO price, BWING price, consolidated freight for both (closed AVPRO is 51.5 × 48.2 × 31.6in). BOM placeholders: $500 / $900 / $250  
+   *When: 2026-10-01. Gates the order? Yes: the order gate*
+2. **One matched powerCON TRUE1 family:** AVPRO chassis outlet, both umbilical cable ends, and the Wing chassis inlet (only if the Wing panel happens). **Plus the etherCON cable end** (NE8MX6 family expected), checked against the Neutrik datasheet before the BOM calls it firm (D7, P-03)  
+   *When: 2026-10-01. Gates the order? Yes, for the connector lines*
+3. **Rack rail thread:** tapped 10-32, or square-hole for M6 cage nuts? Assumed 10-32. Matt may know; otherwise it's checked on the rails at delivery  
+   *When: on case delivery (assumed by 2026-11-15). Gates the order? Screw line only. Order it after delivery if Matt doesn't know*
+4. **Laptop power strip:** a plain surge strip for the desk laptops, fed from the utility side (Bay B), never behind the UPS. BOM carries $30  
+   *When: 2026-10-01. Gates the order? That line only*
+5. **BWING inspection: can it take a panel-mount D-series plate?** Yes → buy the Wing block. No → umbilical direct to the Wing's jacks + a TRUE1-to-IEC jumper  
+   *When: on case delivery (assumed by 2026-11-15). Gates the order? Wing block only*
+6. **M3:** do the AVPRO side doors open to usable storage, and what are the inside dimensions? The design doesn't use them  
+   *When: on case delivery (assumed by 2026-11-15). Gates the order? No*
+7. **The "regret ask":** long-lead items, freight consolidation, anything hard to add later  
+   *When: 2026-10-01 (with the quote). Gates the order? No*
+
+## 3. Panel maps
+
+### AVPRO rear I/O panel
+
+Three Neutrik D-series 12-hole plates (3U) on the Bay A rear rails, behind the upper gear block. This is the one face volunteers touch. Field cables land here; short jumpers run to the gear. Nothing plugs into a device directly. *Decided.*
+
+```
+PANEL 1  [CAM1][CAM2*][CAM3][CAM4][CAM5][CAM6][CAM7][CAM8*][CONF OUT][ -- ][ -- ][ -- ]
+PANEL 2  [DANTE][LED1][LED2][INTERNET IN][PROD][TALKBACK][IEM][SPARE][ -- ][ -- ][ -- ][POWER > WING]
+PANEL 3  [ spare / expansion row, 12 holes ]
+         * shared jack (see the signal map)   -- = blanking plate
+```
+
+| Jack | Connector | Direction / gender | Inside, goes to | Color |
+|---|---|---|---|---|
+| CAM 1, 3–7 | BNC 75Ω feedthrough | in | SDI jumper → ATEM IN n | blue |
+| CAM 2, CAM 8 | BNC 75Ω feedthrough | in, shared | jumper parked at ATEM IN 2 / IN 8 | blue |
+| CONF OUT | HDMI feedthrough | out | Anker hub HDMI | white |
+| DANTE TRUNK | etherCON | both | satellite switch | green |
+| LED 1, LED 2 | etherCON | out | LED transmitter ports 1, 2 | purple |
+| INTERNET IN | etherCON | in | AX21 WAN | red |
+| PROD TRUNK | etherCON | both | AX21 LAN 3 | yellow |
+| TALKBACK | XLR **female** | in (a mic plugs in) | trunk to the Wing | orange |
+| IEM | XLR **male** | out (feeds a pack) | from the Wing | orange |
+| SPARE | etherCON | both | AX21 LAN 4 (pre-wired) | grey |
+| POWER > WING | powerCON TRUE1 **outlet** | out | fed from the CPS1215RM (UPS side) | black |
+
+- Order and labels follow layout v15 (POWER > WING last; TRUNK names). *Decided (D13).*
+- The POWER jack is an **outlet**: power leaves the AVPRO here. Shore power enters through the UPS line cord, not this jack.
+- 18 empty holes get blanking plates. Panel 3 is the growth row (camera returns, more trunks).
+
+### Wing panel (conditional)
+
+**Planned, pending physical inspection of the BWING.** Nobody has confirmed the BWING can take a panel. Sam inspects on case delivery. The parts are a separate BOM block ($100.00) and are not in the first order. *Conditional.*
+
+```
+WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
+```
+
+| Jack | Connector | Gender / direction | To |
+|---|---|---|---|
+| CONTROL | etherCON | both | Wing control port → PROD trunk → AX21 |
+| DANTE TRUNK | etherCON | both | Wing case Dante switch uplink |
+| AES50 | etherCON | both | stage box (stage side, not on the umbilical) |
+| TALKBACK | XLR **male** | out to the Wing In 8 | mirrors the AVPRO's female |
+| IEM | XLR **female** | in from the Wing Out 8 | mirrors the AVPRO's male |
+| POWER IN | powerCON TRUE1 **inlet** | in | pigtail to the Wing's IEC inlet |
+
+- **Inside the case:** the Wing case Dante switch (new TL-SG105) and Tyler's Mac.
+- Genders mirror the AVPRO panel: talkback female ↔ male, IEM male ↔ female, POWER outlet ↔ inlet.
+- **Fallback if the BWING can't take a panel:** the umbilical runs direct to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end feeds the Wing through a short TRUE1-to-IEC C13 jumper (BOM fallback line, qty 0 until needed).
+
+## 4. Port and signal map
+
+### Signal map
+
+#### Video
+
+| From | Cable | To | Color |
+|---|---|---|---|
+| Wired Pocket 4K (converter) | SDI field, 125ft | Panel CAM 1 → jumper → ATEM IN 1 | blue |
+| Hollyland RX (4U top) | SDI, short | ATEM IN 2 direct | blue |
+| DJI (converter) | SDI field, 125ft | Panel CAM 3 → jumper → ATEM IN 3 | blue |
+| Rented cameras | SDI field | Panel CAM 4–7 → ATEM IN 4–7 | blue |
+| ProPresenter Mac → UltraStudio Monitor (desk) | USB-C, then SDI | ATEM IN 8 direct | blue |
+| ATEM AUX | SDI | HyperDeck HD Mini (records the clean feed) | blue |
+| ATEM OUT 8 | SDI | Resi encoder | blue |
+| ATEM multiview | HDMI | LEFT lid monitor | white |
+| ProPresenter Mac, native HDMI | HDMI | LED wall transmitter (Bay A U9) | white |
+| LED transmitter, 2 × ethernet | Cat, short | Panel LED 1, LED 2 → LED wall | purple |
+| ProPresenter Mac → Anker hub | HDMI | Panel CONF OUT → confidence monitor (stage) | white |
+| RIGHT lid monitor | — | fed in Phase 3 (Mac Minis, dock or splitter) | — |
+
+**Shared jacks (CAM 2, CAM 8).** The Hollyland RX and the UltraStudio plug straight into ATEM IN 2 and IN 8. The CAM 2 and CAM 8 panel jumpers are run to the desk and parked beside those inputs. To use either jack for a field camera, swap the jumper in at the ATEM. Label both jacks "shared, see ATEM IN 2 / IN 8". *Decided (Q2).*
+
+#### Audio and Dante
+
+| From | Cable | To | Color |
+|---|---|---|---|
+| Stage box (Midas DL251) | AES50 | Wing (via the Wing panel AES50 jack if the panel happens) | orange boot |
+| Wing Dante card | Cat | Wing case Dante switch (new TL-SG105) | green |
+| Wing case Dante switch | DANTE trunk | AVPRO panel DANTE TRUNK → Bay A Dante satellite (TL-SG1005P) | green |
+| Satellite switch | Cat, PoE | AVIO (desk). The AVIO is PoE-powered | green |
+| AVIO | XLR pigtails | ATEM audio Ch 1–2 | orange |
+| Bianca's Mac, USB-C ethernet adapter | Cat | satellite switch (Dante) | green |
+| Stream-mix laptop (Omar/Mitch, in the booth) | Cat | Wing case Dante switch | green |
+| Bianca's talkback mic | XLR | AVPRO panel TALKBACK → trunk → Wing XLR In 8 | orange |
+| Wing XLR Out 8 | XLR trunk | AVPRO panel IEM → Bianca's IEM pack | orange |
+| Wing | USB-C | Tyler's Mac (in the Wing case) for recording | — |
+
+- Wing In 8 / Out 8 come from the app's port map. **Tyler confirms both (M8).** Until then they're "to be confirmed by Tyler".
+- Open with Sam: does Omar have a separate Dante device at the drum kit? (R-019)
+
+#### Production network and internet
+
+| From | Cable | To | Color |
+|---|---|---|---|
+| Venue drop or Starlink | Cat field | Panel INTERNET IN → AX21 WAN | red |
+| AX21 LAN 1 | Cat | Production switch (TL-SG105) | yellow |
+| AX21 LAN 2 | Cat | Resi | yellow |
+| AX21 LAN 3 | PROD trunk | Panel PROD TRUNK → Wing CONTROL | yellow |
+| AX21 LAN 4 | Cat | Panel SPARE (etherCON, pre-wired) | yellow |
+| Production switch | Cat | ATEM, HD Mini (auto-trigger), switcher laptop, Bianca's Anker hub | yellow |
+
+- **Port count:** that fills every wired production port (AX21 4 of 4, switch 5 of 5). A future device (Stream Deck host, Mac Mini) needs a bigger switch (see Spare capacity).
+- Static IPs and router settings are in `OPS-CONFIG.md`.
+
+## 5. Power
+
+### Power
+
+The rig runs on whatever a venue gives. It draws well under one 15A circuit, so one works. **Two are preferred:** the UPS on one, the utility side on the other. Never tie circuits together. *Decided.*
+
+#### UPS side (battery-backed)
+
+venue 15A → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → umbilical → Wing.
+
+- One UPS backs both cases. The BWING can't carry its own UPS, so this is the only way to back the Wing. For standalone use the Wing goes on a wall outlet. *Decided.*
+- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on and why the laptop strip is on the utility side. *Decided.*
+- The UPS LCD meters the combined booth + Wing load.
+
+#### Utility side (not backed)
+
+venue 15A → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided (D3, D4).*
+
+- Label both Bay B strips **"chargers + lights + laptops only"**. No high-draw loads. Keep the total under 15A.
+- Laptops run on their own batteries if utility power drops.
+
+#### Estimated draw, UPS side
+
+| Device | Est. |
+|---|---|
+| ATEM TV Studio Pro 4K | ~35W |
+| HyperDeck HD Mini | ~10W |
+| Resi | ~20W |
+| LED wall transmitter | ~30W |
+| Production switch + AX21 | ~20W |
+| Dante satellite switch | ~5W |
+| UltraStudio + Hollyland RX | ~15W |
+| 2 × lid monitors | ~50W |
+| Wing (over the umbilical) | ~90–100W |
+| **Total** | **~275–285W** |
+
+- That's 28% of the UPS's 1000W. **Spare: ~715–725W (about 6A at 120V).** Enough for Starlink (~50–75W) and other ad-hoc gear on backup.
+- Estimates only. The UPS LCD shows the real number; log it at the first bench test.
+- Field devices (confidence monitor, LED wall, cameras and converters) are powered where they sit.
+- Utility side: chargers, drawer lights and laptops, roughly 120–180W for the laptops plus chargers. Well under 15A.
+
+#### Umbilical (AVPRO ↔ Wing)
+
+Five cables, all color-coded and labeled:
+
+| Cable | Length | Ends | Owned? |
+|---|---|---|---|
+| PROD trunk | 15ft | etherCON both ends | buy (BOM trunk cable + ends) |
+| DANTE trunk | 15ft | etherCON both ends | buy (BOM trunk cable + ends) |
+| TALKBACK | 15ft | XLR | assumed owned (standard mic cable), Sam to confirm |
+| IEM | 15ft | XLR | assumed owned (standard mic cable), Sam to confirm |
+| POWER | **125ft** 12/3 SOOW | powerCON TRUE1 male (AVPRO end), female (Wing end) | buy |
+
+- **The cases always sit side by side**, so the data and audio trunks are short. *Decided (Q3).* The 15ft length is my sizing; it leaves room to angle the cases.
+- **Flexibility:** if a venue ever needs the cases apart, add longer trunks then. Nothing on either panel changes.
+- **The power cable is still 125ft** because that length is locked. **P-04 proposes 15ft** (saves $179.30 and 24.5 lb). Change it here only if Sam says yes.
+- powerCON family: one matched TRUE1 family for the outlet, both cable ends, and the Wing inlet. Matt or the vendor confirms before ordering (D7).
+
+## 6. Fill hardware
+
+Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, Changes). Cases and freight are left off this list; they're question 1.
+
+- **First order:** $4,480.66, of which $1,650.00 is the case and freight placeholder (AVPRO $500, BWING $900, freight $250). Without cases: $2,830.66.
+- **Wing panel block:** $100.00, bought only if the BWING can take a panel.
+
+### First order
+
+| Group | Item | Model / SKU | Qty | Price |
+|---|---|---|---|---|
+| AVPRO panel | 1U 12-hole D-series plate | My Cable Mart D-series | 3 | est |
+| AVPRO panel | BNC 75 ohm feedthrough (camera SDI) | Neutrik NBB75DFI | 8 | est |
+| AVPRO panel | HDMI feedthrough | Neutrik NAHDMI-W-B | 1 | est |
+| AVPRO panel | etherCON feedthrough | Neutrik NE8FDP-B | 6 | est |
+| AVPRO panel | XLR female chassis | Neutrik NC3FD-L-B-1 | 1 | est |
+| AVPRO panel | XLR male chassis | Neutrik NC3MD-L-B-1 | 1 | est |
+| AVPRO panel | powerCON TRUE1 chassis outlet | Neutrik NAC3FPX (family TBC, D7) | 1 | est |
+| AVPRO panel | Feed cord for the POWER > WING outlet | 12/3 cord with 5-15P, wired to the outlet | 1 | est |
+| AVPRO panel | D-hole blanking plate | Neutrik DBA-BL | 18 | est |
+| Spares | BNC feedthrough, spare | Neutrik NBB75DFI | 2 | est |
+| Spares | etherCON feedthrough, spare | Neutrik NE8FDP-B | 2 | est |
+| Spares | XLR female chassis, spare | Neutrik NC3FD-L-B-1 | 1 | est |
+| Spares | XLR male chassis, spare | Neutrik NC3MD-L-B-1 | 1 | est |
+| Cable ends | etherCON cable connector, CAT6A | Neutrik NE8MX6-B (TBC, D7 + datasheet) | 11 | est |
+| Cable ends | powerCON TRUE1 cable connector, male | Neutrik NAC3MX-W (TBC, D7) | 2 | est |
+| Cable ends | powerCON TRUE1 cable connector, female | Neutrik NAC3FX-W (TBC, D7) | 2 | est |
+| Power | UPS, 2U pure sine (backs booth + Wing) | CyberPower CP1500PFCRM2U | 1 | est |
+| Power | Rack PDU from the UPS (basic, no surge) | CyberPower CPS1215RM | 1 | firm |
+| Power | Bay B front PDU, metered, drawer lights | Clear Power CPPDU511 | 1 | firm |
+| Power | Bay B rear strip, camera chargers | Tripp Lite RS1215-RA | 1 | quoted 2026-08-20 |
+| Power | Laptop power strip, plain surge strip | Surge strip (Matt sourcing) | 1 | est |
+| Cooling | 1U thermostatic exhaust fan | AC Infinity CLOUDPLATE T1 | 1 | est |
+| Cooling | 1U perforated blank panel | Steel perforated (Amazon) | 3 | est |
+| Mounting | 1U vented cantilever shelf, 10in deep | AC Infinity 1U vented (B01C9KYUG8) | 3 | est |
+| Network | Wing case Dante switch (non-PoE) | TP-Link TL-SG105 | 1 | est |
+| Storage | 4U rack drawer | StarTech 4UDRAWER | 2 | est |
+| Cable mgmt | 1U cable lacing bar | StarTech 12S-CABLE-LACING-BAR | 1 | est |
+| Cable mgmt | Hook-and-loop straps | ONE-WRAP + WrapStrap | 1 | est |
+| Hardware | Rack screws + cage nuts | 10-32 (assumed, verify on the rails, M6) | 1 | est |
+| Cabling | SDI BNC jumpers, panel to ATEM | Belden 1855A / premade BNC-BNC | 8 | est |
+| Cabling | Cat6A patch, color-coded (lot) | Monoprice SlimRun Cat6A 10-pk | 1 | est |
+| Cabling | Trunk cable, shielded Cat6A, 15ft | Shielded Cat6A patch, 15ft | 2 | est |
+| Cabling | HDMI 2.0 jumper, short | HDMI 2.0, 6-10ft | 3 | est |
+| Cabling | Short power cord, 5-15P to IEC C13 | 2-3ft | 6 | est |
+| Cabling | Umbilical power cable, 12/3 SOOW | 12/3 SOOW, cut to length (ft) | 125 | est |
+| Monitors | Lid monitor, 24in matte IPS | LG UltraGear 24GS60F-B | 2 | est |
+| Monitors | Right-angle HDMI + DC adapters (lot) | 90-deg HDMI + DC barrel | 1 | est |
+
+### Wing panel block (conditional)
+
+| Group | Item | Model / SKU | Qty | Price |
+|---|---|---|---|---|
+| Wing panel | Small D-series plate (8 holes) | D-series plate | 1 | est |
+| Wing panel | etherCON feedthrough | Neutrik NE8FDP-B | 3 | est |
+| Wing panel | XLR male chassis | Neutrik NC3MD-L-B-1 | 1 | est |
+| Wing panel | XLR female chassis | Neutrik NC3FD-L-B-1 | 1 | est |
+| Wing panel | powerCON TRUE1 chassis inlet | Neutrik NAC3MPX (family TBC, D7) | 1 | est |
+| Wing panel | Inlet-to-Wing power pigtail | IEC C13 cord, cut and wired to the inlet | 1 | est |
+| Wing panel | D-hole blanking plate | Neutrik DBA-BL | 2 | est |
+| Wing panel | FALLBACK ONLY: powerCON TRUE1 to IEC C13 jumper | TRUE1 male to C13, short | 0 | est |
+
+## 7. Layout
+
+![Rack layout](rack-layout.png)

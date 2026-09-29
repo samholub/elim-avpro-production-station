@@ -16,15 +16,16 @@
 | G3 | **P-04:** shorten the power umbilical from 125ft to 15ft? | Sam | 2026-10-01 | Yes, for the umbilical cable line |
 | G4 | **Owned short cables:** confirm 2 spare XLR mic cables (~15ft) for the talkback and IEM trunks. Say if 2 × 15ft shielded Cat6A already exist (then delete the BOM trunk-cable line) | Sam | 2026-10-01 | Small lines only |
 | G5 | **CPS1215RM listing:** confirm Amazon B00077IG3O is the CPS1215RM | Sam | 2026-10-01 | That line only |
-| G6 | **Rack rail thread** (assumed 10-32; could be square-hole with M6 cage nuts). Ask Matt if he knows; otherwise check the rails on delivery | Sam | on case delivery (assumed by 2026-11-15) | **Screw line only.** Order it after delivery if Matt doesn't know |
+| G6 | **Rack rail thread:** tapped 10-32, or square-hole for M6 cage nuts? Assumed 10-32. Matt may know; otherwise it's checked on the rails at delivery | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | **Screw line only.** Order it after delivery if Matt doesn't know |
+| G7 | **Laptop power strip:** a plain surge strip for the desk laptops, fed from the utility side (Bay B), never behind the UPS. BOM carries $30 | Matt | 2026-10-01 | That line only |
 
 ## Active: doesn't gate the order
 
 | # | Item | Owner | Due | Gates? |
 |---|---|---|---|---|
-| N1 | **BWING inspection: can it take a panel-mount D-series plate?** Yes → buy the Wing block. No → umbilical direct to the Wing's jacks + a TRUE1-to-IEC jumper | Sam | on case delivery (assumed by 2026-11-15) | Wing block only |
+| N1 | **BWING inspection: can it take a panel-mount D-series plate?** Yes → buy the Wing block. No → umbilical direct to the Wing's jacks + a TRUE1-to-IEC jumper | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | Wing block only |
 | N2 | **M7:** LED wall receiver input jack (etherCON or RJ45), and the internet drop's far end. Sets the etherCON end count; the BOM already buys the high count | Sam | 2026-10-04 (next service) | No |
-| N3 | **M3:** do the AVPRO side doors open to usable storage? Inside dimensions? The design doesn't use them | Sam (ask Matt/ProX) | on case delivery (assumed by 2026-11-15) | No |
+| N3 | **M3:** do the AVPRO side doors open to usable storage, and what are the inside dimensions? The design doesn't use them | Sam (ask Matt/ProX) | on case delivery (assumed by 2026-11-15) | No |
 | N4 | **U10 shelf fit:** the 10in AC Infinity shelf takes the HD Mini, the TL-SG1005P and its power brick side by side | Sam | on shelf delivery (assumed by 2026-10-15) | No |
 | N5 | **M5:** LG 24GS60F-B panel height without stand + right-angle adapter depth vs the 16.1in lid; two widths vs 49.6in | Sam | on case delivery (assumed by 2026-11-15) | No |
 | N6 | **M8:** Wing XLR In 8 = Bianca's talkback, Out 8 = her IEM | Tyler | 2026-10-04 | No |

@@ -8,10 +8,11 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 
 ## 1. Order
 
-**Close the gate first** (OPEN-ITEMS G1–G5; target order date 2026-10-01):
+**Close the gate first** (OPEN-ITEMS G1–G7; target order date 2026-10-01):
 - [ ] Matt: AVPRO price, BWING price, consolidated freight.
 - [ ] Matt / vendor: one matched powerCON TRUE1 family + the etherCON cable end part. Sam checks both datasheets; then mark those BOM lines firm.
 - [ ] Sam: rule on P-04 (umbilical 125ft or 15ft).
+- [ ] Matt: source the laptop surge strip (utility side).
 - [ ] Sam: confirm the owned short XLRs (and any spare 15ft Cat6A); confirm the CPS1215RM listing.
 - [ ] Bianca go/no-go (1:1), then Sunny's sign-off.
 

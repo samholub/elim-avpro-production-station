@@ -91,7 +91,7 @@
 | AX21 LAN 4 | Cat | Panel SPARE (etherCON, pre-wired) | yellow |
 | Production switch | Cat | ATEM, HD Mini (auto-trigger), switcher laptop, Bianca's Anker hub | yellow |
 
-- **Port count:** that fills every wired production port (AX21 4 of 4, switch 5 of 5). A future device (Stream Deck host, Mac Mini) needs a bigger switch. See §13 and OPEN-ITEMS.
+- **Port count:** that fills every wired production port (AX21 4 of 4, switch 5 of 5). A future device (Stream Deck host, Mac Mini) needs a bigger switch (see Spare capacity).
 - Static IPs and router settings are in `OPS-CONFIG.md`.
 <!-- /matt -->
 
@@ -166,7 +166,7 @@ Three Neutrik D-series 12-hole plates (3U) on the Bay A rear rails, behind the u
 PANEL 1  [CAM1][CAM2*][CAM3][CAM4][CAM5][CAM6][CAM7][CAM8*][CONF OUT][ -- ][ -- ][ -- ]
 PANEL 2  [DANTE][LED1][LED2][INTERNET IN][PROD][TALKBACK][IEM][SPARE][ -- ][ -- ][ -- ][POWER > WING]
 PANEL 3  [ spare / expansion row, 12 holes ]
-         * shared jack, see §3        -- = blanking plate
+         * shared jack (see the signal map)   -- = blanking plate
 ```
 
 | Jack | Connector | Direction / gender | Inside, goes to | Color |
