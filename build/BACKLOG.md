@@ -19,10 +19,10 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 - [ ] Both cases + freight (through Matt).
 - [ ] AVPRO panel: 3 plates, 8 BNC, 1 HDMI, 6 etherCON, XLR-F, XLR-M, powerCON outlet, outlet feed cord, 18 blanking plates.
 - [ ] Spares: 2 BNC, 2 etherCON, 1 XLR-F, 1 XLR-M.
-- [ ] Cable ends: 11 etherCON; powerCON TRUE1 2 male + 2 female.
+- [ ] Cable ends: 11 etherCON carriers (NE8MX-1) + a pack of shielded RJ45 plugs; powerCON TRUE1 2 male + 2 female.
 - [ ] Power: UPS, CPS1215RM, CPPDU511, RS1215-RA, laptop surge strip.
 - [ ] Cooling: 1U fan, 3 perforated blanks.
-- [ ] Mounting and network: 3 × 1U vented shelves; TL-SG105 (Wing case Dante).
+- [ ] Mounting and network: 3 × 1U vented shelves; 8-port TL-SG108 or equivalent (Wing case Dante).
 - [ ] Storage: 2 × 4U drawers. Lacing bar, hook-and-loop.
 - [ ] Cabling: 8 SDI jumpers, Cat6A lot, 2 trunk cables, 3 HDMI jumpers, 6 short power cords, 15ft 14/3 SJOOW for the powerCON umbilical.
 - [ ] Venue power: 250ft 12/3 SOOW (two 125ft drops), 2 × 5-15P plugs, 2 × 5-15R connector bodies, 1 quad box (tentative, may drop, N19).
@@ -43,9 +43,9 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 - [ ] Populate the AVPRO panels in the v15 order (BUILD-SPEC §5): IEM jack male, TALKBACK female, POWER a powerCON outlet labeled "POWER > WING". Blank the empty holes.
 - [ ] Wire the outlet feed cord to the POWER > WING outlet.
 - [ ] Wing panel (if the inspection passes): CONTROL, DANTE TRUNK, AES50 etherCON; TALKBACK male; IEM female; POWER inlet with its pigtail to the Wing.
-- [ ] Make the umbilical (all 15ft): PROD and DANTE trunks (etherCON both ends), the two owned XLRs, and the 14/3 SJOOW powerCON link with TRUE1 male (AVPRO end) and female (Wing end).
+- [ ] Make the umbilical (all 15ft): PROD and DANTE trunks (etherCON carriers both ends, re-crimped), the two owned XLRs, and the 14/3 SJOOW powerCON link with TRUE1 male (AVPRO end) and female (Wing end).
 - [ ] Make the two venue power drops: 125ft 12/3 SOOW each, 5-15P at the wall end, 5-15R connector body at the rig end. Label them DROP 1 (AVPRO) and DROP 2 (CHARGING).
-- [ ] Put etherCON ends on the LED and internet field runs (LED count per M7).
+- [ ] Put etherCON carriers on the LED and internet field runs at the panel end: cut the plug, slide the carrier on, re-crimp (LED count per M7).
 - [ ] Build the ATEM retention tray (BUILD-SPEC §11).
 - [ ] Mount a converter + AC/DC adapter permanently on the wired Pocket and the DJI.
 - [ ] Label and color-code every cable and the panel legends: "match the color, match the number". Don't rush this.
@@ -59,7 +59,7 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 - [ ] **4U top A:** Hollyland RX.
 - [ ] **Desk:** ATEM on the tray over the grommet; AVIO beside it; UltraStudio velcro'd behind the lids; laptops; laptop strip fed from Bay B.
 - [ ] **Lids:** 2 × LG monitors with right-angle adapters (LEFT = multiview).
-- [ ] **Wing case:** new TL-SG105 Dante switch and Tyler's Mac inside.
+- [ ] **Wing case:** new 8-port Dante switch and Tyler's Mac inside (USB-C to the Wing, plus a Cat patch to the switch).
 - [ ] Internal wiring and dressing (BUILD-SPEC §11). Park the CAM 2 and CAM 8 jumpers at ATEM IN 2 / IN 8.
 - [ ] Set the running config (OPS-CONFIG).
 

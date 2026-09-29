@@ -1,6 +1,6 @@
 # Ops Config
 
-**Updated:** 2026-09-28 (new file, D15)
+**Updated:** 2026-09-28 (new file, D15; step 10 fixes the same day)
 
 The running config the rig depends on that isn't hardware: switcher, recorder, audio levels, cameras, network. Each line carries its status. Where this describes the rig as it runs today, the ELIM Production App is the authority (fact precedence, DESIGN §8); this file mirrors it for the build.
 
@@ -10,7 +10,8 @@ The running config the rig depends on that isn't hardware: switcher, recorder, a
 
 ## 1. Video standard
 
-- **1080p29.97, end to end.** Cameras at 30 (29.97), ATEM matched, HyperDeck follows, edit timeline the same. *Decided 2026-08-16; verify live at the next event (C1).*
+- **1080p29.97, end to end.** Cameras at 30 (29.97), ATEM matched, HyperDeck follows, edit timeline the same. *Decided 2026-08-16; ran live at the 2026-08-22 event (C1 closed).*
+- **Changing the standard:** never while live or recording; do it during setup, before doors. Order: stop the HyperDeck, set the cameras to 29.97 and confirm they lock, set the ATEM, check the multiview locks, re-check AUX = Clean Feed 1, then start recording. *Decided 2026-08-21/22.*
 
 ## 2. ATEM inputs
 
@@ -29,7 +30,7 @@ The running config the rig depends on that isn't hardware: switcher, recorder, a
   - Which source feeds Clean Feed 1, and which physical AUX carries it, are still undetermined. *Open (C2).*
 - **OUT 8 → Resi.** *Decided.*
 - **DSK1 = ProPresenter fill + key, both on IN 8** (lyrics). *Decided.*
-- **ATEM Master audio feeds both Resi and the HyperDeck,** so they share one mix. *Decided.*
+- **Resi and the HyperDeck probably get the same mix:** both take embedded audio on an ATEM SDI output. *Assumed; no ledger source. Confirm at the bench test.*
 - **Multiview → LEFT lid** over HDMI. The multiview output rate is set to 59.94 while the switcher runs 29.97. *Decided.*
 - ATEM audio Ch 1–2 come from the AVIO (XLR pigtails). *Decided.*
 
@@ -49,13 +50,12 @@ The running config the rig depends on that isn't hardware: switcher, recorder, a
 
 ## 6. Cameras
 
-- **Shutter 1/60** (avoids LED wall flicker).
-- **ISO:** dual native 400 / 3200.
-- **White balance 3600K, tint 3.**
-- **Exposure:** False Color.
-- **Lens roles:** Sigma 24mm locked wide; Canon 75–300mm tight; Sigma 18–35mm rover.
-
-*Decided (running practice).*
+- **29.97 fps, shutter 180° (1/60)** to avoid LED wall flicker. **Off-speed / sensor frame rate OFF.** *Decided.*
+- **White balance 3600K, tint 3,** the same on both bodies. *Decided.*
+- **ISO by role:** wide camera 320; rover 400; long shot 3200 (the second native base). *Decided.*
+- **Lens roles:** Cam 1 = locked wide, Sigma 24mm on the K&F manual adapter, focus set once, elevated about 50ft back. Cam 2 = flex: Sigma 18–35mm on the YKEASU electronic adapter for the rover during music (AF on, f2.8–4); Canon 75–300mm on the K&F for the sermon, parked tight on the speaker. *Decided.*
+- **Both Pocket 4Ks also record to their own drives,** not only to the HyperDeck. *Decided.*
+- **Exposure by False Color** instead of the histogram. *Proposed (assistant's suggestion, 2026-08-22; not confirmed as practice).*
 
 ## 7. Network
 
@@ -71,11 +71,13 @@ The running config the rig depends on that isn't hardware: switcher, recorder, a
 - **Dante is isolated:** its own switches, no path to the AX21 or the internet.
 - **Internet** comes in on the AX21 WAN (venue drop or Starlink via INTERNET IN).
 - *Decided (app runbook, 2026-09-19).* Router admin settings beyond these aren't recorded anywhere yet. Write them down at the first bench test (ROADMAP Phase 2).
+- **Topology rules** (decided 2026-06-30): control WiFi and the wired AV gear share one flat subnet, because the apps find the ATEM and the Wing by discovery. Never VLAN or double-NAT them. Dante never cross-links to the production switch. Each switch has one uplink to the router; never run a second cable between two unmanaged switches (broadcast storm).
+- **DHCP pool risk (open, C7):** on TP-Link defaults the AX21's pool starts at .100, the ProPresenter Mac's static address. Sam's fix: reserve .100 and .240 by MAC and check the pool range on this unit. Not done yet (app runbook, 2026-09-21).
 
 ## 8. Day-of checklist (settings that don't persist)
 
 1. ATEM: set **AUX = Clean Feed 1**.
 2. HyperDeck: confirm the meter is **PPM** and the format is **H.264 High 1080p29.97**; confirm the SSD has room.
 3. Levels: **XLR 0, Master 10**.
-4. Cameras: 1/60, WB 3600K, check False Color.
+4. Cameras: 29.97, shutter 180° (1/60), off-speed off, WB 3600K tint 3; ISO 320 wide / 400 rover / 3200 long.
 5. Stream and record: **start both by hand.** Companion "Go Live" waits on Resi API access (C6).

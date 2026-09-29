@@ -1,7 +1,7 @@
 # Build Spec
 
 **Updated:** 2026-09-28 (distillation; replaces PANEL-AND-WIRING v15)
-**Status:** design locked. Nothing ordered. Prices and quantities live in `BOM.xlsx` (v6). This file says what gets built. The BOM says what gets bought.
+**Status:** design locked. Nothing ordered. Prices and quantities live in `BOM.xlsx` (v7). This file says what gets built. The BOM says what gets bought.
 **Status words used here:** *decided* (locked, see DESIGN §5), *assumed* (working value, check listed), *open* (see OPEN-ITEMS), *conditional* (depends on a check that hasn't happened).
 
 ---
@@ -67,12 +67,13 @@
 | From | Cable | To | Color |
 |---|---|---|---|
 | Stage box (Midas DL251) | AES50 | Wing (via the Wing panel AES50 jack if the panel happens) | orange boot |
-| Wing Dante card | Cat | Wing case Dante switch (new TL-SG105) | green |
+| Wing Dante card | Cat | Wing case Dante switch (new 8-port, TL-SG108 or equivalent) | green |
 | Wing case Dante switch | DANTE trunk | AVPRO panel DANTE TRUNK → Bay A Dante satellite (TL-SG1005P) | green |
 | Satellite switch | Cat, PoE | AVIO (desk). The AVIO is PoE-powered | green |
 | AVIO | XLR pigtails | ATEM audio Ch 1–2 | orange |
 | Bianca's Mac, USB-C ethernet adapter | Cat | satellite switch (Dante) | green |
 | Stream-mix laptop (Omar/Mitch, in the booth) | Cat | Wing case Dante switch | green |
+| Tyler's ProTools Mac (in the Wing case) | Cat | Wing case Dante switch. It's a Dante endpoint as well as the USB-C recorder | green |
 | Bianca's talkback mic | XLR | AVPRO panel TALKBACK → trunk → Wing XLR In 8 | orange |
 | Wing XLR Out 8 | XLR trunk | AVPRO panel IEM → Bianca's IEM pack | orange |
 | Wing | USB-C | Tyler's Mac (in the Wing case) for recording | — |
@@ -111,9 +112,9 @@ Power reaches the rig area on **two 125ft 12/3 SO drops** from wall outlets. *De
 | Drop 1 | 5-15P plug | one 5-15R connector body | the AVPRO UPS line cord (and the Wing, through the AVPRO) |
 | Drop 2 | 5-15P plug | one 5-15R connector body (+ a quad box, tentative) | the AV charging station |
 
-- **Both drops are built the same:** 125ft 12/3 SOOW, a Hubbell HBL5266C plug, a Hubbell HBL5269C connector body. Either one can stand in for the other.
+- **Both drops are built the same:** 125ft 12/3 SOOW, a Hubbell HBL5266C plug, a Hubbell HBL5269C connector body. Either one can stand in for the other. The Hubbell part numbers are assumed, not a ruling; an equal 15A industrial plug and connector body can be substituted.
 - **Drop 1 needs one receptacle.** The UPS is the only thing plugged into it; everything else hangs off the UPS.
-- **Drop 2 ends in a quad box (tentative)** (4 outlets, 2ft 12/3 tail with a 5-15P that plugs into the drop's 5-15R). That's the simplest way to give a separate charging table several outlets.
+- **Drop 2 ends in a quad box (tentative)** (4 outlets, 2ft 12/3 tail with a 5-15P that plugs into the drop's 5-15R). That's the simplest way to give a separate charging table several outlets. The BarnDoor part is assumed, not a ruling.
 - **Where the charging station sits is open (OPEN-ITEMS N19), and it doesn't gate the order.** Sam's current leaning (2026-09-28): drop 2 most likely feeds the second PDU in the rack (the Bay B CPPDU511), which would make the quad box unnecessary. Until Sam decides, the BOM keeps the quad box, marked tentative. If Bay B wins, drop 2's 5-15R takes the CPPDU511 cord directly and the quad box line comes off.
 - Voltage drop: 12AWG over 125ft at these loads (2–3A) is about 1%. Fine.
 - Plug each drop into a different wall circuit when the venue has two. If not, both on one is fine; the total is still well under 15A.
@@ -125,6 +126,7 @@ drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower 
 - One UPS backs both cases. The BWING can't carry its own UPS, so this is the only way to back the Wing. For standalone use the Wing goes on a wall outlet. *Decided.*
 - **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on and why the laptop strip is on the charging side. *Decided.*
 - The UPS LCD meters the combined booth + Wing load.
+- **Outlet count.** The CPS1215RM has 12 outlets. The UPS side has 12 loads: ATEM, HD Mini, Resi brick, LED transmitter, TL-SG1005P brick, TL-SG105 brick, AX21 brick, fan, two monitor bricks, the Hollyland RX brick and the POWER > WING feed cord. Six are wall-warts that block a neighbour. The UPS's own outlets (8 on the CP1500PFCRM2U) take the overflow; if bricks still crowd the strip, 1ft outlet-saver pigtails fix it (not in the BOM).
 
 ### Charging side (not backed)
 
@@ -159,8 +161,8 @@ Five short cables, all color-coded and labeled. The cases always sit side by sid
 
 | Cable | Length | Ends | Owned? |
 |---|---|---|---|
-| PROD trunk | 15ft | etherCON both ends | buy (BOM trunk cable + ends) |
-| DANTE trunk | 15ft | etherCON both ends | buy (BOM trunk cable + ends) |
+| PROD trunk | 15ft | etherCON both ends | buy (BOM trunk cable + carriers) |
+| DANTE trunk | 15ft | etherCON both ends | buy (BOM trunk cable + carriers) |
 | TALKBACK | 15ft | XLR | owned (Sam) |
 | IEM | 15ft | XLR | owned (Sam) |
 | POWER | 15ft, 14/3 SJOOW | powerCON TRUE1 male (AVPRO end), female (Wing end) | buy |
@@ -220,7 +222,7 @@ WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
 | IEM | XLR **female** | in from the Wing Out 8 | mirrors the AVPRO's male |
 | POWER IN | powerCON TRUE1 **inlet** | in | pigtail to the Wing's IEC inlet |
 
-- **Inside the case:** the Wing case Dante switch (new TL-SG105) and Tyler's Mac.
+- **Inside the case:** the Wing case Dante switch (new 8-port, TL-SG108 or equivalent) and Tyler's Mac. Tyler's Mac has two links to the Wing: USB-C for recording and a Cat patch to the Dante switch.
 - Genders mirror the AVPRO panel: talkback female ↔ male, IEM male ↔ female, POWER outlet ↔ inlet.
 - **Fallback if the BWING can't take a panel:** the umbilical runs direct to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end feeds the Wing through a short TRUE1-to-IEC C13 jumper (BOM fallback line, qty 0 until needed).
 <!-- /matt -->
@@ -229,7 +231,7 @@ WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
 
 ## 7. Connector stock
 
-This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v6.
+This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v7.
 
 | Item | AVPRO fitted | Wing fitted | Spares | Runs | Total |
 |---|---|---|---|---|---|
@@ -242,7 +244,7 @@ This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v6.
 | powerCON inlet | 0 | 1 | 0 | — | 1 |
 | D-series plates | 3 | 1 | 0 | — | 4 |
 | Blanking plates | 18 | 2 | 0 | — | 20 |
-| etherCON cable ends | — | — | 2 | 9 | 11 |
+| etherCON cable carriers | — | — | 2 | 9 | 11 |
 | powerCON cable ends, male | — | — | 1 | 1 | 2 |
 | powerCON cable ends, female | — | — | 1 | 1 | 2 |
 | SDI jumpers, panel → ATEM | — | — | — | 8 | 8 |
@@ -250,7 +252,7 @@ This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v6.
 | Edison connector body 5-15R (drop rig ends) | — | — | — | 2 | 2 |
 | Quad box (charging station, tentative, N19) | — | — | — | 1 | 1 |
 
-**etherCON cable ends, by run (bought to the high count):**
+**etherCON cable carriers, by run (bought to the high count):**
 
 | Run | Ends |
 |---|---|
@@ -263,7 +265,8 @@ This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v6.
 | **Runs total** | **9** |
 
 - Wing-panel parts (3 etherCON, 1 XLR-M, 1 XLR-F, the inlet, the plate, 2 blanks) are in the Wing block. The spares cover both panels.
-- **Part numbers not final:** the powerCON family and the etherCON cable end (NE8MX6-B expected) are confirmed with the vendor and the datasheet before the BOM calls them firm (D7, P-03). Don't mix CAT6A panel jacks (NE8FDX-Y6) with CAT6 cable ends (NE8MC6-MO); Neutrik says they don't mate.
+- **One standard etherCON family (Sam, 2026-09-28; VERIFY V-01).** Panel jacks are NE8FDP-B. Cable ends are NE8MX-1 carriers (Neutrik's direct successor to the NE8MC-1 that Sam named; the NE8MC-1 is discontinued). Neutrik's compatibility notes: the NE8FDP accommodates NE8MC-series carriers or any standard RJ45 plug; it does **not** intermate with the CAT6 cable connector NE8MC6-MO or NKE6S cables; and the NE8MC/NE8MX-1 carriers do **not** intermate with the CAT6 chassis NE8FDY-C6. The CAT6A cable connector NE8MX6 (BOM v6) belongs to a third family and is out. A carrier slides over the cable before the RJ45 plug goes on (cable OD 3.5–8mm), so each carrier end on a pre-made trunk or an existing field run is cut and re-crimped; the BOM carries a plug pack.
+- **Part numbers not final:** the powerCON TRUE1 family and the NE8FDP-B + NE8MX-1 pair are confirmed with the vendor and the Neutrik compatibility table before the BOM calls them firm (D7, P-03, G2).
 
 ---
 
@@ -369,7 +372,7 @@ Green vs yellow is the split that matters most. Colored jackets where available,
 - **Power:** ~715–725W spare on the UPS. The Bay B strips have open outlets on utility.
 - **Panel:** panel 3 is a full spare row; 3 open holes on each of panels 1 and 2; loose spares of every connector type; one etherCON spare pre-wired to the AX21.
 - **Rack:** Bay A U4–U6 reserve; Bay B U9–U11 reserve; Top B.
-- **Dante:** 2 free ports on each Dante switch.
+- **Dante:** satellite 2 free of 5 (trunk, AVIO, Bianca's Mac used). Wing case switch 4 free of 8 (Wing Dante card, trunk, stream-mix laptop, Tyler's Mac used).
 - **Production network: no free wired ports** once everything's plugged in (AX21 4/4, switch 5/5). Phones use WiFi. A bigger production switch is the fix when the Stream Deck host or Mac Minis arrive (ROADMAP).
 - At an event you can add Starlink (power on the UPS, internet into INTERNET IN), an extra monitor, or a field device on a spare jack.
 

@@ -1,8 +1,8 @@
 # ELIM Production Workstation: the plan
 
-*Sam Holub, September 2026. Nothing is ordered yet. Numbers are from the parts list (BOM v6, 2026-09-28).*
+*Sam Holub, September 2026. Nothing is ordered yet. Numbers are from the parts list (BOM v7, 2026-09-28).*
 
-**The problem.** Every week we rebuild the video and control system from loose parts: about 40 separate connections, a lot of them guessed at, then the same in reverse at teardown. It's slow, it wears on the gear, and it depends on the one or two people who remember how it goes together.
+**The problem.** Every week we rebuild the video and control system from loose parts: about 40 separate connections, then the same in reverse at teardown. It's slow, it wears on the gear, and it depends on the one or two people who remember how it goes together.
 
 **What we'd build.**
 
@@ -10,18 +10,18 @@
 - The Wing in its own flip case beside it, joined by five cables.
 - One labeled, color-coded panel on the back where every cable plugs in.
 
-**One-time cost: about $4,900**
+**One-time cost: about $4,700**
 
 - **Includes:** both cases and freight ($1,650; Matt's estimates, to verify), battery backup, power strips and two long power cords, cooling, the connector panel, mounts, drawers, cabling and two screens.
 - **Not included:** gear we already own; field camera cable (after a trial); stage power (a later project).
-- **Plus $100** for a Wing case connector plate, only if the case can take one.
+- **Plus $100** for a Wing case connector plate, only if the case can take one. **Minus about $90** if the charging station moves into the rack (no outlet box needed).
 
 **Already owned:** the switcher, recorder, streaming encoder, video converters, LED wall sender, Dante audio gear, the router and two of the three network switches, cameras, laptops and the Wing.
 
 **Time saved (estimates; I'll time setup before and after):**
 
-- ~40 loose connections become ~15 labeled cables: about 30 minutes faster to set up and 30 to tear down, roughly an hour a week.
-- ~14 devices to handle become ~5; 10+ loose items become 2; one panel instead of four stations.
+- ~40 loose connections become ~15 labeled cables: about 30 minutes faster to set up and 30 to tear down.
+- ~14 devices to handle become ~5; one panel instead of four stations.
 
 **The ask.** Bianca: go/no-go on ordering once Matt's quote is in. Sunny: final sign-off. Target: order October 1.
 
@@ -31,7 +31,7 @@
 | Connector part numbers (with Matt) | Yes, those parts |
 | Where the charging station sits | No |
 | Wing case connector plate | No, checked on delivery |
-| Screen fit, rack screws, LED wall count | No |
+| Screen fit, rack screws | No |
 
 <div class="pb"></div>
 
@@ -71,7 +71,7 @@ So setup is the field cables plus five trunk cables, all landing on one panel.
 
 Two separate networks, plus internet coming in through the router:
 
-- **Audio (Dante):** all the digital audio between the Wing, the audio interface and ProPresenter. It's isolated, with no path to the internet.
+- **Audio (Dante):** all the digital audio between the Wing, the audio interface, ProPresenter and the recording laptops. It's isolated, with no path to the internet.
 - **Control:** the switcher, recorder, stream encoder, laptops and the Wing's control.
 - **Internet:** Starlink or the venue's connection comes in through the router. It's what the stream goes out on, not a third network.
 
@@ -97,18 +97,18 @@ Keeping audio and control apart means neither can step on the other, and a busy 
 |---|---|
 | Cases + freight (Matt's estimates, to verify) | $1,650.00 |
 | Power: battery backup and strips | $709.96 |
-| Connector panel, spares and cable ends | $626.96 |
+| Connector panel, spares and cable ends | $473.41 |
 | Venue power: two 125ft cords + an outlet box | $561.38 |
 | Cabling: jumpers, trunks, short Wing power link | $276.10 |
-| Storage, shelves and a network switch | $431.99 |
+| Storage, shelves and a network switch | $404.99 |
 | Screens (2) | $320.00 |
 | Cooling | $186.00 |
 | Cable management and rack hardware | $90.00 |
-| **First order** | **$4,852.39** |
+| **First order** | **$4,671.84** |
 | Wing connector plate (only if the case takes one) | $100.00 |
-| **Everything** | **$4,952.39** |
+| **Everything** | **$4,771.84** |
 
-Page 1 rounds the first order up to about $4,900. The case and freight line is Matt's estimate until he quotes.
+Page 1 rounds the first order up to about $4,700. The case and freight line is Matt's estimate until he quotes. The venue power line includes an $89.88 outlet box we only need if the charging station is a separate table.
 
 ## Risks and what we haven't covered
 
@@ -139,6 +139,6 @@ Page 1 rounds the first order up to about $4,900. The case and freight line is M
 
 1. **Bianca:** does the desk layout work for ProPresenter? Is the right screen needed on day one, or is later fine?
 2. **Everyone:** is there anything in how you work today that this would trip on? Now's the time, while it's easy to change.
-3. **Sunny:** is about $4,900, with the case price still pending Matt, OK to move to a quote and an order?
+3. **Sunny:** is about $4,700, with the case price still pending Matt, OK to move to a quote and an order?
 4. **Any venue** where the open back, 125ft camera cables, or a single power circuit won't work?
 5. **Anything missing** from the "still open" list on page 1?

@@ -7,6 +7,7 @@ import React from "react";
 // Bay B rear strip RS1215-RA (D3); laptop strip on utility (D4); shared jacks CAM 2 + CAM 8 (Q2);
 // monitor wording (D14); HDMI legend swatch fixed; AES50 colored; Wing panel marked conditional;
 // side compartments wording; UPS load ~275-285W; short trunks (Q3); two venue power drops + short powerCON umbilical (D20).
+// Step 10 fixes: Wing case Dante switch is 8-port; Tyler's Mac also on Dante.
 // Props: mode="full" (default), "phone" (stacked, front + panel only, for review/ELIM-layout.png),
 // or "overview" (one-page, plain names, for review/ELIM-PLAN.pdf page 2).
 
@@ -292,7 +293,7 @@ export default function AvproRackLayout({ mode = "full" }) {
       <SectionTitle n={phone ? "03" : "04"} title="Wing panel (planned, pending BWING inspection)" big={phone} note="Five umbilical jacks to the AVPRO + one AES50 to the stage box. Genders mirror the AVPRO panel. If the BWING can't take a panel, the umbilical plugs straight into the Wing." />
       <div style={{ border: "1px dashed " + C.ink, borderRadius: 6, padding: "14px 12px 6px", background: C.card }}>
         <PanelRow label="WING PANEL" cells={WING_PANEL} wrap={phone} big={phone} />
-        <div style={{ fontSize: phone ? 12.5 : 11, color: C.sub, marginBottom: 8 }}>Inside the case: Dante switch (TL-SG105) + Tyler's Mac.</div>
+        <div style={{ fontSize: phone ? 12.5 : 11, color: C.sub, marginBottom: 8 }}>Inside the case: 8-port Dante switch (TL-SG108 or equivalent) + Tyler's Mac (USB-C to the Wing, plus Dante).</div>
       </div>
 
       {phone ? (

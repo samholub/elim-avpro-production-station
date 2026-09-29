@@ -120,3 +120,19 @@ Outlines in `work/OUTLINES.md` approved. Answers to Q1–Q7 and rulings on P-03 
 | Matt pack | Addressed to Matt: **no third-person "Matt"**, no code line at the top, **no decision codes**; plain words instead. | `work/make_matt.py` scrubs codes and fails the build if any are left. build/ keeps its codes. |
 | Bay names | **Bay A / Bay B stay the identifiers everywhere.** Where a reader may not know them, add a short gloss on first use (e.g. "Bay B (the storage and camera-charging side of the rack)"). | Gloss in Sunny's cover note and in the DESIGN scope paragraph (which the Matt pack uses). Review page 1 doesn't name the bays; their first use (page 2) already explains them. |
 | N19 | **Stays open and non-gating;** Sam decides at package review. **Current leaning: drop 2 most likely feeds the second PDU in the rack (Bay B),** which would make the quad box unnecessary. | BOM keeps the quad box line, price status "tentative, may drop (N19)". Not a decision yet. |
+
+---
+
+## Session 3 rulings (Sam, 2026-09-28): step 10 verification
+
+Sam accepted every finding in `work/VERIFY.md` (V-01 to V-15) and ruled:
+
+| # | Ruling | What it means for the build |
+|---|---|---|
+| **V-01** | **One matched standard etherCON family.** Keep the NE8FDP-B panel feedthroughs; change the cable ends to the NE8MC-1 standard etherCON cable carrier. Name the actual pair in the BOM, BUILD-SPEC and the compatibility warning. Keep it in the pre-order connector check with the powerCON parts (G2). | BOM v7: 11 carriers replace the NE8MX6-B (CAT6A). **Note for Sam:** Neutrik lists the NE8MC-1 as discontinued with the **NE8MX-1** as its direct successor (same standard family; Neutrik: "NE8FDP accommodates NE8MC*"). The BOM names the NE8MX-1 and says so. A carrier goes on before the plug, so a shielded RJ45 plug pack ($12) was added for the re-crimped ends. |
+| **V-02** | **Wing case Dante switch: buy an 8-port metal gigabit switch (TL-SG108 or equivalent)** instead of a 5-port, since Tyler's ProTools Mac already uses a Dante port. Record the ProTools Mac on the Dante switch in the design. | DESIGN §5 #15 and §6, BUILD-SPEC §3/§6/§13, BACKLOG, diagrams, BOM (TL-SG108 $19.99). |
+| **V-10** | **LED wall count: 45**, per the app (current-rig facts, the app wins). Close M4. | N9 resolved; ROADMAP notes 45 (9 × 5). |
+| V-06 to V-09 | OPS-CONFIG: downgrade the two overstated lines to their ledger status; add the missing decided camera and network rules. | False Color = proposed; shared mix = assumed. Added: standard-change procedure, ISO by role, off-speed off, camera internal recording, topology rules, DHCP pool risk (new C7). C1 closed (ran live 2026-08-22). |
+| the rest | Fix as listed: blank page in the Matt PDF; remove internal file references from the Matt pack; rename the "Price" column to what it holds; source or mark the venue-drop part numbers; show the quad box as tentative in the cable map; add "may drop about $90 (charging station)" under the page-1 cost; fix the Changes tab header; state the outlet count on the UPS strip. | All done 2026-09-28; see `build/CHANGELOG.md` and the disposition table at the top of `work/VERIFY.md`. |
+
+Then: re-render, re-run all checks, commit, push, update STATUS.md, and stop for Sam's sign-off before step 11.

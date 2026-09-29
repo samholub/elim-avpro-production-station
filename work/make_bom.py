@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "build" / "BOM.xlsx"
 TOTALS = ROOT / "work" / "bom_totals.json"
 
-VERSION = "v6"
+VERSION = "v7"
 DATE = "2026-09-28"
 FIRST = "First order"
 WING = "Wing block"
@@ -61,10 +61,12 @@ LINES = [
     ("Spares", "XLR female chassis, spare", "Neutrik NC3FD-L-B-1", 1, 6, "est", FIRST, "XLRF", "", "Loose stock.", "NEW (D2)"),
     ("Spares", "XLR male chassis, spare", "Neutrik NC3MD-L-B-1", 1, 6, "est", FIRST, "XLRM", "", "Loose stock.", "NEW (D2)"),
     # --- Cable ends ---
-    ("Cable ends", "etherCON cable connector, CAT6A", "Neutrik NE8MX6-B (TBC, D7 + datasheet)", 11, 18.36, "est", FIRST, "ETH-END",
-     "https://www.bhphotovideo.com/c/product/1461257-REG/neutrik_ne8mx6_b_ethercon_cable_connector.html",
-     "9 for runs (PROD trunk 2, DANTE trunk 2, LED 1 x2, LED 2 x2, INTERNET 1) + 2 spares. Not firm until checked against the datasheet.",
-     "was NE8FDX-Y6-B x6 @ $21.43 (a panel part, P-03)"),
+    ("Cable ends", "etherCON cable carrier (standard etherCON, over an RJ45 plug)", "Neutrik NE8MX-1 (TBC, D7)", 11, 3.31, "est", FIRST, "ETH-END",
+     "https://www.markertek.com/product/ne8mx-1/neutrik-ne8mx-1-ethercon-rj45-cable-connector-carrier",
+     "9 for runs (PROD trunk 2, DANTE trunk 2, LED 1 x2, LED 2 x2, INTERNET 1) + 2 spares. Same standard etherCON family as the NE8FDP-B panel jacks (Neutrik: NE8FDP accommodates NE8MC*). Sam ruled NE8MC-1 on 2026-09-28; Neutrik lists it discontinued with the NE8MX-1 as its direct successor. Markertek $3.31 on 2026-09-28. Cable OD 3.5-8mm. The carrier goes on before the plug, so each carrier end gets a fresh RJ45 crimp.",
+     "v6 had NE8MX6-B (CAT6A) x11 @ $18.36, which does not mate with NE8FDP-B (VERIFY V-01)"),
+    ("Cable ends", "RJ45 plugs, shielded (pack), for the carrier ends", "Shielded Cat6A RJ45 plugs, 10-pk", 1, 12, "est", FIRST, "",
+     "", "One fresh plug per carrier end (trunks, LED and internet runs). Crimper assumed on hand.", "NEW (V-01)"),
     ("Cable ends", "powerCON TRUE1 cable connector, male", "Neutrik NAC3MX-W (TBC, D7)", 2, 18, "est", FIRST, "PCON-END-M",
      "", "1 umbilical AVPRO end (into the outlet) + 1 spare.", "NEW (split out of the umbilical line)"),
     ("Cable ends", "powerCON TRUE1 cable connector, female", "Neutrik NAC3FX-W (TBC, D7)", 2, 18, "est", FIRST, "PCON-END-F",
@@ -89,9 +91,9 @@ LINES = [
     ("Mounting", "1U vented cantilever shelf, 10in deep", "AC Infinity 1U vented (B01C9KYUG8)", 3, 25, "est", FIRST, "",
      "https://www.amazon.com/AC-Infinity-Cantilever-Universal-Heavy-Duty/dp/B01C9KYUG8",
      "U11 Resi; U10 HD Mini + TL-SG1005P + its power brick; U8 TL-SG105 + AX21.", "qty 2 -> 3 (D5, D19)"),
-    ("Network", "Wing case Dante switch (non-PoE)", "5-port metal gigabit switch (TL-SG105 or equivalent)", 1, 46.99, "est", FIRST, "",
-     "https://www.tp-link.com/us/business-networking/unmanaged-switch/tl-sg105/",
-     "New buy (D1). Best Buy $46.99 on 2026-09-28. TP-Link lists it end of life; any 5-port metal gigabit unmanaged switch works.", "NEW (D1)"),
+    ("Network", "Wing case Dante switch (non-PoE)", "8-port metal gigabit switch (TL-SG108 or equivalent)", 1, 19.99, "est", FIRST, "",
+     "https://www.newegg.com/tp-link-tl-sg108-8-x-rj45/p/N82E16833704173",
+     "New buy (D1). 8 ports (Sam, 2026-09-28): the Wing Dante card, the trunk, the stream-mix laptop and Tyler's ProTools Mac take 4. Newegg $19.99 on 2026-09-28; any 8-port metal gigabit unmanaged switch works.", "NEW (D1); 5-port -> 8-port (VERIFY V-02)"),
     # --- Storage ---
     ("Storage", "4U rack drawer", "StarTech 4UDRAWER", 2, 155, "est", FIRST, "",
      "https://www.startech.com/en-us/server-management/4udrawer", "Bay B.", "unchanged"),
@@ -108,9 +110,9 @@ LINES = [
      "", "One per CAM jack. CAM 2 and CAM 8 jumpers are run and parked (Q2).", "unchanged"),
     ("Cabling", "Cat6A patch, color-coded (lot)", "Monoprice SlimRun Cat6A 10-pk", 1, 80, "est", FIRST, "",
      "https://www.amazon.com/Monoprice-Cat6A-10-Color-10-Pk-Patch/dp/B0DNSQR1D3",
-     "Internal jumpers. Trunk cable must suit the etherCON cable end (D7 check).", "unchanged"),
+     "Internal jumpers.", "unchanged"),
     ("Cabling", "Trunk cable, shielded Cat6A, 15ft", "Shielded Cat6A patch, 15ft", 2, 12, "est", FIRST, "",
-     "", "PROD and DANTE trunks (the cases sit side by side, Q3). etherCON ends on the Cable ends line.", "NEW (Q3)"),
+     "", "PROD and DANTE trunks (the cases sit side by side, Q3). etherCON carriers on the Cable ends line; the carrier end gets a fresh RJ45 plug. Cable OD must be 3.5-8mm for the carrier boot.", "NEW (Q3)"),
     ("Cabling", "HDMI 2.0 jumper, short", "HDMI 2.0, 6-10ft", 3, 12, "est", FIRST, "",
      "", "ProPresenter > LED Tx; Anker hub > CONF OUT; ATEM multiview > LEFT lid.", "NEW (D2)"),
     ("Cabling", "Short power cord, 5-15P to IEC C13", "2-3ft", 6, 7, "est", FIRST, "",
@@ -126,12 +128,12 @@ LINES = [
      "NEW (D20)"),
     ("Venue power", "Edison plug, 5-15P (wall end)", "Hubbell HBL5266C", 2, 14, "est", FIRST, "EDISON-P",
      "https://www.hubbell.com/wiringdevice-kellems/en/products/straight-blade-devices-male-plug-insulgrip-heavy-duty-industrialcommercial-grade-straight-2-pole-3-wire-grounding-15a125v-5-15p-and-white/p/555598",
-     "One per drop. Check the cord range covers 0.595in.", "NEW (D20)"),
+     "One per drop. Check the cord range covers 0.595in. Part assumed, not a ruling: an equal 15A industrial plug may be substituted.", "NEW (D20)"),
     ("Venue power", "Edison connector body, 5-15R (rig end)", "Hubbell HBL5269C", 2, 18, "est", FIRST, "EDISON-R",
-     "", "One per drop. Drop 1: the UPS line cord plugs in. Drop 2: the quad box plugs in.", "NEW (D20)"),
+     "", "One per drop. Drop 1: the UPS line cord plugs in. Drop 2: the quad box or the CPPDU511 cord plugs in. Part assumed, not a ruling: an equal 15A connector body may be substituted.", "NEW (D20)"),
     ("Venue power", "Quad box, 4 outlets, 2ft 12/3 tail with 5-15P", "BarnDoor QB-M-2FT metal quad box", 1, 89.88, "tentative, may drop (N19)", FIRST, "QUADBOX",
      "https://www.filmandvideolighting.com/metal-quad-box-hard-wired-12-3-sjoow-2ft-tail-qb-m-2ft.html",
-     "Quoted $89.88 on 2026-09-28. Only needed if the charging station is a separate table. Sam leans toward drop 2 feeding the Bay B PDU instead, which removes this line (N19).", "NEW (D20)"),
+     "Quoted $89.88 on 2026-09-28. Only needed if the charging station is a separate table. Sam leans toward drop 2 feeding the Bay B PDU instead, which removes this line (N19). Part assumed, not a ruling.", "NEW (D20)"),
     # --- Monitors ---
     ("Monitors", "Lid monitor, 24in matte IPS", "LG UltraGear 24GS60F-B", 2, 150, "est", FIRST, "",
      "https://www.amazon.com/LG-24GS60F-B-Ultragear-Compatible-DisplayPort/dp/B0CYQGRTHX",
@@ -195,7 +197,7 @@ OWNED = [
     ("Cameras", "Pocket 4K x2, DJI", "various", "Three cameras at every event (D9)."),
     ("Compute", "ProPresenter Mac (Bianca), switcher laptop, Anker hub", "-", "On the desk. Laptop strip on utility (D4)."),
     ("Cabling", "Short XLR cables x2 (talkback + IEM trunks)", "-", "Owned (Sam confirmed 2026-09-28). Not in the buy total."),
-    ("Cabling", "LED wall and internet field runs", "-", "Today's runs; get etherCON ends (Cable ends line). M7 sets the LED end count."),
+    ("Cabling", "LED wall and internet field runs", "-", "Today's runs; add etherCON carriers at the panel end (cut the plug, slide the carrier on, re-crimp). M7 sets the LED end count."),
 ]
 
 CHANGES = [
@@ -220,6 +222,10 @@ CHANGES = [
     ("D2", "D-series plates: 1 lot @ $60 -> 3 @ $20", "0.00"),
     ("D2", "Wing panel block added as a separate total (not in the first order)", "see Wing block total"),
     ("D6", "Case prices unchanged; marked placeholder, to verify (Matt)", "0.00"),
+    ("V-01", "v7: etherCON cable ends NE8MX6-B (CAT6A) x11 @ $18.36 -> NE8MX-1 carriers (standard etherCON, NE8MC-1's successor) x11 @ $3.31", "-165.55"),
+    ("V-01", "v7: + shielded RJ45 plug pack for the carrier ends", "+12.00"),
+    ("V-02", "v7: Wing case Dante switch 5-port TL-SG105 @ $46.99 -> 8-port TL-SG108 or equivalent @ $19.99 (Tyler's Mac is also on Dante)", "-27.00"),
+    ("", "Sum of the numeric rows + v5 $3,961.56 = the first-order total. The Wing block ($100.00) is on top of that.", ""),
 ]
 
 HEAD_FILL = PatternFill("solid", fgColor="1E293B")
@@ -326,9 +332,9 @@ def main():
 
     # ---------------- Changes ----------------
     wch = wb.create_sheet("Changes")
-    wch["A1"] = f"Changes, BOM v5 (2026-08-18, $3,961.56) -> {VERSION} ({DATE})"
+    wch["A1"] = f"Changes, BOM v5 (2026-08-18, $3,961.56) -> v6 -> {VERSION} ({DATE})"
     wch["A1"].font = Font(bold=True, size=13)
-    header(wch, 3, ["Ruling", "Change", "Effect on all-lines total ($)"])
+    header(wch, 3, ["Ruling", "Change", "Effect on first-order total ($)"])
     for i, row in enumerate(CHANGES, 4):
         for c, v in enumerate(row, 1):
             wch.cell(i, c, v).alignment = Alignment(wrap_text=True, vertical="top")
@@ -349,8 +355,9 @@ def main():
     for key, label, a, w, s, e in CHECK:
         bom = sum(q for (_, _, _, q, _, _, _, k, *_ ) in LINES if k == key)
         check[key] = {"needed": a + w + s + e, "bom": bom, "pass": a + w + s + e == bom}
+    quad = round(sum(q * u for (_, _, _, q, u, _, _, k, *_ ) in LINES if k == "QUADBOX"), 2)
     data = {"version": VERSION, "date": DATE, "first_order": first, "wing_block": wing, "all": round(first + wing, 2),
-            "cases_placeholder": cases, "first_order_ex_cases": round(first - cases, 2), "groups": groups, "check": check}
+            "cases_placeholder": cases, "first_order_ex_cases": round(first - cases, 2), "quad_box": quad, "groups": groups, "check": check}
     TOTALS.write_text(json.dumps(data, indent=2), encoding="utf-8")
     print(json.dumps(data, indent=2))
 

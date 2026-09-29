@@ -4,6 +4,30 @@
 
 **Short version.** The arithmetic holds everywhere: BOM first order $4,852.39, Wing block $100.00, all lines $4,952.39, the Check tab's 18 connector counts, the Changes tab back to v5's $3,961.56, and every dollar figure in `review/` and `matt/`. The 2026-09-26 and 2026-09-28 rulings are all reflected in `build/`, and the superseded facts (TL-SG105 as Dante switch, Teranex shelf, Etsy mount, 125ft umbilical, AX55, three networks, CAM 7/8) are gone or marked as history. `review/ELIM-PLAN.pdf` reads cleanly at phone width. The findings below are one order-affecting connector problem, two medium gaps, and a set of small ones.
 
+## Disposition (2026-09-28, same day)
+
+Sam accepted every finding and ruled on the design points (`work/DECISIONS.md`, session 3). All 15 are fixed in the commit after this one; the generators were re-run and the checks pass (BOM v7 first order $4,671.84, Wing block $100.00; Check tab 18/18; review figures tied; Matt pack scrub clean).
+
+| # | Fix |
+|---|---|
+| V-01 | One standard etherCON family: NE8FDP-B jacks + NE8MX-1 carriers (Sam named the NE8MC-1; Neutrik lists it discontinued, NE8MX-1 is the successor). Plug pack added. BUILD-SPEC §7 names the real pair and Neutrik's compatibility notes. G2 covers the pair. |
+| V-02 | Wing case Dante switch is 8-port (TL-SG108 or equivalent). Tyler's Mac recorded on Dante in DESIGN §6, BUILD-SPEC §3/§6/§13, BACKLOG, both diagrams. |
+| V-03 | Matt pack column renamed "Price status", with a sentence saying so. |
+| V-04 | Page break moved ahead of the Layout heading; no blank page. |
+| V-05 | OPS-CONFIG line dropped, "see Spare capacity" and "the app" reworded; the scrubber now fails on them. |
+| V-06 | False Color = proposed; shared-mix line = assumed, confirm at the bench test. |
+| V-07 | ISO by role (320 / 400 / 3200), off-speed off, camera internal recording added. |
+| V-08 | Topology rules in OPS-CONFIG §7 (linked from DESIGN §6); DHCP pool risk is new open item C7. |
+| V-09 | Standard-change procedure in OPS-CONFIG §1; C1 closed (ran live 2026-08-22). |
+| V-10 | LED wall = 45 per the app; N9 closed; ROADMAP notes it. |
+| V-11 | Hubbell and BarnDoor parts marked "assumed, not a ruling" in BUILD-SPEC and the BOM. |
+| V-12 | Cable map: drop 2 feeds the CPPDU511 direct; the quad box is its own row marked TENTATIVE. |
+| V-13 | Review page 1: "May drop about $90 if the charging station moves into the rack." |
+| V-14 | Changes tab column retitled "Effect on first-order total"; a note row says the Wing block sits on top. |
+| V-15 | BUILD-SPEC §4 states the 12-outlet strip vs 12 loads and where the overflow goes. |
+
+---
+
 Severity: **High** = could cause a wrong order or a wrong build. **Medium** = a decided fact is missing or a reader will misread something. **Low** = wording, labeling, or a small coverage gap.
 
 ---

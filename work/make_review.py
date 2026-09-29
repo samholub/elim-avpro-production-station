@@ -43,6 +43,7 @@ def check_numbers(md, t):
         raise SystemExit(f"Page 1 must say 'about ${rounded_up(t['first_order'])}'")
     # Page 1 shows whole dollars only (Sam, 2026-09-28): the rounded total, or a BOM figure with its cents dropped.
     whole = {rounded_up(t["first_order"])} | {f"{v:,.0f}" for v in (t["cases_placeholder"], t["wing_block"]) if v == int(v)}
+    whole.add(f"{round(t['quad_box']):,}")  # "may drop about $90" (the tentative quad box, N19)
     p1 = re.findall(r"\$(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)", page1)
     bad1 = [f for f in p1 if f not in whole]
     if bad1:
@@ -60,6 +61,7 @@ def check_numbers(md, t):
         fmt(g["Cable mgmt | First order"] + g["Hardware | First order"]),
     }
     allowed |= set(OTHER)
+    allowed.add(fmt(t["quad_box"]))  # the tentative quad box, named in the cost section
     found = re.findall(r"\$(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)", md)
     bad = [f for f in found if f not in allowed]
     if bad:

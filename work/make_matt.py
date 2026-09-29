@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 import openpyxl
+from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from render_pdf import html_to_pdf, md_to_html  # noqa: E402
@@ -67,7 +68,7 @@ def fill_list():
 
 
 def table(items):
-    out = ["| Group | Item | Model / SKU | Qty | Price |", "|---|---|---|---|---|"]
+    out = ["| Group | Item | Model / SKU | Qty | Price status |", "|---|---|---|---|---|"]
     for g, i, m, q, p in items:
         out.append(f"| {g} | {i} | {m} | {q} | {p} |")
     return "\n".join(out)
@@ -86,10 +87,13 @@ PLAIN = [
     ("**M3:** ", "**Side doors:** "),
     (" (OPEN-ITEMS N19)", ""),
     ("- Open with Sam: does Omar have a separate Dante device at the drum kit? (R-019)\n", ""),
+    ("- Static IPs and router settings are in `OPS-CONFIG.md`.\n", ""),
+    ("(see Spare capacity)", "(a bigger production switch is on the roadmap)"),
+    ("come from the app's port map", "come from the current rig's port map"),
 ]
-CODE = r"(?:[DMQNG]\d{1,2}|P-\d{2}|R-\d{3}|O-\d{2})"
+CODE = r"(?:[DMQNG]\d{1,2}|P-\d{2}|R-\d{3}|O-\d{2}|V-\d{2})"
 CODE_PAREN = re.compile(r"\s*\((?:" + CODE + r"(?:\s*(?:,|/|\+|and)\s*" + CODE + r")*)\)")
-LEFTOVER = re.compile(r"\b" + CODE + r"\b(?! cage nuts)|OPEN-ITEMS|BUILD-SPEC|§\d")  # "M6 cage nuts" is a screw size
+LEFTOVER = re.compile(r"\b" + CODE + r"\b(?! cage nuts)|OPEN-ITEMS|BUILD-SPEC|OPS-CONFIG|Spare capacity|\bthe app\b|§\d")  # "M6 cage nuts" is a screw size
 
 
 def scrub(md):
@@ -108,6 +112,22 @@ def scrub(md):
 
 def money(x):
     return f"${x:,.2f}"
+
+
+def slice_tall(png, out_dir, stem, ratio):
+    """Cut a tall PNG into pieces no taller than width*ratio. Returns the piece paths (temporary)."""
+    im = Image.open(png)
+    w, h = im.size
+    step = int(w * ratio)
+    n = max(1, -(-h // step))
+    step = -(-h // n)
+    paths = []
+    for i in range(n):
+        piece = im.crop((0, i * step, w, min(h, (i + 1) * step)))
+        p = out_dir / f"{stem}-{i + 1}.png"
+        piece.save(p)
+        paths.append(p)
+    return paths
 
 
 def main():
@@ -149,7 +169,7 @@ The design is locked. We'd like your quote on the cases and freight, your help p
 
 ## 6. Fill hardware
 
-Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, Changes). Cases and freight are left off this list; they're question 1.
+Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, Changes). The last column below is the price status (est / firm / quoted / tentative), not the price. Cases and freight are left off this list; they're question 1.
 
 - **First order:** {money(t['first_order'])}, of which {money(t['cases_placeholder'])} is the case and freight placeholder (AVPRO $500, BWING $900, freight $250). Without cases: {money(t['first_order_ex_cases'])}.
 - **Wing panel block:** {money(t['wing_block'])}, bought only if the BWING can take a panel.
@@ -161,6 +181,8 @@ Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, C
 ### Wing panel block (conditional)
 
 {table(wing)}
+
+<div class="pb"></div>
 
 ## 7. Layout
 
@@ -180,10 +202,18 @@ Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, C
     table{border-collapse:collapse;width:100%;margin:6pt 0;font-size:9pt;page-break-inside:auto} tr{page-break-inside:avoid}
     th,td{border:1px solid #cbd5e1;padding:3pt 5pt;text-align:left;vertical-align:top} th{background:#eef2f6}
     pre{background:#f6f7f9;border:1px solid #cbd5e1;padding:6pt;font-size:8.5pt;white-space:pre-wrap}
-    code{font-size:9pt} img{width:100%;page-break-before:always}
+    code{font-size:9pt} img{width:100%;max-height:9.1in;object-fit:contain;display:block;margin:0 0 6pt;page-break-inside:avoid} .pb{page-break-after:always}
     """
-    html = md_to_html(md, css, "ELIM AVPRO - Pack for Matt")
-    html_to_pdf(html, OUT / "MATT-PACK.pdf", OUT, page_format="Letter", margin="0.55in")
+    # The rack layout is far taller than a page. Slice it into page-sized pieces for the PDF only, so the
+    # heading and the first piece share a page (a single tall <img> jumps to a new page and orphans the heading).
+    pieces = slice_tall(BUILD / "diagrams" / "rack-layout.png", OUT, "_render_layout", ratio=1.29)
+    html_md = md.replace("![Rack layout](rack-layout.png)", "\n".join(f"![Rack layout, part {i + 1}]({p.name})" for i, p in enumerate(pieces)))
+    html = md_to_html(html_md, css, "ELIM AVPRO - Pack for Matt")
+    try:
+        html_to_pdf(html, OUT / "MATT-PACK.pdf", OUT, page_format="Letter", margin="0.55in")
+    finally:
+        for p in pieces:
+            p.unlink(missing_ok=True)
     print(f"matt/ regenerated: {len(qs)} questions, {len(first)} first-order lines, {len(wing)} Wing lines")
 
 

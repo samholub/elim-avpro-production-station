@@ -4,6 +4,22 @@ Build milestones, decisions, and significant changes. Most recent first.
 
 -----
 
+## 2026-09-28 -- Step 10 Verification Fixes (BOM v7)
+
+An independent check (`work/VERIFY.md`, 15 findings) ran against the new set. Sam accepted every finding and ruled on the two design points (`work/DECISIONS.md`, session 3).
+
+**etherCON family.** BOM v6 paired NE8FDP-B panel jacks (standard etherCON) with NE8MX6-B cable ends (CAT6A), which Neutrik doesn't intermate. Ruling: one standard etherCON family. Panel jacks stay NE8FDP-B; cable ends become NE8MX-1 carriers (Sam named the NE8MC-1; Neutrik lists it discontinued with the NE8MX-1 as its direct successor). A carrier goes on before the plug, so the BOM adds a shielded RJ45 plug pack and the trunks and field runs get re-crimped at the carrier end. The pair stays in the G2 pre-order check with the powerCON parts.
+
+**Wing case Dante switch is 8-port** (TL-SG108 or equivalent), because Tyler's ProTools Mac is a Dante endpoint as well as the USB-C recorder (app, Sam's ruling 2026-09-17). The design now records that.
+
+**LED wall = 45 panels** (nine by five), per the app; M4/N9 closed. **C1 closed:** 1080p29.97 ran live on 2026-08-22.
+
+**BOM v7: first order $4,671.84** (from $4,852.39: cable ends −$165.55, plug pack +$12.00, switch −$27.00), Wing block $100.00, all lines $4,771.84. Review page 1 says "about $4,700" and notes the tentative quad box may drop about $90.
+
+**Smaller fixes.** OPS-CONFIG: False Color and the shared-mix line downgraded to their ledger status; camera settings, the ATEM standard-change procedure, the switch topology rules and the AX21 DHCP-pool risk (new C7) added. BUILD-SPEC: UPS-strip outlet count stated; the Hubbell and BarnDoor parts marked assumed. Cable map shows the quad box as tentative and adds Tyler's Mac on Dante. Matt pack: blank page removed, "Price status" column, internal file references scrubbed. BOM Changes tab column retitled.
+
+-----
+
 ## 2026-09-28 -- Distillation: New Build Set (build/ + review/ + matt/)
 
 The whole doc set was audited against every project conversation (15 chats, 3,766 ledger facts), reconciled, and regenerated as one repo. Sam ruled on every conflict (`work/DECISIONS.md`, 2026-09-26 and 2026-09-28).

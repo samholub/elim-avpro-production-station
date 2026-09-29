@@ -7,7 +7,7 @@ This folder is the master for the ELIM AVPRO workstation and Wing case build. Al
 ## Status
 
 1. Design locked. Nothing ordered yet.
-2. BOM v6: **first order $4,852.39** (includes $1,650 case + freight placeholders, to verify with Matt). Wing panel block **$100.00**, only if the BWING can take a panel.
+2. BOM v7: **first order $4,671.84** (includes $1,650 case + freight placeholders, to verify with Matt; includes a tentative $89.88 quad box). Wing panel block **$100.00**, only if the BWING can take a panel.
 3. Target order date: **2026-10-01**, pending Matt's quote.
 4. Waiting on: Matt's case and freight quote; the powerCON and etherCON part check (D7). Sam: where the charging station sits (default: its own table).
 5. Next: order → fabricate → assemble → prove (`BACKLOG.md`).
@@ -17,7 +17,7 @@ This folder is the master for the ELIM AVPRO workstation and Wing case build. Al
 | Gate | Owner |
 |---|---|
 | Case and freight quote (the order gate) | Matt |
-| One matched powerCON TRUE1 family + the etherCON cable end, checked against the datasheets | Matt / vendor, Sam |
+| One matched powerCON TRUE1 family + the etherCON pair (NE8FDP-B jacks, NE8MX-1 carriers), checked against the datasheets | Matt / vendor, Sam |
 | Rack rail thread | Sam. Gates the screw line only |
 
 Full list with dates: `OPEN-ITEMS.md`.
@@ -29,7 +29,7 @@ Full list with dates: `OPEN-ITEMS.md`.
 | `README.md` | This page | Everyone |
 | `DESIGN.md` | Overview, team, approval chain, principles, locked decisions, network, power, process | Sam, Bianca |
 | `BUILD-SPEC.md` | Dimensions, cameras, signal map, power, both panel maps, connector stock, rack placement, monitors, cooling, cabling, color code | Sam, Bianca, Matt |
-| `BOM.xlsx` | The buy list (v6). Tabs: Buy, Owned, Check, Changes. Totals are formulas | Sam, Matt |
+| `BOM.xlsx` | The buy list (v7). Tabs: Buy, Owned, Check, Changes. Totals are formulas | Sam, Matt |
 | `OPEN-ITEMS.md` | Every open item with owner, due date and whether it gates the order. Resolved log | Sam |
 | `BACKLOG.md` | Order → fabricate → assemble → prove, as checkboxes | Sam, Bianca |
 | `ROADMAP.md` | What comes after the build: stage power, Stream Deck, Mac Minis, parked items | Sam |

@@ -73,7 +73,7 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 | 12 | Runs on **one 15A** circuit, two preferred, never tied. Power arrives on **two 125ft 12/3 SO drops** with Edison ends: drop 1 → AVPRO (and the Wing through it), drop 2 → the charging station | The whole rig draws well under 15A; venue circuit counts are unknowable (D20) | 2026-09-28 |
 | 13 | **Bay B power:** CPPDU511 front (metered, drawer lights) + RS1215-RA rear (camera chargers), chained, utility side | Front lights the drawers; rear outlets face the chargers; one meter (D3) | 2026-08-20 |
 | 14 | **Laptop strip on the utility side,** plain surge strip | Laptops have batteries; keeps surge off the UPS (D4) | 2026-09-26 |
-| 15 | **Switches:** owned TL-SG1005P (PoE) = Bay A Dante satellite, powers the AVIO; owned TL-SG105 = Bay A production switch; **new TL-SG105** = Wing case Dante switch | Keeps PoE for the AVIO with no injector (D1) | 2026-09-26 |
+| 15 | **Switches:** owned TL-SG1005P (PoE) = Bay A Dante satellite, powers the AVIO; owned TL-SG105 = Bay A production switch; **new 8-port (TL-SG108 or equivalent)** = Wing case Dante switch | Keeps PoE for the AVIO with no injector (D1). 8 ports because Tyler's ProTools Mac is also a Dante endpoint (Sam, 2026-09-28) | 2026-09-28 |
 | 16 | **Bay A mounting per layout v15:** Resi U11; HD Mini + TL-SG1005P U10; TL-SG105 + AX21 U8; all on the same 1U vented shelf; Etsy dual mount and Teranex shelf dropped | Every network jumper stays in Bay A; cheapest shelf (D5, D19) | 2026-09-28 |
 | 17 | **Two networks, not three:** Dante (isolated) and Production; internet is the AX21's WAN | That's the physical wiring; "three" was a zoning aid | 2026-08-27 |
 | 18 | Router is the **AX21** (older docs say AX55 for the same router) | D11 | 2026-09-26 |
@@ -94,7 +94,7 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 **Two physical networks.** Only Dante is isolated.
 
 **Dante** (isolated, no internet path):
-- Wing case Dante switch (new TL-SG105): the Wing's Dante card, the trunk uplink, the stream-mix laptop.
+- Wing case Dante switch (new 8-port, TL-SG108 or equivalent): the Wing's Dante card, the trunk uplink, the stream-mix laptop, and Tyler's ProTools Mac (which also records over USB-C). 4 of 8 ports used.
 - Bay A satellite (owned TL-SG1005P, PoE): the trunk, the AVIO (PoE-powered), Bianca's Mac (USB-C ethernet adapter).
 - One DANTE trunk joins the two switches through the panels.
 
@@ -104,7 +104,7 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 
 **Internet** is the AX21's WAN uplink, not a third network. Venue drop or Starlink lands on INTERNET IN. Resi streams out through it.
 
-Static IPs and router settings: `OPS-CONFIG.md`.
+Static IPs, router settings and the switch topology rules (one uplink per switch, never a cable between two unmanaged switches, no VLAN between control WiFi and wired gear): `OPS-CONFIG.md` §7.
 
 ---
 
@@ -127,7 +127,7 @@ Static IPs and router settings: `OPS-CONFIG.md`.
 
 These describe the rig as it runs today (app, on-site 2026-09-14). They're not conflicts; they change at cutover.
 
-- **Today the Wing case holds** the AX21, the production switch, the Dante switch (the TL-SG1005P) and Resi, on a switched strip that powers the AX21 and the Dante switch together. The design moves the router, production switch, Resi and the TL-SG1005P to AVPRO Bay A, and a new TL-SG105 becomes the Wing case Dante switch.
+- **Today the Wing case holds** the AX21, the production switch, the Dante switch (the TL-SG1005P) and Resi, on a switched strip that powers the AX21 and the Dante switch together. The design moves the router, production switch, Resi and the TL-SG1005P to AVPRO Bay A, and a new 8-port switch becomes the Wing case Dante switch. Tyler's ProTools Mac is on the Dante switch today as well as on USB-C to the Wing; the design keeps that.
 - **The HD Mini has no packing home today.** The design puts it at Bay A U10.
 - **There's no UPS today.** It's new with the build.
 - The app's "video stream laptop" (MacBook Air) is probably this project's "switcher laptop". Sam to confirm (OPEN-ITEMS).

@@ -2,6 +2,7 @@ import React from "react";
 
 // ELIM AVPRO - Cable Map / Signal Flow (build set, 2026-09-28). Regenerated from BUILD-SPEC section 3 and 4.
 // Replaces avpro-cable-map-v1 (stale: AX55, the old power design, right lid fed on day one).
+// Step 10 fixes: quad box drawn as tentative; Tyler's Mac on the Wing case Dante switch; 8-port Wing switch.
 // Each row is one signal chain. Arrows are cables; the label is the type, the color is the cable color code.
 
 const C = {
@@ -36,10 +37,11 @@ const GROUPS = [
     title: "Audio and Dante",
     chains: [
       { nodes: ["Stage box (DL251)", "Wing"], links: [["AES50", C.audio]] },
-      { nodes: ["Wing Dante card", "Wing case switch", "DANTE TRUNK", "Bay A satellite", "AVIO (PoE)"], links: [["Cat", C.dante], ["trunk 15ft", C.dante], ["Cat", C.dante], ["Cat + PoE", C.dante]] },
+      { nodes: ["Wing Dante card", "Wing case switch (8-port)", "DANTE TRUNK", "Bay A satellite", "AVIO (PoE)"], links: [["Cat", C.dante], ["trunk 15ft", C.dante], ["Cat", C.dante], ["Cat + PoE", C.dante]] },
       { nodes: ["AVIO", "ATEM Ch 1-2"], links: [["XLR pigtails", C.audio]] },
       { nodes: ["Bianca's Mac", "Bay A satellite"], links: [["USB-C Cat", C.dante]] },
       { nodes: ["Stream-mix laptop (booth)", "Wing case switch"], links: [["Cat", C.dante]] },
+      { nodes: ["Tyler's Mac (in case)", "Wing case switch"], links: [["Cat (Dante)", C.dante]] },
       { nodes: ["Bianca's talkback mic", "Panel TALKBACK", "Wing In 8 (Tyler to confirm)"], links: [["XLR", C.audio], ["XLR 15ft", C.audio]] },
       { nodes: ["Wing Out 8 (Tyler to confirm)", "Panel IEM", "Bianca's IEM"], links: [["XLR 15ft", C.audio], ["XLR", C.audio]] },
       { nodes: ["Wing", "Tyler's Mac (in case)"], links: [["USB-C", C.neutral]] },
@@ -60,8 +62,8 @@ const GROUPS = [
     chains: [
       { nodes: ["Wall outlet", "Drop 1 (125ft 12/3 SO)", "UPS CP1500PFCRM2U", "CPS1215RM", "Bay A + desk gear, lids"], links: [["5-15P", C.power], ["5-15R", C.power], ["mains", C.power], ["5-15P > C13", C.power]] },
       { nodes: ["CPS1215RM", "POWER > WING outlet", "Wing"], links: [["feed cord", C.power], ["powerCON 15ft 14/3", C.power]] },
-      { nodes: ["Wall outlet (2nd circuit preferred)", "Drop 2 (125ft 12/3 SO)", "Quad box (charging station)", "Chargers"], links: [["5-15P", C.power], ["5-15R", C.power], ["mains", C.power]] },
-      { nodes: ["Quad box", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["mains", C.power], ["chained", C.power], ["mains", C.power]] },
+      { nodes: ["Wall outlet (2nd circuit preferred)", "Drop 2 (125ft 12/3 SO)", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["5-15P", C.power], ["5-15R (direct, if Bay B)", C.power], ["chained", C.power], ["mains", C.power]] },
+      { nodes: ["Drop 2", "Quad box: TENTATIVE, only if the charging station is a separate table (N19)", "Chargers + the CPPDU511 cord"], links: [["5-15R", C.power], ["mains", C.power]] },
       { nodes: ["CPPDU511", "Laptop strip", "Laptops"], links: [["mains", C.power], ["mains", C.power]] },
     ],
   },
@@ -122,7 +124,7 @@ export default function CableMap() {
         </div>
       ))}
       <div style={{ marginTop: 22, fontSize: 11, color: C.sub, lineHeight: 1.5 }}>
-        The CAM 2 and CAM 8 panel jumpers are parked at ATEM IN 2 / IN 8 (shared jacks). The Wing panel is conditional; without it the trunks plug straight into the Wing and its switch. Where the charging station sits is open: drop 2 most likely feeds the Bay B PDU, which would remove the quad box. Camera control (a return SDI per camera) is parked and not shown.
+        The CAM 2 and CAM 8 panel jumpers are parked at ATEM IN 2 / IN 8 (shared jacks). The Wing panel is conditional; without it the trunks plug straight into the Wing and its switch. Where the charging station sits is open: drop 2 most likely feeds the Bay B PDU direct, and the quad box row above is only for the separate-table case. Camera control (a return SDI per camera) is parked and not shown.
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ Specced 2026-08-20 with Matt, **non-blocking to the build, not in the build BOM*
   - The 4-box instrument string shares one 1,800W feeder.
   - The 2 feeders want 2 separate venue 15A circuits, or the isolation is fake.
   - Every pre-made or used cable must be TRUE1-style Seetronic (SAC3), not the older powerCON; they don't mate. Making feeders and jumpers in-house on one TRUE1 end removes the risk.
-- **Inputs still needed:** LED wall panel count (M4); the two stage-power checks in OPEN-ITEMS (N17, N18); Kill-A-Watt the PA speaker draw for venue-circuit planning (BACKLOG).
+- **Inputs still needed:** the two stage-power checks in OPEN-ITEMS (N17, N18); Kill-A-Watt the PA speaker draw for venue-circuit planning (BACKLOG). The LED wall is 45 panels, nine across by five high (app, 2026-09-21); the 40 in the history below was the older count.
 - **History (archived, not current):** the Dec 2025 – Mar 2026 quad-box design and its LED load math (176W per panel, 40 panels in groups of 10, 11.7A at 20% brightness), and the 10/3 and 240V research. Superseded by the Drop-PC design above.
 
 Nothing below starts until the physical loop above is solid.
