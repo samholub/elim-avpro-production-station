@@ -1,7 +1,7 @@
 # Status
 
 **Updated:** 2026-09-28 (session 3, closed)
-**State:** step 10 is done. The independent check (`work/VERIFY.md`, Fable 5.1, fresh session) found 15 items; Sam accepted all of them and ruled on the design points (`work/DECISIONS.md`, session 3). Every fix is applied, the generators re-ran, the checks pass, and everything is pushed to `master`. **Waiting on Sam's sign-off before step 11 (publish and close).**
+**State: COMPLETE.** Steps 1–11 are done. Sam signed off on the step 10 fixes on 2026-09-28 (NE8MX-1 accepted). The repo is tagged `v1.0-distilled`, the superseded baseline docs are copied to `archive/superseded/`, `work/PROJECT-INSTRUCTIONS.md` is ready to paste, and `work/HANDOFF.md` lists Sam's remaining manual steps (project sync, cover notes, Matt's numbers, N19).
 
 ## Where things stand
 
@@ -12,16 +12,16 @@
 - **OPS-CONFIG:** False Color = proposed, shared-mix line = assumed; added the ATEM standard-change procedure, ISO by role, off-speed off, camera internal recording, the switch topology rules, and the AX21 DHCP-pool risk (new open item C7). C1 closed (29.97 ran live 2026-08-22).
 - **Closed:** N9/M4 (LED wall = 45 panels per the app), C1. **New:** C7.
 
-## Waiting on Sam
+## Waiting on Sam (outside the repo; see `work/HANDOFF.md`)
 
-1. **Sign-off on the step 10 fixes** (read `work/VERIFY.md` disposition table, `build/CHANGELOG.md` top entry, `review/ELIM-PLAN.pdf`, `matt/MATT-PACK.pdf`).
-2. **One part-number note (V-01).** Sam ruled NE8MC-1 for the etherCON cable ends. Neutrik lists the NE8MC-1 as discontinued with the **NE8MX-1** as its direct successor (same standard etherCON family; Neutrik's NE8FDP note reads "accommodates NE8MC*"; Markertek $3.31, in stock). The BOM names the NE8MX-1 and says why. If Sam wants the literal NE8MC-1 (still sold in leftover stock), change the SKU string in `work/make_bom.py` and re-run.
+1. **Project sync:** add the GitHub source to the claude.ai project (`build/` and `review/`), paste `work/PROJECT-INSTRUCTIONS.md`, remove the old uploaded docs.
+2. **Send the cover notes** (`work/COVER-NOTES.md`): Matt first, then Bianca, then Sunny.
 3. **N19** (open, non-gating): charging station = Bay B PDU or its own table. Leaning Bay B, which drops the $89.88 quad box. If Bay B wins, delete that line in `work/make_bom.py` and re-run all four scripts; review page 1 rounds down to "about $4,600" automatically (check `make_review.py` still passes).
 4. The order gate itself is Matt's (G1 quote, G2 part family), target order date 2026-10-01.
 
-## Step 11 brief (after sign-off)
+## Step 11 (done 2026-09-28)
 
-Per DISTILLATION-PLAN §3 step 11: commit and push (done continuously); tag `v1.0-distilled`; draft `work/PROJECT-INSTRUCTIONS.md` and point the claude.ai project at the repo (`build/` and `review/` synced, §8); move the superseded `source/docs/` files to `archive/` per RECONCILE §8 dispositions; update this file. `work/COVER-NOTES.md` is ready for Sam to send (Matt first).
+Tagged `v1.0-distilled` at f5a4e35 and pushed. The baseline set is copied (not moved) to `archive/superseded/` with a disposition table in `archive/README.md`; `source/` stays intact as the read-only record per Sam. `work/PROJECT-INSTRUCTIONS.md` and `work/HANDOFF.md` written. Sam's part-number ruling: NE8MX-1 accepted (the NE8MC-1 it succeeds is discontinued).
 
 ## How to regenerate (Python by full path, see CLAUDE.md)
 
@@ -41,7 +41,7 @@ Installed: pycel (formula check), pypdfium2 (PDF page previews), Pillow (layout 
 
 ---
 
-## Done (steps 1–10)
+## Done (steps 1–11)
 
 | Step | Output |
 |---|---|
@@ -54,6 +54,7 @@ Installed: pycel (formula check), pypdfium2 (PDF page previews), Pillow (layout 
 | 8 | `work/RECONCILE.md`, `work/PROPOSALS.md` → **`work/DECISIONS.md`** |
 | 9 | `build/` (BOM v6), `matt/`, `review/`, `work/COVER-NOTES.md`; outlines in `work/OUTLINES.md` |
 | 10 | `work/VERIFY.md` (15 findings, all fixed); BOM v7; DECISIONS session 3 |
+| 11 | Tag `v1.0-distilled`; `archive/superseded/`; `work/PROJECT-INSTRUCTIONS.md`; `work/HANDOFF.md` |
 
 ## Known gaps
 
