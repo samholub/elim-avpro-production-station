@@ -4,6 +4,18 @@ Build milestones, decisions, and significant changes. Most recent first.
 
 -----
 
+## 2026-09-29 -- Session 4 Rulings (team-repo baseline)
+
+Sam ruled on the notes from the team-repo design pass (`work/DECISIONS.md`, session 4). No totals changed: first order $4,671.84, Wing block $100.00, all lines $4,771.84; Check 18/18.
+
+**Charging side.** Drop 2 goes straight to the Bay B CPPDU511, as the cable map already drew it. The quad box is only for a separate charging table (tentative, N19). BUILD-SPEC §4, README and this changelog now use N19's wording: leaning Bay B; quad box only if a separate table.
+
+**Wording.** The SPARE jack is yellow (production network, AX21 LAN 4); grey is gone. The venue drops are "12/3 SOOW" everywhere. Review page 1 gets back "roughly an hour a week" and "10+ loose items become 2", both under its "estimates" heading. The BOM Check tab row ETH-END reads "etherCON cable carriers".
+
+**Team repo.** The build set moves to a team-facing repo (samholub/elim-avpro) once Sam approves it. This repo stays as the workshop and audit trail.
+
+-----
+
 ## 2026-09-28 -- Step 10 Verification Fixes (BOM v7)
 
 An independent check (`work/VERIFY.md`, 15 findings) ran against the new set. Sam accepted every finding and ruled on the two design points (`work/DECISIONS.md`, session 3).
