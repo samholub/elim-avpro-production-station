@@ -41,7 +41,7 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; the IDs are kept so reference
 | N16 | **Weather: accepted risk.** Setups are often outside with no cover. Keep a fitted rain cover or poly sheet + clamps in the case and a two-minute cover-and-kill plan. A powered open-back rack in sudden rain is the one fast path to a big loss | Sam | before the first live deploy (assumed by 2026-11-15) | No |
 | N17 | **Stage power (ROADMAP):** confirm the used Chauvet cable is TRUE1-style Seetronic (SAC3), or make feeders and jumpers in-house on one TRUE1 standard | Sam | when stage power starts (assumed by 2026-12-31) | No |
 | N18 | **Stage power (ROADMAP):** venue circuit count for the 2 feeders (INST, PROD) is a load-in check | Sam | when stage power starts (assumed by 2026-12-31) | No |
-| N19 | **Where is the AV charging station?** The Bay B CPPDU511 (drop 2 plugs into the AVPRO) or a separate table (drop 2 needs its own outlet box). **Default until answered: separate, with its own quad box** (in the BOM). If Bay B, delete the quad box line | Sam | 2026-10-01 | No (default is already in the BOM) |
+| N19 | **Where is the AV charging station?** The Bay B CPPDU511 (drop 2 plugs into the AVPRO) or a separate table (drop 2 needs its own outlet box). **Sam's leaning (2026-09-28): drop 2 most likely feeds the Bay B PDU, so the quad box would drop.** The BOM keeps the quad box, marked "tentative, may drop (N19)". Sam decides when he reviews the full package | Sam | at package review (by 2026-10-01) | No |
 
 ## Active: running config (details in OPS-CONFIG)
 

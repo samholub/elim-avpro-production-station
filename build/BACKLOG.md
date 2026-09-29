@@ -12,7 +12,7 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 - [ ] Matt: AVPRO price, BWING price, consolidated freight.
 - [ ] Matt / vendor: one matched powerCON TRUE1 family + the etherCON cable end part. Sam checks both datasheets; then mark those BOM lines firm.
 - [ ] Matt: source the laptop surge strip (utility side).
-- [ ] Sam: confirm the CPS1215RM listing. Say where the charging station sits (N19; default: own table + quad box).
+- [ ] Sam: confirm the CPS1215RM listing. Decide where the charging station sits (N19; leaning Bay B, which drops the quad box).
 - [ ] Bianca go/no-go (1:1), then Sunny's sign-off.
 
 **Place the first order** (every BOM line not marked "Wing block"):
@@ -25,7 +25,7 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 - [ ] Mounting and network: 3 × 1U vented shelves; TL-SG105 (Wing case Dante).
 - [ ] Storage: 2 × 4U drawers. Lacing bar, hook-and-loop.
 - [ ] Cabling: 8 SDI jumpers, Cat6A lot, 2 trunk cables, 3 HDMI jumpers, 6 short power cords, 15ft 14/3 SJOOW for the powerCON umbilical.
-- [ ] Venue power: 250ft 12/3 SOOW (two 125ft drops), 2 × 5-15P plugs, 2 × 5-15R connector bodies, 1 quad box (N19 default).
+- [ ] Venue power: 250ft 12/3 SOOW (two 125ft drops), 2 × 5-15P plugs, 2 × 5-15R connector bodies, 1 quad box (tentative, may drop, N19).
 - [ ] Monitors: 2 × LG 24GS60F-B + right-angle adapters.
 - [ ] Rack screws **after** the rail thread is known (G6).
 

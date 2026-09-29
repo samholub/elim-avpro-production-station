@@ -24,7 +24,7 @@ Drafts in Sam's voice, 2026-09-28. Sam sends these himself. Each one only frames
 
 > Hi Sunny, this is the plan for the production workstation Bianca and I have been working on. Page 1 is everything you need to decide; the rest is there if you want it.
 >
-> If you saw ~$3,960 earlier: the total went up mainly because parts that were missing got added (connector ends, the Wing's network switch, a Bay B power strip, the two long power cords) and the cable is now priced for real.
+> If you saw ~$3,960 earlier: the total went up mainly because parts that were missing got added (connector ends, the Wing's network switch, a power strip for Bay B (the storage and camera-charging side of the rack), the two long power cords) and the cable is now priced for real.
 >
 > Bianca has reviewed it with me. What I'm asking for is your sign-off to order once Matt confirms the case prices, which I expect this week.
 >

@@ -8,7 +8,7 @@
 <!-- matt:scope -->
 ## 1. Overview
 
-ELIM Church runs a portable production rig that deploys once or twice a week at different venues, set up and struck by volunteers under time pressure. This build consolidates the video, network and control gear into a ProX AVPRO rolling workstation (two 12U bays, two 4U tops, a work surface and two monitor lids), and puts the Behringer Wing in a ProX BWING flip case beside it. Every field cable (cameras, LED wall, confidence monitor, internet) and the five-cable Wing umbilical lands on one labeled, color-coded Neutrik D-series panel on the back of the AVPRO. Almost all the gear inside is already owned. The new spend is the cases, power, cooling, mounts, connectors, cabling and two lid monitors.
+ELIM Church runs a portable production rig that deploys once or twice a week at different venues, set up and struck by volunteers under time pressure. This build consolidates the video, network and control gear into a ProX AVPRO rolling workstation (two 12U bays, two 4U tops, a work surface and two monitor lids). Bay A is the active-system side of the rack; Bay B is the storage and camera-charging side. The Behringer Wing rides in a ProX BWING flip case beside it. Every field cable (cameras, LED wall, confidence monitor, internet) and the five-cable Wing umbilical lands on one labeled, color-coded Neutrik D-series panel on the back of the AVPRO. Almost all the gear inside is already owned. The new spend is the cases, power, cooling, mounts, connectors, cabling and two lid monitors.
 <!-- /matt -->
 
 - The target design is in `BUILD-SPEC.md`. What gets bought is in `BOM.xlsx`.
@@ -110,7 +110,7 @@ Static IPs and router settings: `OPS-CONFIG.md`.
 
 ## 7. Power
 
-- **Venue drops:** two 125ft 12/3 SO cords from wall outlets, 5-15P at the wall, 5-15R at the rig. Drop 1 feeds the AVPRO; drop 2 feeds the charging station (a quad box on its own table by default; OPEN-ITEMS N19).
+- **Venue drops:** two 125ft 12/3 SO cords from wall outlets, 5-15P at the wall, 5-15R at the rig. Drop 1 feeds the AVPRO; drop 2 feeds the charging station. Where that sits is open (OPEN-ITEMS N19); Sam leans toward drop 2 feeding the Bay B PDU, which would drop the quad box.
 - **UPS side:** drop 1 → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, and the powerCON outlet feeding the Wing over a short powerCON link. Estimated load **~275–285W of 1000W**, leaving ~715–725W spare.
 - **Charging side:** drop 2 → CPPDU511 → RS1215-RA (camera chargers). The laptop strip is here too. Labeled "chargers + lights + laptops only".
 - Detail and the draw table: `BUILD-SPEC.md` §4.

@@ -38,9 +38,16 @@ def check_numbers(md, t):
     g = t["groups"]
     allowed = {fmt(v) for v in (t["first_order"], t["wing_block"], t["all"], t["cases_placeholder"])}
     allowed.add(rounded_up(t["first_order"]))
-    page1 = md.split('<div class="pb"></div>')[0]
+    page1, rest = md.split('<div class="pb"></div>', 1)
     if f"about ${rounded_up(t['first_order'])}" not in page1:
         raise SystemExit(f"Page 1 must say 'about ${rounded_up(t['first_order'])}'")
+    # Page 1 shows whole dollars only (Sam, 2026-09-28): the rounded total, or a BOM figure with its cents dropped.
+    whole = {rounded_up(t["first_order"])} | {f"{v:,.0f}" for v in (t["cases_placeholder"], t["wing_block"]) if v == int(v)}
+    p1 = re.findall(r"\$(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)", page1)
+    bad1 = [f for f in p1 if f not in whole]
+    if bad1:
+        raise SystemExit(f"Page 1 figures must be whole dollars tied to the BOM: {bad1}")
+    md = rest
     allowed |= {
         fmt(g["Cases | First order"]),
         fmt(g["Power | First order"]),
@@ -63,7 +70,7 @@ def check_numbers(md, t):
              g["Cabling | First order"], g["Venue power | First order"], g["Storage | First order"] + g["Mounting | First order"] + g["Network | First order"],
              g["Monitors | First order"], g["Cooling | First order"], g["Cable mgmt | First order"] + g["Hardware | First order"]]
     assert round(sum(parts), 2) == t["first_order"], "groups don't sum to the first order"
-    return len(found)
+    return len(p1), len(found)
 
 
 CSS = """
@@ -88,7 +95,7 @@ def main():
     html = md_to_html(md, CSS, "ELIM Production Workstation - the plan")
     html_to_pdf(html, REV / "ELIM-PLAN.pdf", REV, width="5.5in", height="11in", margin="0.42in")
     pages = pdf_page_png(REV / "ELIM-PLAN.pdf", REV / "page1.png", 0, 2)
-    print(f"review/ rendered: {pages} pages; {n} dollar figures, all tied to BOM {t['version']}")
+    print(f"review/ rendered: {pages} pages; page 1: {n[0]} whole-dollar figures; rest: {n[1]} figures; all tied to BOM {t['version']}")
 
 
 if __name__ == "__main__":

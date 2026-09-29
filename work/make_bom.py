@@ -129,9 +129,9 @@ LINES = [
      "One per drop. Check the cord range covers 0.595in.", "NEW (D20)"),
     ("Venue power", "Edison connector body, 5-15R (rig end)", "Hubbell HBL5269C", 2, 18, "est", FIRST, "EDISON-R",
      "", "One per drop. Drop 1: the UPS line cord plugs in. Drop 2: the quad box plugs in.", "NEW (D20)"),
-    ("Venue power", "Quad box, 4 outlets, 2ft 12/3 tail with 5-15P", "BarnDoor QB-M-2FT metal quad box", 1, 89.88, "quoted 2026-09-28", FIRST, "QUADBOX",
+    ("Venue power", "Quad box, 4 outlets, 2ft 12/3 tail with 5-15P", "BarnDoor QB-M-2FT metal quad box", 1, 89.88, "tentative, may drop (N19)", FIRST, "QUADBOX",
      "https://www.filmandvideolighting.com/metal-quad-box-hard-wired-12-3-sjoow-2ft-tail-qb-m-2ft.html",
-     "Charging station on its own table (default until Sam answers N19). If the charging station is Bay B, delete this line.", "NEW (D20)"),
+     "Quoted $89.88 on 2026-09-28. Only needed if the charging station is a separate table. Sam leans toward drop 2 feeding the Bay B PDU instead, which removes this line (N19).", "NEW (D20)"),
     # --- Monitors ---
     ("Monitors", "Lid monitor, 24in matte IPS", "LG UltraGear 24GS60F-B", 2, 150, "est", FIRST, "",
      "https://www.amazon.com/LG-24GS60F-B-Ultragear-Compatible-DisplayPort/dp/B0CYQGRTHX",

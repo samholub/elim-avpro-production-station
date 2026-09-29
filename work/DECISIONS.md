@@ -109,3 +109,14 @@ Outlines in `work/OUTLINES.md` approved. Answers to Q1–Q7 and rulings on P-03 
 | Review p.1 | **Page-1 cost rounds up to the next $100** ("about $X"). Exact figures stay in the cost section and the BOM. The render check allows the rounded page-1 figure only when it rounds up from the BOM first-order total. | review/ page 1: "about $4,900". |
 | Cover notes | Bianca and Sunny get one line on why the total rose from the ~$3,960 they may have seen: mainly missing parts were added (connector ends, Wing switch, Bay B power strip, power drops, real cable pricing). | `work/COVER-NOTES.md` |
 | BOM wording | Switch line reads "5-port metal gigabit switch (TL-SG105 or equivalent)". | BOM Buy tab. |
+
+---
+
+## Session 2 rulings, round 3 (Sam, 2026-09-28)
+
+| # | Ruling | What it means for the build |
+|---|---|---|
+| Review p.1 | Page 1 shows **whole dollars** ($1,650, $100). Cents stay in the cost section and the BOM. | `work/make_review.py` enforces whole dollars on page 1. |
+| Matt pack | Addressed to Matt: **no third-person "Matt"**, no code line at the top, **no decision codes**; plain words instead. | `work/make_matt.py` scrubs codes and fails the build if any are left. build/ keeps its codes. |
+| Bay names | **Bay A / Bay B stay the identifiers everywhere.** Where a reader may not know them, add a short gloss on first use (e.g. "Bay B (the storage and camera-charging side of the rack)"). | Gloss in Sunny's cover note and in the DESIGN scope paragraph (which the Matt pack uses). Review page 1 doesn't name the bays; their first use (page 2) already explains them. |
+| N19 | **Stays open and non-gating;** Sam decides at package review. **Current leaning: drop 2 most likely feeds the second PDU in the rack (Bay B),** which would make the quad box unnecessary. | BOM keeps the quad box line, price status "tentative, may drop (N19)". Not a decision yet. |

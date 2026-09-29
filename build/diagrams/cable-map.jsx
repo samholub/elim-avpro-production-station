@@ -122,7 +122,7 @@ export default function CableMap() {
         </div>
       ))}
       <div style={{ marginTop: 22, fontSize: 11, color: C.sub, lineHeight: 1.5 }}>
-        The CAM 2 and CAM 8 panel jumpers are parked at ATEM IN 2 / IN 8 (shared jacks). The Wing panel is conditional; without it the trunks plug straight into the Wing and its switch. The charging station's location is open (N19); the quad box on its own table is the default. Camera control (a return SDI per camera) is parked and not shown.
+        The CAM 2 and CAM 8 panel jumpers are parked at ATEM IN 2 / IN 8 (shared jacks). The Wing panel is conditional; without it the trunks plug straight into the Wing and its switch. Where the charging station sits is open: drop 2 most likely feeds the Bay B PDU, which would remove the quad box. Camera control (a return SDI per camera) is parked and not shown.
       </div>
     </div>
   );

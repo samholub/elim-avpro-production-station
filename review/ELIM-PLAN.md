@@ -12,9 +12,9 @@
 
 **One-time cost: about $4,900**
 
-- **Includes:** both cases and freight ($1,650.00; Matt's estimates, to verify), battery backup, power strips and two long power cords, cooling, the connector panel, mounts, drawers, cabling and two screens.
+- **Includes:** both cases and freight ($1,650; Matt's estimates, to verify), battery backup, power strips and two long power cords, cooling, the connector panel, mounts, drawers, cabling and two screens.
 - **Not included:** gear we already own; field camera cable (after a trial); stage power (a later project).
-- **Plus $100.00** for a Wing case connector plate, only if the case can take one.
+- **Plus $100** for a Wing case connector plate, only if the case can take one.
 
 **Already owned:** the switcher, recorder, streaming encoder, video converters, LED wall sender, Dante audio gear, the router and two of the three network switches, cameras, laptops and the Wing.
 

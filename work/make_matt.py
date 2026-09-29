@@ -73,6 +73,39 @@ def table(items):
     return "\n".join(out)
 
 
+# The pack is addressed to Matt: no third-person "Matt", and no internal decision codes.
+PLAIN = [
+    ("Matt may know; otherwise it's checked on the rails at delivery", "Do you know? If not, we check the rails at delivery"),
+    ("Order it after delivery if Matt doesn't know", "If you don't know, we order the screws after delivery"),
+    ("Matt or the vendor confirms before ordering", "You or the vendor confirm it before we order"),
+    ("(Matt sourcing)", "(you're sourcing)"),
+    ("(TBC, D7 + datasheet)", "(to confirm)"),
+    ("(family TBC, D7)", "(family to confirm)"),
+    ("(TBC, D7)", "(to confirm)"),
+    ("(assumed, verify on the rails, M6)", "(assumed, verify on the rails)"),
+    ("**M3:** ", "**Side doors:** "),
+    (" (OPEN-ITEMS N19)", ""),
+    ("- Open with Sam: does Omar have a separate Dante device at the drum kit? (R-019)\n", ""),
+]
+CODE = r"(?:[DMQNG]\d{1,2}|P-\d{2}|R-\d{3}|O-\d{2})"
+CODE_PAREN = re.compile(r"\s*\((?:" + CODE + r"(?:\s*(?:,|/|\+|and)\s*" + CODE + r")*)\)")
+LEFTOVER = re.compile(r"\b" + CODE + r"\b(?! cage nuts)|OPEN-ITEMS|BUILD-SPEC|§\d")  # "M6 cage nuts" is a screw size
+
+
+def scrub(md):
+    for a, b in PLAIN:
+        md = md.replace(a, b)
+    md = CODE_PAREN.sub("", md)
+    body = md.split("\n", 1)[1]
+    bad = [m.group(0) for m in LEFTOVER.finditer(body)]
+    if bad:
+        raise SystemExit(f"codes left in the Matt pack: {sorted(set(bad))}")
+    if "Matt" in body:
+        lines = [l for l in body.splitlines() if "Matt" in l]
+        raise SystemExit(f"third-person Matt left in the pack: {lines}")
+    return md
+
+
 def money(x):
     return f"${x:,.2f}"
 
@@ -91,7 +124,6 @@ def main():
     md = f"""# ELIM AVPRO + Wing Build: Pack for Matt
 
 **Generated from the build set on {t['date']} (BOM {t['version']}).** Don't edit this file; it's rebuilt from `build/`.
-Codes like D7, D20 or M5 point to the build decision log and open-items list; ask if one isn't clear.
 
 ## 1. Scope
 
@@ -99,7 +131,7 @@ Codes like D7, D20 or M5 point to the build decision log and open-items list; as
 
 The design is locked. We'd like your quote on the cases and freight, your help pinning a few connector parts, and a sanity check from an outside AV pro.
 
-## 2. Questions for Matt
+## 2. Questions for you
 
 {q_md}
 
@@ -134,6 +166,7 @@ Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, C
 
 ![Rack layout](rack-layout.png)
 """
+    md = scrub(md)
     OUT.mkdir(exist_ok=True)
     (OUT / "MATT-PACK.md").write_text(md, encoding="utf-8")
     shutil.copy(BUILD / "BOM.xlsx", OUT / "BOM.xlsx")

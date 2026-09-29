@@ -109,12 +109,12 @@ Power reaches the rig area on **two 125ft 12/3 SO drops** from wall outlets. *De
 | Drop | Wall end | Rig end | Feeds |
 |---|---|---|---|
 | Drop 1 | 5-15P plug | one 5-15R connector body | the AVPRO UPS line cord (and the Wing, through the AVPRO) |
-| Drop 2 | 5-15P plug | one 5-15R connector body + a quad box | the AV charging station |
+| Drop 2 | 5-15P plug | one 5-15R connector body (+ a quad box, tentative) | the AV charging station |
 
 - **Both drops are built the same:** 125ft 12/3 SOOW, a Hubbell HBL5266C plug, a Hubbell HBL5269C connector body. Either one can stand in for the other.
 - **Drop 1 needs one receptacle.** The UPS is the only thing plugged into it; everything else hangs off the UPS.
-- **Drop 2 ends in a quad box** (4 outlets, 2ft 12/3 tail with a 5-15P that plugs into the drop's 5-15R). That's the simplest way to give a charging table several outlets.
-- **Where the charging station sits is open (OPEN-ITEMS N19).** Default until Sam answers: a separate table with its own quad box, and the Bay B strips plug into that quad box too, since it's beside the rig. If the charging station is Bay B, drop 2's 5-15R takes the CPPDU511 cord directly and the quad box comes off the BOM.
+- **Drop 2 ends in a quad box (tentative)** (4 outlets, 2ft 12/3 tail with a 5-15P that plugs into the drop's 5-15R). That's the simplest way to give a separate charging table several outlets.
+- **Where the charging station sits is open (OPEN-ITEMS N19), and it doesn't gate the order.** Sam's current leaning (2026-09-28): drop 2 most likely feeds the second PDU in the rack (the Bay B CPPDU511), which would make the quad box unnecessary. Until Sam decides, the BOM keeps the quad box, marked tentative. If Bay B wins, drop 2's 5-15R takes the CPPDU511 cord directly and the quad box line comes off.
 - Voltage drop: 12AWG over 125ft at these loads (2–3A) is about 1%. Fine.
 - Plug each drop into a different wall circuit when the venue has two. If not, both on one is fine; the total is still well under 15A.
 
@@ -128,7 +128,7 @@ drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower 
 
 ### Charging side (not backed)
 
-drop 2 → quad box → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided (D3, D4); the quad box step is the N19 default.*
+drop 2 → quad box → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided (D3, D4); the quad box step is tentative (N19).*
 
 - Label both Bay B strips **"chargers + lights + laptops only"**. No high-draw loads. Keep the total under 15A.
 - Laptops run on their own batteries if this side loses power.
@@ -248,7 +248,7 @@ This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v6.
 | SDI jumpers, panel → ATEM | — | — | — | 8 | 8 |
 | Edison plug 5-15P (drop wall ends) | — | — | — | 2 | 2 |
 | Edison connector body 5-15R (drop rig ends) | — | — | — | 2 | 2 |
-| Quad box (charging station, N19 default) | — | — | — | 1 | 1 |
+| Quad box (charging station, tentative, N19) | — | — | — | 1 | 1 |
 
 **etherCON cable ends, by run (bought to the high count):**
 
