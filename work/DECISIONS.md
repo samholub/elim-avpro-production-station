@@ -84,7 +84,7 @@ Outlines in `work/OUTLINES.md` approved. Answers to Q1–Q7 and rulings on P-03 
 | # | Ruling | What it means for the build |
 |---|---|---|
 | Q1 | **Page-1 cost = the first-order total.** The Wing block and "cases pending Matt" go underneath. Matt's estimates stay in, marked "to verify". | review/ page 1 shows one figure: BOM first-order total. |
-| Q2 | **CAM 7/8: yes as proposed.** | Hollyland RX and UltraStudio plug straight into ATEM IN 7 and IN 8. The CAM 7/8 panel jumpers are run and parked; swap at the ATEM to use those jacks for a camera. 8 SDI jumpers stay in the BOM. |
+| Q2 | **Shared jacks are CAM 2 + CAM 8** (Sam, 2026-09-28, amending "CAM 7/8" after the running ATEM map surfaced: app runbook 2026-09-18, IN 2 = Hollyland RX, IN 4–7 = annual-event cameras). | Hollyland RX plugs straight into ATEM IN 2 and the UltraStudio into IN 8. The CAM 2 and CAM 8 panel jumpers are run and parked; swap at the ATEM to use those jacks for a camera. Running ATEM map unchanged. 8 SDI jumpers stay in the BOM. |
 | Q3 | **Umbilical data and audio trunks are short.** The Wing and AVPRO always sit right next to each other. | Talkback XLR, IEM XLR, production and Dante etherCON trunks are sized short. BUILD-SPEC notes which are owned and carries a flexibility note (longer runs can be added later). BOM lines only for what isn't owned. The power umbilical stays 125ft 12/3 SO until P-04 is ruled on. |
 | Q4 | **Pelican-era CHANGELOG entries move to `archive/CHANGELOG-pre-workstation.md`.** | Not in build/. |
 | Q5 | **Keep the O-11 numbers and the 40 → 15 figure in review/,** clearly labeled as estimates to be measured. | review/ page 1 and the rollout section. OPEN-ITEMS keeps "measure today's setup time" (O-10). |

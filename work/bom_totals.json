@@ -1,0 +1,102 @@
+{
+  "version": "v6",
+  "date": "2026-09-28",
+  "first_order": 4480.66,
+  "wing_block": 100,
+  "all": 4580.66,
+  "cases_placeholder": 1650,
+  "first_order_ex_cases": 2830.66,
+  "groups": {
+    "Cases | First order": 1650,
+    "AVPRO panel | First order": 301,
+    "Spares | First order": 52,
+    "Cable ends | First order": 273.96,
+    "Power | First order": 709.96,
+    "Cooling | First order": 186,
+    "Mounting | First order": 75,
+    "Network | First order": 46.99,
+    "Storage | First order": 310,
+    "Cable mgmt | First order": 65,
+    "Hardware | First order": 25,
+    "Cabling | First order": 465.75,
+    "Monitors | First order": 320,
+    "Wing panel | Wing block": 100
+  },
+  "check": {
+    "BNC": {
+      "needed": 10,
+      "bom": 10,
+      "pass": true
+    },
+    "HDMI": {
+      "needed": 1,
+      "bom": 1,
+      "pass": true
+    },
+    "ETH-CHASSIS": {
+      "needed": 11,
+      "bom": 11,
+      "pass": true
+    },
+    "XLRF": {
+      "needed": 3,
+      "bom": 3,
+      "pass": true
+    },
+    "XLRM": {
+      "needed": 3,
+      "bom": 3,
+      "pass": true
+    },
+    "PCON-OUTLET": {
+      "needed": 1,
+      "bom": 1,
+      "pass": true
+    },
+    "PCON-INLET": {
+      "needed": 1,
+      "bom": 1,
+      "pass": true
+    },
+    "DPLATE-AVPRO": {
+      "needed": 3,
+      "bom": 3,
+      "pass": true
+    },
+    "DPLATE-WING": {
+      "needed": 1,
+      "bom": 1,
+      "pass": true
+    },
+    "BLANK-AVPRO": {
+      "needed": 18,
+      "bom": 18,
+      "pass": true
+    },
+    "BLANK-WING": {
+      "needed": 2,
+      "bom": 2,
+      "pass": true
+    },
+    "ETH-END": {
+      "needed": 11,
+      "bom": 11,
+      "pass": true
+    },
+    "PCON-END-M": {
+      "needed": 2,
+      "bom": 2,
+      "pass": true
+    },
+    "PCON-END-F": {
+      "needed": 2,
+      "bom": 2,
+      "pass": true
+    },
+    "SDI-JUMPER": {
+      "needed": 8,
+      "bom": 8,
+      "pass": true
+    }
+  }
+}
