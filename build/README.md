@@ -2,6 +2,8 @@
 
 > samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. This repo is the source.
 
+rig/ is the rig as it runs today. build/ is the AVPRO proposal. rig/ changes only when the real rig changes.
+
 This folder is the master for the ELIM AVPRO workstation and Wing case build. All edits happen here, in the repo. A decision isn't real until it's in `build/`.
 
 **Updated:** 2026-09-28
