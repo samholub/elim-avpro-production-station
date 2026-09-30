@@ -213,6 +213,9 @@ def main():
                         st_bad.append(st)
         mapped = best is not None and (best_score >= 0.6 or cover >= 0.9)
         verdict = "ok"
+        tkey = "unit:" + src + "|" + text[:80]
+        if tkey in rulings or any(tkey.startswith(k) for k in rulings if k.startswith("unit:") and len(k) > 30):
+            rulings.setdefault(uid, rulings.get(tkey) or next(v for k, v in rulings.items() if k.startswith("unit:") and tkey.startswith(k)))
         if uid in rulings:
             verdict = "ruled"
         else:
@@ -307,12 +310,14 @@ def main():
         f"| Status mismatches | {len(fails['status'])} |",
         f"| Reverse (new) tokens | {len(set(t for t, *_ in new_tok))} |",
         f"| BOM.xlsx cell differences | {bom_diff} |",
-        f"| Adjudicated exceptions | {len(ruled)} units, {sum(1 for k in rulings if not k.startswith('U'))} tokens |",
+        f"| Adjudicated exceptions | {len(ruled)} units, {sum(1 for k in rulings if not re.fullmatch(r'U\d{4}', k) and not k.startswith('unit:'))} tokens |",
         "",
         "## Adjudicated exceptions",
         "",
     ]
     for k, v in rulings.items():
+        if k.startswith("unit:"):
+            continue
         if k.startswith("U") and re.fullmatch(r"U\d{4}", k):
             r = rows_out[int(k[1:]) - 1]
             summary.append(f"- **{k}** `{r[1]}:{r[2]}` \"{r[4][:120]}\" — {v}")
