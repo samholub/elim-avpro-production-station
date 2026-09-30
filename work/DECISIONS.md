@@ -159,3 +159,9 @@ Given with the approval of the team-repo plan (samholub/elim-avpro). Applied to 
 - **Rack screws:** BOM text "M6" → "M6 cage nuts"; "verify on the rails" stays. No version bump (total unchanged).
 - **Field camera cable (AOC vs BNC/SDI):** folded into N8. Needs a spec and a cost estimate; not in BOM v7. Open. Owner Sam, with Matt; Emily keeps the trial.
 - Applied to both build/ here and the team repo.
+
+## Session 6 ruling (Sam, 2026-09-29): this repo stays the master
+
+- **samholub/elim-avpro-production-station is the master copy.** samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source. Don't edit, push or sync from it.
+- The session 4 rulings and fixes stay. The session 5 commits (04a77ff, fe91bde, 70d7af4) stay. Nothing is reverted.
+- The cover notes attach this repo's files (review/, matt/) again, not links to the experiment.

@@ -2,6 +2,8 @@
 
 **Date:** 2026-09-28. The distillation is complete and tagged `v1.0-distilled`. This is the short version; `work/STATUS.md` has the detail.
 
+**Master copy:** this repo, samholub/elim-avpro-production-station. samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source; don't sync the claude.ai project from it.
+
 ## What's done
 
 - **`build/` is the master set.** DESIGN (27 locked decisions with reasons), BUILD-SPEC, BOM v7, OPEN-ITEMS (every item has an owner and a date), BACKLOG, ROADMAP, CHANGELOG, OPS-CONFIG, and the two diagrams. Every fact was audited against 15 conversations (3,766 ledger rows), reconciled, ruled on by Sam across three sessions (`work/DECISIONS.md`), and independently verified (`work/VERIFY.md`, 15 findings, all fixed).

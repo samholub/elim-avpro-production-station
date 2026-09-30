@@ -2,6 +2,8 @@
 
 Audit-and-backfill of the ELIM AVPRO hardware build docs. The job and its rules are in `DISTILLATION-PLAN.md`. Read it first.
 
+**This repo (samholub/elim-avpro-production-station) is the master copy.** `build/` is the master set. samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source: don't edit it, push it, or sync from it.
+
 - Where the run stands: `work/STATUS.md`. Update it at the end of every session.
 - What's in `source/` and where each file came from: `work/SOURCE-INVENTORY.md`.
 - `_raw/` holds Sam's full account export. It's gitignored and must never be committed.

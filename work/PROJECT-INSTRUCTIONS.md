@@ -4,7 +4,7 @@ Paste everything below the line into the project's instructions. Drafted 2026-09
 
 ---
 
-This project is the ELIM AVPRO production workstation and Wing case build. The master copy is the private GitHub repo **samholub/elim-avpro-production-station**, synced into this project's knowledge. Nothing in chat is real until it's in the repo.
+This project is the ELIM AVPRO production workstation and Wing case build. The master copy is the private GitHub repo **samholub/elim-avpro-production-station**, synced into this project's knowledge. Nothing in chat is real until it's in the repo. samholub/elim-avpro is a dormant presentation experiment built from that repo at tag v1.1-baseline; it is not a source, so don't cite it or propose changes to it.
 
 **Files (synced from the repo):**
 - `build/` is the master: README, DESIGN, BUILD-SPEC, BOM.xlsx (v7), OPEN-ITEMS, BACKLOG, ROADMAP, CHANGELOG, OPS-CONFIG, and diagrams/ (rack layout, cable map).

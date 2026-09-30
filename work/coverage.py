@@ -1,5 +1,5 @@
-"""Coverage check: prove the team repo (samholub/elim-avpro) drops no fact from the build set, adds none, and
-keeps every status.
+"""Coverage check: prove the presentation experiment (samholub/elim-avpro, now dormant, not a source) drops no fact
+from the build set, adds none, and keeps every status. This repo stays the master.
 
 Run:  python work/coverage.py [path to the team repo, default C:/Users/sammh/elim-avpro]
 Inputs (the build set at tag v1.1-baseline): build/*.md, review/ELIM-PLAN.md, matt/MATT-PACK.md, the diagram JSX
@@ -298,7 +298,7 @@ def main():
         print(f"  new-token {t!r} {f}:{ln} {l}")
 
     summary = [
-        "# Coverage: build set → team repo",
+        "# Coverage: build set → samholub/elim-avpro (dormant presentation experiment, not a source)",
         "",
         f"Inputs: build/*.md, review/ELIM-PLAN.md, matt/MATT-PACK.md, build/diagrams/*.jsx, build/BOM.xlsx (tag v1.1-baseline). Team repo: `{TEAM}`.",
         "",

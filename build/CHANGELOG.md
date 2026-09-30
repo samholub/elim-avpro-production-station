@@ -4,6 +4,12 @@ Build milestones, decisions, and significant changes. Most recent first.
 
 -----
 
+## 2026-09-29 -- This Repo Stays the Master
+
+Sam ruled that samholub/elim-avpro-production-station is the master copy. samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source, and nothing syncs from it. The session 4 rulings and the session 5 changes stay. The cover notes attach this repo's files again.
+
+-----
+
 ## 2026-09-29 -- Session 5 Rulings (drop 1 label, laptop strip, screws, camera cable)
 
 No totals changed: first order $4,671.84, Wing block $100.00, all lines $4,771.84. The BOM stays v7.
@@ -26,7 +32,7 @@ Sam ruled on the notes from the team-repo design pass (`work/DECISIONS.md`, sess
 
 **Wording.** The SPARE jack is yellow (production network, AX21 LAN 4); grey is gone. The venue drops are "12/3 SOOW" everywhere. Review page 1 gets back "roughly an hour a week" and "10+ loose items become 2", both under its "estimates" heading. The BOM Check tab row ETH-END reads "etherCON cable carriers".
 
-**Team repo.** The build set moves to a team-facing repo (samholub/elim-avpro) once Sam approves it. This repo stays as the workshop and audit trail.
+**Team repo.** The build set moves to a team-facing repo (samholub/elim-avpro) once Sam approves it. This repo stays as the workshop and audit trail. *[Reversed: samholub/elim-avpro is a dormant presentation experiment, not a source. This repo stays the master. See the entry above.]*
 
 -----
 

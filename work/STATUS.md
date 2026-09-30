@@ -1,16 +1,25 @@
 # Status
 
-**Updated:** 2026-09-29 (session 4: team-repo design pass)
-**State: team repo live at https://github.com/samholub/elim-avpro (private, pushed 2026-09-29). build/ here is no longer the master.**
+**Updated:** 2026-09-29 (session 6)
+**State: this repo (samholub/elim-avpro-production-station) is the master copy; `build/` is the master set.** samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source.
 
-## Session 4 (2026-09-29)
+## Session 6 (2026-09-29)
+
+- Sam ruled this repo stays the master (`work/DECISIONS.md` session 6). The pointer to the experiment at the top of build/README.md is replaced; CLAUDE.md, HANDOFF, PROJECT-INSTRUCTIONS and this file say this repo is the master copy. The cover notes attach this repo's files again.
+- Session 4 rulings and the session 5 commits stay.
+
+## Session 5 (2026-09-29)
+
+- Rulings (`work/DECISIONS.md` session 5): laptop strip assumed on the CPS1215RM, non-gating, strip type open (G7, conflicts with #11); drop 1 labeled 12/3 SOOW; "M6 cage nuts"; N8 carries AOC vs BNC/SDI (needs a spec and a cost estimate). Totals unchanged. Commits 04a77ff (source), fe91bde (regenerated), 70d7af4 (coverage re-run).
+- Waiting on Sam: his notes from the call with Matt on AOC, spool and cable costs. No cost figures until they're in a file.
+
+## Session 4 (2026-09-29, team-repo experiment; the experiment is now dormant)
 
 - **Rulings applied to build/ first** (`work/DECISIONS.md` session 4; tag `v1.1-baseline`): N19 wording everywhere; drop 2 → CPPDU511 direct, quad box only for a separate table; SPARE jack yellow; "12/3 SOOW" for the drops (also the BOM note); review p.1 gets back "roughly an hour a week" and "10+ loose items become 2"; BOM Check row "etherCON cable carriers"; make_bom docstring v7. Totals unchanged ($4,671.84 / $100.00 / $4,771.84), Check 18/18.
-- **Team repo** at `C:\Users\sammh\elim-avpro` (no git yet): README + 13 pages in docs/, data/ (BOM CSVs, open items, panel holes, numbers), tools/ (build, render, check, make_bom, make_pdfs), CI workflow. BOM.xlsx rebuilt from CSV: 0 cell differences.
+- **Team repo (now a dormant experiment, not a source)** at `C:\Users\sammh\elim-avpro`: README + 13 pages in docs/, data/ (BOM CSVs, open items, panel holes, numbers), tools/ (build, render, check, make_bom, make_pdfs), CI workflow. BOM.xlsx rebuilt from CSV: 0 cell differences.
 - **Coverage** (`work/coverage.py`, `work/COVERAGE.md`, `work/COVERAGE.csv`, `work/coverage_rulings.csv`): 1,443 units; 0 unmapped, 0 forward token misses, 0 status mismatches, 0 new tokens, 0 BOM differences; 19 navigation-only units and 5 tokens adjudicated.
 - **Phone render check** (GitHub's /markdown renderer + github-markdown-css + mermaid.js, 390px, light and dark): no page scrolls sideways, all images load, all Mermaid diagrams render at ≥0.8 scale. Some wide tables scroll inside themselves (buy connector stock, config network, panel, signals).
-- **Done on Sam's go:** README preview cropped to the first screen of the decision page; `work/COVER-NOTES.md` now links Bianca and Matt to the repo (Sunny still gets `out/ELIM-PLAN.pdf`); repo created and pushed; "master moved" line added to build/README.md.
-- **Sam to do:** add Bianca and Matt as collaborators on the repo before sending their notes.
+- **Done on Sam's go:** README preview cropped; samholub/elim-avpro created and pushed. *Superseded in session 6: the pointer and the cover-note links were changed back; this repo is the master.*
 
 ## Session 3 (closed 2026-09-28)
 

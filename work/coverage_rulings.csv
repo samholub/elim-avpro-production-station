@@ -23,7 +23,14 @@ NOTE,"GitHub alert syntax, not content."
 CSV,Describes the data file format (repo mechanics).
 5-7,"Resolved-log grouping heading ""sessions 5–7"" in open.md; each session's items are unchanged."
 """Match the color, match the number.""",Capitalized at the start of the Labeling section; same rule as BUILD-SPEC §11.
-unit:build/README.md|This folder is the workshop copy it was made from (tag `v1.1-baseline`) and stay,Workshop-only pointer added when the master moved (2026-09-29). Not a build fact; the team repo is the master.
-unit:build/README.md|> **Master moved to [samholub/elim-avpro](https://github.com/samholub/elim-avpro,Workshop-only pointer; see above.
+unit:build/README.md|This folder is the workshop copy it was made from (tag `v1.1-baseline`) and stay,Workshop-only pointer about the experiment repo. Not a build fact; this repo is the master.
 unit:build/diagrams/rack-layout.jsx|Power: two 125ft 12/3 SOOW drops from wall outlets (5-15P > 5-15R). Drop 1 feeds,"Diagram note. Every fact is on docs/power.md, where the laptop strip carries `assumed`; the mapper picked a design.md line."
 v1.1-baseline,Workshop tag name in the master-moved pointer.
+unit:build/README.md|> samholub/elim-avpro is a dormant presentation,"Workshop-only pointer about the experiment repo, added in session 6. Not a build fact."
+unit:build/README.md|This repo is the source.,Second sentence of the same session 6 pointer.
+unit:build/CHANGELOG.md|Sam ruled that samholub/elim-avpro-production-station is the master,"Session 6 workshop-only record (this repo stays the master). The dormant experiment isn't updated, by Sam's ruling."
+"unit:build/CHANGELOG.md|It is not a source, and nothing syncs from it.","Session 6 workshop-only record (this repo stays the master). The dormant experiment isn't updated, by Sam's ruling."
+unit:build/CHANGELOG.md|The session 4 rulings and the session 5 changes stay.,"Session 6 workshop-only record (this repo stays the master). The dormant experiment isn't updated, by Sam's ruling."
+unit:build/CHANGELOG.md|The cover notes attach this repo's files again.,"Session 6 workshop-only record (this repo stays the master). The dormant experiment isn't updated, by Sam's ruling."
+unit:build/CHANGELOG.md|*[Reversed: samholub/elim-avpro is a dormant presentation,"Session 6 workshop-only record (this repo stays the master). The dormant experiment isn't updated, by Sam's ruling."
+unit:build/CHANGELOG.md|See the entry above.]*,"Session 6 workshop-only record (this repo stays the master). The dormant experiment isn't updated, by Sam's ruling."
