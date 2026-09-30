@@ -79,9 +79,9 @@ LINES = [
     ("Power", "Bay B front PDU, metered, drawer lights", "Clear Power CPPDU511", 1, 149.99, "firm", FIRST, "",
      "https://www.amazon.com/gp/product/B0BLRW2H61/", "Utility side (not on the UPS).", "unchanged"),
     ("Power", "Bay B rear strip, camera chargers", "Tripp Lite RS1215-RA", 1, 94.98, "quoted 2026-08-20", FIRST, "",
-     "", "Plugs into a CPPDU511 rear outlet. Label both 'chargers + lights + laptops only'.", "NEW (D3)"),
+     "", "Plugs into a CPPDU511 rear outlet. Label both 'chargers + lights only'.", "NEW (D3)"),
     ("Power", "Laptop power strip, plain surge strip", "Surge strip (Matt sourcing)", 1, 30, "est", FIRST, "",
-     "", "Utility side (Bay B circuit), never behind the UPS.", "note changed (D4)"),
+     "", "Assumed on the CPS1215RM (UPS side), not the CPPDU511 (Sam, 2026-09-29). Strip type open: a surge strip conflicts with 'no surge behind the UPS' (G7).", "note changed (D4)"),
     # --- Cooling ---
     ("Cooling", "1U thermostatic exhaust fan", "AC Infinity CLOUDPLATE T1", 1, 150, "est", FIRST, "",
      "https://www.amazon.com/AC-Infinity-CLOUDPLATE-Exhaust-Airflow/dp/B076CHYQ3K", "Bay A U12. Exhausts toward the open back.", "unchanged"),
@@ -103,7 +103,7 @@ LINES = [
     ("Cable mgmt", "Hook-and-loop straps", "ONE-WRAP + WrapStrap", 1, 40, "est", FIRST, "",
      "https://www.amazon.com/VELCRO-Brand-ONE-WRAP-Double-Sided-Multi-Purpose/dp/B00JWU786S",
      "Strapping + color code; also holds the UltraStudio to the desk.", "unchanged"),
-    ("Hardware", "Rack screws + cage nuts", "10-32 (assumed, verify on the rails, M6)", 1, 25, "est", FIRST, "",
+    ("Hardware", "Rack screws + cage nuts", "10-32 (assumed, verify on the rails, M6 cage nuts)", 1, 25, "est", FIRST, "",
      "", "Screw order waits on the rail-thread check.", "unchanged"),
     # --- Cabling ---
     ("Cabling", "SDI BNC jumpers, panel to ATEM", "Belden 1855A / premade BNC-BNC", 8, 10, "est", FIRST, "SDI-JUMPER",
@@ -195,7 +195,7 @@ OWNED = [
     ("Video", "LED wall transmitter", "-", "Bay A U9."),
     ("Internet", "Starlink Standard + router", "Starlink", "Into INTERNET IN. ~50-75W if powered from the UPS."),
     ("Cameras", "Pocket 4K x2, DJI", "various", "Three cameras at every event (D9)."),
-    ("Compute", "ProPresenter Mac (Bianca), switcher laptop, Anker hub", "-", "On the desk. Laptop strip on utility (D4)."),
+    ("Compute", "ProPresenter Mac (Bianca), switcher laptop, Anker hub", "-", "On the desk. Laptop strip assumed on the CPS1215RM (G7)."),
     ("Cabling", "Short XLR cables x2 (talkback + IEM trunks)", "-", "Owned (Sam confirmed 2026-09-28). Not in the buy total."),
     ("Cabling", "LED wall and internet field runs", "-", "Today's runs; add etherCON carriers at the panel end (cut the plug, slide the carrier on, re-crimp). M7 sets the LED end count."),
 ]

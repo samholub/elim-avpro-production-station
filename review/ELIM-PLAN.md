@@ -80,8 +80,8 @@ Keeping audio and control apart means neither can step on the other, and a busy 
 ## Power
 
 - **Two long power cords** (125ft) run from wall outlets to the rig: one feeds the workstation and the Wing, the other feeds the charging station.
-- **Battery backup:** one unit backs up the workstation and the Wing, so a power blip doesn't drop the stream or the sound. Our gear uses about 275–285W of its 1000W, which leaves room for Starlink and other extras.
-- **Regular power:** camera chargers, the drawer lights and the laptop strip run off the second cord, not the backup. The laptops have their own batteries.
+- **Battery backup:** one unit backs up the workstation and the Wing, so a power blip doesn't drop the stream or the sound. Our gear uses about 275–465W of its 1000W (the high end is the laptops charging), which leaves room for Starlink and other extras.
+- **Regular power:** camera chargers and the drawer lights run off the second cord, not the backup. The laptop strip is assumed to plug into the backup side.
 - **Venue power:** the whole rig runs on one normal 15A circuit. Two are nicer, one per cord.
 
 ## Cameras

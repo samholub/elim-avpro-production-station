@@ -151,3 +151,11 @@ Given with the approval of the team-repo plan (samholub/elim-avpro). Applied to 
 - **FINAL-CHECK C:** BOM Check tab row ETH-END relabeled "etherCON cable carriers".
 - `work/make_bom.py` docstring says v7.
 - Team repo: Bianca and Matt get repo access; Sunny gets the PDF by email. Volunteers are out of scope for now (sunday page is a placeholder). GitHub Action on. README shows a generated "as of" date and a PNG preview of the decision page.
+
+## Session 5 rulings (Sam, 2026-09-29)
+
+- **Drop 1 label:** "12/3 SOOW" in the cable map, finishing the session 4 wording ruling.
+- **Laptop strip: replaces D4.** The strip is assumed to plug into the rack PDU (CPS1215RM, behind the UPS), not the CPPDU511. Status: assumed, non-gating. DESIGN #14 is withdrawn as a lock. UPS load back to ~275–465W with the R-020 laptop row (0–180W); spare ~535–725W. Bay B label "chargers + lights only". **Open for Sam:** the BOM line is a surge strip, and "no surge behind the UPS" is still decided (G7).
+- **Rack screws:** BOM text "M6" → "M6 cage nuts"; "verify on the rails" stays. No version bump (total unchanged).
+- **Field camera cable (AOC vs BNC/SDI):** folded into N8. Needs a spec and a cost estimate; not in BOM v7. Open. Owner Sam, with Matt; Emily keeps the trial.
+- Applied to both build/ here and the team repo.

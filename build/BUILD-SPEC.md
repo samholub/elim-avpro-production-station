@@ -124,16 +124,16 @@ Power reaches the rig area on **two 125ft 12/3 SOOW drops** from wall outlets. *
 drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → short powerCON umbilical → Wing.
 
 - One UPS backs both cases. The BWING can't carry its own UPS, so this is the only way to back the Wing. For standalone use the Wing goes on a wall outlet. *Decided.*
-- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on and why the laptop strip is on the charging side. *Decided.*
+- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on. *Decided.* The laptop strip is now assumed on this side (below), so its type is open (G7).
+- **Laptop strip:** assumed to plug into the **CPS1215RM** (the rack PDU), not the CPPDU511. The laptops charge from the UPS. *Assumed, doesn't gate the order (Sam, 2026-09-29). Replaces the utility-side placement (D4).*
 - The UPS LCD meters the combined booth + Wing load.
-- **Outlet count.** The CPS1215RM has 12 outlets. The UPS side has 12 loads: ATEM, HD Mini, Resi brick, LED transmitter, TL-SG1005P brick, TL-SG105 brick, AX21 brick, fan, two monitor bricks, the Hollyland RX brick and the POWER > WING feed cord. Six are wall-warts that block a neighbour. The UPS's own outlets (8 on the CP1500PFCRM2U) take the overflow; if bricks still crowd the strip, 1ft outlet-saver pigtails fix it (not in the BOM).
+- **Outlet count.** The CPS1215RM has 12 outlets. The UPS side has 13 loads: ATEM, HD Mini, Resi brick, LED transmitter, TL-SG1005P brick, TL-SG105 brick, AX21 brick, fan, two monitor bricks, the Hollyland RX brick, the POWER > WING feed cord and the laptop strip (assumed). Six are wall-warts that block a neighbour. The UPS's own outlets (8 on the CP1500PFCRM2U) take the overflow; if bricks still crowd the strip, 1ft outlet-saver pigtails fix it (not in the BOM).
 
 ### Charging side (not backed)
 
-drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided (D3, D4).* If the charging station turns out to be a separate table, drop 2 ends in the quad box, which feeds the table's chargers and the CPPDU511 cord (tentative, N19).
+drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. *Decided (D3).* If the charging station turns out to be a separate table, drop 2 ends in the quad box, which feeds the table's chargers and the CPPDU511 cord (tentative, N19).
 
-- Label both Bay B strips **"chargers + lights + laptops only"**. No high-draw loads. Keep the total under 15A.
-- Laptops run on their own batteries if this side loses power.
+- Label both Bay B strips **"chargers + lights only"**. No high-draw loads. Keep the total under 15A.
 
 ### Estimated draw, UPS side
 
@@ -147,13 +147,14 @@ drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) �
 | Dante satellite switch | ~5W |
 | UltraStudio + Hollyland RX | ~15W |
 | 2 × lid monitors | ~50W |
+| 2 × laptops (assumed on this side; 0 when charged) | ~0–180W |
 | Wing (over the umbilical) | ~90–100W |
-| **Total** | **~275–285W** |
+| **Total** | **~275–465W** |
 
-- That's 28% of the UPS's 1000W. **Spare: ~715–725W (about 6A at 120V).** Enough for Starlink (~50–75W) and other ad-hoc gear on backup.
+- That's 28–47% of the UPS's 1000W; the high end is both laptops charging. **Spare: ~535–725W (about 4.5–6A at 120V).** Enough for Starlink (~50–75W) and other ad-hoc gear on backup.
 - Estimates only. The UPS LCD shows the real number; log it at the first bench test.
 - Field devices (confidence monitor, LED wall, cameras and converters) are powered where they sit.
-- Utility side: chargers, drawer lights and laptops, roughly 120–180W for the laptops plus chargers. Well under 15A.
+- Utility side: camera chargers and drawer lights. Well under 15A.
 
 ### Umbilical (AVPRO ↔ Wing)
 
@@ -369,7 +370,7 @@ Green vs yellow is the split that matters most. Colored jackets where available,
 
 ## 13. Spare capacity
 
-- **Power:** ~715–725W spare on the UPS. The Bay B strips have open outlets on utility.
+- **Power:** ~535–725W spare on the UPS (the low end is with the laptops charging). The Bay B strips have open outlets on utility.
 - **Panel:** panel 3 is a full spare row; 3 open holes on each of panels 1 and 2; loose spares of every connector type; one etherCON spare pre-wired to the AX21.
 - **Rack:** Bay A U4–U6 reserve; Bay B U9–U11 reserve; Top B.
 - **Dante:** satellite 2 free of 5 (trunk, AVIO, Bianca's Mac used). Wing case switch 4 free of 8 (Wing Dante card, trunk, stream-mix laptop, Tyler's Mac used).

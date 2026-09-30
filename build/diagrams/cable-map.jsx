@@ -3,6 +3,7 @@ import React from "react";
 // ELIM AVPRO - Cable Map / Signal Flow (build set, 2026-09-28). Regenerated from BUILD-SPEC section 3 and 4.
 // Replaces avpro-cable-map-v1 (stale: AX55, the old power design, right lid fed on day one).
 // Step 10 fixes: quad box drawn as tentative; Tyler's Mac on the Wing case Dante switch; 8-port Wing switch.
+// 2026-09-29: drop 1 labeled 12/3 SOOW; laptop strip assumed on the CPS1215RM (Sam, replaces D4).
 // Each row is one signal chain. Arrows are cables; the label is the type, the color is the cable color code.
 
 const C = {
@@ -60,11 +61,11 @@ const GROUPS = [
   {
     title: "Power",
     chains: [
-      { nodes: ["Wall outlet", "Drop 1 (125ft 12/3 SO)", "UPS CP1500PFCRM2U", "CPS1215RM", "Bay A + desk gear, lids"], links: [["5-15P", C.power], ["5-15R", C.power], ["mains", C.power], ["5-15P > C13", C.power]] },
+      { nodes: ["Wall outlet", "Drop 1 (125ft 12/3 SOOW)", "UPS CP1500PFCRM2U", "CPS1215RM", "Bay A + desk gear, lids"], links: [["5-15P", C.power], ["5-15R", C.power], ["mains", C.power], ["5-15P > C13", C.power]] },
       { nodes: ["CPS1215RM", "POWER > WING outlet", "Wing"], links: [["feed cord", C.power], ["powerCON 15ft 14/3", C.power]] },
       { nodes: ["Wall outlet (2nd circuit preferred)", "Drop 2 (125ft 12/3 SOOW)", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["5-15P", C.power], ["5-15R (direct, if Bay B)", C.power], ["chained", C.power], ["mains", C.power]] },
       { nodes: ["Drop 2", "Quad box: TENTATIVE, only if the charging station is a separate table (N19)", "Chargers + the CPPDU511 cord"], links: [["5-15R", C.power], ["mains", C.power]] },
-      { nodes: ["CPPDU511", "Laptop strip", "Laptops"], links: [["mains", C.power], ["mains", C.power]] },
+      { nodes: ["CPS1215RM", "Laptop strip (ASSUMED on the UPS side)", "Laptops"], links: [["mains", C.power], ["mains", C.power]] },
     ],
   },
 ];

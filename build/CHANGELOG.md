@@ -4,6 +4,20 @@ Build milestones, decisions, and significant changes. Most recent first.
 
 -----
 
+## 2026-09-29 -- Session 5 Rulings (drop 1 label, laptop strip, screws, camera cable)
+
+No totals changed: first order $4,671.84, Wing block $100.00, all lines $4,771.84. The BOM stays v7.
+
+**Drop 1 label.** The cable map now says "125ft 12/3 SOOW" for drop 1. Session 4 ruled "12/3 SOOW" for both drops but missed this label.
+
+**Laptop strip.** Assumed to plug into the rack PDU (CPS1215RM, UPS side), not the CPPDU511. Sam's ruling; it replaces D4 and withdraws locked decision #14. Assumed, doesn't gate the order. The UPS load estimate is ~275–465W again (the laptops add 0–180W while charging), leaving ~535–725W spare. The Bay B strips are labeled "chargers + lights only". Open: the BOM's $30 line is a surge strip, which conflicts with "no surge behind the UPS" (G7).
+
+**Rack screws.** The BOM screw line reads "10-32 (assumed, verify on the rails, M6 cage nuts)".
+
+**Field camera cable.** N8 now also carries AOC vs BNC/SDI. It needs a spec and a cost estimate. It's not in BOM v7, so the total omits it. Open. Sam, with Matt.
+
+-----
+
 ## 2026-09-29 -- Session 4 Rulings (team-repo baseline)
 
 Sam ruled on the notes from the team-repo design pass (`work/DECISIONS.md`, session 4). No totals changed: first order $4,671.84, Wing block $100.00, all lines $4,771.84; Check 18/18.

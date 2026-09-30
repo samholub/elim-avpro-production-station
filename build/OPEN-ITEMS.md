@@ -15,7 +15,7 @@
 | G2 | **One matched powerCON TRUE1 family:** AVPRO chassis outlet, both umbilical cable ends, and the Wing chassis inlet (only if the Wing panel happens). **Plus the etherCON pair:** NE8FDP-B panel jacks with NE8MX-1 carriers (standard etherCON; the NE8MC-1 Sam named is discontinued and the NE8MX-1 is its successor), checked against the Neutrik compatibility table before the BOM calls them firm (D7, P-03, V-01) | Matt / vendor; Sam checks the datasheets | 2026-10-01 | **Yes, for the connector lines** |
 | G5 | **CPS1215RM listing:** confirm Amazon B00077IG3O is the CPS1215RM | Sam | 2026-10-01 | That line only |
 | G6 | **Rack rail thread:** tapped 10-32, or square-hole for M6 cage nuts? Assumed 10-32. Matt may know; otherwise it's checked on the rails at delivery | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | **Screw line only.** Order it after delivery if Matt doesn't know |
-| G7 | **Laptop power strip:** a plain surge strip for the desk laptops, fed from the utility side (Bay B), never behind the UPS. BOM carries $30 | Matt | 2026-10-01 | That line only |
+| G7 | **Laptop power strip** for the desk laptops. Assumed to plug into the CPS1215RM on the UPS side, not the CPPDU511 (Sam, 2026-09-29; the placement doesn't gate). Replaces the utility-side placement (D4). BOM carries $30 for a plain surge strip, which conflicts with "no surge behind the UPS": the strip type needs Sam's call before it's sourced | Matt; Sam (strip type) | 2026-10-01 | That line only |
 
 G3 (P-04) and G4 (owned cables) closed 2026-09-28; the IDs are kept so references stay stable.
 
@@ -30,7 +30,7 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; the IDs are kept so reference
 | N5 | **M5:** LG 24GS60F-B panel height without stand + right-angle adapter depth vs the 16.1in lid; two widths vs 49.6in | Sam | on case delivery (assumed by 2026-11-15) | No |
 | N6 | **M8:** Wing XLR In 8 = Bianca's talkback, Out 8 = her IEM | Tyler | 2026-10-04 | No |
 | N7 | **Tyler's recording path** (Wing USB-C → his Mac, inside the BWING) settled for the case layout. His Mac is also a Dante endpoint on the Wing case switch (app, 2026-09-17), so the case needs room for both cables | Tyler | 2026-10-04 | No |
-| N8 | **Camera-cable trial:** SDI on Belden 1855A / BNC over a real deploy. Checks pull-through, cable and connector reliability, and picture over length. No camera control. Field SDI is bought after this | Emily | 2026-10-04 (report after the next service) | No |
+| N8 | **Camera-cable trial:** SDI on Belden 1855A / BNC over a real deploy. Checks pull-through, cable and connector reliability, and picture over length. No camera control. Field SDI is bought after this. **Field camera cable: AOC vs BNC/SDI.** Needs a spec and a cost estimate. Not in BOM v7, so the total omits it. *Open* | Emily (trial); Sam, with Matt (spec and cost) | 2026-10-04 (report after the next service) | No |
 | N10 | **M2:** read the AVIO model label (AVIOAO2 per the port map) and confirm it's PoE-powered only | Sam | 2026-10-04 | No |
 | N11 | **R-019:** does Omar have a separate Dante device at the drum kit? (yes/no) | Sam | 2026-10-04 | No |
 | N12 | **R-024:** read the Shure transmit combiner label (UA844+SWB? typed "ua344") | Sam | 2026-10-04 | No |
@@ -77,7 +77,7 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; the IDs are kept so reference
 ### 2026-09-26 (distillation, step 8 rulings)
 - **Switches (D1):** owned TL-SG1005P (PoE) → Bay A Dante satellite, powers the AVIO; owned TL-SG105 → Bay A production switch; buy a TL-SG105 for the Wing case. M1 answered.
 - **BOM scope (D2):** one buy list with fitted jacks, spares, counted cable ends, HDMI and power jumpers, a check tab; the Wing panel as a separate conditional block.
-- **Bay B two strips (D3); laptop strip on utility (D4); v15 mounting, Etsy mount dropped (D5).**
+- **Bay B two strips (D3); laptop strip on utility (D4, replaced 2026-09-29: now assumed on the CPS1215RM, G7); v15 mounting, Etsy mount dropped (D5).**
 - **One case + freight figure from the BOM, placeholder until Matt (D6).**
 - **Stage power in ROADMAP, out of the BOM (D8). Three cameras at every event (D9).**
 - **AX21 (D11); UltraStudio on the desk (D12); v15 panel order (D13); monitor wording (D14); OPS-CONFIG approved (D15); Sunny gets the PDF (D16); Shure RF in ROADMAP (D17).**

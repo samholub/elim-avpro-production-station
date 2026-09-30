@@ -11,7 +11,7 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 **Close the gate first** (OPEN-ITEMS G1, G2, G5–G7; target order date 2026-10-01):
 - [ ] Matt: AVPRO price, BWING price, consolidated freight.
 - [ ] Matt / vendor: one matched powerCON TRUE1 family + the etherCON cable end part. Sam checks both datasheets; then mark those BOM lines firm.
-- [ ] Matt: source the laptop surge strip (utility side).
+- [ ] Matt: source the laptop strip (assumed on the CPS1215RM; strip type open, G7).
 - [ ] Sam: confirm the CPS1215RM listing. Decide where the charging station sits (N19; leaning Bay B, which drops the quad box).
 - [ ] Bianca go/no-go (1:1), then Sunny's sign-off.
 
@@ -55,9 +55,9 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 ## 3. Assemble
 
 - [ ] **Bay A** (BUILD-SPEC §8): fan U12; Resi U11; HD Mini + TL-SG1005P + brick U10; LED transmitter U9; TL-SG105 + AX21 U8; lacing bar U7; vented blanks U4–U6; CPS1215RM U3; UPS U1–U2. Panels on the rear rails.
-- [ ] **Bay B:** 2 × 4U drawers; CPPDU511 front at U12; RS1215-RA rear, plugged into a CPPDU511 rear outlet; label both "chargers + lights + laptops only".
+- [ ] **Bay B:** 2 × 4U drawers; CPPDU511 front at U12; RS1215-RA rear, plugged into a CPPDU511 rear outlet; label both "chargers + lights only".
 - [ ] **4U top A:** Hollyland RX.
-- [ ] **Desk:** ATEM on the tray over the grommet; AVIO beside it; UltraStudio velcro'd behind the lids; laptops; laptop strip fed from Bay B.
+- [ ] **Desk:** ATEM on the tray over the grommet; AVIO beside it; UltraStudio velcro'd behind the lids; laptops; laptop strip plugged into the CPS1215RM (assumed, G7).
 - [ ] **Lids:** 2 × LG monitors with right-angle adapters (LEFT = multiview).
 - [ ] **Wing case:** new 8-port Dante switch and Tyler's Mac inside (USB-C to the Wing, plus a Cat patch to the switch).
 - [ ] Internal wiring and dressing (BUILD-SPEC §11). Park the CAM 2 and CAM 8 jumpers at ATEM IN 2 / IN 8.
