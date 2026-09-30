@@ -16,13 +16,15 @@ The design is locked. We'd like your quote on the cases and freight, your help p
    *When: 2026-10-01. Gates the order? Yes, for the connector lines*
 3. **Rack rail thread:** tapped 10-32, or square-hole for M6 cage nuts? Assumed 10-32. Do you know? If not, we check the rails at delivery  
    *When: on case delivery (assumed by 2026-11-15). Gates the order? Screw line only. If you don't know, we order the screws after delivery*
-4. **Laptop power strip:** a plain surge strip for the desk laptops, fed from the utility side (Bay B), never behind the UPS. BOM carries $30  
+4. **Laptop power strip** for the desk laptops. Assumed to plug into the CPS1215RM on the UPS side, not the CPPDU511 (Sam, 2026-09-29; the placement doesn't gate). Replaces the utility-side placement. BOM carries $30 for a plain surge strip, which conflicts with "no surge behind the UPS": the strip type needs Sam's call before it's sourced  
    *When: 2026-10-01. Gates the order? That line only*
 5. **BWING inspection: can it take a panel-mount D-series plate?** Yes → buy the Wing block. No → umbilical direct to the Wing's jacks + a TRUE1-to-IEC jumper  
    *When: on case delivery (assumed by 2026-11-15). Gates the order? Wing block only*
 6. **Side doors:** do the AVPRO side doors open to usable storage, and what are the inside dimensions? The design doesn't use them  
    *When: on case delivery (assumed by 2026-11-15). Gates the order? No*
-7. **The "regret ask":** long-lead items, freight consolidation, anything hard to add later  
+7. **Camera-cable trial:** SDI on Belden 1855A / BNC over a real deploy. Checks pull-through, cable and connector reliability, and picture over length. No camera control. Field SDI is bought after this. **Field camera cable: AOC vs BNC/SDI.** Needs a spec and a cost estimate. Not in BOM v7, so the total omits it. *Open*  
+   *When: 2026-10-04 (report after the next service). Gates the order? No*
+8. **The "regret ask":** long-lead items, freight consolidation, anything hard to add later  
    *When: 2026-10-01 (with the quote). Gates the order? No*
 
 ## 3. Panel maps
@@ -158,16 +160,16 @@ Power reaches the rig area on **two 125ft 12/3 SOOW drops** from wall outlets. *
 drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → short powerCON umbilical → Wing.
 
 - One UPS backs both cases. The BWING can't carry its own UPS, so this is the only way to back the Wing. For standalone use the Wing goes on a wall outlet. *Decided.*
-- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on and why the laptop strip is on the charging side. *Decided.*
+- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on. *Decided.* The laptop strip is now assumed on this side (below), so its type is open.
+- **Laptop strip:** assumed to plug into the **CPS1215RM** (the rack PDU), not the CPPDU511. The laptops charge from the UPS. *Assumed, doesn't gate the order (Sam, 2026-09-29). Replaces the utility-side placement.*
 - The UPS LCD meters the combined booth + Wing load.
-- **Outlet count.** The CPS1215RM has 12 outlets. The UPS side has 12 loads: ATEM, HD Mini, Resi brick, LED transmitter, TL-SG1005P brick, TL-SG105 brick, AX21 brick, fan, two monitor bricks, the Hollyland RX brick and the POWER > WING feed cord. Six are wall-warts that block a neighbour. The UPS's own outlets (8 on the CP1500PFCRM2U) take the overflow; if bricks still crowd the strip, 1ft outlet-saver pigtails fix it (not in the BOM).
+- **Outlet count.** The CPS1215RM has 12 outlets. The UPS side has 13 loads: ATEM, HD Mini, Resi brick, LED transmitter, TL-SG1005P brick, TL-SG105 brick, AX21 brick, fan, two monitor bricks, the Hollyland RX brick, the POWER > WING feed cord and the laptop strip (assumed). Six are wall-warts that block a neighbour. The UPS's own outlets (8 on the CP1500PFCRM2U) take the overflow; if bricks still crowd the strip, 1ft outlet-saver pigtails fix it (not in the BOM).
 
 #### Charging side (not backed)
 
-drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. The **laptop strip** (plain surge strip) is also on this side. *Decided.* If the charging station turns out to be a separate table, drop 2 ends in the quad box, which feeds the table's chargers and the CPPDU511 cord (tentative).
+drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. *Decided.* If the charging station turns out to be a separate table, drop 2 ends in the quad box, which feeds the table's chargers and the CPPDU511 cord (tentative).
 
-- Label both Bay B strips **"chargers + lights + laptops only"**. No high-draw loads. Keep the total under 15A.
-- Laptops run on their own batteries if this side loses power.
+- Label both Bay B strips **"chargers + lights only"**. No high-draw loads. Keep the total under 15A.
 
 #### Estimated draw, UPS side
 
@@ -181,13 +183,14 @@ drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) �
 | Dante satellite switch | ~5W |
 | UltraStudio + Hollyland RX | ~15W |
 | 2 × lid monitors | ~50W |
+| 2 × laptops (assumed on this side; 0 when charged) | ~0–180W |
 | Wing (over the umbilical) | ~90–100W |
-| **Total** | **~275–285W** |
+| **Total** | **~275–465W** |
 
-- That's 28% of the UPS's 1000W. **Spare: ~715–725W (about 6A at 120V).** Enough for Starlink (~50–75W) and other ad-hoc gear on backup.
+- That's 28–47% of the UPS's 1000W; the high end is both laptops charging. **Spare: ~535–725W (about 4.5–6A at 120V).** Enough for Starlink (~50–75W) and other ad-hoc gear on backup.
 - Estimates only. The UPS LCD shows the real number; log it at the first bench test.
 - Field devices (confidence monitor, LED wall, cameras and converters) are powered where they sit.
-- Utility side: chargers, drawer lights and laptops, roughly 120–180W for the laptops plus chargers. Well under 15A.
+- Utility side: camera chargers and drawer lights. Well under 15A.
 
 #### Umbilical (AVPRO ↔ Wing)
 
@@ -246,7 +249,7 @@ Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, C
 | Storage | 4U rack drawer | StarTech 4UDRAWER | 2 | est |
 | Cable mgmt | 1U cable lacing bar | StarTech 12S-CABLE-LACING-BAR | 1 | est |
 | Cable mgmt | Hook-and-loop straps | ONE-WRAP + WrapStrap | 1 | est |
-| Hardware | Rack screws + cage nuts | 10-32 (assumed, verify on the rails) | 1 | est |
+| Hardware | Rack screws + cage nuts | 10-32 (assumed, verify on the rails, M6 cage nuts) | 1 | est |
 | Cabling | SDI BNC jumpers, panel to ATEM | Belden 1855A / premade BNC-BNC | 8 | est |
 | Cabling | Cat6A patch, color-coded (lot) | Monoprice SlimRun Cat6A 10-pk | 1 | est |
 | Cabling | Trunk cable, shielded Cat6A, 15ft | Shielded Cat6A patch, 15ft | 2 | est |
