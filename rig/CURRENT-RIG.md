@@ -130,7 +130,7 @@ Camera settings (shutter, ISO, white balance) are operating settings. See the ap
 |---|---|---|---|
 | Router | TP-Link Archer AX21 (older docs said AX55; that was wrong) | decided (corrected 2026-08-27) | RB header; app OI "Router Model" |
 | Dante switch | TP-Link TL-SG1005P (5-port, PoE); powers the AVIO | decided (Sam, 2026-06-30 and ruling D1, 2026-09-26) | L2214, chat 61be4ede; D1 |
-| Production switch | TP-Link TL-SG105 (5-port, non-PoE) | decided (ruling D1); the app says "same model as the Dante switch", so this is **open** (Q1) | D1; RB §Wing Road Case |
+| Production switch | TP-Link TL-SG105 (5-port, non-PoE) | decided (Sam confirmed, ruling D1). The app's "same model as the Dante switch" is wrong; see work/APP-FOLLOWUPS.md | D1 |
 | Starlink Standard with router | info: owned (Sam, 2026-08-16); whether it's used at events today is **open** (Q13) | L2805, chat a5df9d8d |
 
 ### Computers and screens
@@ -227,7 +227,7 @@ AVPRO plan: one UPS backs the booth and the Wing, and two 125ft venue drops feed
 |---|---|---|---|---|
 | **Dante** (isolated) | Dante switch (TL-SG1005P), in the Wing case | Wing Dante expansion, stream mix laptop, ProPresenter Mac (separate USB-C adapter), Dante AVIO, ProTools Mac. **5 of 5 ports used** | decided (2026-09-17/19) | RB §Network |
 | **AX21 LAN**, on the router | TP-Link Archer AX21, in the Wing case | Resi (ethernet patch), the production switch uplink; phone and Wing iPad over WiFi; venue internet into the WAN | decided | RB §Network |
-| **AX21 LAN**, second tier | Production switch, in the Wing case | Uplink, ATEM, ProPresenter Mac (via the Anker hub), video stream laptop. **4 of 5 used, one spare** | decided (recorded 2026-09-19) / spare port **open** (Q1) | RB §Network |
+| **AX21 LAN**, second tier | Production switch, in the Wing case | Uplink, ATEM, ProPresenter Mac (via the Anker hub), video stream laptop. **4 of 5 used, one spare** | decided (recorded 2026-09-19); whether the fifth port is really spare is open in the app (app OI) | RB §Network |
 
 - The ProPresenter Mac is on both networks at once, with nothing bridging them. It also uses WiFi for internet. Decided (Sam, 2026-09-19). RB §Network.
 - The production-station devices run their ethernet back to the Wing case. There's no switch on the table. Decided. RB §Network.
@@ -252,7 +252,7 @@ AVPRO plan: the same two networks, but the router and both owned switches move t
 
 ## Open questions
 
-1. **Switch models.** Ruling D1 says the Dante switch is a TL-SG1005P and the production switch is a TL-SG105. The app says they're "the same model", and it still lists the model check and the spare fifth port as open. D1 also listed the HD Mini and Resi on the production switch, but the app has the Resi on the router and the HD Mini with no network cable. Which is right?
+1. **Switch models: closed.** Sam confirmed (ruling D1): TL-SG1005P (PoE) = Dante switch, TL-SG105 = production switch. The app's "same model" note is wrong and is logged in work/APP-FOLLOWUPS.md. What's plugged into each switch today follows the app (section 5).
 2. **Wing control port.** The app's port map says Wing Ethernet → AX21 LAN. The runbook says only the Resi patch and the production switch uplink go into the router. How does the Wing's control port connect today?
 3. **Bundle 2.** It says "ethernet (ATEM → AX21)", but the network section says the ATEM goes to the production switch. The bundle text looks stale. Confirm.
 4. **ATEM outputs.** What, if anything, is on OUT 1–7, and which output drives the multiview?

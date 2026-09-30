@@ -3,6 +3,13 @@
 **Updated:** 2026-09-29 (session 6)
 **State: this repo (samholub/elim-avpro-production-station) is the master copy; `build/` is the master set.** samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source.
 
+## Session 7 (2026-09-29): current-rig record
+
+- **rig/CURRENT-RIG.md** (commit e52af78): the rig as it runs today, physical side only. Built from the app runbook (elim-production @93a5e25) and ledger rows about today's rig. Every fact has a status and a source note. Operating settings link to the app. rig/ changes only when the real rig changes; build/ is the AVPRO proposal (line added to build/README.md and CLAUDE.md).
+- **Cleanup:** open question 1 closed. Sam confirmed the switches (D1): TL-SG1005P PoE = Dante, TL-SG105 = production. The app's "same model" note is wrong, logged as `work/APP-FOLLOWUPS.md` item 7. CLAUDE.md's Pelican rule now reads: the kit is recorded in rig/ as current gear; no Pelican design work.
+- **Open in rig/:** questions 2–15 (Wing control port, bundle 2 text, ATEM outputs, HD Mini packing, production box, the Pelican converter, Pelican interior, unrecorded models, umbilical, stage box, Shure, Starlink, stream audio, stage power).
+- **Still waiting on Sam:** his notes from the Matt call on AOC, spool and cable costs (session 5). G7 strip type.
+
 ## Session 6 (2026-09-29)
 
 - Sam ruled this repo stays the master (`work/DECISIONS.md` session 6). The pointer to the experiment at the top of build/README.md is replaced; CLAUDE.md, HANDOFF, PROJECT-INSTRUCTIONS and this file say this repo is the master copy. The cover notes attach this repo's files again.

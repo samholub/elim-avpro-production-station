@@ -11,7 +11,7 @@ Audit-and-backfill of the ELIM AVPRO hardware build docs. The job and its rules 
 - `source/` is read-only input. Don't edit it.
 - Never change a locked decision on your own. Write a proposal in `work/PROPOSALS.md` and wait for Sam.
 - Every fact carries a status. Never promote a maybe to a decision.
-- Pelican is out of scope.
+- Pelican: the kit is recorded in rig/ as current gear. No Pelican design work.
 - `C:\Users\sammh\elim-production` (the app repo) is read-only for this job.
 - Writing: plain, direct, short sentences. No AI filler.
 - Python: `C:\Users\sammh\AppData\Local\Programs\Python\Python312\python.exe` (3.12). Call it by full path; it may not be on PATH and the Store `python` alias is removed. In Git Bash: `/c/Users/sammh/AppData/Local/Programs/Python/Python312/python.exe`.
