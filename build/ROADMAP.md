@@ -65,7 +65,7 @@ Nothing below starts until the physical loop above is solid.
 
 Recorded as stage-audio RF, separate from the network switch line (D17). Status: info / proposed.
 
-- **Owned:** Shure SLXD4 × 4, SLXD4D × 2, PSM300 P3T × 6, a transmit combiner (probably a UA844+SWB; check the label, OPEN-ITEMS N12), UA8 antennas.
+- **Owned:** Shure SLXD4 × 4, SLXD4D × 2, PSM300 P3T × 6, a transmit combiner (probably a UA844+SWB; check the label, OPEN-ITEMS N12). The antennas were read as Shure UA8 from a photo; that's the assistant's reading, not confirmed by Sam: *open*.
 - **Proposed:** a UA845 antenna distribution unit.
 - Shure coordination over the network would need a managed or PoE switch (see below).
 

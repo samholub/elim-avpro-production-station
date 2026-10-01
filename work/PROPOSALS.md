@@ -79,3 +79,10 @@ Nothing here is applied. Each proposal changes something a baseline doc marks as
 - **Not specced:** the jumper and a panel outlet for it. No cost yet.
 - **Order impact:** none until Sam decides. The RS1215-RA stays in the BOM and in the design.
 - **Sam: [ ]**
+
+### R1 A drift check for build/ and review/ (proposed; from the elim-avpro review, 2026-10-01)
+
+- **Status:** proposed.
+- **R1:** work/check_build.py. Ties every $ figure in build/ and review/ to BOM.xlsx and flags broken links and #anchors. Rebuild the retired-value list for the current design; drop the workshop-code check. CI optional, decide later. Source: work/ELIM-AVPRO-REVIEW.md §3.
+- **Considered, not taken:** R2 (a panel-only picture) and R3 (cost by group).
+- **Sam: [ ]**

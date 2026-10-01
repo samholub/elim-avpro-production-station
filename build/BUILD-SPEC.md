@@ -36,7 +36,7 @@
 - **Field SDI is owned, so it isn't in the BOM.** We implement with it. Emily's camera-cable trial checks the owned cables over a real deploy: pull-through, cable and connector reliability, and picture over length. No due date. Camera control is not part of the trial. *Open (N8).*
 - **AOC instead of SDI is an open decision (N8).** AOC runs about $150 for a 50m run on a spool (estimate). It isn't in the BOM.
 - **On record, not chosen:** an HDMI-to-converter box near the cameras. Each camera runs HDMI to one box; the box sends SDI to the rack. Cleaner if the cameras stay near the stage; HDMI distance is the catch.
-- **Parked:** camera color/tally control. The owned converters are bidirectional, so it needs only a return SDI per camera. See ROADMAP.
+- **Parked:** camera color/tally control. It needs a return SDI per camera. Whether the owned converters are bidirectional is *open*: their models and count aren't recorded (one record says 1 bidirectional, the docs say "converters", and a June chat names one-way units). See ROADMAP.
 - Camera settings (shutter, ISO, white balance, lens roles) are in `OPS-CONFIG.md`.
 
 ---

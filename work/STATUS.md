@@ -1,11 +1,11 @@
 # Status
 
-**Updated:** 2026-10-01 (session 9)
+**Updated:** 2026-10-01 (session 10)
 **State: this repo (samholub/elim-avpro-production-station) is the master copy; `build/` is the master set.** samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source.
 
 ## 2026-10-01: elim-avpro review
 
-elim-avpro review done (work/ELIM-AVPRO-REVIEW.md). Nothing to port. 305339d duplicates 04a77ff + fe91bde. Repo cleared to archive. Pending: R1-R3 decision; build/ vs rig/ status mismatches (Wing case strip DESIGN.md:133, converters BUILD-SPEC.md:39, UA8 antennas ROADMAP.md:68).
+elim-avpro review done (work/ELIM-AVPRO-REVIEW.md). Nothing to port. 305339d duplicates 04a77ff + fe91bde. Repo cleared to archive. Done: converters, UA8, Wing case strip aligned to rig/; R1 logged in PROPOSALS.md (R2, R3 not taken).
 
 ## Session 9 (2026-10-01): repo presentation (Part 2; not committed until Sam's OK)
 
