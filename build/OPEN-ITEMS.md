@@ -1,9 +1,9 @@
 # Open Items
 
-**Updated:** 2026-09-28 (distillation; replaces HARDWARE-OPEN-ITEMS)
-**Target order date: 2026-10-01**, pending firm numbers from Matt's quote.
+**Updated:** 2026-10-01 (design-session rulings 1–43, `review/src/DESIGN-RULINGS.md`; replaces HARDWARE-OPEN-ITEMS)
+**Target order date: 2026-10-19** (G1, G2, G5, the lid legs N21 and N14 are due by then), pending firm numbers from Matt's quote.
 
-"Gates the order?" means the first order can't go in until it's closed. Items dated "on delivery" carry an assumed latest date; reset it when Matt gives the case lead time.
+"Gates the order?" means the first order can't go in until it's closed. "Not stated" means no ruling says whether it gates. Items dated "on delivery" carry an assumed latest date; reset it when Matt gives the case lead time. "Not set" means no due date has been given.
 
 ---
 
@@ -11,36 +11,44 @@
 
 | # | Item | Owner | Due | Gates the order? |
 |---|---|---|---|---|
-| G1 | **Case and freight quote:** AVPRO price, BWING price, consolidated freight for both (closed AVPRO is 51.5 × 48.2 × 31.6in). BOM placeholders: $500 / $900 / $250 | Matt | 2026-10-01 | **Yes: the order gate** |
-| G2 | **One matched powerCON TRUE1 family:** AVPRO chassis outlet, both umbilical cable ends, and the Wing chassis inlet (only if the Wing panel happens). **Plus the etherCON pair:** NE8FDP-B panel jacks with NE8MX-1 carriers (standard etherCON; the NE8MC-1 Sam named is discontinued and the NE8MX-1 is its successor), checked against the Neutrik compatibility table before the BOM calls them firm (D7, P-03, V-01) | Matt / vendor; Sam checks the datasheets | 2026-10-01 | **Yes, for the connector lines** |
-| G5 | **CPS1215RM listing:** confirm Amazon B00077IG3O is the CPS1215RM | Sam | 2026-10-01 | That line only |
-| G6 | **Rack rail thread:** tapped 10-32, or square-hole for M6 cage nuts? Assumed 10-32. Matt may know; otherwise it's checked on the rails at delivery | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | **Screw line only.** Order it after delivery if Matt doesn't know |
-| G7 | **Laptop power strip** for the desk laptops. Assumed to plug into the CPS1215RM on the UPS side, not the CPPDU511 (Sam, 2026-09-29; the placement doesn't gate). Replaces the utility-side placement (D4). BOM carries $30 for a plain surge strip, which conflicts with "no surge behind the UPS": the strip type needs Sam's call before it's sourced | Matt; Sam (strip type) | 2026-10-01 | That line only |
+| G1 | **Case and freight quote:** AVPRO price, BXWING price, consolidated freight for both (closed AVPRO is 51.5 × 48.2 × 31.6in). BOM placeholders: $500 / $900 / $250 | Matt | 2026-10-19 | **Yes: the order gate** |
+| G2 | **One matched powerCON TRUE1 family:** AVPRO chassis outlet, both umbilical cable ends, and the Wing chassis inlet (only if the Wing panel happens). **Plus the etherCON pair:** NE8FDP-B panel jacks with NE8MX-1 carriers (standard etherCON; the NE8MC-1 Sam named is discontinued and the NE8MX-1 is its successor), checked against the Neutrik compatibility table before the BOM calls them firm (D7, P-03, V-01) | Matt / vendor; Sam checks the datasheets | 2026-10-19 | **Yes, for the connector lines** |
+| G5 | **CPS1215RM listing:** confirm Amazon B00077IG3O is the CPS1215RM | Sam | 2026-10-19 | That line only |
+| G6 | **Rack rails and thread:** tapped 10-32, or square-hole for M6 cage nuts? Both are open. Also open: whether the AVPRO comes with rails built in or they're added after purchase. Matt may know; otherwise it's checked on the rails at delivery | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | **Screw line only.** Order it after delivery if Matt doesn't know |
+| G8 | **Case and freight spend ceiling** for Matt's quote. Bianca and Sam set it before the Sunny walkthrough | Sam, Bianca | before the Sunny walkthrough | Not stated |
 
-G3 (P-04) and G4 (owned cables) closed 2026-09-28; the IDs are kept so references stay stable.
+G3 (P-04) and G4 (owned cables) closed 2026-09-28; G7 (laptop power) closed 2026-09-30. The IDs are kept so references stay stable.
 
 ## Active: doesn't gate the order
 
 | # | Item | Owner | Due | Gates? |
 |---|---|---|---|---|
-| N1 | **BWING inspection: can it take a panel-mount D-series plate?** Yes → buy the Wing block. No → umbilical direct to the Wing's jacks + a TRUE1-to-IEC jumper | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | Wing block only |
-| N2 | **M7:** LED wall receiver input jack (etherCON or RJ45), and the internet drop's far end. Sets the etherCON end count; the BOM already buys the high count | Sam | 2026-10-04 (next service) | No |
+| N1 | **BXWING inspection: can it take a panel-mount D-series plate?** Likely doable (2026-10-01), not confirmed. Yes → buy the Wing block. No → the connections run out the side of the case + a TRUE1-to-IEC jumper | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | Wing block only |
+| N2 | **M7:** the internet drop's far end. The LED wall receiver takes standard Ethernet (2026-10-01). Sets the etherCON end count; the BOM already buys the high count | Sam | 2026-10-04 (next service) | No |
 | N3 | **M3:** do the AVPRO side doors open to usable storage, and what are the inside dimensions? The design doesn't use them | Sam (ask Matt/ProX) | on case delivery (assumed by 2026-11-15) | No |
-| N4 | **U10 shelf fit:** the 10in AC Infinity shelf takes the HD Mini, the TL-SG1005P and its power brick side by side | Sam | on shelf delivery (assumed by 2026-10-15) | No |
+| N4 | **U10 shelf fit:** the 10in AC Infinity shelf takes the HD Mini, the new 8-port PoE switch and its power brick side by side | Sam | on shelf delivery (assumed by 2026-10-15) | No |
 | N5 | **M5:** LG 24GS60F-B panel height without stand + right-angle adapter depth vs the 16.1in lid; two widths vs 49.6in | Sam | on case delivery (assumed by 2026-11-15) | No |
-| N6 | **M8:** Wing XLR In 8 = Bianca's talkback, Out 8 = her IEM | Tyler | 2026-10-04 | No |
-| N7 | **Tyler's recording path** (Wing USB-C → his Mac, inside the BWING) settled for the case layout. His Mac is also a Dante endpoint on the Wing case switch (app, 2026-09-17), so the case needs room for both cables | Tyler | 2026-10-04 | No |
-| N8 | **Camera-cable trial:** SDI on Belden 1855A / BNC over a real deploy. Checks pull-through, cable and connector reliability, and picture over length. No camera control. Field SDI is bought after this. **Field camera cable: AOC vs BNC/SDI.** Needs a spec and a cost estimate. Not in BOM v7, so the total omits it. *Open* | Emily (trial); Sam, with Matt (spec and cost) | 2026-10-04 (report after the next service) | No |
-| N10 | **M2:** read the AVIO model label (AVIOAO2 per the port map) and confirm it's PoE-powered only | Sam | 2026-10-04 | No |
+| N7 | **ProTools Mac recording path** (Wing USB-C → the ProTools Mac, inside the BXWING) settled for the case layout. The ProTools Mac is also a Dante endpoint on the Wing case switch and runs the live and stream mixes, so the case needs room for both cables | Tyler | 2026-10-04 | No |
+| N8 | **Camera-cable trial:** Emily runs the SDI cables we already own (100ft) over a real deploy. Checks pull-through, cable and connector reliability, and picture over length. No camera control. **AOC instead of SDI is an open decision:** about $150 for a 50m run on a spool (estimate), not in the BOM. *Open* | Emily (trial); Sam, with Matt (AOC spec and cost) | not set | No |
+| N10 | **M2:** read the AVIO model label (AVIOAO2 per the port map). It's confirmed PoE-powered (2026-09-30) | Sam | 2026-10-04 | No |
 | N11 | **R-019:** does Omar have a separate Dante device at the drum kit? (yes/no) | Sam | 2026-10-04 | No |
 | N12 | **R-024:** read the Shure transmit combiner label (UA844+SWB? typed "ua344") | Sam | 2026-10-04 | No |
-| N13 | Is the app's "video stream laptop" (MacBook Air) the same machine as the "switcher laptop"? | Sam | 2026-10-04 | No |
-| N14 | **The "regret ask":** long-lead items, freight consolidation, anything hard to add later | Matt | 2026-10-01 (with the quote) | No |
+| N14 | **The "regret ask":** long-lead items, freight consolidation, anything hard to add later | Matt | 2026-10-19 (with the quote) | No |
 | N15 | **Measure today's setup and teardown time** before the cutover, and again after, to test the ~40 → ~15 connections and ~30 minutes each way estimates | Sam | 2026-10-04, then at the first event after cutover | No |
-| N16 | **Weather: accepted risk.** Setups are often outside with no cover. Keep a fitted rain cover or poly sheet + clamps in the case and a two-minute cover-and-kill plan. A powered open-back rack in sudden rain is the one fast path to a big loss | Sam | before the first live deploy (assumed by 2026-11-15) | No |
+| N16 | **Weather: accepted risk (decided); the plan is open.** Setups are often outside with no cover. Keep a fitted rain cover or poly sheet + clamps in the case and a two-minute cover-and-kill plan. A powered open-back rack in sudden rain is the one fast path to a big loss | Sam | before the first live deploy (assumed by 2026-11-15) | No |
 | N17 | **Stage power (ROADMAP):** confirm the used Chauvet cable is TRUE1-style Seetronic (SAC3), or make feeders and jumpers in-house on one TRUE1 standard | Sam | when stage power starts (assumed by 2026-12-31) | No |
 | N18 | **Stage power (ROADMAP):** venue circuit count for the 2 feeders (INST, PROD) is a load-in check | Sam | when stage power starts (assumed by 2026-12-31) | No |
-| N19 | **Where is the AV charging station?** The Bay B CPPDU511 (drop 2 plugs into the AVPRO) or a separate table (drop 2 needs its own outlet box). **Sam's leaning (2026-09-28): drop 2 most likely feeds the Bay B PDU, so the quad box would drop.** The BOM keeps the quad box, marked "tentative, may drop (N19)". Sam decides when he reviews the full package | Sam | at package review (by 2026-10-01) | No |
+| N21 | **Lid legs:** do legs come inside the two removable AVPRO lids? If they don't, we add them as a line item | Matt | 2026-10-19 | No |
+| N22 | **Lid monitor model (brightness):** the 300-nit LG may not be bright enough even under a tent or canopy. Research brighter screens or a used option; the recorded fallback is a 1000-nit unit for the LEFT lid only. A brighter screen costs more | Sam | not set | Not stated (the monitor line's cost) |
+| N23 | **UltraStudio placement:** rack-mounted or near the Mac Mini, or the desk near the ATEM | Sam | not set | No |
+| N24 | **Connection routes:** how the Hollyland RX reaches ATEM IN 2 (the CAM 2 jack is one option), how the UltraStudio reaches IN 8, and the ProPresenter Mac's second-screen route to the RIGHT lid | Sam | not set | No |
+| N25 | **Hollyland RX lid mount** on top of the flip-up lid: not specced or costed | Sam | not set | Not stated (not costed) |
+| N26 | **ATEM retention tray:** open, not costed. Build a foam or plywood tray, or secure the ATEM another way | Sam (ask Matt for suggestions) | not set | Not stated (not costed) |
+| N27 | **Bay A 8-port PoE switch model:** not priced. The BOM carries $19.99 as a placeholder; a PoE model will cost more | Sam | not set | Not stated (the switch line's cost) |
+| N28 | **Charging-station extension** from the Bay B CPPDU511 to the quad box at the separate charging station: details open, not costed | Sam | not set | Not stated (not costed) |
+| N29 | **Power inside the Wing case:** nothing feeds the TL-SG1005P or the ProTools Mac. The powerCON inlet feeds only the Wing | Sam | not set | Not stated |
+
+**Open proposal (not a decision):** drop the RS1215-RA ($94.98) and feed the charging table by a powerCON jumper from the CPPDU511. The jumper and panel outlet aren't specced. Recorded as P-05 in `work/PROPOSALS.md`; the RS1215-RA stays in the BOM.
 
 ## Active: running config (details in OPS-CONFIG)
 
@@ -56,6 +64,18 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; the IDs are kept so reference
 ---
 
 ## Resolved
+
+### 2026-10-01 (design-session rulings 1–43, `review/src/DESIGN-RULINGS.md`)
+- **N19 closed (2026-09-29).** Drop 2 feeds the Bay B CPPDU511, which passes power through an extension to a quad box at a separate charging station. The quad box is in the first order (decided). The extension's details are open (new N28). A second wall circuit is preferred, not required.
+- **N6 closed (2026-09-29).** Wing XLR In 8 is Bianca's talkback; Out 8 is her IEM, per the ELIM Production App.
+- **N13 closed (2026-09-30).** The app's "video stream laptop" and the switcher laptop are the same machine, now called the streaming laptop.
+- **G7 closed (2026-09-30).** The desk laptops plug into the battery-backed CPS1215RM. The laptop strip is dropped from the BOM (−$30.00).
+- **Switch swap (2026-10-01).** The owned TL-SG1005P moves to the Wing case as its Dante switch (3 ports used). A new 8-port PoE switch is the Bay A Dante satellite at U10 and powers the AVIO. BOM $19.99 placeholder; the PoE model isn't priced (N27).
+- **Wing case model (2026-10-01):** ProX XZF-BXWING.
+- **Field camera cable (2026-10-01).** Owned SDI runs are 100ft and we implement with them; the trial checks the owned cables and has no due date. AOC is an open decision (N8). New field cables for power, HDMI or data are 125ft or more.
+- **The ProTools Mac runs the live and stream mixes (2026-10-01, decided).** The stream-mix laptop is still in use today; its retirement is happening separately from the AVPRO plan (open).
+- **Target order date** moved from 2026-10-01 to **2026-10-19**.
+- New open items: G8 (spend ceiling), N21–N29. N2 narrowed to the internet drop's far end (the LED receiver takes standard Ethernet).
 
 ### 2026-09-28 (step 10 verification fixes; rulings in `work/DECISIONS.md`)
 - **etherCON family (V-01).** One standard etherCON family: NE8FDP-B panel jacks with NE8MX-1 carriers (successor to the NE8MC-1 Sam named). The CAT6A NE8MX6-B is out. The pair stays in the G2 pre-order check.

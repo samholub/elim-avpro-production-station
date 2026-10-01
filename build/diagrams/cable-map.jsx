@@ -4,6 +4,9 @@ import React from "react";
 // Replaces avpro-cable-map-v1 (stale: AX55, the old power design, right lid fed on day one).
 // Step 10 fixes: quad box drawn as tentative; Tyler's Mac on the Wing case Dante switch; 8-port Wing switch.
 // 2026-09-29: drop 1 labeled 12/3 SOOW; laptop strip assumed on the CPS1215RM (Sam, replaces D4).
+// 2026-10-01: design-session rulings: owned 100ft SDI; Hollyland RX on the lid; IN 2 / IN 8 and RIGHT lid routes open;
+// TL-SG1005P is the Wing case switch; ProTools Mac runs the live + stream mix (stream-mix laptop retirement is separate, open); N6 closed; N19 closed (CPPDU511 > extension > quad box);
+// laptops on the CPS1215RM; caption "decided except where a route is marked open".
 // Each row is one signal chain. Arrows are cables; the label is the type, the color is the cable color code.
 
 const C = {
@@ -21,30 +24,29 @@ const GROUPS = [
   {
     title: "Video",
     chains: [
-      { nodes: ["Pocket 4K (wired)", "Converter", "Panel CAM 1", "ATEM IN 1"], links: [["HDMI", C.hdmi], ["SDI 125ft", C.video], ["SDI jumper", C.video]] },
-      { nodes: ["Pocket 4K", "Hollyland TX", "Hollyland RX (4U top)", "ATEM IN 2"], links: [["HDMI", C.hdmi], ["wireless", C.neutral], ["SDI", C.video]] },
-      { nodes: ["DJI", "Converter", "Panel CAM 3", "ATEM IN 3"], links: [["HDMI", C.hdmi], ["SDI 125ft", C.video], ["SDI jumper", C.video]] },
+      { nodes: ["Pocket 4K (wired)", "Converter", "Panel CAM 1", "ATEM IN 1"], links: [["HDMI", C.hdmi], ["SDI 100ft", C.video], ["SDI jumper", C.video]] },
+      { nodes: ["Pocket 4K", "Hollyland TX", "Hollyland RX (on the lid)", "ATEM IN 2"], links: [["HDMI", C.hdmi], ["wireless", C.neutral], ["SDI (route open)", C.video]] },
+      { nodes: ["DJI", "Converter", "Panel CAM 3", "ATEM IN 3"], links: [["HDMI", C.hdmi], ["SDI 100ft", C.video], ["SDI jumper", C.video]] },
       { nodes: ["Rented cameras", "Panel CAM 4-7", "ATEM IN 4-7"], links: [["SDI", C.video], ["SDI jumper", C.video]] },
-      { nodes: ["ProPresenter Mac", "UltraStudio (desk)", "ATEM IN 8"], links: [["USB-C", C.neutral], ["SDI", C.video]] },
+      { nodes: ["ProPresenter Mac", "UltraStudio (placement open)", "ATEM IN 8"], links: [["USB-C", C.neutral], ["SDI (route open)", C.video]] },
       { nodes: ["ATEM AUX", "HyperDeck HD Mini", "SSD"], links: [["SDI", C.video], ["USB-C", C.neutral]] },
       { nodes: ["ATEM OUT 8", "Resi", "AX21 > internet"], links: [["SDI", C.video], ["Cat", C.prod]] },
       { nodes: ["ATEM multiview", "LEFT lid"], links: [["HDMI", C.hdmi]] },
       { nodes: ["ProPresenter Mac", "LED transmitter", "Panel LED 1-2", "LED wall"], links: [["HDMI", C.hdmi], ["Cat x2", C.led], ["field", C.led]] },
       { nodes: ["ProPresenter Mac", "Anker hub", "Panel CONF OUT", "Confidence monitor"], links: [["USB-C", C.neutral], ["HDMI", C.hdmi], ["HDMI field", C.hdmi]] },
-      { nodes: ["RIGHT lid", "Phase 3 (Mac Minis)"], links: [["later", C.neutral]] },
+      { nodes: ["ProPresenter Mac", "RIGHT lid"], links: [["second screen (route open)", C.neutral]] },
     ],
   },
   {
     title: "Audio and Dante",
     chains: [
       { nodes: ["Stage box (DL251)", "Wing"], links: [["AES50", C.audio]] },
-      { nodes: ["Wing Dante card", "Wing case switch (8-port)", "DANTE TRUNK", "Bay A satellite", "AVIO (PoE)"], links: [["Cat", C.dante], ["trunk 15ft", C.dante], ["Cat", C.dante], ["Cat + PoE", C.dante]] },
+      { nodes: ["Wing Dante card", "Wing case switch (TL-SG1005P)", "DANTE TRUNK", "Bay A satellite", "AVIO (PoE)"], links: [["Cat", C.dante], ["trunk 15ft", C.dante], ["Cat", C.dante], ["Cat + PoE", C.dante]] },
       { nodes: ["AVIO", "ATEM Ch 1-2"], links: [["XLR pigtails", C.audio]] },
       { nodes: ["Bianca's Mac", "Bay A satellite"], links: [["USB-C Cat", C.dante]] },
-      { nodes: ["Stream-mix laptop (booth)", "Wing case switch"], links: [["Cat", C.dante]] },
-      { nodes: ["Tyler's Mac (in case)", "Wing case switch"], links: [["Cat (Dante)", C.dante]] },
-      { nodes: ["Bianca's talkback mic", "Panel TALKBACK", "Wing In 8 (Tyler to confirm)"], links: [["XLR", C.audio], ["XLR 15ft", C.audio]] },
-      { nodes: ["Wing Out 8 (Tyler to confirm)", "Panel IEM", "Bianca's IEM"], links: [["XLR 15ft", C.audio], ["XLR", C.audio]] },
+      { nodes: ["Tyler's ProTools Mac (in case; live + stream mix)", "Wing case switch"], links: [["Cat (Dante)", C.dante]] },
+      { nodes: ["Bianca's talkback mic", "Panel TALKBACK", "Wing In 8"], links: [["XLR", C.audio], ["XLR 15ft", C.audio]] },
+      { nodes: ["Wing Out 8", "Panel IEM", "Bianca's IEM"], links: [["XLR 15ft", C.audio], ["XLR", C.audio]] },
       { nodes: ["Wing", "Tyler's Mac (in case)"], links: [["USB-C", C.neutral]] },
     ],
   },
@@ -52,7 +54,7 @@ const GROUPS = [
     title: "Production network and internet",
     chains: [
       { nodes: ["Venue / Starlink", "Panel INTERNET IN", "AX21 WAN"], links: [["Cat field", C.net], ["Cat", C.net]] },
-      { nodes: ["AX21 LAN", "TL-SG105", "ATEM, HD Mini, switcher laptop, Anker hub"], links: [["Cat", C.prod], ["Cat", C.prod]] },
+      { nodes: ["AX21 LAN", "TL-SG105", "ATEM, HD Mini, streaming laptop, Anker hub"], links: [["Cat", C.prod], ["Cat", C.prod]] },
       { nodes: ["AX21 LAN", "Resi"], links: [["Cat", C.prod]] },
       { nodes: ["AX21 LAN", "PROD TRUNK", "Wing CONTROL"], links: [["Cat", C.prod], ["trunk 15ft", C.prod]] },
       { nodes: ["AX21 LAN", "Panel SPARE"], links: [["Cat", C.prod]] },
@@ -63,9 +65,9 @@ const GROUPS = [
     chains: [
       { nodes: ["Wall outlet", "Drop 1 (125ft 12/3 SOOW)", "UPS CP1500PFCRM2U", "CPS1215RM", "Bay A + desk gear, lids"], links: [["5-15P", C.power], ["5-15R", C.power], ["mains", C.power], ["5-15P > C13", C.power]] },
       { nodes: ["CPS1215RM", "POWER > WING outlet", "Wing"], links: [["feed cord", C.power], ["powerCON 15ft 14/3", C.power]] },
-      { nodes: ["Wall outlet (2nd circuit preferred)", "Drop 2 (125ft 12/3 SOOW)", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["5-15P", C.power], ["5-15R (direct, if Bay B)", C.power], ["chained", C.power], ["mains", C.power]] },
-      { nodes: ["Drop 2", "Quad box: TENTATIVE, only if the charging station is a separate table (N19)", "Chargers + the CPPDU511 cord"], links: [["5-15R", C.power], ["mains", C.power]] },
-      { nodes: ["CPS1215RM", "Laptop strip (ASSUMED on the UPS side)", "Laptops"], links: [["mains", C.power], ["mains", C.power]] },
+      { nodes: ["Wall outlet (2nd circuit preferred, not required)", "Drop 2 (125ft 12/3 SOOW)", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["5-15P", C.power], ["5-15R", C.power], ["chained", C.power], ["mains", C.power]] },
+      { nodes: ["CPPDU511", "Quad box", "Separate charging station"], links: [["extension (details open)", C.power], ["mains", C.power]] },
+      { nodes: ["CPS1215RM (battery-backed)", "Laptops"], links: [["mains", C.power]] },
     ],
   },
 ];
@@ -106,7 +108,7 @@ export default function CableMap() {
   return (
     <div id="root-diagram" style={wrap}>
       <div style={{ fontSize: 22, fontWeight: 800 }}>ELIM AVPRO - Cable Map</div>
-      <div style={{ fontSize: 12.5, color: C.sub, marginTop: 3 }}>Build set, 2026-09-28. Each row is one signal chain. Panel names match the rear I/O panel. Detail in BUILD-SPEC section 3.</div>
+      <div style={{ fontSize: 12.5, color: C.sub, marginTop: 3 }}>Build set, 2026-10-01. Each row is one signal chain. Panel names match the rear I/O panel. Detail in BUILD-SPEC section 3.</div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px", marginTop: 14, padding: "10px 12px", background: C.card, border: "1px solid " + C.line, borderRadius: 6 }}>
         {LEGEND.map(([name, col], i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11 }}>
@@ -125,7 +127,7 @@ export default function CableMap() {
         </div>
       ))}
       <div style={{ marginTop: 22, fontSize: 11, color: C.sub, lineHeight: 1.5 }}>
-        The CAM 2 and CAM 8 panel jumpers are parked at ATEM IN 2 / IN 8 (shared jacks). The Wing panel is conditional; without it the trunks plug straight into the Wing and its switch. Where the charging station sits is open: drop 2 most likely feeds the Bay B PDU direct, and the quad box row above is only for the separate-table case. Camera control (a return SDI per camera) is parked and not shown.
+        The map is decided except where a route is marked open. ATEM IN 2 is always the Hollyland RX and IN 8 always the UltraStudio; how each connects is open (the CAM 2 jack is one option). The Wing panel is conditional; without it the connections run out the side of the case to the Wing and its switch. Camera control (a return SDI per camera) is parked and not shown.
       </div>
     </div>
   );

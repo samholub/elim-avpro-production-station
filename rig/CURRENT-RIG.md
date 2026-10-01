@@ -36,7 +36,7 @@ Pre-wired. These devices stay connected inside the case.
 | Short pre-wired CAT6 interconnects, never unplugged | decided | RB §Wing Road Case |
 | One umbilical cord from the case to the production station | decided; what it carries is **open** (Q10) | RB §Wing Road Case |
 
-AVPRO plan: the router, production switch, Resi and the TL-SG1005P move to AVPRO Bay A, and a new 8-port switch becomes the Wing case Dante switch ([build/DESIGN.md §8](../build/DESIGN.md)).
+AVPRO plan: the router, production switch and Resi move to AVPRO Bay A. The TL-SG1005P stays the Wing case Dante switch, and a new 8-port PoE switch becomes the Bay A Dante satellite ([build/DESIGN.md §8](../build/DESIGN.md)).
 
 ### Pelican 1660 (reference)
 
@@ -68,7 +68,7 @@ A separate case that lives at the production station.
 
 | Item | Status | Source |
 |---|---|---|
-| LED transmitter (feeds the LED wall) | decided | RB §Production Box |
+| LED transmitter (feeds the LED wall). The LED wall receiver takes standard Ethernet | decided (receiver jack: Sam, 2026-10-01) | RB §Production Box; review/src/DESIGN-RULINGS.md #25 |
 | The LED transmitter is rack-mounted in this box | decided (Sam, 2026-08-16: "currently rack mounted in a stage box") | L2810, chat a5df9d8d |
 | A power conditioner that feeds the production station strip | decided (Sam, 2026-09-21) | RB §Production Box |
 | Everything else in the box | **open**: "not yet inventoried" (Q6) | RB §Production Box |
@@ -79,7 +79,7 @@ A separate case that lives at the production station.
 |---|---|---|---|
 | 1 "ATEM to converters" | Short colored SDI cables + converter | info | RB §Cable Bundles |
 | 2 "ATEM to Resi + network" | SDI (ATEM OUT 8 → Resi), ethernet from the ATEM | info; the runbook's own text says "ATEM → AX21", which contradicts its network section (Q3) | RB §Cable Bundles |
-| 3 "ProPresenter Mac" | USB-C → UltraStudio; native HDMI → LED transmitter; Anker hub → HDMI to the confidence monitor + ethernet to the production switch; separate USB-C adapter → Dante switch | decided (legs re-confirmed by Sam 2026-09-19) | RB §Cable Bundles, §Network |
+| 3 "ProPresenter Mac" | USB-C → UltraStudio; native HDMI → LED transmitter; Anker hub → HDMI to the confidence monitor + ethernet to the production switch; separate USB-C adapter → Dante switch, which carries its music and media over Dante | decided (legs re-confirmed by Sam 2026-09-19; music and media over Dante: Sam, 2026-09-30) | RB §Cable Bundles, §Network; review/src/DESIGN-RULINGS.md #16 |
 | 4 "ATEM to HD Mini" | SDI (ATEM AUX → HD Mini) + HD Mini power | info | RB §Cable Bundles |
 | Long runs, in a separate cable bag | Camera SDI, AES50, PoE CAT6 (AVIO), venue internet (to the AX21) | info | RB §Cable Bundles |
 
@@ -138,8 +138,9 @@ Camera settings (shutter, ISO, white balance) are operating settings. See the ap
 | Gear | Status | Source |
 |---|---|---|
 | ProPresenter Mac (Bianca's), model not recorded | decided / model **open** | RB §Network |
-| Video stream laptop: a MacBook Air at the production station. It drives the ATEM/Resi/HD Mini side. Owner not recorded | decided (Sam, 2026-09-21) / owner **open** | RB §Video Stream Laptop |
+| Streaming laptop (the app calls it the "video stream laptop"; it's the same machine as the build docs' old "switcher laptop"): a MacBook Air at the production station. It drives the ATEM/Resi/HD Mini side. Owner not recorded | decided (Sam, 2026-09-21; same machine: Sam, 2026-09-30) / owner **open** | RB §Video Stream Laptop; review/src/DESIGN-RULINGS.md #12 |
 | Stream mix laptop (Omar's), on Dante only, at the production station, unattended | decided | RB §Video Stream Laptop; L2124 |
+| Stream mix laptop retirement: in process. The ProTools Mac takes over the stream mix. This is happening separately and doesn't depend on the AVPRO plan | **open** (Sam, 2026-10-01) | review/src/DESIGN-RULINGS.md #28 |
 | Tyler's ProTools Mac, at the Wing: USB-C to the Wing and also on the Dante switch | decided (Sam's ruling 2026-09-17) | RB §Network; L3683 |
 | Wing iPad and a phone, on the AX21 WiFi | decided | RB §Network |
 | Anker USB-C hub (Bianca's) and a separate USB-C ethernet adapter | decided | RB §Network |
@@ -173,10 +174,10 @@ AVPRO plan: two LG lid monitors (not owned today: L2626) and a UPS (none today) 
 | ATEM AUX → SDI | HyperDeck Studio HD Mini, to SSD | decided | RB §Recording |
 | ATEM OUT 1–7 | unused or unknown | **open** (Q4) | RB §ATEM SDI Port Map |
 | ATEM multiview output | never confirmed | **open** (Q4) | RB §ATEM SDI Port Map |
-| ProPresenter Mac, built-in HDMI | LED transmitter (production box) → two CAT6 data runs: top-left panel and the left-column panel four down | decided (re-confirmed 2026-09-19; LED runs 2026-09-21) | RB §Network, §Production Box |
+| ProPresenter Mac, built-in HDMI | LED transmitter (production box) → two CAT6 data runs: top-left panel and the left-column panel four down. The LED wall receiver takes standard Ethernet | decided (re-confirmed 2026-09-19; LED runs 2026-09-21; receiver jack 2026-10-01) | RB §Network, §Production Box |
 | ProPresenter Mac → Anker hub HDMI | Confidence monitor, stage-side | decided (re-confirmed 2026-09-19) | RB §Network |
 
-**Camera SDI runs are 100ft today** (Sam, 2026-08-17: "All SDI are 100' currently"). Decided. L2884. AVPRO plan: a 125ft standard, and field camera cable is open (AOC vs BNC/SDI) ([build/OPEN-ITEMS.md](../build/OPEN-ITEMS.md) N8).
+**Camera SDI runs are 100ft today** (Sam, 2026-08-17: "All SDI are 100' currently"). Decided. L2884. AVPRO plan: implement with these owned 100ft runs. Any power, HDMI or data field cables added are 125ft or more. Switching camera cable to AOC is open ([build/OPEN-ITEMS.md](../build/OPEN-ITEMS.md) N8).
 
 ### Audio
 
@@ -211,11 +212,11 @@ A cable color scheme is decided in the app but **not in use** (2026-09-18). Labe
 | Wired cameras: the HDMI→SDI converter's adapter needs an outlet at the camera. The Hollyland TX runs on battery | decided (2026-09-18) | RB §ATEM SDI Port Map |
 | LED wall: four power cables on its own surge strip at the wall. No order and no sequence dependency | decided (2026-09-21) | RB §Production Box; app checklist `lw-2` |
 | Stage power: 50ft 12/3 extension cords with 6-outlet surge strips at five positions: LED wall, PA towers (×2), stage box, production station | info; the app still lists cord-length purchases and PA draw as open (Q15) | RB §Stage Power Distribution; app OI |
-| Video stream laptop: which strip it draws from is not recorded | **open** | RB §Video Stream Laptop |
+| Streaming laptop: which strip it draws from is not recorded | **open** | RB §Video Stream Laptop |
 
 The power-on order is an operating procedure. See the app checklist.
 
-AVPRO plan: one UPS backs the booth and the Wing, and two 125ft venue drops feed the rig. Laptop-strip placement is open (G7) ([build/BUILD-SPEC.md §4](../build/BUILD-SPEC.md)).
+AVPRO plan: one UPS backs the booth and the Wing, and two 125ft venue drops feed the rig. The desk laptops plug into the battery-backed CPS1215RM; drop 2 feeds the Bay B CPPDU511, which feeds the charging station ([build/BUILD-SPEC.md §4](../build/BUILD-SPEC.md)).
 
 ---
 
@@ -225,9 +226,9 @@ AVPRO plan: one UPS backs the booth and the Wing, and two 125ft venue drops feed
 
 | Network | Hardware | What's on it today | Status | Source |
 |---|---|---|---|---|
-| **Dante** (isolated) | Dante switch (TL-SG1005P), in the Wing case | Wing Dante expansion, stream mix laptop, ProPresenter Mac (separate USB-C adapter), Dante AVIO, ProTools Mac. **5 of 5 ports used** | decided (2026-09-17/19) | RB §Network |
+| **Dante** (isolated) | Dante switch (TL-SG1005P), in the Wing case | Wing Dante expansion, stream mix laptop, ProPresenter Mac (separate USB-C adapter; music and media), Dante AVIO, ProTools Mac. **5 of 5 ports used** | decided (2026-09-17/19) | RB §Network |
 | **AX21 LAN**, on the router | TP-Link Archer AX21, in the Wing case | Resi (ethernet patch), the production switch uplink; phone and Wing iPad over WiFi; venue internet into the WAN | decided | RB §Network |
-| **AX21 LAN**, second tier | Production switch, in the Wing case | Uplink, ATEM, ProPresenter Mac (via the Anker hub), video stream laptop. **4 of 5 used, one spare** | decided (recorded 2026-09-19); whether the fifth port is really spare is open in the app (app OI) | RB §Network |
+| **AX21 LAN**, second tier | Production switch, in the Wing case | Uplink, ATEM, ProPresenter Mac (via the Anker hub), streaming laptop. **4 of 5 used, one spare** | decided (recorded 2026-09-19); whether the fifth port is really spare is open in the app (app OI) | RB §Network |
 
 - The ProPresenter Mac is on both networks at once, with nothing bridging them. It also uses WiFi for internet. Decided (Sam, 2026-09-19). RB §Network.
 - The production-station devices run their ethernet back to the Wing case. There's no switch on the table. Decided. RB §Network.
@@ -236,7 +237,7 @@ AVPRO plan: one UPS backs the booth and the Wing, and two 125ft venue drops feed
 
 Addresses and router settings: see the app ([HARDWARE-RUNBOOK.md](https://github.com/samholub/ELIM-production-main/blob/main/HARDWARE-RUNBOOK.md), "ATEM Network Configuration").
 
-AVPRO plan: the same two networks, but the router and both owned switches move to Bay A, and a new 8-port Dante switch goes in the Wing case ([build/DESIGN.md §6](../build/DESIGN.md)).
+AVPRO plan: the same two networks. The router, the production switch and a new 8-port PoE Dante satellite go in Bay A; the TL-SG1005P stays in the Wing case as its Dante switch ([build/DESIGN.md §6](../build/DESIGN.md)).
 
 ---
 
@@ -267,3 +268,4 @@ AVPRO plan: the same two networks, but the router and both owned switches move t
 13. **Starlink.** Is it used at events today, or does venue internet always feed the AX21?
 14. **Stream audio.** How does audio reach the Resi today?
 15. **Stage power.** Are all five 50ft cords and strips in hand, or are cord lengths still being bought? What is the PA draw?
+16. **Stream mix laptop retirement.** In process; the ProTools Mac takes over the stream mix. Separate from the AVPRO plan. When is it done?

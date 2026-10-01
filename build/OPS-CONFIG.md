@@ -1,6 +1,6 @@
 # Ops Config
 
-**Updated:** 2026-09-28 (new file, D15; step 10 fixes the same day)
+**Updated:** 2026-10-01 (N6 closed; ATEM IN 2 / IN 8 routes open; streaming laptop name)
 
 The running config the rig depends on that isn't hardware: switcher, recorder, audio levels, cameras, network. Each line carries its status. Where this describes the rig as it runs today, the ELIM Production App is the authority (fact precedence, DESIGN §8); this file mirrors it for the build.
 
@@ -18,10 +18,10 @@ The running config the rig depends on that isn't hardware: switcher, recorder, a
 | Input | Source | Panel jack | Status |
 |---|---|---|---|
 | IN 1 | Wired Pocket 4K (converter at the camera) | CAM 1 | decided |
-| IN 2 | Hollyland RX (Pocket 4K on wireless), SDI direct | CAM 2 shared, jumper parked | decided |
+| IN 2 | Hollyland RX (Pocket 4K on wireless), always | route open; CAM 2 is one option (OPEN-ITEMS N24) | decided (source); route open |
 | IN 3 | DJI (converter at the camera) | CAM 3 | decided |
 | IN 4–7 | Free normally; annual-event cameras | CAM 4–7 | decided |
-| IN 8 | ProPresenter via UltraStudio Monitor, SDI direct. Named "ProPresenter" | CAM 8 shared, jumper parked | decided |
+| IN 8 | ProPresenter via UltraStudio Monitor, always. Named "ProPresenter" | route open (N24) | decided (source); route open |
 
 ## 3. ATEM outputs and keys
 
@@ -46,7 +46,7 @@ The running config the rig depends on that isn't hardware: switcher, recorder, a
 
 - **XLR 0, Master 10.** The Dante stream mix goes quiet below Master 10. At these levels the HyperDeck clips unless its meter is on PPM (§4). *Decided.*
 - **Wing Dante out 47/48 is fed from the WDANTE IN loopback, not Main LR,** so nothing reaches ProPresenter, the ATEM or the HyperDeck over Dante. The fix was deferred ("protools isn't set up right now"). *Open (C3, Tyler).*
-- Bianca's talkback = Wing XLR In 8; her IEM = Wing XLR Out 8. *To be confirmed by Tyler (M8).*
+- Bianca's talkback = Wing XLR In 8; her IEM = Wing XLR Out 8. *Decided (N6 closed, 2026-09-29).*
 
 ## 6. Cameras
 
@@ -65,7 +65,7 @@ The running config the rig depends on that isn't hardware: switcher, recorder, a
 | ATEM TV Studio Pro 4K | 192.168.0.240 | static, subnet 255.255.255.0, gateway 192.168.0.1 |
 | ProPresenter Mac (production leg) | 192.168.0.100 | manual/static, no gateway set |
 | Resi | DHCP (last seen 192.168.0.13) | DHCP |
-| HD Mini, switcher laptop | DHCP | — |
+| HD Mini, streaming laptop | DHCP | — |
 | Phones | DHCP over the AX21 WiFi | — |
 
 - **Dante is isolated:** its own switches, no path to the AX21 or the internet.

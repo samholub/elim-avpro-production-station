@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>The ELIM production workstation: what we'd build and why</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<script src="./doc-page.js"></script>
+<style>
+body{margin:0;-webkit-font-smoothing:antialiased}
+a{color:oklch(0.42 0.1 250)}
+a:hover{color:oklch(0.3 0.1 250)}
+</style>
+</helmet>
+<doc-page size="letter" margin="0.6in">
+<div style="font-family:'IBM Plex Sans',Helvetica,Arial,sans-serif;color:oklch(0.22 0.01 250);font-size:14.5px;line-height:1.55">
+
+<h1 data-screen-label="01 The whole picture" style="font-size:24px;line-height:1.15;font-weight:700;letter-spacing:-0.01em;margin:0 0 8px;padding-bottom:6px;white-space:nowrap;border-bottom:2px solid oklch(0.22 0.01 250)">The ELIM production workstation: what we'd build and why</h1>
+
+
+<h2 style="font-size:21px;font-weight:700;margin:0 0 6px">1. The whole picture</h2>
+<p style="margin:0 0 7px;line-height:1.47">This build puts our video, network and control gear into the ProX AVPRO rolling workstation (the AVPRO). It has two 12U bays, two 4U tops and a work surface. Of its three lids, the flip-up lid holds the two monitors and the other two come off the case. The Behringer Wing sits beside it in the ProX BXWING hydraulic flip case (the Wing case), joined by five short cables. Every field cable and those five land on one labeled, color-coded panel on the back of the AVPRO.</p>
+<p style="margin:0 0 7px;line-height:1.47">Right now our rig deploys once or twice a week at different venues, and we set up and tear down under time pressure. The build also removes the need for extra tables. The Wing flips up in its own case, and the AVPRO brings its own work surface and pop-up lid tables. The design puts the physical job first. The system has to set up, run the event and tear down reliably before anything else matters.</p>
+<div style="display:flex;flex-direction:column;gap:3px;margin:0 0 6px;break-inside:avoid">
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+    <div style="border:1px solid oklch(0.86 0.008 250);background:#fff;padding:4px 5px;display:flex;align-items:baseline;gap:5px"><div style="font-size:18px;font-weight:700;line-height:1.15;white-space:nowrap">~40 → ~15</div><div style="font-size:12.5px;line-height:1.3">loose connections become labeled cables</div></div>
+    <div style="border:1px solid oklch(0.86 0.008 250);background:#fff;padding:4px 5px;display:flex;align-items:baseline;gap:5px"><div style="font-size:18px;font-weight:700;line-height:1.15;white-space:nowrap">~30 min</div><div style="font-size:12.5px;line-height:1.3">saved at setup, and again at teardown</div></div>
+  </div>
+  <div style="font-size:12.5px;line-height:1.4;color:oklch(0.32 0.01 250)">Both figures are estimates, and we'll measure them. I'll time setup and teardown before the cutover and again after it.</div>
+</div>
+<p style="margin:0 0 7px;line-height:1.47">The order is about $4,600 ($4,641.84). That's an estimate. Most prices are estimated based on online pricing, and the cases and freight are placeholders until locked in with Matt. Almost all the gear inside is already owned, so it isn't in the total. A $100.00 connector plate for the Wing case comes on top, only if the Wing case can take one.</p>
+
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:14px;break-inside:avoid;margin:0 0 3px">
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <div style="font-size:12px;font-weight:600">Flip-up lid</div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px">
+      <sc-for list="{{ plainLids }}" as="b" hint-placeholder-count="3"><div style="border:1px solid oklch(0.86 0.008 250);border-left:5px solid {{ b.c }};padding:3px 8px;background:#fff"><div style="font-size:12.5px;font-weight:600;line-height:1.25">{{ b.name }}</div><div style="font-size:11px;color:oklch(0.42 0.01 250);line-height:1.3">{{ b.note }}</div></div></sc-for>
+    </div>
+    <div style="font-size:12px;font-weight:600">Desk</div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px">
+      <sc-for list="{{ plainDesk }}" as="b" hint-placeholder-count="3"><div style="border:1px solid oklch(0.86 0.008 250);border-left:5px solid {{ b.c }};padding:3px 8px;background:#fff"><div style="font-size:12.5px;font-weight:600;line-height:1.25">{{ b.name }}</div><div style="font-size:11px;color:oklch(0.42 0.01 250);line-height:1.3">{{ b.note }}</div></div></sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2px">
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <div style="font-size:12.5px;font-weight:700">Bay A: the active system</div>
+        <div style="border:1.5px solid oklch(0.22 0.01 250);background:#fff">
+          <div style="padding:4px 8px;background:oklch(0.95 0.006 250);font-size:11.5px;border-bottom:2px solid oklch(0.22 0.01 250)">left open</div>
+          <sc-for list="{{ plainBayA }}" as="r" hint-placeholder-count="9"><div style="display:flex;min-height:{{ r.hpx }}px;border-top:1px solid oklch(0.9 0.006 250)"><div style="width:6px;flex:none;background:{{ r.c }}"></div><div style="padding:1px 8px;display:flex;align-items:center;font-size:11.5px;line-height:1.2">{{ r.name }}</div></div></sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <div style="font-size:12.5px;font-weight:700">Bay B: storage + charging</div>
+        <div style="border:1.5px solid oklch(0.22 0.01 250);background:#fff">
+          <div style="padding:4px 8px;background:oklch(0.95 0.006 250);font-size:11.5px;border-bottom:2px solid oklch(0.22 0.01 250)">left open</div>
+          <sc-for list="{{ plainBayB }}" as="r" hint-placeholder-count="4"><div style="display:flex;min-height:{{ r.hpx }}px;border-top:1px solid oklch(0.9 0.006 250)"><div style="width:6px;flex:none;background:{{ r.c }}"></div><div style="padding:1px 8px;display:flex;align-items:center;font-size:11.5px;line-height:1.2">{{ r.name }}</div></div></sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:12px;font-weight:600;margin-top:2px">Back of Bay A: the connection panel</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px">
+      <sc-for list="{{ plainPanel }}" as="j" hint-placeholder-count="8"><div style="border:1px solid oklch(0.86 0.008 250);border-top:4px solid {{ j.c }};padding:2px 7px;font-size:11.5px;background:#fff">{{ j.name }}</div></sc-for>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:7px">
+    <img src="uploads/cf5c3e4d-d360-4a57-9290-65675e409bfb.webp" alt="Product listing photo of the ProX AVPRO rolling workstation" style="width:100%;display:block;border:1px solid oklch(0.86 0.008 250)">
+    <p style="font-size:11.5px;line-height:1.35;margin:0;color:oklch(0.32 0.01 250)">The AVPRO product listing photo, with the seller's labels.</p>
+    <div style="display:grid;grid-template-columns:1fr;gap:3px;border-top:1px solid oklch(0.86 0.005 250);padding-top:6px">
+      <sc-for list="{{ legend }}" as="l" hint-placeholder-count="8"><div style="display:flex;align-items:center;gap:6px;font-size:11px;line-height:1.2"><span style="width:11px;height:11px;flex:none;background:{{ l.c }};border:1px solid oklch(0.7 0.01 250)"></span><span>{{ l.name }}: {{ l.word }}</span></div></sc-for>
+    </div>
+  </div>
+</div>
+<p style="font-size:12.5px;line-height:1.45;margin:0 0 4px;color:oklch(0.32 0.01 250)">The layout is decided but can be adapted and changed. Colors are cable colors. The two removable lids have legs inside them, so each can pop up into an accessory table.</p>
+
+<h2 data-screen-label="02 Walking the build" style="font-size:21px;font-weight:700;margin:0 0 6px;break-before:page">2. Walking the build</h2>
+<p style="margin:0 0 6px">This section walks the build from the outside in. Each starts with what happens there at a service or event. Then there's a short card for each part: what it does, why it's there, what we passed on if build/ records it, what it costs, what we give up, and where it stands.</p>
+
+<h3 style="font-size:17px;font-weight:700;margin:22px 0 4px;break-after:avoid">a. The AVPRO station</h3>
+<p style="margin:0 0 10px;break-after:avoid">The AVPRO is the production position. Streaming and presentation work is done at this desk under the two monitors on the flip-up lid, and audio mixing at the Wing case beside it. This creates a space for three stations at the production position.</p>
+<div style="column-count:2;column-gap:14px"><sc-for list="{{ cAvpro }}" as="c" hint-placeholder-count="3"><div style="border:1px solid oklch(0.86 0.006 250);border-top:3px solid oklch(0.22 0.01 250);background:#fff;padding:7px 10px;margin:0 0 8px;display:flex;flex-direction:column;gap:2px;break-inside:avoid;-webkit-column-break-inside:avoid"><div style="font-size:14px;font-weight:700;margin-bottom:1px">{{ c.name }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What it does.</span> {{ c.does }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why it's there.</span> {{ c.why }}</div><sc-if value="{{ c.alt }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why not another.</span> {{ c.alt }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Cost.</span> {{ c.cost }}</div><sc-if value="{{ c.give }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What we give up.</span> {{ c.give }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Status.</span> {{ c.status }}</div></div></sc-for></div>
+
+<h3 style="font-size:17px;font-weight:700;margin:22px 0 4px;break-after:avoid">b. The desk</h3>
+<p style="margin:0 0 10px;break-after:avoid">The ATEM switcher, the ProPresenter Mac and the streaming laptop run from the desk. The switcher's I/O cables drop through a 3in grommet into the Bay A rack space.</p>
+<div style="column-count:2;column-gap:14px"><sc-for list="{{ cDesk }}" as="c" hint-placeholder-count="4"><div style="border:1px solid oklch(0.86 0.006 250);border-top:3px solid oklch(0.22 0.01 250);background:#fff;padding:7px 10px;margin:0 0 8px;display:flex;flex-direction:column;gap:2px;break-inside:avoid;-webkit-column-break-inside:avoid"><div style="font-size:14px;font-weight:700;margin-bottom:1px">{{ c.name }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What it does.</span> {{ c.does }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why it's there.</span> {{ c.why }}</div><sc-if value="{{ c.alt }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why not another.</span> {{ c.alt }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Cost.</span> {{ c.cost }}</div><sc-if value="{{ c.give }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What we give up.</span> {{ c.give }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Status.</span> {{ c.status }}</div></div></sc-for></div>
+
+<h3 style="font-size:17px;font-weight:700;margin:22px 0 4px;break-after:avoid">c. Bay A, the active system</h3>
+<p style="margin:0 0 10px;break-after:avoid">Nobody touches Bay A for setup. It's wired once and left alone, and every network jumper stays inside it. All connection work is done from the rear panel instead.</p>
+<div style="column-count:2;column-gap:14px"><sc-for list="{{ cBayA }}" as="c" hint-placeholder-count="5"><div style="border:1px solid oklch(0.86 0.006 250);border-top:3px solid oklch(0.22 0.01 250);background:#fff;padding:7px 10px;margin:0 0 8px;display:flex;flex-direction:column;gap:2px;break-inside:avoid;-webkit-column-break-inside:avoid"><div style="font-size:14px;font-weight:700;margin-bottom:1px">{{ c.name }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What it does.</span> {{ c.does }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why it's there.</span> {{ c.why }}</div><sc-if value="{{ c.alt }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why not another.</span> {{ c.alt }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Cost.</span> {{ c.cost }}</div><sc-if value="{{ c.give }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What we give up.</span> {{ c.give }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Status.</span> {{ c.status }}</div></div></sc-for></div>
+
+<h3 style="font-size:17px;font-weight:700;margin:22px 0 4px;break-after:avoid">d. Bay B, storage and charging</h3>
+<p style="margin:0 0 10px;break-after:avoid">Bay B charges the camera batteries. It carries no signal. The rest of it is storage, and all cabling is stored with the two cases.</p>
+<div style="column-count:2;column-gap:14px"><sc-for list="{{ cBayB }}" as="c" hint-placeholder-count="3"><div style="border:1px solid oklch(0.86 0.006 250);border-top:3px solid oklch(0.22 0.01 250);background:#fff;padding:7px 10px;margin:0 0 8px;display:flex;flex-direction:column;gap:2px;break-inside:avoid;-webkit-column-break-inside:avoid"><div style="font-size:14px;font-weight:700;margin-bottom:1px">{{ c.name }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What it does.</span> {{ c.does }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why it's there.</span> {{ c.why }}</div><sc-if value="{{ c.alt }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why not another.</span> {{ c.alt }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Cost.</span> {{ c.cost }}</div><sc-if value="{{ c.give }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What we give up.</span> {{ c.give }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Status.</span> {{ c.status }}</div></div></sc-for></div>
+
+<h3 style="font-size:17px;font-weight:700;margin:22px 0 4px;break-after:avoid">e. The rear panel</h3>
+<p style="margin:0 0 10px;break-after:avoid">This is the only face anyone touches during setup. Anyone setting up matches the color and number on each cable to a jack, and plugs in. Nothing plugs into a device directly, so field wear never reaches the gear.</p>
+<div style="display:flex;flex-direction:column;gap:4px;margin:0 0 10px;break-inside:avoid">
+  <div style="font-size:12px;font-weight:600">Panel 1: video</div>
+  <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px">
+    <sc-for list="{{ panel1 }}" as="j" hint-placeholder-count="12"><div style="border:1px solid oklch(0.86 0.008 250);border-top:3px solid {{ j.c }};padding:3px 2px;text-align:center;background:#fff;line-height:1.15"><div style="font-size:9px;font-weight:700;color:{{ j.fg }}">{{ j.name }}</div><div style="font-size:8.5px;color:oklch(0.45 0.01 250)">{{ j.type }}</div></div></sc-for>
+  </div>
+  <div style="font-size:12px;font-weight:600">Panel 2: data, audio and power</div>
+  <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px">
+    <sc-for list="{{ panel2 }}" as="j" hint-placeholder-count="12"><div style="border:1px solid oklch(0.86 0.008 250);border-top:3px solid {{ j.c }};padding:3px 2px;text-align:center;background:#fff;line-height:1.15"><div style="font-size:9px;font-weight:700;color:{{ j.fg }}">{{ j.name }}</div><div style="font-size:8.5px;color:oklch(0.45 0.01 250)">{{ j.type }}</div></div></sc-for>
+  </div>
+  <div style="font-size:11.5px;line-height:1.4;color:oklch(0.32 0.01 250)">Panel 3 is a spare row of 12 holes. The panel layout is decided. All eight camera jacks stay on the panel, so every switcher input is visible. Today ATEM IN 2 is the Hollyland RX and IN 8 is the UltraStudio. With the Hollyland on the flip-up lid, its SDI still has to reach IN 2, and one option is to run it through the CAM 2 jack. How both connect is open and may change.</div>
+</div>
+<div style="column-count:2;column-gap:14px"><sc-for list="{{ cPanel }}" as="c" hint-placeholder-count="4"><div style="border:1px solid oklch(0.86 0.006 250);border-top:3px solid oklch(0.22 0.01 250);background:#fff;padding:7px 10px;margin:0 0 8px;display:flex;flex-direction:column;gap:2px;break-inside:avoid;-webkit-column-break-inside:avoid"><div style="font-size:14px;font-weight:700;margin-bottom:1px">{{ c.name }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What it does.</span> {{ c.does }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why it's there.</span> {{ c.why }}</div><sc-if value="{{ c.alt }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why not another.</span> {{ c.alt }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Cost.</span> {{ c.cost }}</div><sc-if value="{{ c.give }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What we give up.</span> {{ c.give }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Status.</span> {{ c.status }}</div></div></sc-for></div>
+
+<h3 style="font-size:17px;font-weight:700;margin:22px 0 4px;break-after:avoid">f. The five short cables between the cases</h3>
+<p style="margin:0 0 10px;break-after:avoid">At a service or event the two cases sit side by side, and five short cables join them. That's the whole connection between the AVPRO and the Wing case.</p>
+<div style="column-count:2;column-gap:14px"><sc-for list="{{ cUmb }}" as="c" hint-placeholder-count="2"><div style="border:1px solid oklch(0.86 0.006 250);border-top:3px solid oklch(0.22 0.01 250);background:#fff;padding:7px 10px;margin:0 0 8px;display:flex;flex-direction:column;gap:2px;break-inside:avoid;-webkit-column-break-inside:avoid"><div style="font-size:14px;font-weight:700;margin-bottom:1px">{{ c.name }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What it does.</span> {{ c.does }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why it's there.</span> {{ c.why }}</div><sc-if value="{{ c.alt }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why not another.</span> {{ c.alt }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Cost.</span> {{ c.cost }}</div><sc-if value="{{ c.give }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What we give up.</span> {{ c.give }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Status.</span> {{ c.status }}</div></div></sc-for></div>
+
+<h3 style="font-size:17px;font-weight:700;margin:22px 0 4px;break-after:avoid">g. The Wing case</h3>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:16px;align-items:start;margin:0 0 10px;break-inside:avoid">
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <p style="margin:0">At a service or event the Wing is operated from its case and records to the ProTools Mac over USB-C. The ProTools Mac handles both the live event mix and the stream mix, so the separate stream-mix laptop is no longer needed.</p>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <div style="font-size:12px;font-weight:600">Wing panel (if the case can take one)</div>
+      <div style="display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:3px">
+        <sc-for list="{{ wingPanel }}" as="j" hint-placeholder-count="8"><div style="border:1px dashed oklch(0.7 0.01 250);border-top:3px solid {{ j.c }};padding:3px 2px;text-align:center;background:#fff;line-height:1.15"><div style="font-size:9px;font-weight:700;color:{{ j.fg }}">{{ j.name }}</div><div style="font-size:8.5px;color:oklch(0.45 0.01 250)">{{ j.type }}</div></div></sc-for>
+      </div>
+      <div style="font-size:11.5px;line-height:1.4;color:oklch(0.32 0.01 250)">Otherwise cables route out the side of the case.</div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:5px">
+    <img src="uploads/pasted-1790834066818-0.png" alt="Product listing photo of the ProX BXWING hydraulic flip case" style="width:100%;display:block;border:1px solid oklch(0.86 0.008 250)">
+    <p style="font-size:11.5px;line-height:1.35;margin:0;color:oklch(0.32 0.01 250)">The BXWING product listing photo.</p>
+  </div>
+</div>
+<div style="column-count:2;column-gap:14px"><sc-for list="{{ cWing }}" as="c" hint-placeholder-count="4"><div style="border:1px solid oklch(0.86 0.006 250);border-top:3px solid oklch(0.22 0.01 250);background:#fff;padding:7px 10px;margin:0 0 8px;display:flex;flex-direction:column;gap:2px;break-inside:avoid;-webkit-column-break-inside:avoid"><div style="font-size:14px;font-weight:700;margin-bottom:1px">{{ c.name }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What it does.</span> {{ c.does }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why it's there.</span> {{ c.why }}</div><sc-if value="{{ c.alt }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why not another.</span> {{ c.alt }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Cost.</span> {{ c.cost }}</div><sc-if value="{{ c.give }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What we give up.</span> {{ c.give }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Status.</span> {{ c.status }}</div></div></sc-for></div>
+
+<h3 style="font-size:17px;font-weight:700;margin:22px 0 4px;break-after:avoid">h. Power from the wall</h3>
+<p style="margin:0 0 10px;break-after:avoid">At a service or event two long cords run from wall outlets to the rig. The first feeds the AVPRO's battery backup, and the Wing through it. The second feeds Bay B and the charging station.</p>
+<div style="column-count:2;column-gap:14px"><sc-for list="{{ cPower }}" as="c" hint-placeholder-count="2"><div style="border:1px solid oklch(0.86 0.006 250);border-top:3px solid oklch(0.22 0.01 250);background:#fff;padding:7px 10px;margin:0 0 8px;display:flex;flex-direction:column;gap:2px;break-inside:avoid;-webkit-column-break-inside:avoid"><div style="font-size:14px;font-weight:700;margin-bottom:1px">{{ c.name }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What it does.</span> {{ c.does }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why it's there.</span> {{ c.why }}</div><sc-if value="{{ c.alt }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why not another.</span> {{ c.alt }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Cost.</span> {{ c.cost }}</div><sc-if value="{{ c.give }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What we give up.</span> {{ c.give }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Status.</span> {{ c.status }}</div></div></sc-for></div>
+
+<h3 style="font-size:17px;font-weight:700;margin:22px 0 4px;break-after:avoid">i. Field cables</h3>
+<p style="margin:0 0 10px;break-after:avoid">At a service or event the field cables are the runs out into the room: cameras, the LED wall, the confidence monitor and internet. Each one is labeled and color-coded, and each lands on the rear panel. All field cabling is stored with the two cases.</p>
+<div style="column-count:2;column-gap:14px"><sc-for list="{{ cField }}" as="c" hint-placeholder-count="3"><div style="border:1px solid oklch(0.86 0.006 250);border-top:3px solid oklch(0.22 0.01 250);background:#fff;padding:7px 10px;margin:0 0 8px;display:flex;flex-direction:column;gap:2px;break-inside:avoid;-webkit-column-break-inside:avoid"><div style="font-size:14px;font-weight:700;margin-bottom:1px">{{ c.name }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What it does.</span> {{ c.does }}</div><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why it's there.</span> {{ c.why }}</div><sc-if value="{{ c.alt }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Why not another.</span> {{ c.alt }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Cost.</span> {{ c.cost }}</div><sc-if value="{{ c.give }}"><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">What we give up.</span> {{ c.give }}</div></sc-if><div style="font-size:12px;line-height:1.38;text-wrap:pretty"><span style="font-weight:700">Status.</span> {{ c.status }}</div></div></sc-for></div>
+
+<h2 data-screen-label="03 What we chose not to do" style="font-size:21px;font-weight:700;margin:28px 0 6px;break-after:avoid">3. What we chose not to do</h2>
+<p style="margin:0 0 8px;break-after:avoid">These are the options build/ records as passed on, dropped or parked, with the reason given at the time.</p>
+<div style="display:flex;flex-direction:column">
+  <sc-for list="{{ rejected }}" as="r" hint-placeholder-count="12"><div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.4fr);gap:14px;padding:4px 0;border-top:1px solid oklch(0.88 0.005 250);font-size:12.5px;line-height:1.4;break-inside:avoid"><div style="font-weight:600">{{ r.what }}</div><div>{{ r.why }}</div></div></sc-for>
+</div>
+
+<h2 data-screen-label="04 What we still don't know" style="font-size:21px;font-weight:700;margin:28px 0 6px;break-after:avoid">4. What we still don't know</h2>
+<p style="margin:0 0 8px;break-after:avoid">Every item here is open unless it says otherwise. Owners and dates are in the appendix.</p>
+<h3 style="font-size:16px;font-weight:700;margin:12px 0 4px;break-after:avoid">What affects the order</h3>
+<ul style="margin:0 0 6px;padding-left:20px;display:flex;flex-direction:column;gap:4px">
+  <li>The case and freight price. The $1,650.00 in the total is a placeholder until Matt's quote, and the order can't go in without it. The spend ceiling for that quote is also open. Bianca and I set it before we walk through this with Sunny.</li>
+  <li>The connector families. The powerCON and etherCON parts get checked against Neutrik's tables before those lines are ordered.</li>
+  <li>The CPS1215RM listing. I need to confirm the Amazon listing is the right strip. It affects that line only.</li>
+  <li>The rack rails and screws. The screws are M6 or 10-32, and that needs confirming. It's also open whether the case comes with rails built in or they're added after purchase. If Matt doesn't know, this waits until the case arrives.</li>
+  </ul>
+<h3 style="font-size:16px;font-weight:700;margin:12px 0 4px;break-after:avoid">What affects the cost</h3>
+<ul style="margin:0 0 6px;padding-left:20px;display:flex;flex-direction:column;gap:4px">
+  <li>Field camera cable isn't a cost. We already own all the long SDI runs and spools, at 100ft. Any power, HDMI or data field cables we add later should be 125ft or more.</li>
+  <li>Whether to switch field camera cable to AOC is an open decision. AOC runs about $150 for a 50m run on a spool, and it isn't in the BOM.</li>
+  <li>The new 8-port PoE switch for Bay A. The BOM carries $19.99 as a placeholder, and a PoE model will cost more than that.</li>
+  <li>The extension from Bay B to the charging station isn't costed. Its details are open.</li>
+  <li>The count of etherCON cable ends depends on the internet drop's far end. The BOM already buys the higher count.</li>
+  <li>Possible: drop the RS1215-RA ($94.98) and feed the charging table by a powerCON jumper from the CPPDU511. The jumper and panel outlet aren't specced yet.</li>
+  <li>The Hollyland RX lid mount isn't specced or costed yet.</li>
+  <li>The ATEM retention tray isn't costed. We need to build a foam or plywood tray, or secure the ATEM another way, and Matt may have suggestions.</li>
+  <li>Lid monitor brightness. The 300-nit LG is the minimum worth considering and probably isn't bright enough under a tent. I need to research brighter screens or find a used option, and the recorded fallback is a 1000-nit unit for the LEFT lid only. Brighter screens cost more, so this line may go up.</li>
+  <li>Lid legs. I need Matt to confirm whether legs come on the two removable AVPRO lids. If they don't, we add them as a line item. It doesn't gate the order.</li>
+  <li>Matt's "regret ask" covers long-lead items, freight consolidation and anything hard to add later. It comes with his quote.</li>
+</ul>
+<h3 style="font-size:16px;font-weight:700;margin:12px 0 4px;break-after:avoid">What affects the Wing case</h3>
+<ul style="margin:0 0 6px;padding-left:20px;display:flex;flex-direction:column;gap:4px">
+  <li>Whether the Wing case can take a connector plate. I'll inspect it on delivery. If it can, we buy the $100.00 Wing block. If it can't, the connections run out the side of the case.</li>
+  <li>The ProTools Mac recording path has to be settled for the case layout. The Mac needs room for both its USB-C and Dante cables.</li>
+</ul>
+<p style="font-size:13.5px;margin:6px 0 0;color:oklch(0.32 0.01 250)">A few smaller checks don't touch any of these. They cover shelf, monitor and side-door fit on delivery, two equipment labels, the drum-kit Dante question, where the UltraStudio mounts (rack-mounted, near the Mac Mini, or the desk near the ATEM), and how the Hollyland RX connects to ATEM IN 2.</p>
+
+<h2 data-screen-label="05 What it costs" style="font-size:21px;font-weight:700;margin:28px 0 6px;break-after:avoid">5. What it costs</h2>
+<p style="margin:0 0 8px;break-after:avoid">The first order is about $4,600 ($4,641.84). Each category below has one line on what it covers.</p>
+<div style="break-inside:avoid"><table style="width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.35">
+  <thead><tr>
+    <th style="text-align:left;font-size:11.5px;font-weight:600;padding:5px 6px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:27%">Category</th>
+    <th style="text-align:right;font-size:11.5px;font-weight:600;padding:5px 6px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:14%">Cost</th>
+    <th style="text-align:left;font-size:11.5px;font-weight:600;padding:5px 6px;border-bottom:1.5px solid oklch(0.22 0.01 250)">What it covers and where it stands</th>
+  </tr></thead>
+  <tbody>
+    <sc-for list="{{ costRows }}" as="r" hint-placeholder-count="12"><tr style="background:{{ r.bg }}">
+      <td style="padding:4px 6px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top;font-weight:{{ r.fw }}">{{ r.cat }}</td>
+      <td style="padding:4px 6px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top;text-align:right;font-weight:{{ r.fw }};white-space:nowrap">{{ r.cost }}</td>
+      <td style="padding:4px 6px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top"><sc-for list="{{ r.status }}" as="s"><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:1px 5px;margin-right:4px;display:inline-block;line-height:1.4;border:1px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.fg }}">{{ s.t }}</span></sc-for> {{ r.line }}</td>
+    </tr></sc-for>
+  </tbody>
+</table></div>
+
+<h2 data-screen-label="06 How it rolls out and the risks" style="font-size:21px;font-weight:700;margin:28px 0 6px;break-after:avoid">6. How it rolls out and the risks</h2>
+<p style="margin:0 0 8px;break-after:avoid">The owned gear moves into the cases in stages, starting from a setup closest to today's. Each stage is proved before the next. That's decided.</p>
+<p style="margin:0 0 8px">Weather is an accepted risk, because we often set up outside with no cover. The plan is a fitted rain cover or poly sheet and clamps in the case, with a two-minute cover-and-kill routine. That plan is still open, and I'll have it in place before the first live deploy.</p>
+
+<h2 data-screen-label="A Appendix" style="font-size:21px;font-weight:700;margin:0 0 6px;break-before:page">Appendix</h2>
+<h3 style="font-size:16px;font-weight:700;margin:10px 0 4px">Full BOM (BOM v7, 2026-09-28)</h3>
+<p style="font-size:12px;line-height:1.4;margin:0 0 6px;color:oklch(0.32 0.01 250)">Owned gear isn't in any total. Not in this BOM: camera field SDI cable (already owned, 100ft runs), stage power, and the XLR trunk cables (owned). "est" means an estimated price. * BOM v7 lists the quad box as "tentative, may drop (N19)". It's shown as decided.</p>
+<table style="width:100%;border-collapse:collapse;font-size:10.5px;line-height:1.3">
+  <thead><tr>
+    <th style="text-align:left;font-size:10px;font-weight:600;padding:3px 4px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:11%">Group</th>
+    <th style="text-align:left;font-size:10px;font-weight:600;padding:3px 4px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:28%">Item</th>
+    <th style="text-align:left;font-size:10px;font-weight:600;padding:3px 4px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:25%">Model / SKU</th>
+    <th style="text-align:right;font-size:10px;font-weight:600;padding:3px 4px;border-bottom:1.5px solid oklch(0.22 0.01 250)">Qty</th>
+    <th style="text-align:right;font-size:10px;font-weight:600;padding:3px 4px;border-bottom:1.5px solid oklch(0.22 0.01 250)">Unit</th>
+    <th style="text-align:right;font-size:10px;font-weight:600;padding:3px 4px;border-bottom:1.5px solid oklch(0.22 0.01 250)">Ext</th>
+    <th style="text-align:left;font-size:10px;font-weight:600;padding:3px 4px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:15%">Price status</th>
+  </tr></thead>
+  <tbody>
+    <sc-for list="{{ bomFO }}" as="r" hint-placeholder-count="45"><tr><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;color:oklch(0.4 0.01 250)">{{ r.group }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top">{{ r.item }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;color:oklch(0.35 0.01 250)">{{ r.model }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;text-align:right">{{ r.qty }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;text-align:right">{{ r.unit }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;text-align:right;font-weight:600">{{ r.ext }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top">{{ r.status }}</td></tr></sc-for>
+    <tr style="background:oklch(0.95 0.006 250)"><td colspan="5" style="padding:5px 4px;font-weight:700">First order total</td><td style="padding:5px 4px;text-align:right;font-weight:700">{{ foTotal }}</td><td style="padding:5px 4px;font-size:10px">of which {{ caseTotal }} case + freight placeholders</td></tr>
+    <tr><td colspan="7" style="padding:8px 4px 3px;font-weight:700;border-bottom:1.5px solid oklch(0.22 0.01 250)">Wing block (conditional, only if the BXWING can take a panel, N1)</td></tr>
+    <sc-for list="{{ bomWing }}" as="r" hint-placeholder-count="8"><tr><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;color:oklch(0.4 0.01 250)">{{ r.group }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top">{{ r.item }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;color:oklch(0.35 0.01 250)">{{ r.model }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;text-align:right">{{ r.qty }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;text-align:right">{{ r.unit }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top;text-align:right;font-weight:600">{{ r.ext }}</td><td style="padding:3px 4px;border-bottom:1px solid oklch(0.91 0.005 250);vertical-align:top">{{ r.status }}</td></tr></sc-for>
+    <tr style="background:oklch(0.95 0.006 250)"><td colspan="5" style="padding:5px 4px;font-weight:700">Wing block total</td><td style="padding:5px 4px;text-align:right;font-weight:700">{{ wbTotal }}</td><td></td></tr>
+    <tr style="background:oklch(0.92 0.008 250)"><td colspan="5" style="padding:5px 4px;font-weight:700">All lines total</td><td style="padding:5px 4px;text-align:right;font-weight:700">{{ allTotal }}</td><td></td></tr>
+  </tbody>
+</table>
+
+<h3 style="font-size:16px;font-weight:700;margin:22px 0 4px;break-before:page">Locked decisions (DESIGN section 5)</h3>
+<p style="font-size:12px;line-height:1.4;margin:0 0 6px;color:oklch(0.32 0.01 250)">All are decided. Each one changes only through a written proposal that I accept.</p>
+<table style="width:100%;border-collapse:collapse;font-size:11.5px;line-height:1.35">
+  <thead><tr>
+    <th style="text-align:left;font-size:10.5px;font-weight:600;padding:4px 6px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:24px">#</th>
+    <th style="text-align:left;font-size:10.5px;font-weight:600;padding:4px 6px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:58%">Decision</th>
+    <th style="text-align:left;font-size:10.5px;font-weight:600;padding:4px 6px;border-bottom:1.5px solid oklch(0.22 0.01 250)">Reason</th>
+  </tr></thead>
+  <tbody>
+    <sc-for list="{{ locked }}" as="r" hint-placeholder-count="27"><tr><td style="padding:4px 6px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top;font-weight:700">{{ r.n }}</td><td style="padding:4px 6px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top">{{ r.d }}</td><td style="padding:4px 6px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top;color:oklch(0.32 0.01 250)">{{ r.why }}</td></tr></sc-for>
+  </tbody>
+</table>
+
+<h3 style="font-size:16px;font-weight:700;margin:22px 0 4px;break-after:avoid">All open items</h3>
+<p style="font-size:12px;line-height:1.4;margin:0 0 6px;color:oklch(0.32 0.01 250)">Running-config items are left out. G3 and G4 closed on 2026-09-28. Stage power items (N17, N18) are tracked with the separate stage-power project.</p>
+<table style="width:100%;border-collapse:collapse;font-size:10.5px;line-height:1.32">
+  <thead><tr>
+    <th style="text-align:left;font-size:10px;font-weight:600;padding:4px 5px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:48%">Item</th>
+    <th style="text-align:left;font-size:10px;font-weight:600;padding:4px 5px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:13%">Owner</th>
+    <th style="text-align:left;font-size:10px;font-weight:600;padding:4px 5px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:14%">Due</th>
+    <th style="text-align:left;font-size:10px;font-weight:600;padding:4px 5px;border-bottom:1.5px solid oklch(0.22 0.01 250);width:11%">Gates the order</th>
+    <th style="text-align:left;font-size:10px;font-weight:600;padding:4px 5px;border-bottom:1.5px solid oklch(0.22 0.01 250)">Status</th>
+  </tr></thead>
+  <tbody>
+    <sc-for list="{{ allOpen }}" as="r" hint-placeholder-count="22"><tr>
+      <td style="padding:4px 5px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top"><span style="font-weight:700">{{ r.id }}</span> <span style="font-weight:600">{{ r.title }}</span> {{ r.detail }}<sc-if value="{{ r.extra }}"><div style="margin-top:2px;padding-left:6px;border-left:2px solid oklch(0.66 0.11 70);font-style:italic;color:oklch(0.35 0.01 250)">{{ r.extra }}</div></sc-if></td>
+      <td style="padding:4px 5px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top">{{ r.owner }}</td>
+      <td style="padding:4px 5px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top">{{ r.due }}</td>
+      <td style="padding:4px 5px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top">{{ r.gates }}</td>
+      <td style="padding:4px 5px;border-bottom:1px solid oklch(0.9 0.005 250);vertical-align:top"><div style="display:flex;flex-wrap:wrap;gap:2px"><sc-for list="{{ r.status }}" as="s"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:0 4px;display:inline-block;line-height:1.5;border:1px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.fg }}">{{ s.t }}</span></sc-for></div><div style="font-size:9.5px;color:oklch(0.4 0.01 250)">{{ r.snote }}</div></td>
+    </tr></sc-for>
+  </tbody>
+</table>
+
+<h3 style="font-size:16px;font-weight:700;margin:22px 0 4px;break-after:avoid">Cable map</h3>
+<p style="font-size:12px;line-height:1.4;margin:0 0 6px;color:oklch(0.32 0.01 250)">Each row is one signal chain, and panel names match the rear panel. The map is decided except where a route is marked open.</p>
+<div style="font-size:12px;font-weight:600;border-bottom:1.5px solid oklch(0.22 0.01 250);padding-bottom:2px;margin-top:6px">Video</div>
+<div style="display:flex;flex-direction:column;gap:3px;margin-top:3px">
+  <sc-for list="{{ mapVideo }}" as="row" hint-placeholder-count="11"><div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:3px;padding-bottom:3px;border-bottom:1px solid oklch(0.93 0.004 250);break-inside:avoid"><sc-for list="{{ row.parts }}" as="p"><sc-if value="{{ p.isNode }}"><div style="border:1px solid oklch(0.84 0.008 250);background:#fff;padding:2px 6px;font-size:11px;line-height:1.3">{{ p.label }}</div></sc-if><sc-if value="{{ p.isLink }}"><div style="display:flex;flex-direction:column;align-items:center;min-width:46px;padding:0 2px"><div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;line-height:1.2">{{ p.label }}</div><div style="align-self:stretch;height:3px;background:{{ p.c }};margin-bottom:7px"></div></div></sc-if></sc-for></div></sc-for>
+</div>
+<div style="font-size:12px;font-weight:600;border-bottom:1.5px solid oklch(0.22 0.01 250);padding-bottom:2px;margin-top:10px">Audio and Dante</div>
+<div style="display:flex;flex-direction:column;gap:3px;margin-top:3px">
+  <sc-for list="{{ mapAudio }}" as="row" hint-placeholder-count="9"><div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:3px;padding-bottom:3px;border-bottom:1px solid oklch(0.93 0.004 250);break-inside:avoid"><sc-for list="{{ row.parts }}" as="p"><sc-if value="{{ p.isNode }}"><div style="border:1px solid oklch(0.84 0.008 250);background:#fff;padding:2px 6px;font-size:11px;line-height:1.3">{{ p.label }}</div></sc-if><sc-if value="{{ p.isLink }}"><div style="display:flex;flex-direction:column;align-items:center;min-width:46px;padding:0 2px"><div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;line-height:1.2">{{ p.label }}</div><div style="align-self:stretch;height:3px;background:{{ p.c }};margin-bottom:7px"></div></div></sc-if></sc-for></div></sc-for>
+</div>
+<div style="font-size:12px;font-weight:600;border-bottom:1.5px solid oklch(0.22 0.01 250);padding-bottom:2px;margin-top:10px">Production network and internet</div>
+<div style="display:flex;flex-direction:column;gap:3px;margin-top:3px">
+  <sc-for list="{{ mapNet }}" as="row" hint-placeholder-count="5"><div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:3px;padding-bottom:3px;border-bottom:1px solid oklch(0.93 0.004 250);break-inside:avoid"><sc-for list="{{ row.parts }}" as="p"><sc-if value="{{ p.isNode }}"><div style="border:1px solid oklch(0.84 0.008 250);background:#fff;padding:2px 6px;font-size:11px;line-height:1.3">{{ p.label }}</div></sc-if><sc-if value="{{ p.isLink }}"><div style="display:flex;flex-direction:column;align-items:center;min-width:46px;padding:0 2px"><div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;line-height:1.2">{{ p.label }}</div><div style="align-self:stretch;height:3px;background:{{ p.c }};margin-bottom:7px"></div></div></sc-if></sc-for></div></sc-for>
+</div>
+<div style="font-size:12px;font-weight:600;border-bottom:1.5px solid oklch(0.22 0.01 250);padding-bottom:2px;margin-top:10px">Power</div>
+<div style="display:flex;flex-direction:column;gap:3px;margin-top:3px">
+  <sc-for list="{{ mapPower }}" as="row" hint-placeholder-count="5"><div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:3px;padding-bottom:3px;border-bottom:1px solid oklch(0.93 0.004 250);break-inside:avoid"><sc-for list="{{ row.parts }}" as="p"><sc-if value="{{ p.isNode }}"><div style="border:1px solid oklch(0.84 0.008 250);background:#fff;padding:2px 6px;font-size:11px;line-height:1.3">{{ p.label }}</div></sc-if><sc-if value="{{ p.isLink }}"><div style="display:flex;flex-direction:column;align-items:center;min-width:46px;padding:0 2px"><div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;line-height:1.2">{{ p.label }}</div><div style="align-self:stretch;height:3px;background:{{ p.c }};margin-bottom:7px"></div></div></sc-if></sc-for></div></sc-for>
+</div>
+
+</div>
+</doc-page>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { d: null };
+  componentDidMount() {
+    import('./elim-data.js').then(m => this.setState({ d: m.elimData() }));
+  }
+  renderVals() {
+    const d = this.state.d || {};
+    const C = (name, does, why, alt, cost, give, status) => ({ name, does, why, alt: alt || '', cost, give: give || '', status });
+
+    const cAvpro = [
+      C('The case: ProX AVPRO rolling workstation',
+        'It holds everything but the Wing. It has two 12U bays, two 4U tops, a work surface and three lids, and it rolls. The flip-up lid holds the two monitors.',
+        'The build centers on one workstation and everything that connects to it. Our design principles also favor commercial cases and mounts over DIY where they work.',
+        '', 'About $500, a placeholder until Matt\'s quote.', 'Closed, it\'s large enough to drive freight cost. The side compartments aren\'t used in the design.',
+        'The design is decided. The price is open until Matt\'s quote, and side-door storage gets checked on delivery.'),
+      C('Two lid monitors: LG UltraGear 24GS60F-B',
+        'Both monitors are on the flip-up lid. The LEFT lid monitor shows the ATEM multiview, every camera at once, from day one. The RIGHT lid monitor is for the ProPresenter Mac, as its second screen now and ready for a later move to a Mac Mini.',
+        'The multiview can\'t depend on a laptop, so the left screen runs straight from the switcher. Together the two monitors replace the mobile monitor setup we use today.',
+        'A 2000-nit tier was considered and dropped on cost (section 3).', 'About $320 with adapters, estimates. A brighter or used option would change this.', 'At 300 nit matte, the LG is the minimum worth considering and probably isn\'t bright enough under a tent.',
+        'The model is open on brightness (section 4), and lid fit gets checked on delivery.'),
+      C('Wireless camera receiver: Hollyland RX',
+        'It receives the wireless Pocket 4K and sends SDI to ATEM IN 2. When the case is open it mounts on top of the flip-up lid. Until setup it stows in a drawer or with the cameras.',
+        'It can\'t live in the rack, because it won\'t get good signal there.',
+        '', 'Already owned. The lid mount isn\'t costed.', '',
+        'The placement is decided. The lid mount and its route to ATEM IN 2 are open (section 4).'),
+      C('The two removable lids as pop-up tables',
+        'The AVPRO has three lids. The flip-up lid stays on the case and holds the two monitors. The other two lids come off the case, and each has legs inside it so it can pop up into an accessory table, for example for the camera charging area or other needs.',
+        'They give us extra surface at a venue without bringing tables.',
+        '', 'Expected to come with the case. If not, we add them (not costed).', '',
+        'Assumed: legs come with the removable lids. Open until Matt confirms.')
+    ];
+    const cDesk = [
+      C('Switcher: ATEM Television Studio Pro 4K',
+        'It switches all eight SDI inputs. Its multiview feeds the LEFT lid monitor, its AUX feeds the HyperDeck HD Mini recorder, and OUT 8 feeds the stream encoder. It sits over the 3in grommet, and its I/O drops into Bay A.',
+        'It\'s the switcher we run today.',
+        '', 'Already owned. The retention tray isn\'t costed.', '',
+        'The placement is decided. The retention tray is open (section 4).'),
+      C('Audio adapter: Dante AVIO',
+        'It takes Dante from the Bay A satellite switch and feeds two XLR pigtails into ATEM audio channels 1 and 2. It runs on PoE from that switch.',
+        'The new 8-port PoE switch in Bay A powers it, so it needs no injector.',
+        '', 'Already owned.', '',
+        'Decided and confirmed PoE-powered. Reading its model label is open.'),
+      C('Video interface: UltraStudio Monitor 3G',
+        'It takes ProPresenter from the ProPresenter Mac over USB-C and sends SDI to ATEM IN 8.',
+        'It puts ProPresenter on the switcher as a clean SDI input.',
+        '', 'Already owned.', '',
+        'Placement is open (section 4). The current plan has it velcro\'d behind the lid monitors.'),
+      C('The laptops and their power',
+        'The streaming laptop runs ATEM Software Control, the HyperDeck and Resi. The ProPresenter Mac runs ProPresenter and plays music and media in house over Dante. It sends HDMI to the LED wall transcoder and uses an Anker hub for production Ethernet and the confidence monitor. Both laptops plug into the battery-backed CPS1215RM strip.',
+        'These are the laptops we use now. On the battery-backed strip they keep running if venue power drops.',
+        '', 'Already owned.', '',
+        'Decided.')
+    ];
+    const cBayA = [
+      C('Battery backup and backed strip: CyberPower CP1500PFCRM2U + CPS1215RM',
+        'The 2U pure-sine UPS sits at the bottom of Bay A, fed from power drop 1. The basic 1U CPS1215RM strip above it, with no surge and no meter, feeds the Bay A and desk gear, the lid monitors, the laptops and the POWER > WING outlet. The UPS side carries 13 loads, an estimated 275 to 465W.',
+        'One UPS backs both the booth and the Wing. The Wing case can\'t carry its own UPS, so this is the only way to back the Wing.',
+        'The ProX X-PC10ASTRO strip was passed on (section 3).', 'About $435, mostly estimated.', '',
+        'Decided. The CPS1215RM listing still needs confirming (section 4).'),
+      C('Recorder and Dante satellite (U10)',
+        'The HyperDeck Studio HD Mini records the clean feed from ATEM AUX. A new 8-port PoE switch is the Bay A Dante satellite. It takes the DANTE TRUNK, powers the AVIO and connects the ProPresenter Mac\'s Dante adapter. Both share one 1U vented shelf.',
+        'Every network jumper stays in Bay A, and one shelf model is the cheapest mount.',
+        'An Etsy dual mount and a Teranex shelf were both dropped (section 3).', 'The HD Mini is owned. The PoE switch carries a placeholder of about $20 until its model is priced (section 4). The shelf is in the small-parts card.', '',
+        'Decided. The PoE model is open, and shelf fit gets checked on delivery.'),
+      C('Owned gear moved into Bay A',
+        'Resi takes SDI from ATEM OUT 8 and streams out through the router. The LED wall transcoder takes HDMI from ProPresenter and sends two Ethernet runs to LED 1 and LED 2. The TL-SG105 production switch and the AX21 router run the production network, and wired internet from the venue or Starlink connects to the router. Dante stays on its own isolated network.',
+        'It\'s the gear we run today, moved into the rack, and every network jumper stays in Bay A.',
+        '', 'Already owned.', 'Every wired production port is used, so adding a device later means a bigger switch.',
+        'Decided. The Bay A 4U top is left open.'),
+      C('Cooling: 1U thermostatic fan and vented blanks',
+        'A 1U thermostatic fan at the top of Bay A exhausts toward the open back. Perforated blanks fill the reserve spaces.',
+        'The open back does most of the cooling, and the heat load is low. The fan is insurance for hot outdoor events, and the blanks stop intake air from short-circuiting around the gear.',
+        'Open gaps were rejected in favor of blanks (section 3).', 'About $190, estimates.', 'At a venue the open back has to stay clear, so the case can\'t be pushed against a wall.',
+        'Decided.'),
+      C('Small parts: shelves, cable management, screws and jumpers',
+        'This covers the vented shelves, a lacing bar, hook-and-loop straps, rack screws and cage nuts, short power cords, color-coded patch cables and short HDMI jumpers.',
+        'The lacing bar holds the cable runs, power on one side and signal on the other, and velcro straps keep the rest tidy.',
+        'Zip ties were ruled out in favor of hook-and-loop.', 'About $320, estimates.', '',
+        'The parts list is decided. The screw thread and built-in rails are open (section 4).')
+    ];
+    const cBayB = [
+      C('Bay B power: Clear Power CPPDU511 + Tripp Lite RS1215-RA',
+        'The metered CPPDU511 at the front lights the drawers. The RS1215-RA at the rear feeds the camera chargers and plugs into the CPPDU511, so both read on one meter. Power drop 2 feeds them.',
+        'The front lights the drawers, the rear outlets face the chargers, and there\'s one meter.',
+        '', 'About $245, one firm price and one quoted.', 'This side isn\'t battery-backed, so nothing that must stay on plugs in here.',
+        'Decided. Dropping the RS1215-RA is an open proposal (section 4).'),
+      C('Pass-through to the separate charging station',
+        'The CPPDU511 passes power through an extension to a quad box at a separate charging station. One of the removable lids, popped up as a table, could hold that charging area.',
+        'It gives a separate charging area its own outlets.',
+        '', 'About $90 for the quad box. The extension isn\'t costed.', '',
+        'The quad box is decided. The extension details are open.'),
+      C('Storage: two 4U drawers',
+        'Two 4U drawers fill the lower half of Bay B, with heavier items in the lower drawer to balance the case. All cabling is stored with the two cases, not elsewhere. The upper spaces and Top B are left open, with room for a bigger switch or the Mac Minis later.',
+        'Bay B is the storage side of the rack.',
+        '', 'About $310, an estimate.', '',
+        'Decided.')
+    ];
+    const cPanel = [
+      C('One panel, three plates',
+        'Three Neutrik D-series 12-hole plates sit on the Bay A rear rails. Panel 1 is video, panel 2 is data, audio and power, and panel 3 is a spare row.',
+        'It gives us one place to connect, and field wear never reaches the gear.',
+        '', 'About $60, an estimate.', '',
+        'Decided, including the panel order and labels.'),
+      C('The connectors',
+        'There are eight BNC camera jacks, an HDMI confidence output, six etherCON jacks, a female TALKBACK XLR, a male IEM XLR and a powerCON outlet for the Wing. Blanking plates fill the empty holes. The panel note above covers how the camera jacks map to the switcher.',
+        'A mic plugs into the talkback jack, the IEM jack feeds a pack, and power flows from the AVPRO to the Wing.',
+        'A CAT6A etherCON cable connector was dropped because it doesn\'t mate with the panel jacks.', 'About $240, estimates.', '',
+        'The layout is decided. The powerCON and etherCON parts are open until they\'re checked (section 4).'),
+      C('Cable ends, jumpers and spares',
+        'etherCON cable carriers and RJ45 plugs fit the trunk, LED and internet ends. powerCON cable ends make the Wing power link. SDI jumpers run from the panel to the switcher, and loose spares cover both panels.',
+        'Each carrier end gets a fresh crimp, and spares cover both panels.',
+        '', 'About $250, estimates.', '',
+        'The carrier count is bought high. The internet drop\'s far end is open (section 4).'),
+      C('Color code and labels',
+        'Every cable has a color and a number, and the jack it lands on has the same color and number. Blue is camera SDI, green is Dante, yellow is production network, red is internet, purple is LED data, white is HDMI, orange is XLR and AES50, and black is power.',
+        'Anyone setting up matches colors, not port names. Green against yellow is the split that matters most.',
+        '', 'Covered by the straps and labeling in the small-parts card.', '',
+        'Decided.')
+    ];
+    const cUmb = [
+      C('Two data trunks and two audio lines',
+        'The PROD trunk carries Wing control from the router. The DANTE trunk joins the two Dante switches. Both are 15ft shielded Cat6A with etherCON ends. TALKBACK carries Bianca\'s mic to Wing In 8, and IEM carries Wing Out 8 back to her pack, both on 15ft XLR.',
+        'The cases always sit side by side, so short cables are enough. The AES50 to the stage box runs stage-side.',
+        '', 'About $25 for the trunk cables, an estimate. The XLR cables are owned.', 'If a venue ever needs the cases apart, we\'d add longer trunks then.',
+        'Decided. Wing In 8 and Out 8 are closed.'),
+      C('The Wing power link',
+        'A 15ft powerCON TRUE1 cable runs from the AVPRO\'s POWER > WING outlet to the Wing.',
+        'It carries battery-backed power from the AVPRO\'s UPS to the Wing.',
+        'The 12/3 SOOW used for the wall drops is too thick for the TRUE1 cable ends (section 3).', 'About $15, an estimate.', '',
+        'Decided. The matched TRUE1 family is open until it\'s confirmed.')
+    ];
+    const cWing = [
+      C('The case: ProX BXWING hydraulic flip case',
+        'It holds the Behringer Wing beside the AVPRO.',
+        'Today the Wing travels in a wheeled case that has to be set on a table before we can use it. The BXWING\'s hydraulic lid flips the Wing up into its working position, so it doesn\'t need a table at all. Removing that table is one of the main reasons for this upgrade.',
+        '', 'About $900, a placeholder until Matt\'s quote.', 'None recorded.',
+        'The design is decided. The price is open until Matt\'s quote.'),
+      C('Inside: the Wing, its Dante switch and the ProTools Mac',
+        'The Wing is owned. The owned 5-port TL-SG1005P is the Wing case Dante switch, connecting the Wing\'s Dante card, the trunk and the ProTools Mac, three of five ports. The ProTools Mac also has USB-C to the Wing for recording.',
+        'Three ports fit the 5-port switch, and the new PoE switch goes to Bay A to power the AVIO.',
+        'An 8-port switch here was planned first (section 3).', 'Already owned.', '',
+        'Decided. The ProTools Mac recording path is open (section 4).'),
+      C('Backed by the AVPRO\'s UPS',
+        'The Wing runs on battery-backed power from the AVPRO over the Wing power link.',
+        'The Wing case can\'t carry a UPS, so this is the only way to back the Wing.',
+        '', 'Included in the UPS line.',
+        'For standalone use the Wing goes on a wall outlet.',
+        'Decided.'),
+      C('The Wing panel',
+        'If the case can take it, a small D-series plate gives the five cables and the AES50 their own jacks. The genders mirror the AVPRO panel, and a power inlet feeds the Wing.',
+        'It gives the Wing case the same plug-in panel as the AVPRO.',
+        'If the case can\'t take a panel, the connections run out the side of the case.', 'About $100, not in the first order.', '',
+        'Conditional, and likely doable. I\'ll inspect the case on delivery.')
+    ];
+    const cPower = [
+      C('Two 125ft power drops',
+        'Each drop is 125ft of 12/3 SOOW with a plug at the wall and a connector body at the rig. Drop 1 feeds only the UPS. Drop 2 feeds the Bay B CPPDU511, which feeds the charging station. The two are built the same, so either can stand in for the other.',
+        'Venue distances vary widely, and long is the safe default.',
+        '', 'About $470, estimates.', '',
+        'Decided. The plug and connector parts are assumed, and an equal 15A industrial part can be substituted.'),
+      C('Circuits',
+        'The whole rig draws well under one 15A circuit, so one works. A second circuit is preferred, not required. When a venue has two, each drop goes on a different circuit. We never tie circuits together.',
+        'We can\'t know a venue\'s circuit count ahead of time.',
+        '', 'No cost.', '',
+        'Decided.')
+    ];
+    const cField = [
+      C('Camera SDI',
+        'Each wired camera sends HDMI to its BMD converter, which turns it into 1080p SDI. The SDI runs back over coax to the panel and on to the ATEM at the case. We already own all the long SDI runs and spools, and they\'re 100ft. We run three cameras at every event, two Pocket 4K bodies and the DJI, and more only when we rent them.',
+        'The cameras are HDMI out and the switcher is SDI in. Locking, rugged coax handles long runs in a spread-out room.',
+        'An HDMI-to-converter box near the cameras wasn\'t chosen, because HDMI doesn\'t carry far enough.', 'Already owned, converters and cables.', 'Each converter runs on its own adapter, so every wired camera position needs mains power.',
+        'Decided: we implement with the SDI we own. Whether to switch to AOC is open (section 4).'),
+      C('The camera-cable trial',
+        'Emily runs the SDI cables we already own over a real deploy. The trial checks pull-through, cable and connector reliability, and picture over length. It doesn\'t test camera control.',
+        'It checks the owned cables before we rely on them.',
+        '', 'No cost.', '',
+        'Open. No date is set.'),
+      C('AOC, an open decision',
+        'AOC would replace the SDI coax on the camera runs. The camera\'s HDMI would go straight into the cable, so there\'s no BMD converter at each camera, and the converters could live in the Wing case.',
+        'AOC is lighter and more flexible than coax, and it runs longer distances without the signal degrading.',
+        '', 'About $150 for a 50m run on a spool, an estimate from my notes with Matt. It isn\'t in the BOM.', '',
+        'Open decision. We implement with the owned SDI until it\'s made.'),
+      C('LED wall, confidence monitor and internet runs',
+        'The LED wall takes two Ethernet runs from LED 1 and LED 2. The confidence monitor takes HDMI from CONF OUT. Internet comes from the venue or Starlink into INTERNET IN.',
+        'Each field run lands on its own labeled jack.',
+        '', 'Today\'s LED and internet runs are already owned. They get etherCON carriers at the panel end.', '',
+        'Decided. The LED wall receiver takes standard Ethernet.')
+    ];
+
+    const rejected = [
+      { what:'The ProX X-PC10ASTRO power strip', why:'Stacked surge behind a UPS isn\'t good practice, and the metered CPPDU511 in Bay B already gives us a meter.' },
+      { what:'An Etsy dual switch mount and the Teranex Mini Rack Shelf', why:'One 1U vented shelf model does the job, keeps every network jumper in Bay A and costs the least.' },
+      { what:'Rack mounts for the converters', why:'The converters live at the cameras.' },
+      { what:'An HDMI-to-converter box near the cameras', why:'It\'s on record but not chosen. HDMI distance is the catch.' },
+      { what:'A 2000-nit field-monitor tier', why:'It was replaced by the LG on cost. Brightness is open again, so a brighter or used option may come back (section 4).' },
+      { what:'Three networks', why:'We have two physical networks. The third was a zoning aid.' },
+      { what:'A CAT6A etherCON cable connector', why:'It belongs to a different family and doesn\'t mate with the panel jacks.' },
+      { what:'An 8-port switch in the Wing case', why:'The Wing case uses three ports, so the owned 5-port TL-SG1005P is the right size there. The 8-port PoE switch goes to Bay A instead.' },
+      { what:'12/3 SOOW for the Wing power link', why:'It\'s too thick for the TRUE1 cable ends.' },
+      { what:'A surge strip behind the UPS', why:'No surge behind the UPS. The laptops plug straight into the battery-backed CPS1215RM instead.' },
+      { what:'Zip ties', why:'Hook-and-loop and the lacing bar are used instead.' },
+      { what:'Open gaps in reserve rack spaces', why:'Open slots let intake air short-circuit around the gear, so they get vented blanks.' },
+      { what:'Camera control in this build', why:'It\'s parked. The owned converters are bidirectional, so it needs only a return SDI per camera later.' },
+      { what:'Stage power in this BOM', why:'It\'s a separate subsystem and doesn\'t gate the order.' },
+      { what:'Using the AVPRO side compartments', why:'The design doesn\'t use them. That gets confirmed on delivery.' }
+    ];
+
+    const lines = [
+      'Matt\'s estimates for both cases and consolidated freight. The real number comes from his quote.',
+      'The rear panel plates and jacks, loose spares and the cable ends that fit them.',
+      'Short internal jumpers, the two data trunks and the short Wing power link.',
+      'The UPS and its strip, the Bay B strips, the two wall drops and the charging quad box.',
+      'The fan and blanks, three shelves, two drawers, cable management and screws.',
+      'The new 8-port PoE switch for Bay A. The figure is a placeholder, because the PoE model isn\'t priced.',
+      'Two lid monitors and their right-angle adapters.',
+      '', 'The Wing panel parts, bought only if the Wing case can take a panel. If it can\'t, the connections run out the side of the case, and a TRUE1-to-IEC jumper (not costed) carries the Wing power link to the Wing\'s IEC inlet.', '', 'Almost all the gear inside.'
+    ];
+    const costRows = (d.bomSummary || []).map((r, i) => ({ ...r, line: lines[i] || '' }));
+    if (d.st) costRows.push({ cat:'Lid legs', sub:'', cost:'not costed', status:[d.st('open')], line:'Open until Matt confirms whether they come with the lids.', fw:'400', bg:'transparent' });
+    const allOpen = d.allOpen && d.st ? [...d.allOpen, { id:'', title:'Lid legs:', detail:'confirm with Matt whether legs come on the two removable AVPRO lids. If not, add them as a line item.', owner:'Matt (confirm), then Sam', due:'2026-10-19, with the quote', gates:'No', status:[d.st('open')], snote:'', extra:'' }] : d.allOpen;
+
+    return {
+      plainLids: d.plainLids, plainDesk: d.plainDesk, plainBayA: d.plainBayA, plainBayB: d.plainBayB, plainPanel: d.plainPanel, legend: d.legend,
+      panel1: d.panel1, panel2: d.panel2, wingPanel: d.wingPanel,
+      mapVideo: d.mapVideo, mapAudio: d.mapAudio, mapNet: d.mapNet, mapPower: d.mapPower,
+      allOpen, locked: d.locked, bomFO: d.bomFO, bomWing: d.bomWing,
+      foTotal: d.foTotal, wbTotal: d.wbTotal, allTotal: d.allTotal, caseTotal: d.caseTotal,
+      cAvpro, cDesk, cBayA, cBayB, cPanel, cUmb, cWing, cPower, cField, rejected, costRows
+    };
+  }
+}
+</script>
+</body>
+</html>

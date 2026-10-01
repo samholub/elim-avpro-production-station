@@ -1,7 +1,7 @@
 # Build Spec
 
-**Updated:** 2026-09-28 (distillation; replaces PANEL-AND-WIRING v15)
-**Status:** design locked. Nothing ordered. Prices and quantities live in `BOM.xlsx` (v7). This file says what gets built. The BOM says what gets bought.
+**Updated:** 2026-10-01 (design-session rulings 1–43; replaces PANEL-AND-WIRING v15)
+**Status:** design locked. Nothing ordered. Prices and quantities live in `BOM.xlsx` (v8). This file says what gets built. The BOM says what gets bought.
 **Status words used here:** *decided* (locked, see DESIGN §5), *assumed* (working value, check listed), *open* (see OPEN-ITEMS), *conditional* (depends on a check that hasn't happened).
 
 ---
@@ -13,7 +13,7 @@
 | 12U bays (two) | 21.65in deep | decided (depth confirmed) |
 | 4U tops (two) | 4.33in deep | decided |
 | Work surface | 49.6 × 16.9in | decided |
-| Lids | two 24in VESA lids, 16.1in panel height | decided; monitor fit is M5 |
+| Lids | three. The flip-up lid holds both monitors (two 24in VESA mounts, 16.1in panel height). The two removable lids have legs inside and pop up as tables | decided; whether the legs come with the case is open until Matt confirms (N21); monitor fit is M5 |
 | Closed AVPRO, outside | 51.5 × 48.2 × 31.6in | info (listing), for freight |
 | Side compartments | not used in the design (confirm on delivery) | M3 |
 
@@ -26,14 +26,15 @@
 | Camera | Path | Panel jack | ATEM |
 |---|---|---|---|
 | Pocket 4K, wired | HDMI → Micro Converter at the camera → SDI (3G coax) | CAM 1 | IN 1 |
-| Pocket 4K on Hollyland | camera → Hollyland TX → RX (Bay A 4U top) → SDI | none (internal) | IN 2 |
+| Pocket 4K on Hollyland | camera → Hollyland TX → RX (on top of the flip-up lid) → SDI | route open (N24); CAM 2 is one option | IN 2 |
 | DJI | HDMI → Micro Converter at the camera → SDI (3G coax) | CAM 3 | IN 3 |
 | Annual-event cameras (rented) | same as wired | CAM 4–7 | IN 4–7 |
 
 - **Why SDI:** the cameras are HDMI out and the ATEM is SDI in, so the signal converts somewhere. A converter at each camera plus rugged locking coax wins for a spread-out room. At 1080p it's ordinary 3G coax with distance to spare. *Decided.*
 - **Converter power:** each converter runs on its AC/DC adapter, so each wired camera position needs mains. *Decided.*
-- **Run lengths:** runs are 100ft today; 150ft "would be nice". Field cables are made to a **125ft standard**; trim only if a venue proves otherwise. *Decided.*
-- **Field SDI cable is not in the BOM yet.** It's bought after Emily's camera-cable trial (Belden 1855A / BNC: cable and connector reliability and picture over length). Camera control is not part of the trial.
+- **Run lengths:** the owned SDI field runs are **100ft**. Any power, HDMI or data field cables we add are made to **125ft or more**. *Decided.*
+- **Field SDI is owned, so it isn't in the BOM.** We implement with it. Emily's camera-cable trial checks the owned cables over a real deploy: pull-through, cable and connector reliability, and picture over length. No due date. Camera control is not part of the trial. *Open (N8).*
+- **AOC instead of SDI is an open decision (N8).** AOC runs about $150 for a 50m run on a spool (estimate). It isn't in the BOM.
 - **On record, not chosen:** an HDMI-to-converter box near the cameras. Each camera runs HDMI to one box; the box sends SDI to the rack. Cleaner if the cameras stay near the stage; HDMI distance is the catch.
 - **Parked:** camera color/tally control. The owned converters are bidirectional, so it needs only a return SDI per camera. See ROADMAP.
 - Camera settings (shutter, ISO, white balance, lens roles) are in `OPS-CONFIG.md`.
@@ -47,38 +48,37 @@
 
 | From | Cable | To | Color |
 |---|---|---|---|
-| Wired Pocket 4K (converter) | SDI field, 125ft | Panel CAM 1 → jumper → ATEM IN 1 | blue |
-| Hollyland RX (4U top) | SDI, short | ATEM IN 2 direct | blue |
-| DJI (converter) | SDI field, 125ft | Panel CAM 3 → jumper → ATEM IN 3 | blue |
+| Wired Pocket 4K (converter) | SDI field, 100ft (owned) | Panel CAM 1 → jumper → ATEM IN 1 | blue |
+| Hollyland RX (on the flip-up lid) | SDI, route open (N24) | ATEM IN 2 | blue |
+| DJI (converter) | SDI field, 100ft (owned) | Panel CAM 3 → jumper → ATEM IN 3 | blue |
 | Rented cameras | SDI field | Panel CAM 4–7 → ATEM IN 4–7 | blue |
-| ProPresenter Mac → UltraStudio Monitor (desk) | USB-C, then SDI | ATEM IN 8 direct | blue |
+| ProPresenter Mac → UltraStudio Monitor (placement open) (N23) | USB-C, then SDI, route open (N24) | ATEM IN 8 | blue |
 | ATEM AUX | SDI | HyperDeck HD Mini (records the clean feed) | blue |
 | ATEM OUT 8 | SDI | Resi encoder | blue |
 | ATEM multiview | HDMI | LEFT lid monitor | white |
 | ProPresenter Mac, native HDMI | HDMI | LED wall transmitter (Bay A U9) | white |
 | LED transmitter, 2 × ethernet | Cat, short | Panel LED 1, LED 2 → LED wall | purple |
 | ProPresenter Mac → Anker hub | HDMI | Panel CONF OUT → confidence monitor (stage) | white |
-| RIGHT lid monitor | — | fed in Phase 3 (Mac Minis, dock or splitter) | — |
+| ProPresenter Mac, second screen | route open (N24) | RIGHT lid monitor | — |
 
-**Shared jacks (CAM 2, CAM 8).** The Hollyland RX and the UltraStudio plug straight into ATEM IN 2 and IN 8. The CAM 2 and CAM 8 panel jumpers are run to the desk and parked beside those inputs. To use either jack for a field camera, swap the jumper in at the ATEM. Label both jacks "shared, see ATEM IN 2 / IN 8". *Decided (Q2).*
+**ATEM IN 2 and IN 8.** IN 2 is always the Hollyland RX and IN 8 is always the UltraStudio. *Decided.* How each one connects is open (N24). With the Hollyland RX on the flip-up lid, its SDI still has to reach IN 2; running it through the CAM 2 jack is one option. All eight camera jacks stay on the panel, so every switcher input is visible.
 
 ### Audio and Dante
 
 | From | Cable | To | Color |
 |---|---|---|---|
 | Stage box (Midas DL251) | AES50 | Wing (via the Wing panel AES50 jack if the panel happens) | orange boot |
-| Wing Dante card | Cat | Wing case Dante switch (new 8-port, TL-SG108 or equivalent) | green |
-| Wing case Dante switch | DANTE trunk | AVPRO panel DANTE TRUNK → Bay A Dante satellite (TL-SG1005P) | green |
-| Satellite switch | Cat, PoE | AVIO (desk). The AVIO is PoE-powered | green |
+| Wing Dante card | Cat | Wing case Dante switch (owned TL-SG1005P, 5-port) | green |
+| Wing case Dante switch | DANTE trunk | AVPRO panel DANTE TRUNK → Bay A Dante satellite (new 8-port PoE switch) | green |
+| Satellite switch | Cat, PoE | AVIO (desk). The AVIO is PoE-powered (confirmed) | green |
 | AVIO | XLR pigtails | ATEM audio Ch 1–2 | orange |
-| Bianca's Mac, USB-C ethernet adapter | Cat | satellite switch (Dante) | green |
-| Stream-mix laptop (Omar/Mitch, in the booth) | Cat | Wing case Dante switch | green |
-| Tyler's ProTools Mac (in the Wing case) | Cat | Wing case Dante switch. It's a Dante endpoint as well as the USB-C recorder | green |
+| Bianca's Mac, USB-C ethernet adapter | Cat | satellite switch (Dante). It plays music and media over Dante | green |
+| Tyler's ProTools Mac (in the Wing case) | Cat | Wing case Dante switch. It's a Dante endpoint as well as the USB-C recorder, and it runs the live and stream mixes (decided). The stream-mix laptop is still in use today; its retirement is happening separately from the AVPRO plan (open). | green |
 | Bianca's talkback mic | XLR | AVPRO panel TALKBACK → trunk → Wing XLR In 8 | orange |
 | Wing XLR Out 8 | XLR trunk | AVPRO panel IEM → Bianca's IEM pack | orange |
 | Wing | USB-C | Tyler's Mac (in the Wing case) for recording | — |
 
-- Wing In 8 / Out 8 come from the app's port map. **Tyler confirms both (M8).** Until then they're "to be confirmed by Tyler".
+- Wing In 8 = Bianca's talkback, Out 8 = her IEM, per the current rig's port map. *Decided, 2026-09-29 (N6).*
 - Open with Sam: does Omar have a separate Dante device at the drum kit? (R-019)
 
 ### Production network and internet
@@ -90,7 +90,7 @@
 | AX21 LAN 2 | Cat | Resi | yellow |
 | AX21 LAN 3 | PROD trunk | Panel PROD TRUNK → Wing CONTROL | yellow |
 | AX21 LAN 4 | Cat | Panel SPARE (etherCON, pre-wired) | yellow |
-| Production switch | Cat | ATEM, HD Mini (auto-trigger), switcher laptop, Bianca's Anker hub | yellow |
+| Production switch | Cat | ATEM, HD Mini (auto-trigger), streaming laptop, Bianca's Anker hub | yellow |
 
 - **Port count:** that fills every wired production port (AX21 4 of 4, switch 5 of 5). A future device (Stream Deck host, Mac Mini) needs a bigger switch (see Spare capacity).
 - Static IPs and router settings are in `OPS-CONFIG.md`.
@@ -110,12 +110,11 @@ Power reaches the rig area on **two 125ft 12/3 SOOW drops** from wall outlets. *
 | Drop | Wall end | Rig end | Feeds |
 |---|---|---|---|
 | Drop 1 | 5-15P plug | one 5-15R connector body | the AVPRO UPS line cord (and the Wing, through the AVPRO) |
-| Drop 2 | 5-15P plug | one 5-15R connector body | the AV charging station: the Bay B CPPDU511 cord direct (Sam's leaning), or a quad box only if the station is a separate table (tentative, N19) |
+| Drop 2 | 5-15P plug | one 5-15R connector body | the Bay B CPPDU511 cord. The CPPDU511 passes power through an extension to a quad box at the separate charging station |
 
 - **Both drops are built the same:** 125ft 12/3 SOOW, a Hubbell HBL5266C plug, a Hubbell HBL5269C connector body. Either one can stand in for the other. The Hubbell part numbers are assumed, not a ruling; an equal 15A industrial plug and connector body can be substituted.
 - **Drop 1 needs one receptacle.** The UPS is the only thing plugged into it; everything else hangs off the UPS.
-- **Quad box, only if the charging station is a separate table (tentative)** (4 outlets, 2ft 12/3 tail with a 5-15P that plugs into the drop's 5-15R). That's the simplest way to give a separate charging table several outlets. The BarnDoor part is assumed, not a ruling.
-- **Where the charging station sits is open (OPEN-ITEMS N19), and it doesn't gate the order.** Sam's current leaning (2026-09-28): drop 2 most likely feeds the second PDU in the rack (the Bay B CPPDU511), which would make the quad box unnecessary. Until Sam decides, the BOM keeps the quad box, marked tentative. If Bay B wins, drop 2's 5-15R takes the CPPDU511 cord directly and the quad box line comes off.
+- **Quad box at the charging station** (4 outlets, 2ft 12/3 tail with a 5-15P). The charging station is a separate table, fed from the Bay B CPPDU511 by an extension that ends in the quad box. *Decided, 2026-09-29 (N19).* The extension's details are open and not costed (N28). The BarnDoor part is assumed, not a ruling.
 - Voltage drop: 12AWG over 125ft at these loads (2–3A) is about 1%. Fine.
 - Plug each drop into a different wall circuit when the venue has two. If not, both on one is fine; the total is still well under 15A.
 
@@ -123,15 +122,15 @@ Power reaches the rig area on **two 125ft 12/3 SOOW drops** from wall outlets. *
 
 drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → short powerCON umbilical → Wing.
 
-- One UPS backs both cases. The BWING can't carry its own UPS, so this is the only way to back the Wing. For standalone use the Wing goes on a wall outlet. *Decided.*
-- **No surge behind the UPS.** That's why the ProX X-PC10ASTRO was passed on. *Decided.* The laptop strip is now assumed on this side (below), so its type is open (G7).
-- **Laptop strip:** assumed to plug into the **CPS1215RM** (the rack PDU), not the CPPDU511. The laptops charge from the UPS. *Assumed, doesn't gate the order (Sam, 2026-09-29). Replaces the utility-side placement (D4).*
+- One UPS backs both cases. The BXWING can't carry its own UPS, so this is the only way to back the Wing. For standalone use the Wing goes on a wall outlet. *Decided.*
+- **No surge behind the UPS.** Stacked surge behind a UPS isn't good practice, and Bay B's metered CPPDU511 already gives us a meter. That's why the ProX X-PC10ASTRO was passed on. *Decided.*
+- **Laptops:** the two desk laptops plug straight into the **CPS1215RM** (battery-backed), so they keep running if venue power drops. There's no separate laptop strip. *Decided (2026-09-30).*
 - The UPS LCD meters the combined booth + Wing load.
-- **Outlet count.** The CPS1215RM has 12 outlets. The UPS side has 13 loads: ATEM, HD Mini, Resi brick, LED transmitter, TL-SG1005P brick, TL-SG105 brick, AX21 brick, fan, two monitor bricks, the Hollyland RX brick, the POWER > WING feed cord and the laptop strip (assumed). Six are wall-warts that block a neighbour. The UPS's own outlets (8 on the CP1500PFCRM2U) take the overflow; if bricks still crowd the strip, 1ft outlet-saver pigtails fix it (not in the BOM).
+- **Outlet count.** The CPS1215RM has 12 outlets. The UPS side has 14 loads: ATEM, HD Mini, Resi brick, LED transmitter, the 8-port PoE switch's brick, TL-SG105 brick, AX21 brick, fan, two monitor bricks, the Hollyland RX brick, the POWER > WING feed cord and the two laptop chargers (they replace the one laptop strip). *Decided (2026-10-01).* Six are wall-warts that block a neighbour. The UPS's own outlets (8 on the CP1500PFCRM2U) take the overflow; if bricks still crowd the strip, 1ft outlet-saver pigtails fix it (not in the BOM).
 
 ### Charging side (not backed)
 
-drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. *Decided (D3).* If the charging station turns out to be a separate table, drop 2 ends in the quad box, which feeds the table's chargers and the CPPDU511 cord (tentative, N19).
+drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) → **Tripp Lite RS1215-RA** (Bay B rear, camera chargers), plugged into a CPPDU511 rear outlet so both read on one meter. *Decided (D3).* The CPPDU511 also feeds the extension to the quad box at the charging station. *Decided (N19); the extension is open (N28).* Dropping the RS1215-RA is an open proposal only; it stays in the BOM.
 
 - Label both Bay B strips **"chargers + lights only"**. No high-draw loads. Keep the total under 15A.
 
@@ -147,7 +146,7 @@ drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) �
 | Dante satellite switch | ~5W |
 | UltraStudio + Hollyland RX | ~15W |
 | 2 × lid monitors | ~50W |
-| 2 × laptops (assumed on this side; 0 when charged) | ~0–180W |
+| 2 × laptops (0 when charged) | ~0–180W |
 | Wing (over the umbilical) | ~90–100W |
 | **Total** | **~275–465W** |
 
@@ -185,13 +184,13 @@ Three Neutrik D-series 12-hole plates (3U) on the Bay A rear rails, behind the u
 PANEL 1  [CAM1][CAM2*][CAM3][CAM4][CAM5][CAM6][CAM7][CAM8*][CONF OUT][ -- ][ -- ][ -- ]
 PANEL 2  [DANTE][LED1][LED2][INTERNET IN][PROD][TALKBACK][IEM][SPARE][ -- ][ -- ][ -- ][POWER > WING]
 PANEL 3  [ spare / expansion row, 12 holes ]
-         * shared jack (see the signal map)   -- = blanking plate
+         * ATEM IN 2 / IN 8 route open (see the signal map)   -- = blanking plate
 ```
 
 | Jack | Connector | Direction / gender | Inside, goes to | Color |
 |---|---|---|---|---|
 | CAM 1, 3–7 | BNC 75Ω feedthrough | in | SDI jumper → ATEM IN n | blue |
-| CAM 2, CAM 8 | BNC 75Ω feedthrough | in, shared | jumper parked at ATEM IN 2 / IN 8 | blue |
+| CAM 2, CAM 8 | BNC 75Ω feedthrough | in | SDI jumper → ATEM IN 2 / IN 8. Whether the Hollyland RX or the UltraStudio route through them is open | blue |
 | CONF OUT | HDMI feedthrough | out | Anker hub HDMI | white |
 | DANTE TRUNK | etherCON | both | satellite switch | green |
 | LED 1, LED 2 | etherCON | out | LED transmitter ports 1, 2 | purple |
@@ -208,7 +207,7 @@ PANEL 3  [ spare / expansion row, 12 holes ]
 
 ## 6. Wing panel (conditional)
 
-**Planned, pending physical inspection of the BWING.** Nobody has confirmed the BWING can take a panel. Sam inspects on case delivery. The parts are a separate BOM block ($100.00) and are not in the first order. *Conditional.*
+**Planned, pending physical inspection of the BXWING.** Nobody has confirmed the case can take a panel, but it's likely doable. Sam inspects on case delivery. The parts are a separate BOM block ($100.00) and are not in the first order. *Conditional.*
 
 ```
 WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
@@ -223,9 +222,9 @@ WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
 | IEM | XLR **female** | in from the Wing Out 8 | mirrors the AVPRO's male |
 | POWER IN | powerCON TRUE1 **inlet** | in | pigtail to the Wing's IEC inlet |
 
-- **Inside the case:** the Wing case Dante switch (new 8-port, TL-SG108 or equivalent) and Tyler's Mac. Tyler's Mac has two links to the Wing: USB-C for recording and a Cat patch to the Dante switch.
+- **Inside the case:** the Wing case Dante switch (owned TL-SG1005P, 5-port, 3 ports used) and the ProTools Mac. Nothing in the design powers either one yet: the powerCON inlet feeds only the Wing. Open (N29). The ProTools Mac has two links: USB-C to the Wing for recording and a Cat patch to the Dante switch.
 - Genders mirror the AVPRO panel: talkback female ↔ male, IEM male ↔ female, POWER outlet ↔ inlet.
-- **Fallback if the BWING can't take a panel:** the umbilical runs direct to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end feeds the Wing through a short TRUE1-to-IEC C13 jumper (BOM fallback line, qty 0 until needed).
+- **Fallback if the case can't take a panel:** the connections run out the side of the case to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end reaches the Wing's IEC inlet through a short TRUE1-to-IEC C13 jumper (BOM fallback line, qty 0 until needed). The fallback changes the route, not the connectors.
 <!-- /matt -->
 
 ---
@@ -251,7 +250,7 @@ This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v7.
 | SDI jumpers, panel → ATEM | — | — | — | 8 | 8 |
 | Edison plug 5-15P (drop wall ends) | — | — | — | 2 | 2 |
 | Edison connector body 5-15R (drop rig ends) | — | — | — | 2 | 2 |
-| Quad box (charging station, tentative, N19) | — | — | — | 1 | 1 |
+| Quad box (charging station) | — | — | — | 1 | 1 |
 
 **etherCON cable carriers, by run (bought to the high count):**
 
@@ -259,7 +258,7 @@ This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v7.
 |---|---|
 | PROD trunk | 2 |
 | DANTE trunk | 2 |
-| LED 1 | 2 (1 if the LED receiver end is plain RJ45, M7) |
+| LED 1 | 2 (the LED receiver takes standard Ethernet, so its end can stay plain RJ45; the BOM keeps the high count) |
 | LED 2 | 2 (same) |
 | INTERNET IN | 1 (venue or Starlink end is normally RJ45) |
 | AES50 | 0 (the existing AES50 cable is reused) |
@@ -279,7 +278,7 @@ This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v7.
 |---|---|---|---|
 | U12 | 1U thermostatic exhaust fan (AC Infinity CLOUDPLATE T1) | own ears | exhausts toward the open back |
 | U11 | Resi | 1U vented shelf | SDI in ← ATEM OUT 8; ETH → AX21 |
-| U10 | HyperDeck HD Mini + **TL-SG1005P** Dante satellite (+ its power brick) | 1U vented shelf | HD Mini SDI ← ATEM AUX; switch ↔ DANTE TRUNK, AVIO, Bianca's Dante |
+| U10 | HyperDeck HD Mini + **new 8-port PoE switch** (Dante satellite, model open) (+ its power brick) | 1U vented shelf | HD Mini SDI ← ATEM AUX; switch ↔ DANTE TRUNK, AVIO (PoE), Bianca's Dante |
 | U9 | LED wall transmitter | rack-mountable (rack-mounted today) | HDMI ← ProPresenter; 2 × ETH → LED 1, LED 2 |
 | U8 | **TL-SG105** production switch + **AX21** router | 1U vented shelf (antennas up/out) | PROD trunk, INTERNET, SPARE land here |
 | U7 | Cable management (lacing bar) | — | rear I/O panel (3U) on the rear rails behind the upper block |
@@ -288,7 +287,7 @@ This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v7.
 | U1–U2 | UPS, CyberPower CP1500PFCRM2U | own ears | line cord to power drop 1 |
 
 - Shelves are the same AC Infinity 1U vented cantilever model (10in deep). The Teranex Mini Rack Shelf is dropped (D19). The Etsy dual switch mount is dropped (D5).
-- Open check (non-gating): the U10 shelf depth fits the HD Mini, the TL-SG1005P and its brick side by side.
+- Open check (non-gating, N4): the U10 shelf depth fits the HD Mini, the new 8-port PoE switch and its brick side by side.
 - Every network jumper stays in Bay A. Nothing crosses bays.
 
 ### Bay B: storage and utility power
@@ -297,34 +296,35 @@ This table is what the BOM **Check** tab ties to. All 18 rows pass in BOM v7.
 |---|---|---|
 | U12 front | Clear Power CPPDU511 | metered; drawer down-lights; utility |
 | U12 rear | Tripp Lite RS1215-RA | camera chargers; plugs into the CPPDU511 |
-| U9–U11 | Reserved | growth: bigger switch or the Mac Minis |
+| U9–U11 | Left open | room for a bigger switch or the Mac Minis |
 | U5–U8 | 4U drawer (upper) | storage |
 | U1–U4 | 4U drawer (lower) | heavier items here to balance the case |
 
-No signal in Bay B.
+No signal in Bay B. All cabling is stored with the two cases.
 
 ### 4U tops
 
-- **Top A:** Hollyland RX only (fit confirmed; holds closed). *Decided (D12).*
-- **Top B:** reserved.
+- **Top A:** left open. The Hollyland RX mounts on top of the flip-up lid instead, because the receiver won't get good signal inside the rack. It stows in a drawer or with the cameras until setup. The lid mount isn't specced or costed (N25).
+- **Top B:** left open.
 
 ### Desk
 
-- **ATEM** on a retention tray over the 3in grommet; all its I/O drops into Bay A.
+- **ATEM** on the desk over the 3in grommet; all its I/O drops into Bay A. The retention tray is open and not costed (N26).
 - **AVIO** next to the ATEM (XLR pigtails to the ATEM; Dante down to the satellite).
-- **UltraStudio Monitor** velcro'd behind the lid monitors. *Decided (D12).*
-- **Switcher laptop** (ATEM Software Control, HyperDeck, Resi on its own screen).
-- **Bianca's Mac** (ProPresenter): native HDMI → LED Tx; Anker hub → production ethernet + confidence HDMI; USB-C adapter → Dante; USB-C → UltraStudio.
+- **UltraStudio Monitor:** placement open: rack-mounted or near the Mac Mini, or the desk near the ATEM (N23).
+- **Streaming laptop** (ATEM Software Control, HyperDeck, Resi on its own screen).
+- **Bianca's Mac** (ProPresenter): native HDMI → LED Tx; Anker hub → production ethernet + confidence HDMI; USB-C adapter → Dante (music and media); USB-C → UltraStudio; second screen → RIGHT lid (route open, N24).
+- **Laptop power:** both laptops plug into the battery-backed CPS1215RM.
 
 ---
 
 ## 9. Monitors
 
-- **Two LG UltraGear 24GS60F-B:** 23.8in matte IPS, 300 nit, 99% sRGB, VESA 100. *Decided.*
-- **Wording everywhere:** 300 nit matte, fine under a tent or canopy; direct sun needs angling. *Decided (D14).* Fallback if a venue proves unreadable: a 1000-nit unit for the LEFT lid only.
+- **Two LG UltraGear 24GS60F-B:** 23.8in matte IPS, 300 nit, 99% sRGB, VESA 100. **Model reopened for brightness** (N22).
+- **Brightness:** 300 nit matte may not be bright enough even under a tent or canopy, and direct sun needs angling. A brighter screen costs more, so this line may go up. The recorded fallback is a 1000-nit unit for the LEFT lid only.
 - **Right-angle HDMI and DC adapters** so cable heads clear the lid backing.
 - **LEFT lid = ATEM hardware multiview**, day one, independent of any laptop.
-- **RIGHT lid = second operator view, Phase 3** (with the Mac Minis).
+- **RIGHT lid = the ProPresenter Mac's second screen**, ready for a later move to a Mac Mini. *Decided.* The route is open (N24).
 - **Open (M5):** panel height without stand + adapter depth vs the 16.1in lid; two widths vs 49.6in.
 
 ---
@@ -346,7 +346,7 @@ No signal in Bay B.
 - **Dressing:** one airflow direction. Power on one side, signal on the other, crossing at 90°. Bundle by signal type. Hook-and-loop and the lacing bar, not zip ties. Strain-relieve at connectors. Keep the open back workable.
 - **Labeling rule: "match the color, match the number."** Every cable has its color (§12) and a number, and the panel jack it lands on carries the same color and number. Source → destination text on both ends. *Decided (Q6).*
 - **Reel sizing (for field cables):** longest measured *routed* run + ~25%. Routed runs are 1.5–2× the straight line. Group reels by destination. *Proposed method (O-06).*
-- **ATEM retention tray:** 3/4in Baltic birch, 3mm EVA liner, threaded inserts with 1/4-20 thumbscrews, a rear captive bar and front hold-downs, over the 3in grommet. *Proposed (O-07).*
+- **ATEM retention tray:** open and not costed (N26). The proposal on record: 3/4in Baltic birch, 3mm EVA liner, threaded inserts with 1/4-20 thumbscrews, a rear captive bar and front hold-downs, over the 3in grommet. *Proposed (O-07).*
 
 ---
 
@@ -372,8 +372,8 @@ Green vs yellow is the split that matters most. Colored jackets where available,
 
 - **Power:** ~535–725W spare on the UPS (the low end is with the laptops charging). The Bay B strips have open outlets on utility.
 - **Panel:** panel 3 is a full spare row; 3 open holes on each of panels 1 and 2; loose spares of every connector type; one etherCON spare pre-wired to the AX21.
-- **Rack:** Bay A U4–U6 reserve; Bay B U9–U11 reserve; Top B.
-- **Dante:** satellite 2 free of 5 (trunk, AVIO, Bianca's Mac used). Wing case switch 4 free of 8 (Wing Dante card, trunk, stream-mix laptop, Tyler's Mac used).
+- **Rack:** Bay A U4–U6 reserve; Bay B U9–U11 and both 4U tops left open.
+- **Dante:** Bay A satellite 5 free of 8 (trunk, AVIO, Bianca's Mac used). Wing case switch 2 free of 5 (Wing Dante card, trunk, ProTools Mac used).
 - **Production network: no free wired ports** once everything's plugged in (AX21 4/4, switch 5/5). Phones use WiFi. A bigger production switch is the fix when the Stream Deck host or Mac Minis arrive (ROADMAP).
 - At an event you can add Starlink (power on the UPS, internet into INTERNET IN), an extra monitor, or a field device on a spare jack.
 
@@ -383,7 +383,7 @@ Green vs yellow is the split that matters most. Colored jackets where available,
 
 1. **Rack, wire, run.** Mount the gear, do the internal wiring, get it working on the laptops. About a day with help.
 2. **Panel and cable make-up.** Terminate the panels; make up, label and color-code every cable. Its own session. Don't squeeze it into the end of a mounting day.
-3. **Camera cabling.** Field SDI to the 125ft standard (after the trial). Converters mounted on the cameras.
-4. **Prove it.** Bench-test every signal chain and do a thermal soak. Dry-run at the easiest venue with the old kit as backup. Then cut over. Keep the old kit deployable through the first season.
+3. **Camera cabling.** Use the owned 100ft field SDI; the camera-cable trial checks it. Converters mounted on the cameras.
+4. **Roll out in stages.** There's no old rig: the gear going into the cases is our only hardware. Bench-test every signal chain and do a thermal soak. Then move the owned gear into the cases in stages, starting from the setup closest to today's, and prove each stage before the next. *Decided.*
 
 **Setup time (estimate, to be measured):** about 40 loose connections become about 15 labeled cables, saving roughly 30 minutes at setup and again at teardown. Measure today's setup before the cutover and again after (OPEN-ITEMS).

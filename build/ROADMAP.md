@@ -1,6 +1,6 @@
 # Roadmap
 
-**Updated:** 2026-09-28 (distillation; replaces HARDWARE-ROADMAP)
+**Updated:** 2026-10-01 (design-session rulings; replaces HARDWARE-ROADMAP)
 
 One rule orders everything here: **the physical job comes first.** Build the rig, then make it reliably set up, run the event and tear down across real venues. Only then do organization, documentation and control software earn attention. `BACKLOG.md` holds the active build; this file holds what comes after, each with its trigger.
 
@@ -8,10 +8,9 @@ One rule orders everything here: **the physical job comes first.** Build the rig
 
 ## Now: the physical system doing the job
 
-**Phase 0 (in progress): build it.** The AVPRO workstation and the BWING Wing case: ordered, fabricated, assembled, cut over. See `BACKLOG.md`.
+**Phase 0 (in progress): build it.** The AVPRO workstation and the BXWING Wing case: ordered, fabricated, assembled, rolled out in stages. See `BACKLOG.md`.
 
-**Phase 1: prove it in the real world.** Run real events until setup → event → teardown is reliable across venues. Use it, find what physically breaks, fix it. Two safety nets ride along:
-- Keep the **old rig deployable as a fallback** through the first season.
+**Phase 1: prove it in the real world.** Run real events until setup → event → teardown is reliable across venues. Use it, find what physically breaks, fix it. There's no old rig to fall back on: the gear going into the cases is our only hardware, so the rollout is staged, starting from the setup closest to today's, with each stage proved before the next (decided). One safety net rides along:
 - A **spares pouch** travels with the rig: one of each cable and connector, a spare converter + AC adapter, USB power, gaff tape, a multitool, the label maker.
 
 ### Stage power (same footing as Phase 1, band side)
@@ -54,7 +53,7 @@ Nothing below starts until the physical loop above is solid.
 **Phase 3: enhance.**
 - Health dashboard ("all green = good"). Start with what Companion shows for free.
 - Remote support (Tailscale) to rescue a stuck volunteer without driving there.
-- **Mac Minis replace the laptops, and the RIGHT lid gets its feed** (dock or HDMI splitter) at the same time.
+- **Mac Minis replace the laptops.** The RIGHT lid is the ProPresenter Mac's second screen from day one, ready for a later move to a Mac Mini.
 
 **Phase 4: stage and storage system.**
 - A per-instrument / per-position case standard, drums first: labeled foam interiors, a checklist in the lid, a color, a QR code to a setup clip, a "kit passport" signed at load-out.

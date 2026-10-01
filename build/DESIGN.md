@@ -1,6 +1,6 @@
 # Design
 
-**Updated:** 2026-09-28 (distillation; replaces HARDWARE-PROJECT and the design parts of PANEL-AND-WIRING v15)
+**Updated:** 2026-10-01 (design-session rulings 1–43, `review/src/DESIGN-RULINGS.md`; replaces HARDWARE-PROJECT and the design parts of PANEL-AND-WIRING v15)
 **Status:** design locked. Nothing ordered. The order gate is in `OPEN-ITEMS.md`.
 
 ---
@@ -8,7 +8,7 @@
 <!-- matt:scope -->
 ## 1. Overview
 
-ELIM Church runs a portable production rig that deploys once or twice a week at different venues, set up and struck by volunteers under time pressure. This build consolidates the video, network and control gear into a ProX AVPRO rolling workstation (two 12U bays, two 4U tops, a work surface and two monitor lids). Bay A is the active-system side of the rack; Bay B is the storage and camera-charging side. The Behringer Wing rides in a ProX BWING flip case beside it. Every field cable (cameras, LED wall, confidence monitor, internet) and the five-cable Wing umbilical lands on one labeled, color-coded Neutrik D-series panel on the back of the AVPRO. Almost all the gear inside is already owned. The new spend is the cases, power, cooling, mounts, connectors, cabling and two lid monitors.
+ELIM Church runs a portable production rig that deploys once or twice a week at different venues, set up and struck by volunteers under time pressure. This build consolidates the video, network and control gear into a ProX AVPRO rolling workstation (two 12U bays, two 4U tops, a work surface and three lids: the flip-up lid holds both monitors, and the two removable lids pop up as tables). Bay A is the active-system side of the rack; Bay B is the storage and camera-charging side. The Behringer Wing rides in a ProX BXWING hydraulic flip case beside it. Every field cable (cameras, LED wall, confidence monitor, internet) and the five-cable Wing umbilical lands on one labeled, color-coded Neutrik D-series panel on the back of the AVPRO. Almost all the gear inside is already owned. The new spend is the cases, power, cooling, mounts, connectors, cabling and two lid monitors. All cabling is stored with the two cases.
 <!-- /matt -->
 
 - The target design is in `BUILD-SPEC.md`. What gets bought is in `BOM.xlsx`.
@@ -22,8 +22,8 @@ ELIM Church runs a portable production rig that deploys once or twice a week at 
 |---|---|
 | Sam | ATEM / switcher, stream management, hardware build lead. At production |
 | Bianca | Production manager and project co-driver. ProPresenter. At the workstation |
-| Tyler | Wing and live recording (USB-C to his Mac). At the Wing |
-| Omar / Mitch | Stream mix over Dante. The stream-mix laptop sits in the booth, unattended. Omar is the drummer |
+| Tyler | Wing and live recording (USB-C to the ProTools Mac). At the Wing |
+| Omar / Mitch | Stream mix over Dante. In the design, the ProTools Mac in the Wing case runs the live and stream mixes (decided). The stream-mix laptop is still in use today; its retirement is happening separately from the AVPRO plan (open). Omar is the drummer |
 | Emily | Camera ops |
 | Matt | External AV pro at another church. Technical resource and vendor (quotes, freight) |
 | Sunny | Worship leader. Final sign-off |
@@ -59,33 +59,36 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 
 | # | Decision | Why | Since |
 |---|---|---|---|
-| 1 | Cameras run **SDI**: a converter at each camera, 1080p, 3G coax to the panel | HDMI out, SDI in. Locking, rugged, long runs for a spread-out room | 2026-08-17 |
-| 2 | Field cables are made to a **125ft** standard | Venue distances vary widely; long is the safe default | 2026-08-17 |
+| 1 | We implement with the **SDI we already own**: a BMD converter at each camera, 1080p, coax to the panel. Whether to switch to AOC is open (OPEN-ITEMS N8) | HDMI out, SDI in; locking, rugged and already owned | 2026-10-01 |
+| 2 | Owned SDI field runs are **100ft**. Any power, HDMI or data field cables we add should be **125ft or more** | Venue distances vary widely; long is the safe default | 2026-10-01 |
 | 3 | **Three cameras at every event:** two Pocket 4K + DJI; more only when rented | That's what runs today (D9) | 2026-09-26 |
 | 4 | One **rear I/O panel**, three Neutrik D-series 12-hole plates on Bay A | One touchpoint; field wear never reaches the gear | 2026-08-16 |
-| 5 | **Panel order and labels per layout v15** (POWER > WING last, TRUNK names) | The fabrication drawing (D13) | 2026-09-26 |
+| 5 | **Panel order and labels** (POWER > WING last, TRUNK names) | The fabrication drawing (D13) | 2026-09-26 |
 | 6 | **Genders:** AVPRO TALKBACK female, IEM male, POWER an outlet; the Wing panel mirrors them | A mic plugs into the talkback jack; the IEM jack feeds a pack; power flows AVPRO → Wing | 2026-08-17 |
-| 7 | **Shared jacks CAM 2 and CAM 8:** Hollyland RX and UltraStudio go straight to ATEM IN 2 / IN 8 | Matches the running ATEM; jumpers parked for a pinch (Q2) | 2026-09-28 |
+| 7 | **ATEM IN 2 is always the Hollyland RX, and IN 8 is always the UltraStudio.** How each connects is open (OPEN-ITEMS N24). All eight camera jacks stay on the panel | Matches the running ATEM | 2026-10-01 |
 | 8 | **Color code** (BUILD-SPEC §12); green vs yellow is the split that matters | Volunteers match colors, not port names | 2026-08-17 |
 | 9 | **Labeling:** "match the color, match the number" | Same (Q6) | 2026-09-28 |
-| 10 | **One UPS** (CP1500PFCRM2U) backs the booth and the Wing over the umbilical | The BWING can't carry a UPS; this is the only way to back the Wing | 2026-08-17 |
-| 11 | **No surge behind the UPS;** the ProX X-PC10ASTRO was passed on | Stacked surge behind a UPS is contraindicated; its meter duplicates the UPS | 2026-08-17 |
+| 10 | **One UPS** (CP1500PFCRM2U) backs the booth and the Wing over the umbilical | The BXWING can't carry a UPS; this is the only way to back the Wing | 2026-08-17 |
+| 11 | **No surge behind the UPS;** the ProX X-PC10ASTRO was passed on | Stacked surge behind a UPS isn't good practice, and Bay B's metered CPPDU511 already gives us a meter | 2026-08-17 |
 | 12 | Runs on **one 15A** circuit, two preferred, never tied. Power arrives on **two 125ft 12/3 SOOW drops** with Edison ends: drop 1 → AVPRO (and the Wing through it), drop 2 → the charging station | The whole rig draws well under 15A; venue circuit counts are unknowable (D20) | 2026-09-28 |
 | 13 | **Bay B power:** CPPDU511 front (metered, drawer lights) + RS1215-RA rear (camera chargers), chained, utility side | Front lights the drawers; rear outlets face the chargers; one meter (D3) | 2026-08-20 |
-| 14 | **Withdrawn 2026-09-29.** Was: laptop strip on the utility side (D4). Now an assumption, not a lock: the strip plugs into the CPS1215RM on the UPS side (`BUILD-SPEC.md` §4, OPEN-ITEMS G7) | Sam's ruling, 2026-09-29 | 2026-09-29 |
-| 15 | **Switches:** owned TL-SG1005P (PoE) = Bay A Dante satellite, powers the AVIO; owned TL-SG105 = Bay A production switch; **new 8-port (TL-SG108 or equivalent)** = Wing case Dante switch | Keeps PoE for the AVIO with no injector (D1). 8 ports because Tyler's ProTools Mac is also a Dante endpoint (Sam, 2026-09-28) | 2026-09-28 |
-| 16 | **Bay A mounting per layout v15:** Resi U11; HD Mini + TL-SG1005P U10; TL-SG105 + AX21 U8; all on the same 1U vented shelf; Etsy dual mount and Teranex shelf dropped | Every network jumper stays in Bay A; cheapest shelf (D5, D19) | 2026-09-28 |
+| 14 | **The desk laptops plug into the battery-backed CPS1215RM strip.** No separate laptop strip | They keep running if venue power drops | 2026-09-30 |
+| 15 | **Switches:** owned TL-SG1005P (5-port) = Wing case Dante switch, 3 ports used; owned TL-SG105 = Bay A production switch; **new 8-port PoE switch** = Bay A Dante satellite at U10, powers the AVIO (model open, OPEN-ITEMS N27) | The AVIO needs PoE in Bay A, and the Wing case needs only 3 ports | 2026-10-01 |
+| 16 | **Bay A mounting:** Resi U11; HD Mini + new 8-port PoE switch U10; TL-SG105 + AX21 U8; all on the same 1U vented shelf; Etsy dual mount and Teranex shelf dropped | Every network jumper stays in Bay A; cheapest shelf (D5, D19) | 2026-10-01 |
 | 17 | **Two networks, not three:** Dante (isolated) and Production; internet is the AX21's WAN | That's the physical wiring; "three" was a zoning aid | 2026-08-27 |
 | 18 | Router is the **AX21** (older docs say AX55 for the same router) | D11 | 2026-09-26 |
-| 19 | **UltraStudio on the desk,** velcro'd behind the lids; 4U top holds the Hollyland RX only | D12 | 2026-09-26 |
-| 20 | **Lid monitors:** 2 × LG 24GS60F-B, 300 nit matte, fine under a tent or canopy, direct sun needs angling | D14; right-angle adapters for lid clearance | 2026-08-18 |
-| 21 | **LEFT lid = ATEM multiview** day one; **RIGHT lid fed in Phase 3** | Multiview can't depend on a laptop | 2026-08-17 |
+| 19 | **UltraStudio placement is open** (rack-mounted or near the Mac Mini, or the desk near the ATEM; OPEN-ITEMS N23). The **Hollyland RX mounts on top of the flip-up lid** when open and stows in a drawer or with the cameras until setup. The Bay A 4U top is left open | The receiver won't get good signal inside the rack | 2026-09-30 |
+| 20 | **Lid monitors:** 2 × LG 24GS60F-B, 300 nit matte. It may not be bright enough even under a tent or canopy, and direct sun needs angling. **Model reopened for brightness** (OPEN-ITEMS N22) | D14; right-angle adapters for lid clearance | 2026-09-30 |
+| 21 | **LEFT lid = ATEM multiview** day one; **RIGHT lid = the ProPresenter Mac's second screen**, ready for a later move to a Mac Mini | Multiview can't depend on a laptop | 2026-10-01 |
 | 22 | **Cooling:** open back primary; 1U thermostatic fan at U12 exhausting to the back; vented blanks in reserve U's | Low heat load; blanks stop airflow short-circuits | 2026-08-17 |
 | 23 | **Umbilical = 5 short cables:** PROD, DANTE, TALKBACK, IEM, POWER (15ft powerCON TRUE1 link, 14/3 SJOOW) | The cases sit side by side; TRUE1 cable ends take 6–12mm cable (D20). AES50 is stage-side | 2026-09-28 |
 | 24 | **All five trunks are short;** the cases always sit side by side | Q3, D20. Longer runs can be added later | 2026-09-28 |
-| 25 | **The Wing panel is conditional:** planned, pending BWING inspection; fallback is the umbilical direct to the Wing's jacks | Nobody has confirmed the BWING takes a panel | 2026-09-26 |
+| 25 | **The Wing panel is conditional:** planned, pending BXWING inspection. If the case can't take one, the connections run out the side of the case | Nobody has confirmed the case takes a panel, but it's likely doable | 2026-10-01 |
 | 26 | **Stage power is out of the build BOM;** the Drop-PC design lives in ROADMAP | Separate subsystem; doesn't gate the order (D8) | 2026-09-26 |
 | 27 | **Case + freight figure** comes from the BOM ($1,650), labeled placeholder until Matt quotes | One number everywhere (D6) | 2026-09-26 |
+| 28 | **Rollout is staged.** There is no old rig to fall back on: the gear going into the cases is our only hardware. The owned gear moves into the cases in stages, starting from the setup closest to today's, and each stage is proved before the next | The cases hold the only kit we have | 2026-09-29 |
+
+**Changed 2026-10-01** (design-session rulings, `review/src/DESIGN-RULINGS.md`): 1 and 2 (owned 100ft SDI; AOC open; rulings 33, 34); 5 and 16 ("layout v15" dropped); 7 (ATEM IN 2 / IN 8 fixed, connection open; 23, 24); 11 (reason; 19); 14 (laptops on the CPS1215RM, laptop strip dropped; 9, 10); 15 and 16 (switch swap; 35); 19 (UltraStudio open, Hollyland RX on the lid; 11, 20); 20 (model reopened; 8); 21 (RIGHT lid = ProPresenter second screen; 40); 25 (side-of-case fallback; 29, 32); 28 added (staged rollout, no old rig; 1). Wing case model is the ProX XZF-BXWING (36).
 
 ---
 
@@ -94,12 +97,12 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 **Two physical networks.** Only Dante is isolated.
 
 **Dante** (isolated, no internet path):
-- Wing case Dante switch (new 8-port, TL-SG108 or equivalent): the Wing's Dante card, the trunk uplink, the stream-mix laptop, and Tyler's ProTools Mac (which also records over USB-C). 4 of 8 ports used.
-- Bay A satellite (owned TL-SG1005P, PoE): the trunk, the AVIO (PoE-powered), Bianca's Mac (USB-C ethernet adapter).
+- Wing case Dante switch (owned TL-SG1005P, 5-port): the Wing's Dante card, the trunk uplink, and Tyler's ProTools Mac (which also records over USB-C and runs the live and stream mixes). 3 of 5 ports used. While the stream-mix laptop stays in use, it takes a fourth.
+- Bay A satellite (new 8-port PoE switch, model open): the trunk, the AVIO (PoE-powered, confirmed), Bianca's Mac (USB-C ethernet adapter; it also plays music and media over Dante). 3 of 8 ports used.
 - One DANTE trunk joins the two switches through the panels.
 
 **Production** (AX21 router + TL-SG105, both in Bay A):
-- ATEM, HyperDeck HD Mini, Resi, the switcher laptop, Bianca's Mac (Anker hub), Wing control (PROD trunk).
+- ATEM, HyperDeck HD Mini, Resi, the streaming laptop, Bianca's Mac (Anker hub), Wing control (PROD trunk).
 - Every network jumper is local to Bay A.
 
 **Internet** is the AX21's WAN uplink, not a third network. Venue drop or Starlink lands on INTERNET IN. Resi streams out through it.
@@ -110,9 +113,9 @@ Static IPs, router settings and the switch topology rules (one uplink per switch
 
 ## 7. Power
 
-- **Venue drops:** two 125ft 12/3 SOOW cords from wall outlets, 5-15P at the wall, 5-15R at the rig. Drop 1 feeds the AVPRO; drop 2 feeds the charging station. Where that sits is open (OPEN-ITEMS N19); Sam leans toward drop 2 feeding the Bay B PDU, which would drop the quad box.
-- **UPS side:** drop 1 → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, the laptop strip (assumed), and the powerCON outlet feeding the Wing over a short powerCON link. Estimated load **~275–465W of 1000W** (the high end is the laptops charging), leaving ~535–725W spare.
-- **Charging side:** drop 2 → CPPDU511 → RS1215-RA (camera chargers). Labeled "chargers + lights only".
+- **Venue drops:** two 125ft 12/3 SOOW cords from wall outlets, 5-15P at the wall, 5-15R at the rig. Drop 1 feeds the AVPRO. Drop 2 feeds the Bay B CPPDU511, which passes power through an extension to a quad box at a separate charging station. *Decided (N19, 2026-09-29).* The extension's details are open (OPEN-ITEMS N28). A second wall circuit is preferred, not required.
+- **UPS side:** drop 1 → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, the two desk laptops, and the powerCON outlet feeding the Wing over a short powerCON link. Estimated load **~275–465W of 1000W** (the high end is the laptops charging), leaving ~535–725W spare.
+- **Charging side:** drop 2 → CPPDU511 → RS1215-RA (camera chargers), and CPPDU511 → extension → quad box at the charging station. Labeled "chargers + lights only".
 - Detail and the draw table: `BUILD-SPEC.md` §4.
 
 ---
@@ -127,7 +130,7 @@ Static IPs, router settings and the switch topology rules (one uplink per switch
 
 These describe the rig as it runs today (app, on-site 2026-09-14). They're not conflicts; they change at cutover.
 
-- **Today the Wing case holds** the AX21, the production switch, the Dante switch (the TL-SG1005P) and Resi, on a switched strip that powers the AX21 and the Dante switch together. The design moves the router, production switch, Resi and the TL-SG1005P to AVPRO Bay A, and a new 8-port switch becomes the Wing case Dante switch. Tyler's ProTools Mac is on the Dante switch today as well as on USB-C to the Wing; the design keeps that.
+- **Today the Wing case holds** the AX21, the production switch, the Dante switch (the TL-SG1005P) and Resi, on a switched strip that powers the AX21 and the Dante switch together. The design moves the router, production switch and Resi to AVPRO Bay A; the TL-SG1005P stays the Wing case Dante switch, and a new 8-port PoE switch becomes the Bay A Dante satellite. Tyler's ProTools Mac is on the Dante switch today as well as on USB-C to the Wing; the design keeps that.
 - **The HD Mini has no packing home today.** The design puts it at Bay A U10.
 - **There's no UPS today.** It's new with the build.
-- The app's "video stream laptop" (MacBook Air) is probably this project's "switcher laptop". Sam to confirm (OPEN-ITEMS).
+- The app's "video stream laptop" (MacBook Air) and this project's old "switcher laptop" are the same machine, now called the streaming laptop (N13 closed, 2026-09-30).

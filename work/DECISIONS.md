@@ -165,3 +165,7 @@ Given with the approval of the team-repo plan (samholub/elim-avpro). Applied to 
 - **samholub/elim-avpro-production-station is the master copy.** samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source. Don't edit, push or sync from it.
 - The session 4 rulings and fixes stay. The session 5 commits (04a77ff, fe91bde, 70d7af4) stay. Nothing is reverted.
 - The cover notes attach this repo's files (review/, matt/) again, not links to the experiment.
+
+## Session 8 rulings (Sam, 2026-09-29 to 2026-10-01): design session
+
+The full numbered log (1–43) is in `review/src/DESIGN-RULINGS.md`, copied from the design session's brief. Applied to build/ on 2026-10-01 (BOM v8: first order $4,641.84, Wing block $100.00, all lines $4,741.84). The CHANGELOG entry of the same date lists what changed. Document-only rulings (voice, naming style, headings, layout, parked documents) were not applied to build/; the parked documents are listed in BACKLOG. Rulings that look like facts about today's rig were not written to rig/ pending Sam's go.

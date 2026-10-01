@@ -71,3 +71,11 @@ Nothing here is applied. Each proposal changes something a baseline doc marks as
   - Note the BOM v5 line ($120 for 125ft cable + connectors) was already under the cable's list price. The new BOM prices the cable and the two powerCON ends separately, so the saving shows up as a real line change.
 - **Order impact:** yes, one line (length and price). No part numbers change.
 - **Closed 2026-09-28 (superseded by D20).** Sam: the 125ft 12/3 SO is the pair of venue power drops, not the umbilical. The umbilical is a short powerCON cable (15ft; 14/3 SJOOW, because TRUE1 cable ends take 6–12mm cable). See `work/DECISIONS.md`.
+
+### P-05 Drop the RS1215-RA (open; recorded from the 2026-09-30 design session, ruling 21)
+
+- **Locked today:** DESIGN §5 #13. Bay B power is the CPPDU511 front + the Tripp Lite RS1215-RA rear (camera chargers), chained (D3). BOM line $94.98.
+- **Proposal (Sam, 2026-09-30, open only):** drop the RS1215-RA and feed the charging table by a powerCON jumper from the CPPDU511.
+- **Not specced:** the jumper and a panel outlet for it. No cost yet.
+- **Order impact:** none until Sam decides. The RS1215-RA stays in the BOM and in the design.
+- **Sam: [ ]**

@@ -1,3 +1,5 @@
+Superseded for meetings by the explainer (2026-09-30). Kept for history.
+
 # ELIM Production Workstation: the plan
 
 *Sam Holub, September 2026. Nothing is ordered yet. Numbers are from the parts list (BOM v7, 2026-09-28).*

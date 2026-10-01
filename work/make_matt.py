@@ -83,7 +83,6 @@ PLAIN = [
     ("(TBC, D7 + datasheet)", "(to confirm)"),
     ("(family TBC, D7)", "(family to confirm)"),
     ("(TBC, D7)", "(to confirm)"),
-    ("(assumed, verify on the rails, M6)", "(assumed, verify on the rails)"),
     ("**M3:** ", "**Side doors:** "),
     (" (OPEN-ITEMS N19)", ""),
     ("(tentative, N19)", "(tentative)"),
@@ -94,7 +93,7 @@ PLAIN = [
 ]
 CODE = r"(?:[DMQNG]\d{1,2}|P-\d{2}|R-\d{3}|O-\d{2}|V-\d{2})"
 CODE_PAREN = re.compile(r"\s*\((?:" + CODE + r"(?:\s*(?:,|/|\+|and)\s*" + CODE + r")*)\)")
-LEFTOVER = re.compile(r"\b" + CODE + r"\b(?! cage nuts)|OPEN-ITEMS|BUILD-SPEC|OPS-CONFIG|Spare capacity|\bthe app\b|§\d")  # "M6 cage nuts" is a screw size
+LEFTOVER = re.compile(r"\b" + CODE + r"\b(?! cage nuts| or 10-32)|OPEN-ITEMS|BUILD-SPEC|OPS-CONFIG|Spare capacity|\bthe app\b|§\d")  # "M6 cage nuts", "M6 or 10-32" are screw sizes
 
 
 def scrub(md):
@@ -170,10 +169,10 @@ The design is locked. We'd like your quote on the cases and freight, your help p
 
 ## 6. Fill hardware
 
-Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, Changes). The last column below is the price status (est / firm / quoted / tentative), not the price. Cases and freight are left off this list; they're question 1.
+Quantities and prices are in the attached `BOM.xlsx` (tabs: Buy, Owned, Check, Changes). The last column below is the price status (est / firm / quoted / placeholder / decided), not the price. Cases and freight are left off this list; they're question 1.
 
-- **First order:** {money(t['first_order'])}, of which {money(t['cases_placeholder'])} is the case and freight placeholder (AVPRO $500, BWING $900, freight $250). Without cases: {money(t['first_order_ex_cases'])}.
-- **Wing panel block:** {money(t['wing_block'])}, bought only if the BWING can take a panel.
+- **First order:** {money(t['first_order'])}, of which {money(t['cases_placeholder'])} is the case and freight placeholder (AVPRO $500, BXWING $900, freight $250). Without cases: {money(t['first_order_ex_cases'])}.
+- **Wing panel block:** {money(t['wing_block'])}, bought only if the BXWING can take a panel.
 
 ### First order
 

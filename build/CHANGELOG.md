@@ -4,6 +4,25 @@ Build milestones, decisions, and significant changes. Most recent first.
 
 -----
 
+## 2026-10-01 -- Design-Session Rulings Applied (BOM v8)
+
+Rulings 1–43 from the design session (log in `review/src/DESIGN-RULINGS.md`) applied to build/. **BOM v8: first order $4,641.84** (from $4,671.84: laptop strip −$30.00), Wing block $100.00, all lines $4,741.84. Check tab 18/18.
+
+- **No old rig; staged rollout** from the setup closest to today's, each stage proved before the next (new locked decision 28). The "old kit as backup" steps are gone from BACKLOG, BUILD-SPEC and ROADMAP.
+- **Charging station (N19 closed):** drop 2 → Bay B CPPDU511 → extension → quad box at a separate charging station. The quad box is decided; the extension is open and not costed (N28).
+- **Laptops on the battery-backed CPS1215RM;** the laptop strip is dropped (G7 closed). Locked decision 14 restored as a decision.
+- **Switch swap:** the owned TL-SG1005P stays as the Wing case Dante switch (3 ports used); a new 8-port PoE switch is the Bay A Dante satellite at U10 and powers the AVIO. $19.99 placeholder; PoE model not priced (N27).
+- **Wing case model:** ProX XZF-BXWING. Wing panel likely doable; if not, the connections run out the side of the case (the fallback jumper stays).
+- **Field camera cable:** owned 100ft SDI; new power/HDMI/data field cables 125ft or more; AOC is an open decision (about $150 per 50m on a spool, not in the BOM). The trial checks the owned cables, no due date.
+- **ATEM IN 2 = Hollyland RX, IN 8 = UltraStudio,** always; how each connects is open (N24). All eight camera jacks stay. The Hollyland RX mounts on top of the flip-up lid; both 4U tops and Bay B U9–U11 are left open. UltraStudio placement open (N23).
+- **Lids:** three (flip-up lid holds both monitors; two removable lids pop up as tables, legs open, N21). RIGHT lid = the ProPresenter Mac's second screen. Monitor model reopened for brightness (N22).
+- **Closed:** N6 (Wing In 8 talkback, Out 8 IEM), N13 (streaming laptop). The ProTools Mac runs the live and stream mixes (decided). The stream-mix laptop is still in use today; its retirement is happening separately from the AVPRO plan (open). AVIO confirmed PoE-powered. LED receiver takes standard Ethernet (N2 narrowed to the internet drop).
+- **Open:** case + freight spend ceiling (G8), power inside the Wing case (N29), ATEM retention tray (N26), Hollyland lid mount (N25), rack rails and thread (G6, both open), RS1215-RA drop (proposal P-05 only).
+- **Target order date 2026-10-19.**
+- **review/:** working drafts of the explainer, Bianca's decision sheet and the review doc in `review/drafts/`; the rulings log and `elim-data.js` in `review/src/`. ELIM-PLAN is superseded for meetings and kept for history. matt/ regenerated.
+
+-----
+
 ## 2026-09-29 -- This Repo Stays the Master
 
 Sam ruled that samholub/elim-avpro-production-station is the master copy. samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source, and nothing syncs from it. The session 4 rulings and the session 5 changes stay. The cover notes attach this repo's files again.

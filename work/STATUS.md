@@ -1,7 +1,16 @@
 # Status
 
-**Updated:** 2026-09-29 (session 6)
+**Updated:** 2026-10-01 (session 8)
 **State: this repo (samholub/elim-avpro-production-station) is the master copy; `build/` is the master set.** samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source.
+
+## Session 8 (2026-10-01): design-session rulings applied (Part 1; not committed until Sam's OK)
+
+- **Rulings 1–43** from the design session (`review/src/DESIGN-RULINGS.md`, the incoming brief renamed so Claude Code doesn't read it as instructions) applied to build/: DESIGN (locked decisions 1, 2, 5, 7, 11, 14, 15, 16, 19, 20, 21, 25 changed; 28 added; change line under the table), BUILD-SPEC, OPEN-ITEMS (N6, N13, N19, G7 closed; G8 and N21–N28 added; target order date 2026-10-19), BACKLOG (staged rollout; parked build-phase documents), README, ROADMAP, OPS-CONFIG, both diagram sources (PNGs re-rendered), CHANGELOG. P-05 (drop the RS1215-RA) recorded as an open proposal. Session 8 entry in DECISIONS.
+- **BOM v8** via `work/make_bom.py`: first order **$4,641.84**, Wing block **$100.00**, all lines **$4,741.84** (laptop strip −$30.00). Check 18/18; pycel totals match. Rows, quantities and prices match `review/src/elim-data.js`.
+- **review/:** `drafts/` holds the explainer, Bianca's decision sheet and the review doc (PDF + .dc.html, "WORKING-DRAFT" in each name, README). `src/` holds DESIGN-RULINGS.md and elim-data.js. ELIM-PLAN.md has the "superseded for meetings" line; its PDF was not re-rendered (make_review.py ties every figure to the BOM and the old plan's figures are v7).
+- **matt/** regenerated: BXWING, Bay A 8-port PoE switch, owned 100ft field SDI, no laptop strip. 12 pages, 9 questions.
+- **Sam's answers (round 2), applied:** rig/ updated for #12 (streaming laptop), #16 (ProPresenter Mac music and media over Dante), #25 (LED receiver takes standard Ethernet), and the four stale AVPRO-plan pointer lines. The stream-mix laptop is still in use today; its retirement is in process, separate from the AVPRO plan (open; rig Q16; build/ wording to match). UPS-side load count is 14 (two laptop chargers replace the strip). New N29: nothing powers the Wing case's TL-SG1005P or the ProTools Mac. BXWING BOM link removed ("listing pending Matt's quote"). Drafts stay at BOM v7 (note in review/drafts/README.md). ELIM-PLAN.pdf left as is. `_incoming/` gitignored.
+- **Part 2** (repo presentation: root README, Mermaid diagrams) waits for Sam's go.
 
 ## Session 7 (2026-09-29): current-rig record
 
@@ -34,6 +43,7 @@
 
 ## Where things stand
 
+- **BOM v8 (2026-10-01):** first order **$4,641.84** (incl. $1,650.00 case + freight placeholders, Matt to verify; incl. the $89.88 quad box, now decided), Wing block **$100.00**, all lines **$4,741.84**. *The v7 notes below are history.*
 - **BOM v7:** first order **$4,671.84** (incl. $1,650.00 case + freight placeholders, Matt to verify; incl. the tentative $89.88 quad box), Wing block **$100.00**, all lines **$4,771.84**. Check tab 18/18 PASS; pycel formula check clean; the Changes tab's numeric rows sum to +$710.28 on v5's $3,961.56 = the first-order total.
 - **What changed from v6:** etherCON cable ends NE8MX6-B (CAT6A, wrong family) → NE8MX-1 carriers ×11 (−$165.55); + shielded RJ45 plug pack (+$12.00); Wing case Dante switch 5-port → 8-port TL-SG108 or equivalent (−$27.00).
 - **review/ELIM-PLAN.pdf:** 6 pages at 5.5 × 11in, 11pt. Page 1 says "about $4,700" and "Minus about $90 if the charging station moves into the rack". All 20 figures tie to BOM v7 (`work/make_review.py` checks them).
@@ -45,8 +55,8 @@
 
 1. **Project sync:** add the GitHub source to the claude.ai project (`build/` and `review/`), paste `work/PROJECT-INSTRUCTIONS.md`, remove the old uploaded docs.
 2. **Send the cover notes** (`work/COVER-NOTES.md`): Matt first, then Bianca, then Sunny.
-3. **N19** (open, non-gating): charging station = Bay B PDU or its own table. Leaning Bay B, which drops the $89.88 quad box. If Bay B wins, delete that line in `work/make_bom.py` and re-run all four scripts; review page 1 rounds down to "about $4,600" automatically (check `make_review.py` still passes).
-4. The order gate itself is Matt's (G1 quote, G2 part family), target order date 2026-10-01.
+3. **N19 closed 2026-09-29:** drop 2 → CPPDU511 → extension → quad box at a separate charging station. The quad box stays. The extension is open (N28).
+4. The order gate itself is Matt's (G1 quote, G2 part family), target order date **2026-10-19**. The case + freight spend ceiling (G8) is Sam and Bianca's, before the Sunny walkthrough.
 
 ## Step 11 (done 2026-09-28)
 

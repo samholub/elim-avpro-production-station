@@ -1,4 +1,4 @@
-"""Build build/BOM.xlsx (BOM v7) from the line data below.
+"""Build build/BOM.xlsx (BOM v8) from the line data below.
 
 Run:  python work/make_bom.py
 Writes build/BOM.xlsx and work/bom_totals.json (totals + check counts for the docs).
@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "build" / "BOM.xlsx"
 TOTALS = ROOT / "work" / "bom_totals.json"
 
-VERSION = "v7"
-DATE = "2026-09-28"
+VERSION = "v8"
+DATE = "2026-10-01"
 FIRST = "First order"
 WING = "Wing block"
 
@@ -27,9 +27,9 @@ LINES = [
     ("Cases", "Rolling dual-bay workstation", "ProX XZF-AVPRO2X12U2X4U", 1, 500, "placeholder, to verify (Matt)", FIRST, "",
      "https://www.proxdirect.com/products/view/Mobile-AV-Broadcasting-Streaming-Recording-Studio-Workstation-Case-with-2x-4U-Top-2x-12U-Bottom-XZF-AVPRO2X12U2X4U",
      "Matt's estimate. Order gate: Matt's quote.", "unchanged"),
-    ("Cases", "Wing hydraulic flip case", "ProX XZF-BWING", 1, 900, "placeholder, to verify (Matt)", FIRST, "",
-     "https://www.proxdirect.com/products/view/Behringer-Wing-Flip-Ready-Hydraulic-Console-Easy-Retracting-Lifting-Flight-Case-and-wheels-XZF-BWING",
-     "Placeholder until Matt quotes.", "unchanged"),
+    ("Cases", "Wing hydraulic flip case", "ProX XZF-BXWING", 1, 900, "placeholder, to verify (Matt)", FIRST, "",
+     "",
+     "Placeholder until Matt quotes. Listing pending Matt's quote.", "v8: model XZF-BWING -> XZF-BXWING; old XZF-BWING link removed"),
     ("Cases", "Freight, both cases (consolidated)", "-", 1, 250, "placeholder, to verify (Matt)", FIRST, "", "",
      "Closed AVPRO is 51.5 x 48.2 x 31.6in (listing).", "unchanged"),
     # --- AVPRO rear panel, fitted ---
@@ -80,8 +80,6 @@ LINES = [
      "https://www.amazon.com/gp/product/B0BLRW2H61/", "Utility side (not on the UPS).", "unchanged"),
     ("Power", "Bay B rear strip, camera chargers", "Tripp Lite RS1215-RA", 1, 94.98, "quoted 2026-08-20", FIRST, "",
      "", "Plugs into a CPPDU511 rear outlet. Label both 'chargers + lights only'.", "NEW (D3)"),
-    ("Power", "Laptop power strip, plain surge strip", "Surge strip (Matt sourcing)", 1, 30, "est", FIRST, "",
-     "", "Assumed on the CPS1215RM (UPS side), not the CPPDU511 (Sam, 2026-09-29). Strip type open: a surge strip conflicts with 'no surge behind the UPS' (G7).", "note changed (D4)"),
     # --- Cooling ---
     ("Cooling", "1U thermostatic exhaust fan", "AC Infinity CLOUDPLATE T1", 1, 150, "est", FIRST, "",
      "https://www.amazon.com/AC-Infinity-CLOUDPLATE-Exhaust-Airflow/dp/B076CHYQ3K", "Bay A U12. Exhausts toward the open back.", "unchanged"),
@@ -90,10 +88,10 @@ LINES = [
     # --- Mounting / network ---
     ("Mounting", "1U vented cantilever shelf, 10in deep", "AC Infinity 1U vented (B01C9KYUG8)", 3, 25, "est", FIRST, "",
      "https://www.amazon.com/AC-Infinity-Cantilever-Universal-Heavy-Duty/dp/B01C9KYUG8",
-     "U11 Resi; U10 HD Mini + TL-SG1005P + its power brick; U8 TL-SG105 + AX21.", "qty 2 -> 3 (D5, D19)"),
-    ("Network", "Wing case Dante switch (non-PoE)", "8-port metal gigabit switch (TL-SG108 or equivalent)", 1, 19.99, "est", FIRST, "",
-     "https://www.newegg.com/tp-link-tl-sg108-8-x-rj45/p/N82E16833704173",
-     "New buy (D1). 8 ports (Sam, 2026-09-28): the Wing Dante card, the trunk, the stream-mix laptop and Tyler's ProTools Mac take 4. Newegg $19.99 on 2026-09-28; any 8-port metal gigabit unmanaged switch works.", "NEW (D1); 5-port -> 8-port (VERIFY V-02)"),
+     "U11 Resi; U10 HD Mini + the new 8-port PoE switch + its power brick; U8 TL-SG105 + AX21.", "qty 2 -> 3 (D5, D19)"),
+    ("Network", "Bay A Dante satellite switch, 8-port PoE", "PoE model open", 1, 19.99, "placeholder: PoE model not priced", FIRST, "",
+     "",
+     "New buy. Bay A U10; powers the AVIO over PoE. The owned TL-SG1005P moves to the Wing case as its Dante switch (Sam, 2026-10-01). $19.99 is the old non-PoE TL-SG108 price, kept as a placeholder; a PoE model will cost more (N27).", "v8: was the Wing case Dante switch (TL-SG108, non-PoE); now the Bay A PoE satellite"),
     # --- Storage ---
     ("Storage", "4U rack drawer", "StarTech 4UDRAWER", 2, 155, "est", FIRST, "",
      "https://www.startech.com/en-us/server-management/4udrawer", "Bay B.", "unchanged"),
@@ -103,8 +101,8 @@ LINES = [
     ("Cable mgmt", "Hook-and-loop straps", "ONE-WRAP + WrapStrap", 1, 40, "est", FIRST, "",
      "https://www.amazon.com/VELCRO-Brand-ONE-WRAP-Double-Sided-Multi-Purpose/dp/B00JWU786S",
      "Strapping + color code; also holds the UltraStudio to the desk.", "unchanged"),
-    ("Hardware", "Rack screws + cage nuts", "10-32 (assumed, verify on the rails, M6 cage nuts)", 1, 25, "est", FIRST, "",
-     "", "Screw order waits on the rail-thread check.", "unchanged"),
+    ("Hardware", "Rack screws + cage nuts", "M6 or 10-32 (open; check the rails)", 1, 25, "est", FIRST, "",
+     "", "Screw order waits on the rail check (G6). Whether the AVPRO comes with rails built in is also open.", "v8: thread open (was assumed 10-32)"),
     # --- Cabling ---
     ("Cabling", "SDI BNC jumpers, panel to ATEM", "Belden 1855A / premade BNC-BNC", 8, 10, "est", FIRST, "SDI-JUMPER",
      "", "One per CAM jack. CAM 2 and CAM 8 jumpers are run and parked (Q2).", "unchanged"),
@@ -124,25 +122,25 @@ LINES = [
     # --- Venue power drops ---
     ("Venue power", "Power drop cable, 12/3 SOOW (2 x 125ft)", "12/3 SOOW, cut to length (ft)", 250, 1.63, "est", FIRST, "",
      "https://www.wireandcableyourway.com/12-3-soow-portable-cord-600v-ul-csa",
-     "Drop 1: wall > AVPRO UPS (and the Wing through it). Drop 2: wall > charging station. Both identical, so either can stand in for the other.",
+     "Drop 1: wall > AVPRO UPS (and the Wing through it). Drop 2: wall > Bay B CPPDU511, which passes power on to the charging station. Both identical, so either can stand in for the other.",
      "NEW (D20)"),
     ("Venue power", "Edison plug, 5-15P (wall end)", "Hubbell HBL5266C", 2, 14, "est", FIRST, "EDISON-P",
      "https://www.hubbell.com/wiringdevice-kellems/en/products/straight-blade-devices-male-plug-insulgrip-heavy-duty-industrialcommercial-grade-straight-2-pole-3-wire-grounding-15a125v-5-15p-and-white/p/555598",
      "One per drop. Check the cord range covers 0.595in. Part assumed, not a ruling: an equal 15A industrial plug may be substituted.", "NEW (D20)"),
     ("Venue power", "Edison connector body, 5-15R (rig end)", "Hubbell HBL5269C", 2, 18, "est", FIRST, "EDISON-R",
-     "", "One per drop. Drop 1: the UPS line cord plugs in. Drop 2: the quad box or the CPPDU511 cord plugs in. Part assumed, not a ruling: an equal 15A connector body may be substituted.", "NEW (D20)"),
-    ("Venue power", "Quad box, 4 outlets, 2ft 12/3 tail with 5-15P", "BarnDoor QB-M-2FT metal quad box", 1, 89.88, "tentative, may drop (N19)", FIRST, "QUADBOX",
+     "", "One per drop. Drop 1: the UPS line cord plugs in. Drop 2: the CPPDU511 cord plugs in. Part assumed, not a ruling: an equal 15A connector body may be substituted.", "NEW (D20)"),
+    ("Venue power", "Quad box, 4 outlets, 2ft 12/3 tail with 5-15P", "BarnDoor QB-M-2FT metal quad box", 1, 89.88, "decided (N19)", FIRST, "QUADBOX",
      "https://www.filmandvideolighting.com/metal-quad-box-hard-wired-12-3-sjoow-2ft-tail-qb-m-2ft.html",
-     "Quoted $89.88 on 2026-09-28. Only needed if the charging station is a separate table. Sam leans toward drop 2 feeding the Bay B PDU instead, which removes this line (N19). Part assumed, not a ruling.", "NEW (D20)"),
+     "Quoted $89.88 on 2026-09-28. At the separate charging station, fed from the Bay B CPPDU511 by an extension (N19, Sam 2026-09-29). The extension's details are open and not costed (N28). Part assumed, not a ruling.", "NEW (D20); v8: tentative -> decided"),
     # --- Monitors ---
     ("Monitors", "Lid monitor, 24in matte IPS", "LG UltraGear 24GS60F-B", 2, 150, "est", FIRST, "",
      "https://www.amazon.com/LG-24GS60F-B-Ultragear-Compatible-DisplayPort/dp/B0CYQGRTHX",
-     "300 nit matte. LEFT = ATEM multiview; RIGHT = second operator view (Phase 3).", "unchanged"),
+     "300 nit matte. LEFT = ATEM multiview; RIGHT = the ProPresenter Mac's second screen. Model reopened for brightness (N22); a brighter screen would cost more.", "v8: model open; RIGHT lid role"),
     ("Monitors", "Right-angle HDMI + DC adapters (lot)", "90-deg HDMI + DC barrel", 1, 20, "est", FIRST, "",
      "", "LG ports face straight back; keeps cable heads off the lid.", "unchanged"),
     # --- Wing panel block (conditional) ---
     ("Wing panel", "Small D-series plate (8 holes)", "D-series plate", 1, 20, "est", WING, "DPLATE-WING",
-     "", "Only if the BWING can take a panel (inspection on delivery).", "NEW (Wing block)"),
+     "", "Only if the Wing case can take a panel (inspection on delivery).", "NEW (Wing block)"),
     ("Wing panel", "etherCON feedthrough", "Neutrik NE8FDP-B", 3, 12, "est", WING, "ETH-CHASSIS",
      "", "CONTROL, DANTE TRUNK, AES50.", "NEW (Wing block)"),
     ("Wing panel", "XLR male chassis", "Neutrik NC3MD-L-B-1", 1, 6, "est", WING, "XLRM", "", "TALKBACK (male at the Wing).", "NEW (Wing block)"),
@@ -153,7 +151,7 @@ LINES = [
      "", "Inside the case, from the inlet to the Wing's IEC inlet.", "NEW (Wing block)"),
     ("Wing panel", "D-hole blanking plate", "Neutrik DBA-BL", 2, 2, "est", WING, "BLANK-WING", "", "2 spare holes.", "NEW (Wing block)"),
     ("Wing panel", "FALLBACK ONLY: powerCON TRUE1 to IEC C13 jumper", "TRUE1 male to C13, short", 0, 30, "est", WING, "",
-     "", "Buy only if the BWING can't take a panel. Then the umbilical's female end feeds the Wing through this jumper. Qty 0 until then.",
+     "", "Buy only if the Wing case can't take a panel. Then the connections run out the side of the case, and the umbilical's female TRUE1 end reaches the Wing's IEC inlet through this jumper. Qty 0 until then.",
      "NEW (fallback)"),
 ]
 
@@ -183,19 +181,21 @@ OWNED = [
     ("Switcher", "ATEM Television Studio Pro 4K", "Blackmagic", "On the desk, retention tray over the grommet."),
     ("Recorder", "HyperDeck Studio HD Mini", "Blackmagic", "Bay A U10 on a 1U vented shelf (D19)."),
     ("Encoder", "Resi Mini (SDI)", "Resi", "Bay A U11 on a 1U vented shelf."),
-    ("Converter", "UltraStudio Monitor 3G", "Blackmagic", "On the desk, behind the lid monitors (D12). ATEM IN 8."),
+    ("Converter", "UltraStudio Monitor 3G", "Blackmagic", "Always ATEM IN 8. Placement open: rack-mounted or near the Mac Mini, or the desk near the ATEM (N23)."),
     ("Converter", "Micro Converter BiDirectional SDI/HDMI 3G", "Blackmagic", "At the cameras, AC/DC adapter powered."),
-    ("Wireless video", "Hollyland TX/RX", "Hollyland", "RX in the Bay A 4U top. ATEM direct (Q2)."),
-    ("Audio", "Dante AVIO (AVIOAO2 per the port map; label check M2)", "Audinate", "On the desk with the ATEM. PoE from the satellite switch."),
-    ("Console", "Behringer Wing", "Behringer", "In the BWING case."),
+    ("Wireless video", "Hollyland TX/RX", "Hollyland", "Always ATEM IN 2. RX mounts on top of the flip-up lid when open; stows in a drawer or with the cameras (mount not specced, N25)."),
+    ("Audio", "Dante AVIO (AVIOAO2 per the port map; label check M2)", "Audinate", "On the desk with the ATEM. PoE-powered (confirmed) from the Bay A satellite switch."),
+    ("Console", "Behringer Wing", "Behringer", "In the BXWING case."),
     ("Stage box", "Midas DL251", "Midas", "AES50 to the Wing."),
-    ("Network", "Dante satellite switch (PoE)", "TP-Link TL-SG1005P", "Moves to Bay A U10 (D1). Powers the AVIO. Today it's the Wing case Dante switch."),
+    ("Network", "Wing case Dante switch (5-port, PoE)", "TP-Link TL-SG1005P", "Stays in the Wing case as its Dante switch: Wing Dante card, trunk, ProTools Mac (3 ports used)."),
     ("Network", "Production switch", "TP-Link TL-SG105", "Moves to Bay A U8 (D1)."),
     ("Network", "Router (older docs: AX55)", "TP-Link Archer AX21", "Bay A U8. Same router as the AX55 in older docs (D11)."),
     ("Video", "LED wall transmitter", "-", "Bay A U9."),
     ("Internet", "Starlink Standard + router", "Starlink", "Into INTERNET IN. ~50-75W if powered from the UPS."),
     ("Cameras", "Pocket 4K x2, DJI", "various", "Three cameras at every event (D9)."),
-    ("Compute", "ProPresenter Mac (Bianca), switcher laptop, Anker hub", "-", "On the desk. Laptop strip assumed on the CPS1215RM (G7)."),
+    ("Compute", "ProPresenter Mac (Bianca), streaming laptop, Anker hub", "-", "On the desk. The laptops plug into the battery-backed CPS1215RM."),
+    ("Compute", "ProTools Mac (Tyler)", "-", "In the Wing case. Records over USB-C and runs the live and stream mixes over Dante."),
+    ("Cabling", "Camera SDI field runs (100ft) and spools", "-", "Owned. The camera-cable trial checks these (N8). AOC instead is an open decision."),
     ("Cabling", "Short XLR cables x2 (talkback + IEM trunks)", "-", "Owned (Sam confirmed 2026-09-28). Not in the buy total."),
     ("Cabling", "LED wall and internet field runs", "-", "Today's runs; add etherCON carriers at the panel end (cut the plug, slide the carrier on, re-crimp). M7 sets the LED end count."),
 ]
@@ -225,6 +225,10 @@ CHANGES = [
     ("V-01", "v7: etherCON cable ends NE8MX6-B (CAT6A) x11 @ $18.36 -> NE8MX-1 carriers (standard etherCON, NE8MC-1's successor) x11 @ $3.31", "-165.55"),
     ("V-01", "v7: + shielded RJ45 plug pack for the carrier ends", "+12.00"),
     ("V-02", "v7: Wing case Dante switch 5-port TL-SG105 @ $46.99 -> 8-port TL-SG108 or equivalent @ $19.99 (Tyler's Mac is also on Dante)", "-27.00"),
+    ("G7", "v8: - laptop power strip; the laptops plug into the CPS1215RM", "-30.00"),
+    ("D1", "v8: the 8-port switch line becomes the Bay A Dante satellite, 8-port PoE (model open); the TL-SG1005P moves to the Wing case. $19.99 kept as a placeholder", "0.00"),
+    ("", "v8: Wing case model XZF-BWING -> XZF-BXWING", "0.00"),
+    ("N19", "v8: quad box tentative -> decided (separate charging station, fed from the Bay B CPPDU511)", "0.00"),
     ("", "Sum of the numeric rows + v5 $3,961.56 = the first-order total. The Wing block ($100.00) is on top of that.", ""),
 ]
 
@@ -256,10 +260,10 @@ def main():
     ws.title = "Buy"
     ws["A1"] = f"ELIM AVPRO + Wing build - BOM {VERSION} ({DATE})"
     ws["A1"].font = Font(bold=True, size=14)
-    ws["A2"] = ("One buy list. The first order is everything not marked 'Wing block'. The Wing block is bought only if the BWING "
+    ws["A2"] = ("One buy list. The first order is everything not marked 'Wing block'. The Wing block is bought only if the BXWING "
                 "can take a panel. Owned gear is on the Owned tab and not in any total. Case prices are Matt's estimates, to verify.")
-    ws["A3"] = ("Not in this BOM: camera field SDI cable and BNC ends (after the camera-cable trial); stage power (ROADMAP); "
-                "the XLR trunk cables (owned).")
+    ws["A3"] = ("Not in this BOM: camera field SDI cable (owned, 100ft runs; AOC instead is an open decision); stage power (ROADMAP); "
+                "the XLR trunk cables (owned); the extension from Bay B to the charging station (open, not costed).")
     cols = ["Group", "Item", "Model / SKU", "Qty", "Unit", "Ext", "Price status", "Order", "Status", "Link", "Check key", "Notes", "Change vs v5"]
     header(ws, 5, cols)
     first_row = 6
@@ -332,7 +336,7 @@ def main():
 
     # ---------------- Changes ----------------
     wch = wb.create_sheet("Changes")
-    wch["A1"] = f"Changes, BOM v5 (2026-08-18, $3,961.56) -> v6 -> {VERSION} ({DATE})"
+    wch["A1"] = f"Changes, BOM v5 (2026-08-18, $3,961.56) -> v6 -> v7 -> {VERSION} ({DATE})"
     wch["A1"].font = Font(bold=True, size=13)
     header(wch, 3, ["Ruling", "Change", "Effect on first-order total ($)"])
     for i, row in enumerate(CHANGES, 4):
