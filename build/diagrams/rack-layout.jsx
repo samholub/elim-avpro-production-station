@@ -299,7 +299,7 @@ export default function AvproRackLayout({ mode = "full" }) {
       <SectionTitle n={phone ? "03" : "04"} title="Wing panel (if the case can take one)" big={phone} note="Five umbilical jacks to the AVPRO + one AES50 to the stage box. Genders mirror the AVPRO panel. If the BXWING can't take a panel, the connections run out the side of the case." />
       <div style={{ border: "1px dashed " + C.ink, borderRadius: 6, padding: "14px 12px 6px", background: C.card }}>
         <PanelRow label="WING PANEL" cells={WING_PANEL} wrap={phone} big={phone} />
-        <div style={{ fontSize: phone ? 12.5 : 11, color: C.sub, marginBottom: 8 }}>Inside the case: TL-SG1005P Dante switch (3 of 5 ports used) + the ProTools Mac (USB-C to the Wing, plus Dante; runs the live and stream mixes).</div>
+        <div style={{ fontSize: phone ? 12.5 : 11, color: C.sub, marginBottom: 8 }}>Inside the case: TL-SG1005P Dante switch (3 of 5 ports used; 4 while the stream-mix laptop stays in use) + the ProTools Mac (USB-C to the Wing, plus Dante; runs the live and stream mixes).</div>
       </div>
 
       {phone ? (

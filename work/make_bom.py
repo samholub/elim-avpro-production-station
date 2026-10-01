@@ -187,7 +187,7 @@ OWNED = [
     ("Audio", "Dante AVIO (AVIOAO2 per the port map; label check M2)", "Audinate", "On the desk with the ATEM. PoE-powered (confirmed) from the Bay A satellite switch."),
     ("Console", "Behringer Wing", "Behringer", "In the BXWING case."),
     ("Stage box", "Midas DL251", "Midas", "AES50 to the Wing."),
-    ("Network", "Wing case Dante switch (5-port, PoE)", "TP-Link TL-SG1005P", "Stays in the Wing case as its Dante switch: Wing Dante card, trunk, ProTools Mac (3 ports used)."),
+    ("Network", "Wing case Dante switch (5-port, PoE)", "TP-Link TL-SG1005P", "Stays in the Wing case as its Dante switch: Wing Dante card, trunk, ProTools Mac (3 ports used; 4 while the stream-mix laptop stays in use)."),
     ("Network", "Production switch", "TP-Link TL-SG105", "Moves to Bay A U8 (D1)."),
     ("Network", "Router (older docs: AX55)", "TP-Link Archer AX21", "Bay A U8. Same router as the AX55 in older docs (D11)."),
     ("Video", "LED wall transmitter", "-", "Bay A U9."),

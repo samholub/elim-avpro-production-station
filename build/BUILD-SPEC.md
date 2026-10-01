@@ -222,7 +222,7 @@ WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
 | IEM | XLR **female** | in from the Wing Out 8 | mirrors the AVPRO's male |
 | POWER IN | powerCON TRUE1 **inlet** | in | pigtail to the Wing's IEC inlet |
 
-- **Inside the case:** the Wing case Dante switch (owned TL-SG1005P, 5-port, 3 ports used) and the ProTools Mac. Nothing in the design powers either one yet: the powerCON inlet feeds only the Wing. Open (N29). The ProTools Mac has two links: USB-C to the Wing for recording and a Cat patch to the Dante switch.
+- **Inside the case:** the Wing case Dante switch (owned TL-SG1005P, 5-port, 3 ports used; 4 while the stream-mix laptop stays in use) and the ProTools Mac. Nothing in the design powers either one yet: the powerCON inlet feeds only the Wing. Open (N29). The ProTools Mac has two links: USB-C to the Wing for recording and a Cat patch to the Dante switch.
 - Genders mirror the AVPRO panel: talkback female ↔ male, IEM male ↔ female, POWER outlet ↔ inlet.
 - **Fallback if the case can't take a panel:** the connections run out the side of the case to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end reaches the Wing's IEC inlet through a short TRUE1-to-IEC C13 jumper (BOM fallback line, qty 0 until needed). The fallback changes the route, not the connectors.
 <!-- /matt -->
@@ -373,7 +373,7 @@ Green vs yellow is the split that matters most. Colored jackets where available,
 - **Power:** ~535–725W spare on the UPS (the low end is with the laptops charging). The Bay B strips have open outlets on utility.
 - **Panel:** panel 3 is a full spare row; 3 open holes on each of panels 1 and 2; loose spares of every connector type; one etherCON spare pre-wired to the AX21.
 - **Rack:** Bay A U4–U6 reserve; Bay B U9–U11 and both 4U tops left open.
-- **Dante:** Bay A satellite 5 free of 8 (trunk, AVIO, Bianca's Mac used). Wing case switch 2 free of 5 (Wing Dante card, trunk, ProTools Mac used).
+- **Dante:** Bay A satellite 5 free of 8 (trunk, AVIO, Bianca's Mac used). Wing case switch 2 free of 5 (Wing Dante card, trunk, ProTools Mac used); 1 free while the stream-mix laptop stays in use. *Decided (2026-10-01).*
 - **Production network: no free wired ports** once everything's plugged in (AX21 4/4, switch 5/5). Phones use WiFi. A bigger production switch is the fix when the Stream Deck host or Mac Minis arrive (ROADMAP).
 - At an event you can add Starlink (power on the UPS, internet into INTERNET IN), an extra monitor, or a field device on a spare jack.
 

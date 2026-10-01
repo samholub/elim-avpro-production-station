@@ -73,7 +73,7 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 | 12 | Runs on **one 15A** circuit, two preferred, never tied. Power arrives on **two 125ft 12/3 SOOW drops** with Edison ends: drop 1 → AVPRO (and the Wing through it), drop 2 → the charging station | The whole rig draws well under 15A; venue circuit counts are unknowable (D20) | 2026-09-28 |
 | 13 | **Bay B power:** CPPDU511 front (metered, drawer lights) + RS1215-RA rear (camera chargers), chained, utility side | Front lights the drawers; rear outlets face the chargers; one meter (D3) | 2026-08-20 |
 | 14 | **The desk laptops plug into the battery-backed CPS1215RM strip.** No separate laptop strip | They keep running if venue power drops | 2026-09-30 |
-| 15 | **Switches:** owned TL-SG1005P (5-port) = Wing case Dante switch, 3 ports used; owned TL-SG105 = Bay A production switch; **new 8-port PoE switch** = Bay A Dante satellite at U10, powers the AVIO (model open, OPEN-ITEMS N27) | The AVIO needs PoE in Bay A, and the Wing case needs only 3 ports | 2026-10-01 |
+| 15 | **Switches:** owned TL-SG1005P (5-port) = Wing case Dante switch, 3 ports used (4 while the stream-mix laptop stays in use); owned TL-SG105 = Bay A production switch; **new 8-port PoE switch** = Bay A Dante satellite at U10, powers the AVIO (model open, OPEN-ITEMS N27) | The AVIO needs PoE in Bay A, and the Wing case needs only 3 ports | 2026-10-01 |
 | 16 | **Bay A mounting:** Resi U11; HD Mini + new 8-port PoE switch U10; TL-SG105 + AX21 U8; all on the same 1U vented shelf; Etsy dual mount and Teranex shelf dropped | Every network jumper stays in Bay A; cheapest shelf (D5, D19) | 2026-10-01 |
 | 17 | **Two networks, not three:** Dante (isolated) and Production; internet is the AX21's WAN | That's the physical wiring; "three" was a zoning aid | 2026-08-27 |
 | 18 | Router is the **AX21** (older docs say AX55 for the same router) | D11 | 2026-09-26 |
@@ -97,7 +97,7 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 **Two physical networks.** Only Dante is isolated.
 
 **Dante** (isolated, no internet path):
-- Wing case Dante switch (owned TL-SG1005P, 5-port): the Wing's Dante card, the trunk uplink, and Tyler's ProTools Mac (which also records over USB-C and runs the live and stream mixes). 3 of 5 ports used. While the stream-mix laptop stays in use, it takes a fourth.
+- Wing case Dante switch (owned TL-SG1005P, 5-port): the Wing's Dante card, the trunk uplink, and Tyler's ProTools Mac (which also records over USB-C and runs the live and stream mixes). 3 of 5 ports used. While the stream-mix laptop stays in use, it takes a fourth: 4 of 5. *Decided (2026-10-01).*
 - Bay A satellite (new 8-port PoE switch, model open): the trunk, the AVIO (PoE-powered, confirmed), Bianca's Mac (USB-C ethernet adapter; it also plays music and media over Dante). 3 of 8 ports used.
 - One DANTE trunk joins the two switches through the panels.
 

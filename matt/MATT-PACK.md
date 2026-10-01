@@ -77,7 +77,7 @@ WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
 | IEM | XLR **female** | in from the Wing Out 8 | mirrors the AVPRO's male |
 | POWER IN | powerCON TRUE1 **inlet** | in | pigtail to the Wing's IEC inlet |
 
-- **Inside the case:** the Wing case Dante switch (owned TL-SG1005P, 5-port, 3 ports used) and the ProTools Mac. Nothing in the design powers either one yet: the powerCON inlet feeds only the Wing. Open. The ProTools Mac has two links: USB-C to the Wing for recording and a Cat patch to the Dante switch.
+- **Inside the case:** the Wing case Dante switch (owned TL-SG1005P, 5-port, 3 ports used; 4 while the stream-mix laptop stays in use) and the ProTools Mac. Nothing in the design powers either one yet: the powerCON inlet feeds only the Wing. Open. The ProTools Mac has two links: USB-C to the Wing for recording and a Cat patch to the Dante switch.
 - Genders mirror the AVPRO panel: talkback female ↔ male, IEM male ↔ female, POWER outlet ↔ inlet.
 - **Fallback if the case can't take a panel:** the connections run out the side of the case to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end reaches the Wing's IEC inlet through a short TRUE1-to-IEC C13 jumper (BOM fallback line, qty 0 until needed). The fallback changes the route, not the connectors.
 
