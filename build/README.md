@@ -6,12 +6,12 @@ rig/ is the rig as it runs today. build/ is the AVPRO proposal. rig/ changes onl
 
 This folder is the master for the ELIM AVPRO workstation and Wing case build. All edits happen here, in the repo. A decision isn't real until it's in `build/`.
 
-**Updated:** 2026-10-01
+**Updated:** 2026-10-01 (diagrams added)
 
 ## Status
 
-1. Design locked. Nothing ordered yet.
-2. BOM v8: **first order $4,641.84** (includes $1,650 case + freight placeholders, to verify with Matt). Wing panel block **$100.00**, only if the BXWING can take a panel. All lines $4,741.84.
+1. Nothing ordered. Locked decisions are in DESIGN §5; open items remain.
+2. BOM v8: **first order $4,641.84** (of which $1,650.00 is the case + freight placeholder, to verify with Matt). Wing panel block **$100.00**, only if the BXWING can take a panel. All lines $4,741.84.
 3. Target order date: **2026-10-19**, pending Matt's quote.
 4. Waiting on: Matt's case and freight quote; the powerCON and etherCON part check (D7); whether the lid legs come with the case. Sam and Bianca: the case and freight spend ceiling, before the Sunny walkthrough (G8).
 5. Rulings from the 2026-10-01 design session are logged in `../review/src/DESIGN-RULINGS.md`. Working drafts of the explainer, Bianca's decision sheet and the review doc are in `../review/drafts/`.
@@ -45,6 +45,107 @@ Full list with dates: `OPEN-ITEMS.md`.
 | `../review/drafts/` | Working drafts: the explainer (for meetings), Bianca's decision sheet, the review doc. PDFs are the readable copies | Team |
 | `../review/ELIM-PLAN.pdf` | The earlier plan. Superseded for meetings by the explainer (2026-09-30); kept for history | Team |
 | `../matt/` | The pack for Matt. **Generated from build/ by `work/make_matt.py`; don't hand-edit** | Matt |
+
+## How it connects
+
+Solid arrows are decided. Dashed arrows marked "open" are open. Labels match the rear panel. A device can appear more than once in a chart so the chart fits a phone screen; repeated boxes are the same device. Full tables: `BUILD-SPEC.md` §3 (signals) and §4 (power).
+
+### Video into the switcher
+
+```mermaid
+flowchart TD
+  P1["Pocket 4K (wired)"] -->|"converter, SDI 100ft"| J1["Panel CAM 1"] -->|"jumper"| A1["ATEM IN 1"]
+  A1 ~~~ DJ["DJI"]
+  DJ -->|"converter, SDI 100ft"| J3["Panel CAM 3"] -->|"jumper"| A3["ATEM IN 3"]
+  A3 ~~~ RC["Rented cameras"]
+  RC -->|"SDI"| J4["Panel CAM 4–7"] -->|"jumper"| A4["ATEM IN 4–7"]
+  A4 ~~~ P2["Pocket 4K"]
+  P2 -->|"Hollyland TX, wireless"| HR["Hollyland RX<br/>on the flip-up lid"]
+  HR -. "route open" .-> A2["ATEM IN 2"]
+  A2 ~~~ PP["ProPresenter Mac"]
+  PP -->|"USB-C"| US["UltraStudio<br/>placement open"]
+  US -. "route open" .-> A8["ATEM IN 8"]
+```
+
+BUILD-SPEC §2 and §3 (Video). IN 2 is always the Hollyland RX and IN 8 is always the UltraStudio; how each one connects is open (OPEN-ITEMS N24).
+
+### Video out
+
+```mermaid
+flowchart TD
+  AUX["ATEM AUX"] -->|"SDI"| HD["HyperDeck HD Mini"]
+  HD ~~~ O8["ATEM OUT 8"]
+  O8 -->|"SDI"| RE["Resi"] --> AX["AX21 router"] --> NET["Internet"]
+  NET ~~~ MV["ATEM multiview"]
+  MV -->|"HDMI"| LL["LEFT lid"]
+  LL ~~~ PP1["ProPresenter Mac"]
+  PP1 -->|"HDMI"| TX["LED wall transmitter"] -->|"Cat x2"| LP["Panel LED 1, LED 2"] --> LW["LED wall"]
+  LW ~~~ PP2["ProPresenter Mac"]
+  PP2 --> AH["Anker hub"] -->|"HDMI"| CO["Panel CONF OUT"] --> CM["Confidence monitor"]
+  CM ~~~ PP3["ProPresenter Mac"]
+  PP3 -. "second screen, route open" .-> RL["RIGHT lid"]
+```
+
+BUILD-SPEC §3 (Video).
+
+### Audio and Dante
+
+```mermaid
+flowchart TD
+  SB["Stage box (DL251)"] -->|"AES50"| WG["Wing"]
+  WG -->|"Dante card"| WS["Wing case switch<br/>TL-SG1005P"]
+  WS -->|"DANTE TRUNK"| SAT["Bay A satellite<br/>8-port PoE"]
+  SAT -->|"PoE"| AV["AVIO"] -->|"XLR pigtails"| AC["ATEM Ch 1–2"]
+  AC ~~~ PP["ProPresenter Mac"]
+  PP -->|"Dante: music, media"| SAT2["Bay A satellite"]
+  SAT2 ~~~ WG2["Wing"]
+  WG2 -->|"USB-C recording"| PT["ProTools Mac<br/>in the Wing case"]
+  PT -->|"Dante"| WS2["Wing case switch"]
+  WS2 ~~~ TB["Talkback mic"]
+  TB --> PTB["Panel TALKBACK"] --> I8["Wing In 8"]
+  I8 ~~~ O8["Wing Out 8"]
+  O8 --> PIE["Panel IEM"] --> IEM["IEM pack"]
+```
+
+BUILD-SPEC §3 (Audio and Dante).
+
+### Production network and internet
+
+```mermaid
+flowchart TD
+  NET["Venue drop or Starlink"] --> IN["Panel INTERNET IN"] --> AX["AX21 router"]
+  AX --> SW["Production switch<br/>TL-SG105"]
+  SW --> DEV["ATEM, HD Mini,<br/>streaming laptop,<br/>Anker hub"]
+  DEV ~~~ AX2["AX21 router"]
+  AX2 --> RE["Resi"]
+  RE ~~~ AX3["AX21 router"]
+  AX3 --> PR["Panel PROD TRUNK"] --> WC["Wing control"]
+  WC ~~~ AX4["AX21 router"]
+  AX4 --> SP["Panel SPARE"]
+```
+
+BUILD-SPEC §3 (Production network and internet).
+
+### Power
+
+```mermaid
+flowchart TD
+  W1["Wall outlet"] -->|"Drop 1"| UPS["UPS<br/>CP1500PFCRM2U"]
+  UPS --> ST["CPS1215RM strip"] --> GEAR["Bay A, desk, lids"]
+  GEAR ~~~ ST2["CPS1215RM strip"]
+  ST2 --> LAP["Both laptops"]
+  LAP ~~~ ST3["CPS1215RM strip"]
+  ST3 --> PW["POWER &gt; WING"] -->|"15ft powerCON"| WG["Wing"]
+  WG ~~~ W2["Wall outlet"]
+  W2 -->|"Drop 2"| PDU["CPPDU511<br/>Bay B front"]
+  PDU --> RS["RS1215-RA<br/>Bay B rear"] --> CH["Camera chargers"]
+  CH ~~~ PDU2["CPPDU511"]
+  PDU2 -. "extension, open" .-> QB["Quad box"] --> CS["Charging station"]
+  CS ~~~ NP["Power source: open"]
+  NP -.-> WCP["Wing case switch +<br/>ProTools Mac"]
+```
+
+BUILD-SPEC §4. Drop 1 and drop 2 are the two 125ft 12/3 SOOW venue drops. The extension to the quad box is open (OPEN-ITEMS N28). Nothing powers the Wing case switch or the ProTools Mac yet: the powerCON inlet feeds only the Wing (N29).
 
 ## Rules
 

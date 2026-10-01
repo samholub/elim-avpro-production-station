@@ -1,7 +1,14 @@
 # Status
 
-**Updated:** 2026-10-01 (session 8)
+**Updated:** 2026-10-01 (session 9)
 **State: this repo (samholub/elim-avpro-production-station) is the master copy; `build/` is the master set.** samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source.
+
+## Session 9 (2026-10-01): repo presentation (Part 2; not committed until Sam's OK)
+
+- Root `README.md` (new): status callout, start here by reader, key numbers (BOM v8; the $1,650.00 case + freight placeholder is inside the first order), overview image, folder map, a Mermaid chart of how the folders fit together. Style from samholub/elim-avpro; no facts from it.
+- `build/README.md`: new "How it connects" section with five Mermaid charts (video in, video out, audio and Dante, production network, power). Every node and edge traces to BUILD-SPEC §2–§4 (list in the session plan). Open routes are dashed.
+- Render check: GitHub's /markdown API + github-markdown-css + mermaid 11, Playwright at 390px, light and dark. All six charts render with no errors at 0.98–1.00 scale; no sideways scroll; images and links resolve.
+- `work/coverage.py` globs build/*.md, so a re-run would count the Mermaid lines as new units. It isn't part of the regenerate pipeline.
 
 ## Session 8 (2026-10-01): design-session rulings applied (Part 1; not committed until Sam's OK)
 

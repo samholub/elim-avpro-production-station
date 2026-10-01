@@ -139,7 +139,7 @@ Camera settings (shutter, ISO, white balance) are operating settings. See the ap
 |---|---|---|
 | ProPresenter Mac (Bianca's), model not recorded | decided / model **open** | RB §Network |
 | Streaming laptop (the app calls it the "video stream laptop"; it's the same machine as the build docs' old "switcher laptop"): a MacBook Air at the production station. It drives the ATEM/Resi/HD Mini side. Owner not recorded | decided (Sam, 2026-09-21; same machine: Sam, 2026-09-30) / owner **open** | RB §Video Stream Laptop; review/src/DESIGN-RULINGS.md #12 |
-| Stream mix laptop (Omar's), on Dante only, at the production station, unattended | decided | RB §Video Stream Laptop; L2124 |
+| Stream mix laptop (Omar's), on Dante only, at the production station, unattended. Wired to the Dante switch (TL-SG1005P); Sam believes this is its only wired connection (assumed, 2026-10-01) | decided; only wired connection **assumed** (Sam, 2026-10-01) | RB §Video Stream Laptop; L2124 |
 | Stream mix laptop retirement: in process. The ProTools Mac takes over the stream mix. This is happening separately and doesn't depend on the AVPRO plan | **open** (Sam, 2026-10-01) | review/src/DESIGN-RULINGS.md #28 |
 | Tyler's ProTools Mac, at the Wing: USB-C to the Wing and also on the Dante switch | decided (Sam's ruling 2026-09-17) | RB §Network; L3683 |
 | Wing iPad and a phone, on the AX21 WiFi | decided | RB §Network |
