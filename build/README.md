@@ -48,102 +48,116 @@ Full list with dates: `OPEN-ITEMS.md`.
 
 ## How it connects
 
-Solid arrows are decided. Dashed arrows marked "open" are open. Labels match the rear panel. A device can appear more than once in a chart so the chart fits a phone screen; repeated boxes are the same device. Full tables: `BUILD-SPEC.md` §3 (signals) and §4 (power).
+Solid arrows are decided. Dashed arrows marked "open" are open. Labels on the arrows name the cable and the panel jack it passes through. A device can appear more than once in a chart so the chart fits a phone screen; repeated boxes are the same device. Tap a chart's name to open it. Full tables: `BUILD-SPEC.md` §3 (signals) and §4 (power).
 
-### Video into the switcher
+<details>
+<summary><b>Video into the switcher</b></summary>
 
 ```mermaid
+%%{init: {"flowchart": {"rankSpacing": 32, "nodeSpacing": 12}}}%%
 flowchart TD
-  P1["Pocket 4K (wired)"] -->|"converter, SDI 100ft"| J1["Panel CAM 1"] -->|"jumper"| A1["ATEM IN 1"]
+  P1["Pocket 4K (wired)"] -->|"converter, SDI 100ft,<br/>CAM 1, jumper"| A1["ATEM IN 1"]
   A1 ~~~ DJ["DJI"]
-  DJ -->|"converter, SDI 100ft"| J3["Panel CAM 3"] -->|"jumper"| A3["ATEM IN 3"]
+  DJ -->|"converter, SDI 100ft,<br/>CAM 3, jumper"| A3["ATEM IN 3"]
   A3 ~~~ RC["Rented cameras"]
-  RC -->|"SDI"| J4["Panel CAM 4–7"] -->|"jumper"| A4["ATEM IN 4–7"]
-  A4 ~~~ P2["Pocket 4K"]
-  P2 -->|"Hollyland TX, wireless"| HR["Hollyland RX<br/>on the flip-up lid"]
-  HR -. "route open" .-> A2["ATEM IN 2"]
+  RC -->|"SDI, CAM 4–7, jumper"| A4["ATEM IN 4–7"]
+  P2["Pocket 4K"] -->|"Hollyland TX,<br/>wireless"| HR["Hollyland RX<br/>on the flip-up lid"]
+  HR -.->|"route open"| A2["ATEM IN 2"]
   A2 ~~~ PP["ProPresenter Mac"]
   PP -->|"USB-C"| US["UltraStudio<br/>placement open"]
-  US -. "route open" .-> A8["ATEM IN 8"]
+  US -.->|"route open"| A8["ATEM IN 8"]
 ```
+
+</details>
 
 BUILD-SPEC §2 and §3 (Video). IN 2 is always the Hollyland RX and IN 8 is always the UltraStudio; how each one connects is open (OPEN-ITEMS N24).
 
-### Video out
+<details>
+<summary><b>Video out</b></summary>
 
 ```mermaid
+%%{init: {"flowchart": {"rankSpacing": 32, "nodeSpacing": 12}}}%%
 flowchart TD
-  AUX["ATEM AUX"] -->|"SDI"| HD["HyperDeck HD Mini"]
-  HD ~~~ O8["ATEM OUT 8"]
-  O8 -->|"SDI"| RE["Resi"] --> AX["AX21 router"] --> NET["Internet"]
-  NET ~~~ MV["ATEM multiview"]
+  AT["ATEM"] -->|"AUX, SDI"| HD["HyperDeck<br/>HD Mini"]
+  AT -->|"OUT 8, SDI"| RE["Resi"]
+  RE --> AX["AX21 router<br/>to the internet"]
+  HD ~~~ MV["ATEM multiview"]
+  AX ~~~ MV
   MV -->|"HDMI"| LL["LEFT lid"]
-  LL ~~~ PP1["ProPresenter Mac"]
-  PP1 -->|"HDMI"| TX["LED wall transmitter"] -->|"Cat x2"| LP["Panel LED 1, LED 2"] --> LW["LED wall"]
+  LL ~~~ PP["ProPresenter Mac"]
+  PP -->|"HDMI"| TX["LED wall<br/>transmitter"]
+  TX -->|"Cat x2,<br/>LED 1–2"| LW["LED wall"]
+  PP -->|"Anker hub,<br/>HDMI,<br/>CONF OUT"| CM["Confidence<br/>monitor"]
   LW ~~~ PP2["ProPresenter Mac"]
-  PP2 --> AH["Anker hub"] -->|"HDMI"| CO["Panel CONF OUT"] --> CM["Confidence monitor"]
-  CM ~~~ PP3["ProPresenter Mac"]
-  PP3 -. "second screen, route open" .-> RL["RIGHT lid"]
+  CM ~~~ PP2
+  PP2 -.->|"second screen,<br/>route open"| RL["RIGHT lid"]
 ```
+
+</details>
 
 BUILD-SPEC §3 (Video).
 
-### Audio and Dante
+<details>
+<summary><b>Audio and Dante</b></summary>
 
 ```mermaid
+%%{init: {"flowchart": {"rankSpacing": 32, "nodeSpacing": 12}}}%%
 flowchart TD
   SB["Stage box (DL251)"] -->|"AES50"| WG["Wing"]
   WG -->|"Dante card"| WS["Wing case switch<br/>TL-SG1005P"]
+  WG -->|"USB-C<br/>recording"| PT["ProTools Mac<br/>(Wing case)"]
+  PT -->|"Dante"| WS
   WS -->|"DANTE TRUNK"| SAT["Bay A satellite<br/>8-port PoE"]
-  SAT -->|"PoE"| AV["AVIO"] -->|"XLR pigtails"| AC["ATEM Ch 1–2"]
-  AC ~~~ PP["ProPresenter Mac"]
-  PP -->|"Dante: music, media"| SAT2["Bay A satellite"]
-  SAT2 ~~~ WG2["Wing"]
-  WG2 -->|"USB-C recording"| PT["ProTools Mac<br/>in the Wing case"]
-  PT -->|"Dante"| WS2["Wing case switch"]
-  WS2 ~~~ TB["Talkback mic"]
-  TB --> PTB["Panel TALKBACK"] --> I8["Wing In 8"]
-  I8 ~~~ O8["Wing Out 8"]
-  O8 --> PIE["Panel IEM"] --> IEM["IEM pack"]
+  PP["ProPresenter Mac"] -->|"Dante:<br/>music, media"| SAT
+  SAT -->|"PoE"| AV["AVIO"]
+  AV -->|"XLR pigtails"| AC["ATEM Ch 1–2"]
+  AC ~~~ TB["Talkback mic"]
+  TB -->|"TALKBACK"| WI["Wing In 8 / Out 8"]
+  WI -->|"IEM"| IEM["IEM pack"]
 ```
+
+</details>
 
 BUILD-SPEC §3 (Audio and Dante).
 
-### Production network and internet
+<details>
+<summary><b>Production network and internet</b></summary>
 
 ```mermaid
+%%{init: {"flowchart": {"rankSpacing": 32, "nodeSpacing": 12}}}%%
 flowchart TD
-  NET["Venue drop or Starlink"] --> IN["Panel INTERNET IN"] --> AX["AX21 router"]
+  NET["Venue drop or Starlink"] -->|"INTERNET IN"| AX["AX21 router"]
   AX --> SW["Production switch<br/>TL-SG105"]
+  AX --> RE["Resi"]
   SW --> DEV["ATEM, HD Mini,<br/>streaming laptop,<br/>Anker hub"]
   DEV ~~~ AX2["AX21 router"]
-  AX2 --> RE["Resi"]
-  RE ~~~ AX3["AX21 router"]
-  AX3 --> PR["Panel PROD TRUNK"] --> WC["Wing control"]
-  WC ~~~ AX4["AX21 router"]
-  AX4 --> SP["Panel SPARE"]
+  AX2 -->|"PROD TRUNK"| WC["Wing control"]
+  AX2 --> SP["SPARE jack"]
 ```
+
+</details>
 
 BUILD-SPEC §3 (Production network and internet).
 
-### Power
+<details>
+<summary><b>Power</b></summary>
 
 ```mermaid
+%%{init: {"flowchart": {"rankSpacing": 32, "nodeSpacing": 12}}}%%
 flowchart TD
   W1["Wall outlet"] -->|"Drop 1"| UPS["UPS<br/>CP1500PFCRM2U"]
-  UPS --> ST["CPS1215RM strip"] --> GEAR["Bay A, desk, lids"]
-  GEAR ~~~ ST2["CPS1215RM strip"]
-  ST2 --> LAP["Both laptops"]
-  LAP ~~~ ST3["CPS1215RM strip"]
-  ST3 --> PW["POWER &gt; WING"] -->|"15ft powerCON"| WG["Wing"]
-  WG ~~~ W2["Wall outlet"]
+  UPS --> ST["CPS1215RM strip"]
+  ST --> GEAR["Bay A, desk, lids,<br/>both laptops"]
+  ST -->|"POWER &gt; WING,<br/>15ft powerCON"| WG["Wing"]
+  GEAR ~~~ W2["Wall outlet"]
   W2 -->|"Drop 2"| PDU["CPPDU511<br/>Bay B front"]
-  PDU --> RS["RS1215-RA<br/>Bay B rear"] --> CH["Camera chargers"]
-  CH ~~~ PDU2["CPPDU511"]
-  PDU2 -. "extension, open" .-> QB["Quad box"] --> CS["Charging station"]
-  CS ~~~ NP["Power source: open"]
+  PDU --> RS["RS1215-RA<br/>Bay B rear"] --> CH["Camera<br/>chargers"]
+  PDU -.->|"extension,<br/>open"| QB["Quad box"] --> CS["Charging<br/>station"]
+  CH ~~~ NP["Power source: open"]
   NP -.-> WCP["Wing case switch +<br/>ProTools Mac"]
 ```
+
+</details>
 
 BUILD-SPEC §4. Drop 1 and drop 2 are the two 125ft 12/3 SOOW venue drops. The extension to the quad box is open (OPEN-ITEMS N28). Nothing powers the Wing case switch or the ProTools Mac yet: the powerCON inlet feeds only the Wing (N29).
 
