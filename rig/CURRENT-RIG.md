@@ -205,7 +205,7 @@ A cable color scheme is decided in the app but **not in use** (2026-09-18). Labe
 | What | Status | Source |
 |---|---|---|
 | **No UPS.** | decided | [build/DESIGN.md §8](../build/DESIGN.md) (from the app, 2026-09-14) |
-| **Wing case strip** (switched): powers the Wing, the AX21, both switches and the Resi. The Wing has no cord of its own | decided (switch confirmed on site 2026-09-14; Wing and Resi per Sam 2026-09-17) | RB §Wing Road Case |
+| **Wing case strip** (switched): powers the Wing, the AX21, both switches, the Resi and the ProTools Mac. The Wing has no cord of its own | decided (switch confirmed on site 2026-09-14; Wing and Resi per Sam 2026-09-17; ProTools Mac per Sam 2026-10-01) | RB §Wing Road Case; Sam 2026-10-01 |
 | **Production station strip**, on a different outlet: powers the ProPresenter Mac, the HD Mini and the ATEM (the ATEM on its own labeled IEC cable, not on the Wing case strip) | decided (Sam, 2026-09-18) | RB §Wing Road Case, §Pelican 1660 |
 | **Power conditioner** in the production box feeds the production station strip. What it feeds directly is not recorded | decided / detail **open** (Q6) | RB §Production Box |
 | Dante AVIO: PoE from the Dante switch | decided | RB §Other Hardware |
