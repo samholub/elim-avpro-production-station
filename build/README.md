@@ -148,18 +148,17 @@ flowchart TD
   W1["Wall outlet"] -->|"Drop 1"| UPS["UPS<br/>CP1500PFCRM2U"]
   UPS --> ST["CPS1215RM strip"]
   ST --> GEAR["Bay A, desk, lids,<br/>both laptops"]
-  ST -->|"POWER &gt; WING,<br/>15ft powerCON"| WG["Wing"]
+  ST -->|"POWER &gt; WING,<br/>15ft powerCON"| WS["Wing case strip"]
+  WS --> WG["Wing, ProTools Mac,<br/>TL-SG1005P"]
   GEAR ~~~ W2["Wall outlet"]
   W2 -->|"Drop 2"| PDU["CPPDU511<br/>Bay B front"]
   PDU --> RS["RS1215-RA<br/>Bay B rear"] --> CH["Camera<br/>chargers"]
   PDU -.->|"extension,<br/>open"| QB["Quad box"] --> CS["Charging<br/>station"]
-  CH ~~~ NP["Power source: open"]
-  NP -.-> WCP["Wing case switch +<br/>ProTools Mac"]
 ```
 
 </details>
 
-BUILD-SPEC §4. Drop 1 and drop 2 are the two 125ft 12/3 SOOW venue drops. The extension to the quad box is open (OPEN-ITEMS N28). Nothing powers the Wing case switch or the ProTools Mac yet: the powerCON inlet feeds only the Wing (N29).
+BUILD-SPEC §4. Drop 1 and drop 2 are the two 125ft 12/3 SOOW venue drops. The extension to the quad box is open (OPEN-ITEMS N28). The powerCON link feeds the Wing case strip; the Wing, the ProTools Mac and the TL-SG1005P plug into it (decided, 2026-10-01).
 
 ## Rules
 

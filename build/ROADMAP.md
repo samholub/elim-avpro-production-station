@@ -79,7 +79,7 @@ Recorded as stage-audio RF, separate from the network switch line (D17). Status:
 | Second UPS for the Wing | The Wing deploys remote or standalone |
 | AES50 fiber extender (~$1,505) | Stage runs beyond copper |
 | WiFi access point mount | Venues need reliable local WiFi off the rig |
-| Camera color / tally control | Wanted; needs a return SDI per camera. The owned converters support it; panel 3 has room for the return jacks |
+| Camera color / tally control | Wanted; needs a return SDI per camera. Whether the owned converters are bidirectional is *open*: their models and count aren't recorded. Panel 3 has room for the return jacks |
 | ProPresenter Network Link (multiple operators share control, plus the Remote app) | Offloading the ProPresenter operator |
 | Mic-stand case (25 stands, ~$300) and a power-cable case ("square cases (Power)") | After Phase 1 |
 | Monitoring agent (presence checker) | Explored 2026-08-26, not adopted. See `archive/` |

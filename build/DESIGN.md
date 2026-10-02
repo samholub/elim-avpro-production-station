@@ -114,7 +114,7 @@ Static IPs, router settings and the switch topology rules (one uplink per switch
 ## 7. Power
 
 - **Venue drops:** two 125ft 12/3 SOOW cords from wall outlets, 5-15P at the wall, 5-15R at the rig. Drop 1 feeds the AVPRO. Drop 2 feeds the Bay B CPPDU511, which passes power through an extension to a quad box at a separate charging station. *Decided (N19, 2026-09-29).* The extension's details are open (OPEN-ITEMS N28). A second wall circuit is preferred, not required.
-- **UPS side:** drop 1 → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, the two desk laptops, and the powerCON outlet feeding the Wing over a short powerCON link. Estimated load **~275–465W of 1000W** (the high end is the laptops charging), leaving ~535–725W spare.
+- **UPS side:** drop 1 → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, the two desk laptops, and the powerCON outlet feeding the Wing case strip over a short powerCON link. The Wing, the ProTools Mac and the TL-SG1005P plug into that strip *(decided, 2026-10-01)*. Estimated load **~275–465W of 1000W** (the high end is the laptops charging), leaving ~535–725W spare.
 - **Charging side:** drop 2 → CPPDU511 → RS1215-RA (camera chargers), and CPPDU511 → extension → quad box at the charging station. Labeled "chargers + lights only".
 - Detail and the draw table: `BUILD-SPEC.md` §4.
 
@@ -130,7 +130,7 @@ Static IPs, router settings and the switch topology rules (one uplink per switch
 
 These describe the rig as it runs today (app, on-site 2026-09-14). They're not conflicts; they change at cutover.
 
-- **Today the Wing case holds** the AX21, the production switch, the Dante switch (the TL-SG1005P) and Resi, on a switched strip. What the strip powers today is in `rig/CURRENT-RIG.md` §4. The design moves the router, production switch and Resi to AVPRO Bay A; the TL-SG1005P stays the Wing case Dante switch, and a new 8-port PoE switch becomes the Bay A Dante satellite. **The Wing case keeps its switched strip** *(assumed)*. In the design it powers the TL-SG1005P. Whether it also powers the ProTools Mac is *open*. It doesn't power the Wing (fed by the powerCON link from the AVPRO, §7), the AX21 or Resi (Bay A, on the CPS1215RM), or the Bay A PoE switch (CPS1215RM). What feeds the strip is *open* (OPEN-ITEMS N29). Tyler's ProTools Mac is on the Dante switch today as well as on USB-C to the Wing; the design keeps that.
+- **Today the Wing case holds** the AX21, the production switch, the Dante switch (the TL-SG1005P) and Resi, on a switched strip. What the strip powers today is in `rig/CURRENT-RIG.md` §4. The design moves the router, production switch and Resi to AVPRO Bay A; the TL-SG1005P stays the Wing case Dante switch, and a new 8-port PoE switch becomes the Bay A Dante satellite. **The Wing case keeps its switched strip** *(decided, 2026-10-01)*. The powerCON link from the AVPRO feeds it (§7). In the design it powers the Wing, the ProTools Mac and the TL-SG1005P. It doesn't power the AX21, Resi or the Bay A PoE switch (Bay A, on the CPS1215RM). Tyler's ProTools Mac is on the Dante switch today as well as on USB-C to the Wing; the design keeps that.
 - **The HD Mini has no packing home today.** The design puts it at Bay A U10.
 - **There's no UPS today.** It's new with the build.
 - The app's "video stream laptop" (MacBook Air) and this project's old "switcher laptop" are the same machine, now called the streaming laptop (N13 closed, 2026-09-30).

@@ -120,7 +120,7 @@ Power reaches the rig area on **two 125ft 12/3 SOOW drops** from wall outlets. *
 
 ### UPS side (battery-backed)
 
-drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → short powerCON umbilical → Wing.
+drop 1 → **CyberPower CP1500PFCRM2U** (2U, pure sine, 1000W) → **CyberPower CPS1215RM** (basic 1U strip, no surge, no meter) → Bay A gear, desk gear, lids, and the **POWER > WING** powerCON outlet → short powerCON umbilical → Wing case strip → the Wing, the ProTools Mac and the TL-SG1005P. *Decided (2026-10-01).*
 
 - One UPS backs both cases. The BXWING can't carry its own UPS, so this is the only way to back the Wing. For standalone use the Wing goes on a wall outlet. *Decided.*
 - **No surge behind the UPS.** Stacked surge behind a UPS isn't good practice, and Bay B's metered CPPDU511 already gives us a meter. That's why the ProX X-PC10ASTRO was passed on. *Decided.*
@@ -220,11 +220,11 @@ WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
 | AES50 | etherCON | both | stage box (stage side, not on the umbilical) |
 | TALKBACK | XLR **male** | out to the Wing In 8 | mirrors the AVPRO's female |
 | IEM | XLR **female** | in from the Wing Out 8 | mirrors the AVPRO's male |
-| POWER IN | powerCON TRUE1 **inlet** | in | pigtail to the Wing's IEC inlet |
+| POWER IN | powerCON TRUE1 **inlet** | in | pigtail to the Wing case strip (how the pigtail meets the strip is open) |
 
-- **Inside the case:** the Wing case Dante switch (owned TL-SG1005P, 5-port, 3 ports used; 4 while the stream-mix laptop stays in use) and the ProTools Mac. Nothing in the design powers either one yet: the powerCON inlet feeds only the Wing. Open (N29). The ProTools Mac has two links: USB-C to the Wing for recording and a Cat patch to the Dante switch.
+- **Inside the case:** the Wing case Dante switch (owned TL-SG1005P, 5-port, 3 ports used; 4 while the stream-mix laptop stays in use) and the ProTools Mac. The case keeps its switched strip, fed by the powerCON link; the Wing, the ProTools Mac and the TL-SG1005P plug into it. *Decided (2026-10-01).* The ProTools Mac has two links: USB-C to the Wing for recording and a Cat patch to the Dante switch.
 - Genders mirror the AVPRO panel: talkback female ↔ male, IEM male ↔ female, POWER outlet ↔ inlet.
-- **Fallback if the case can't take a panel:** the connections run out the side of the case to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end reaches the Wing's IEC inlet through a short TRUE1-to-IEC C13 jumper (BOM fallback line, qty 0 until needed). The fallback changes the route, not the connectors.
+- **Fallback if the case can't take a panel:** the connections run out the side of the case to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end feeds the Wing case strip through a short jumper (BOM fallback line, qty 0 until needed). The BOM lists that jumper as TRUE1-to-IEC C13, which fits the Wing's own inlet, not the strip; the jumper's strip end is open. The fallback changes the route, not the connectors.
 <!-- /matt -->
 
 ---

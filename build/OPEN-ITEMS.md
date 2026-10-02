@@ -46,7 +46,8 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; G7 (laptop power) closed 2026
 | N26 | **ATEM retention tray:** open, not costed. Build a foam or plywood tray, or secure the ATEM another way | Sam (ask Matt for suggestions) | not set | Not stated (not costed) |
 | N27 | **Bay A 8-port PoE switch model:** not priced. The BOM carries $19.99 as a placeholder; a PoE model will cost more | Sam | not set | Not stated (the switch line's cost) |
 | N28 | **Charging-station extension** from the Bay B CPPDU511 to the quad box at the separate charging station: details open, not costed | Sam | not set | Not stated (not costed) |
-| N29 | **Power inside the Wing case:** nothing feeds the TL-SG1005P or the ProTools Mac. The powerCON inlet feeds only the Wing | Sam | not set | Not stated |
+| N30 | **Camera converters:** record the models and count, and whether they're bidirectional. *Open.* Refs BUILD-SPEC.md:39, ROADMAP.md:82 | Sam | not set | No |
+| N31 | **Shure antennas:** confirm the UA8 reading from the label. *Open.* Ref ROADMAP.md:68; read it with the combiner label (N12) | Sam | not set | No |
 
 **Open proposal (not a decision):** drop the RS1215-RA ($94.98) and feed the charging table by a powerCON jumper from the CPPDU511. The jumper and panel outlet aren't specced. Recorded as P-05 in `work/PROPOSALS.md`; the RS1215-RA stays in the BOM.
 
@@ -64,6 +65,9 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; G7 (laptop power) closed 2026
 ---
 
 ## Resolved
+
+### 2026-10-01 (Sam's ruling, Wing case strip)
+- **N29 closed (2026-10-01).** The Wing case keeps its switched strip. The powerCON link from the AVPRO feeds it, and the Wing, the ProTools Mac and the TL-SG1005P plug into it. Decided.
 
 ### 2026-10-01 (design-session rulings 1–43, `review/src/DESIGN-RULINGS.md`)
 - **N19 closed (2026-09-29).** Drop 2 feeds the Bay B CPPDU511, which passes power through an extension to a quad box at a separate charging station. The quad box is in the first order (decided). The extension's details are open (new N28). A second wall circuit is preferred, not required.

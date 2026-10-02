@@ -7,6 +7,8 @@
 
 elim-avpro review done (work/ELIM-AVPRO-REVIEW.md). Nothing to port. 305339d duplicates 04a77ff + fe91bde. Repo cleared to archive. Done: converters, UA8, Wing case strip aligned to rig/; R1 logged in PROPOSALS.md (R2, R3 not taken).
 
+Wing case strip ruled: powerCON feeds strip; Wing, ProTools Mac, TL-SG1005P on strip. Mac on strip today added to rig/. Converter and antenna open items added. Reference images committed. elim-avpro not yet archived.
+
 ## Session 9 (2026-10-01): repo presentation (Part 2; not committed until Sam's OK)
 
 - Root `README.md` (new): status callout, start here by reader, key numbers (BOM v8; the $1,650.00 case + freight placeholder is inside the first order), overview image, folder map, a Mermaid chart of how the folders fit together. Style from samholub/elim-avpro; no facts from it.

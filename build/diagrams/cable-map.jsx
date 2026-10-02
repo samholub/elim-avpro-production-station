@@ -7,6 +7,7 @@ import React from "react";
 // 2026-10-01: design-session rulings: owned 100ft SDI; Hollyland RX on the lid; IN 2 / IN 8 and RIGHT lid routes open;
 // TL-SG1005P is the Wing case switch; ProTools Mac runs the live + stream mix (stream-mix laptop retirement is separate, open); N6 closed; N19 closed (CPPDU511 > extension > quad box);
 // laptops on the CPS1215RM; caption "decided except where a route is marked open".
+// 2026-10-01 (Sam): powerCON link feeds the Wing case strip; Wing, ProTools Mac, TL-SG1005P on it (N29 closed).
 // Each row is one signal chain. Arrows are cables; the label is the type, the color is the cable color code.
 
 const C = {
@@ -64,7 +65,7 @@ const GROUPS = [
     title: "Power",
     chains: [
       { nodes: ["Wall outlet", "Drop 1 (125ft 12/3 SOOW)", "UPS CP1500PFCRM2U", "CPS1215RM", "Bay A + desk gear, lids"], links: [["5-15P", C.power], ["5-15R", C.power], ["mains", C.power], ["5-15P > C13", C.power]] },
-      { nodes: ["CPS1215RM", "POWER > WING outlet", "Wing"], links: [["feed cord", C.power], ["powerCON 15ft 14/3", C.power]] },
+      { nodes: ["CPS1215RM", "POWER > WING outlet", "Wing case strip", "Wing, ProTools Mac, TL-SG1005P"], links: [["feed cord", C.power], ["powerCON 15ft 14/3", C.power], ["mains", C.power]] },
       { nodes: ["Wall outlet (2nd circuit preferred, not required)", "Drop 2 (125ft 12/3 SOOW)", "CPPDU511 (Bay B front)", "RS1215-RA (rear)", "Camera chargers"], links: [["5-15P", C.power], ["5-15R", C.power], ["chained", C.power], ["mains", C.power]] },
       { nodes: ["CPPDU511", "Quad box", "Separate charging station"], links: [["extension (details open)", C.power], ["mains", C.power]] },
       { nodes: ["CPS1215RM (battery-backed)", "Laptops"], links: [["mains", C.power]] },

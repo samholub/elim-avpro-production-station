@@ -43,7 +43,7 @@ Active build work only, in order: **order → fabricate → assemble → prove.*
 
 - [ ] Populate the AVPRO panels in the v15 order (BUILD-SPEC §5): IEM jack male, TALKBACK female, POWER a powerCON outlet labeled "POWER > WING". Blank the empty holes.
 - [ ] Wire the outlet feed cord to the POWER > WING outlet.
-- [ ] Wing panel (if the inspection passes): CONTROL, DANTE TRUNK, AES50 etherCON; TALKBACK male; IEM female; POWER inlet with its pigtail to the Wing.
+- [ ] Wing panel (if the inspection passes): CONTROL, DANTE TRUNK, AES50 etherCON; TALKBACK male; IEM female; POWER inlet with its pigtail to the Wing case strip (pigtail end open).
 - [ ] Make the umbilical (all 15ft): PROD and DANTE trunks (etherCON carriers both ends, re-crimped), the two owned XLRs, and the 14/3 SJOOW powerCON link with TRUE1 male (AVPRO end) and female (Wing end).
 - [ ] Make the two venue power drops: 125ft 12/3 SOOW each, 5-15P at the wall end, 5-15R connector body at the rig end. Label them DROP 1 (AVPRO) and DROP 2 (CHARGING).
 - [ ] Put etherCON carriers on the LED and internet field runs at the panel end: cut the plug, slide the carrier on, re-crimp (the LED receiver takes standard Ethernet, so its far end can stay plain RJ45).
