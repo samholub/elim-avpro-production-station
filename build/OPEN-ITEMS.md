@@ -23,7 +23,7 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; G7 (laptop power) closed 2026
 
 | # | Item | Owner | Due | Gates? |
 |---|---|---|---|---|
-| N1 | **BXWING inspection: can it take a panel-mount D-series plate?** Likely doable (2026-10-01), not confirmed. Yes → buy the Wing block. No → the connections run out the side of the case + a TRUE1-to-IEC jumper | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | Wing block only |
+| N1 | **BXWING inspection: can it take a panel-mount D-series plate?** Likely doable (2026-10-01), not confirmed. Yes → buy the Wing block. No → the connections run out the side of the case + a TRUE1-to-5-15R jumper | Sam (ask Matt first) | on case delivery (assumed by 2026-11-15) | Wing block only |
 | N2 | **M7:** the internet drop's far end. The LED wall receiver takes standard Ethernet (2026-10-01). Sets the etherCON end count; the BOM already buys the high count | Sam | 2026-10-04 (next service) | No |
 | N3 | **M3:** do the AVPRO side doors open to usable storage, and what are the inside dimensions? The design doesn't use them | Sam (ask Matt/ProX) | on case delivery (assumed by 2026-11-15) | No |
 | N4 | **U10 shelf fit:** the 10in AC Infinity shelf takes the HD Mini, the new 8-port PoE switch and its power brick side by side | Sam | on shelf delivery (assumed by 2026-10-15) | No |
@@ -48,6 +48,7 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; G7 (laptop power) closed 2026
 | N28 | **Charging-station extension** from the Bay B CPPDU511 to the quad box at the separate charging station: details open, not costed | Sam | not set | Not stated (not costed) |
 | N30 | **Camera converters:** record the models and count, and whether they're bidirectional. *Open.* Refs BUILD-SPEC.md:39, ROADMAP.md:82 | Sam | not set | No |
 | N31 | **Shure antennas:** confirm the UA8 reading from the label. *Open.* Ref ROADMAP.md:68; read it with the combiner label (N12) | Sam | not set | No |
+| N32 | **Wing case power adapter parts:** review placeholder BOM lines 55–57 and 59 (inlet-to-strip pigtail, quick-connect terminals, strain relief, fallback TRUE1-to-5-15R jumper; rows 56–57 are priced placeholders). *Open.* | Sam | not set | Wing block only |
 
 **Open proposal (not a decision):** drop the RS1215-RA ($94.98) and feed the charging table by a powerCON jumper from the CPPDU511. The jumper and panel outlet aren't specced. Recorded as P-05 in `work/PROPOSALS.md`; the RS1215-RA stays in the BOM.
 

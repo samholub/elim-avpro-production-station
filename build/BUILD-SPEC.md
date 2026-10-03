@@ -1,7 +1,7 @@
 # Build Spec
 
 **Updated:** 2026-10-01 (design-session rulings 1–43; replaces PANEL-AND-WIRING v15)
-**Status:** design locked. Nothing ordered. Prices and quantities live in `BOM.xlsx` (v8). This file says what gets built. The BOM says what gets bought.
+**Status:** design locked. Nothing ordered. Prices and quantities live in `BOM.xlsx` (v9). This file says what gets built. The BOM says what gets bought.
 **Status words used here:** *decided* (locked, see DESIGN §5), *assumed* (working value, check listed), *open* (see OPEN-ITEMS), *conditional* (depends on a check that hasn't happened).
 
 ---
@@ -115,7 +115,7 @@ Power reaches the rig area on **two 125ft 12/3 SOOW drops** from wall outlets. *
 - **Both drops are built the same:** 125ft 12/3 SOOW, a Hubbell HBL5266C plug, a Hubbell HBL5269C connector body. Either one can stand in for the other. The Hubbell part numbers are assumed, not a ruling; an equal 15A industrial plug and connector body can be substituted.
 - **Drop 1 needs one receptacle.** The UPS is the only thing plugged into it; everything else hangs off the UPS.
 - **Quad box at the charging station** (4 outlets, 2ft 12/3 tail with a 5-15P). The charging station is a separate table, fed from the Bay B CPPDU511 by an extension that ends in the quad box. *Decided, 2026-09-29 (N19).* The extension's details are open and not costed (N28). The BarnDoor part is assumed, not a ruling.
-- Voltage drop: 12AWG over 125ft at these loads (2–3A) is about 1%. Fine.
+- Voltage drop: 12AWG over 125ft at the UPS-side load (~280–470W excl. the ProTools Mac, about 2.3–3.9A) is about 1–1.3%. The Mac's draw is open, but at the UPS's full 1000W output (about 8.3A, before battery charging) it's still about 2.8%. Fine.
 - Plug each drop into a different wall circuit when the venue has two. If not, both on one is fine; the total is still well under 15A.
 
 ### UPS side (battery-backed)
@@ -147,10 +147,15 @@ drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) �
 | UltraStudio + Hollyland RX | ~15W |
 | 2 × lid monitors | ~50W |
 | 2 × laptops (0 when charged) | ~0–180W |
-| Wing (over the umbilical) | ~90–100W |
-| **Total** | **~275–465W** |
+| Wing case strip (over the umbilical) | ~95–105W excl. ProTools Mac (open) |
+| ↳ Wing | ~90–100W |
+| ↳ TL-SG1005P | ≤5W (spec sheet max with no PoE load: 4.29W) |
+| ↳ ProTools Mac | open (model and draw not recorded) |
+| **Total** | **~280–470W excl. ProTools Mac (open)** |
 
-- That's 28–47% of the UPS's 1000W; the high end is both laptops charging. **Spare: ~535–725W (about 4.5–6A at 120V).** Enough for Starlink (~50–75W) and other ad-hoc gear on backup.
+- Fits the UPS with the Mac included: assumed (Sam, 2026-10-03).
+- That's 28–47% of the UPS's 1000W, excl. ProTools Mac (open); the high end is both laptops charging. **Spare: ~530–720W excl. ProTools Mac (open) (about 4.4–6A at 120V).** Enough for Starlink (~50–75W) and other ad-hoc gear on backup.
+- TL-SG1005P: TP-Link's spec sheet lists 4.29W with no PoE load and 74.24W with a full 65W PoE load (current hardware; the owned unit's version isn't recorded). Nothing in the Wing case draws PoE, so the table uses the first.
 - Estimates only. The UPS LCD shows the real number; log it at the first bench test.
 - Field devices (confidence monitor, LED wall, cameras and converters) are powered where they sit.
 - Utility side: camera chargers and drawer lights. Well under 15A.
@@ -168,7 +173,7 @@ Five short cables, all color-coded and labeled. The cases always sit side by sid
 | POWER | 15ft, 14/3 SJOOW | powerCON TRUE1 male (AVPRO end), female (Wing end) | buy |
 
 - The 15ft length leaves room to angle the cases.
-- **Why 14/3 for the power link:** Neutrik lists the TRUE1 cable connector (NAC3FX-W) for 6–12mm cable. 12/3 SOOW (the drop cable) is 15.1mm and won't fit; 14/3 SJOOW is 9.4mm, rated 18A. The Wing draws about 1A.
+- **Why 14/3 for the power link:** Neutrik lists the TRUE1 cable connector (NAC3FX-W) for 6–12mm cable. 12/3 SOOW (the drop cable) is 15.1mm and won't fit; 14/3 SJOOW is 9.4mm, rated 18A. The link carries the whole Wing case strip: the Wing (~90–100W) and the TL-SG1005P (≤5W) draw under 1A together, and the ProTools Mac's draw is open. Even the UPS's full 1000W output (about 8.3A) is under half the cord's rating.
 - **Flexibility:** if a venue ever needs the cases apart, add longer trunks and a longer powerCON link then. Nothing on either panel changes.
 - powerCON family: one matched TRUE1 family for the outlet, both cable ends, and the Wing inlet. Matt or the vendor confirms before ordering (D7).
 <!-- /matt -->
@@ -207,7 +212,7 @@ PANEL 3  [ spare / expansion row, 12 holes ]
 
 ## 6. Wing panel (conditional)
 
-**Planned, pending physical inspection of the BXWING.** Nobody has confirmed the case can take a panel, but it's likely doable. Sam inspects on case delivery. The parts are a separate BOM block ($100.00) and are not in the first order. *Conditional.*
+**Planned, pending physical inspection of the BXWING.** Nobody has confirmed the case can take a panel, but it's likely doable. Sam inspects on case delivery. The parts are a separate BOM block ($125.88) and are not in the first order. *Conditional.*
 
 ```
 WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
@@ -220,11 +225,11 @@ WING PANEL  [CONTROL][DANTE TRUNK][AES50][TALKBACK][IEM][POWER IN][ -- ][ -- ]
 | AES50 | etherCON | both | stage box (stage side, not on the umbilical) |
 | TALKBACK | XLR **male** | out to the Wing In 8 | mirrors the AVPRO's female |
 | IEM | XLR **female** | in from the Wing Out 8 | mirrors the AVPRO's male |
-| POWER IN | powerCON TRUE1 **inlet** | in | pigtail to the Wing case strip (how the pigtail meets the strip is open) |
+| POWER IN | powerCON TRUE1 **inlet** | in | short internal pigtail to a 5-15R socket; the Wing case strip's standard plug goes in (BOM rows 55–57) |
 
-- **Inside the case:** the Wing case Dante switch (owned TL-SG1005P, 5-port, 3 ports used; 4 while the stream-mix laptop stays in use) and the ProTools Mac. The case keeps its switched strip, fed by the powerCON link; the Wing, the ProTools Mac and the TL-SG1005P plug into it. *Decided (2026-10-01).* The ProTools Mac has two links: USB-C to the Wing for recording and a Cat patch to the Dante switch.
+- **Inside the case:** the Wing case Dante switch (owned TL-SG1005P, 5-port, 3 ports used; 4 while the stream-mix laptop stays in use) and the ProTools Mac. The case keeps its switched strip, fed by the powerCON link; the Wing, the ProTools Mac and the TL-SG1005P plug into it. *Decided (2026-10-01).* The powerCON TRUE1 inlet stays, so the feed keeps its twist lock and can't be pulled by accident; inside the case a short pigtail adapts the inlet to a 5-15R socket for the strip's standard plug. *Decided (Sam, 2026-10-03).* Exact parts are open until Sam reviews the BOM: rows 55–57 (pigtail, terminals, strain relief), N32. The ProTools Mac has two links: USB-C to the Wing for recording and a Cat patch to the Dante switch.
 - Genders mirror the AVPRO panel: talkback female ↔ male, IEM male ↔ female, POWER outlet ↔ inlet.
-- **Fallback if the case can't take a panel:** the connections run out the side of the case to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end feeds the Wing case strip through a short jumper (BOM fallback line, qty 0 until needed). The BOM lists that jumper as TRUE1-to-IEC C13, which fits the Wing's own inlet, not the strip; the jumper's strip end is open. The fallback changes the route, not the connectors.
+- **Fallback if the case can't take a panel:** the connections run out the side of the case to the Wing's own jacks. etherCON ends plug into ordinary RJ45 jacks (Wing control, the Dante switch). The XLRs plug into Wing In 8 / Out 8. Power: the umbilical's female TRUE1 end feeds the Wing case strip through a short TRUE1-to-5-15R jumper (BOM row 59, qty 0 until needed; parts open until Sam's review, N32). The fallback changes the route, not the connectors.
 <!-- /matt -->
 
 ---
@@ -370,7 +375,7 @@ Green vs yellow is the split that matters most. Colored jackets where available,
 
 ## 13. Spare capacity
 
-- **Power:** ~535–725W spare on the UPS (the low end is with the laptops charging). The Bay B strips have open outlets on utility.
+- **Power:** ~530–720W spare on the UPS, excl. ProTools Mac (open) (the low end is with the laptops charging). The Bay B strips have open outlets on utility.
 - **Panel:** panel 3 is a full spare row; 3 open holes on each of panels 1 and 2; loose spares of every connector type; one etherCON spare pre-wired to the AX21.
 - **Rack:** Bay A U4–U6 reserve; Bay B U9–U11 and both 4U tops left open.
 - **Dante:** Bay A satellite 5 free of 8 (trunk, AVIO, Bianca's Mac used). Wing case switch 2 free of 5 (Wing Dante card, trunk, ProTools Mac used); 1 free while the stream-mix laptop stays in use. *Decided (2026-10-01).*

@@ -18,9 +18,9 @@ The build docs for the ELIM production workstation: a ProX AVPRO rolling case fo
 
 | | |
 |---|---|
-| First order | $4,641.84, of which $1,650.00 is the case and freight placeholder ([BOM v8](build/BOM.xlsx)) |
-| Wing panel block | +$100.00, only if the Wing case can take a panel. All lines $4,741.84 |
-| Battery backup load | ~275–465W of 1000W, estimated ([build spec §4](build/BUILD-SPEC.md#4-power)) |
+| First order | $4,641.84, of which $1,650.00 is the case and freight placeholder ([BOM v9](build/BOM.xlsx)) |
+| Wing panel block | +$125.88, only if the Wing case can take a panel. All lines $4,767.72 |
+| Battery backup load | ~280–470W of 1000W excl. ProTools Mac (open), estimated ([build spec §4](build/BUILD-SPEC.md#4-power)) |
 | Setup | ~40 loose connections become ~15 labeled cables, about 30 minutes saved each way. Estimates, to be measured (OPEN-ITEMS N15) |
 | Cameras | Three at every event ([build spec §2](build/BUILD-SPEC.md#2-cameras)); the panel has 8 camera jacks |
 

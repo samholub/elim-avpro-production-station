@@ -1,4 +1,4 @@
-"""Build build/BOM.xlsx (BOM v8) from the line data below.
+"""Build build/BOM.xlsx (BOM v9) from the line data below.
 
 Run:  python work/make_bom.py
 Writes build/BOM.xlsx and work/bom_totals.json (totals + check counts for the docs).
@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "build" / "BOM.xlsx"
 TOTALS = ROOT / "work" / "bom_totals.json"
 
-VERSION = "v8"
-DATE = "2026-10-01"
+VERSION = "v9"
+DATE = "2026-10-03"
 FIRST = "First order"
 WING = "Wing block"
 
@@ -147,12 +147,17 @@ LINES = [
     ("Wing panel", "XLR female chassis", "Neutrik NC3FD-L-B-1", 1, 6, "est", WING, "XLRF", "", "IEM (female at the Wing).", "NEW (Wing block)"),
     ("Wing panel", "powerCON TRUE1 chassis inlet", "Neutrik NAC3MPX (family TBC, D7)", 1, 20, "est", WING, "PCON-INLET",
      "", "POWER IN. Power arrives here from the AVPRO.", "NEW (Wing block)"),
-    ("Wing panel", "Inlet-to-Wing power pigtail", "IEC C13 cord, cut and wired to the inlet", 1, 8, "est", WING, "",
-     "", "Inside the case, from the inlet to the Wing's IEC inlet.", "NEW (Wing block)"),
+    ("Wing panel", "Inlet-to-strip power pigtail (inside the Wing case)", "2ft 14/3 SJOOW + Hubbell HBL5269C 5-15R connector body", 1, 19.88, "est; part assumed (Sam to review, N32)", WING, "",
+     "", "From the back of the POWER IN inlet to a 5-15R socket; the Wing case strip's standard plug goes in. The inlet stays so the feed keeps its twist lock (Sam, 2026-10-03). $18.00 connector body (same est as the drop line) + 2ft of 14/3 SJOOW at $0.94/ft. Check the connector body's cord range covers 0.370in.",
+     "NEW (Wing block); v9: was an IEC C13 cord to the Wing's inlet ($8.00)"),
+    ("Wing panel", "Quick-connect terminals for the inlet tabs (pack)", "Insulated female quick-connects sized to the NAC3MPX tabs", 1, 8, "PLACEHOLDER: Sam to review", WING, "",
+     "", "Terminate the pigtail on the inlet. Size per the Neutrik datasheet. Estimated price.", "v9: NEW"),
+    ("Wing panel", "Strain relief for the pigtail inside the case", "Cable clamp + screw-mount tie anchors", 1, 6, "PLACEHOLDER: Sam to review", WING, "",
+     "", "Holds the pigtail and the 5-15R body so a pull on the strip can't reach the inlet terminals. The strip itself is already secured in the case. Estimated price.", "v9: NEW"),
     ("Wing panel", "D-hole blanking plate", "Neutrik DBA-BL", 2, 2, "est", WING, "BLANK-WING", "", "2 spare holes.", "NEW (Wing block)"),
-    ("Wing panel", "FALLBACK ONLY: powerCON TRUE1 to IEC C13 jumper", "TRUE1 male to C13, short", 0, 30, "est", WING, "",
-     "", "Buy only if the Wing case can't take a panel. Then the connections run out the side of the case, and the umbilical's female TRUE1 end reaches the Wing's IEC inlet through this jumper. Qty 0 until then.",
-     "NEW (fallback)"),
+    ("Wing panel", "FALLBACK ONLY: powerCON TRUE1 to 5-15R jumper", "Neutrik NAC3MX-W (TBC, D7) + 2ft 14/3 SJOOW + Hubbell HBL5269C", 0, 37.88, "est; part assumed (Sam to review, N32)", WING, "",
+     "", "Buy only if the Wing case can't take a panel. Then the connections run out the side of the case, and the umbilical's female TRUE1 end feeds the Wing case strip through this jumper. $18.00 TRUE1 male + $18.00 connector body + 2ft at $0.94/ft. Qty 0 until then.",
+     "NEW (fallback); v9: strip end C13 -> 5-15R ($30.00 -> $37.88)"),
 ]
 
 # What BUILD-SPEC section 7 says is needed, per check key: (label, AVPRO fitted, Wing fitted, spares, run ends)
@@ -229,7 +234,9 @@ CHANGES = [
     ("D1", "v8: the 8-port switch line becomes the Bay A Dante satellite, 8-port PoE (model open); the TL-SG1005P moves to the Wing case. $19.99 kept as a placeholder", "0.00"),
     ("", "v8: Wing case model XZF-BWING -> XZF-BXWING", "0.00"),
     ("N19", "v8: quad box tentative -> decided (separate charging station, fed from the Bay B CPPDU511)", "0.00"),
-    ("", "Sum of the numeric rows + v5 $3,961.56 = the first-order total. The Wing block ($100.00) is on top of that.", ""),
+    ("", "v9 (Wing block, not the first order): inlet pigtail IEC C13 cord $8.00 -> 2ft 14/3 SJOOW + HBL5269C 5-15R $19.88; + quick-connect terminals $8.00 (placeholder); + strain relief $6.00 (placeholder). Wing block $100.00 -> $125.88", "0.00"),
+    ("", "v9 (Wing block, qty 0): fallback jumper strip end C13 -> 5-15R, $30.00 -> $37.88", "0.00"),
+    ("", "Sum of the numeric rows + v5 $3,961.56 = the first-order total. The Wing block ($125.88) is on top of that.", ""),
 ]
 
 HEAD_FILL = PatternFill("solid", fgColor="1E293B")
@@ -336,7 +343,7 @@ def main():
 
     # ---------------- Changes ----------------
     wch = wb.create_sheet("Changes")
-    wch["A1"] = f"Changes, BOM v5 (2026-08-18, $3,961.56) -> v6 -> v7 -> {VERSION} ({DATE})"
+    wch["A1"] = f"Changes, BOM v5 (2026-08-18, $3,961.56) -> v6 -> v7 -> v8 -> {VERSION} ({DATE})"
     wch["A1"].font = Font(bold=True, size=13)
     header(wch, 3, ["Ruling", "Change", "Effect on first-order total ($)"])
     for i, row in enumerate(CHANGES, 4):

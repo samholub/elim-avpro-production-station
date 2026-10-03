@@ -78,6 +78,17 @@ Checksums: the 12 files listed in `SHA256SUMS.txt` all match. The 3 Pelican file
 | d59cebeb-….webp | Small product photo (448×448) of the AVPRO from the rear, lid closed | — | dbb71760 (Sam: likely the product-listing photo) | Reference: ProX case | n/a |
 | d20bd273-….webp | Phone screenshot, proxdirect.com: Behringer Wing flip-ready hydraulic case (BWING), 12:28 | — | a5df9d8d | Reference: BWING case | n/a |
 | 6b9c5f87-….webp | **Handwritten notes.** Cost/shipping, Mac mini permanent, HDMI fiber 50–985ft (50m $75 + $35 ship, 75m $100, 100m $130), "ProX XZF-AVPRO / $800" (last figure hard to read), mic stand case $300 holds 25, square cases (power), PDU, Supercat quad reel, flip-up case cost?, AliExpress fiber, box to fem for drums | — | a5df9d8d (seed: "handwritten/call notes, NEEDED") | Early planning notes | n/a |
+| 2023-12-12_11.20.1417.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| 2023-12-12_18.16.1479.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| 284154954_1158124898097496_8021433371433556905_n.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| 286030460_3240966332833345_3844487233979549713_n.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| XZF-AVPRO_2X12U_2X4U_EXT_DIMS.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| XZF-AVPRO_2X12U_2X4U_dimensions.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| XZF-AVPRO_2X12U_2x4U-01.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| XZF-AVPRO_2X12U_2x4U-04.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| XZF-BXWING-01.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| XZF-BXWING-0524.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
+| XZF-BXWING-06.jpg | Reference images uploaded by Sam, 2026-10-01 | — | — | Reference | n/a |
 
 The four UUID-named `.webp` files look like claude.ai upload thumbnails. Once the export is in, I'll match the UUIDs to attachment records to pin the conversation and message exactly.
 

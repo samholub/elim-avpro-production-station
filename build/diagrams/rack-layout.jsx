@@ -14,6 +14,7 @@ import React from "react";
 // both 4U tops left open; UltraStudio placement open; RIGHT lid = ProPresenter second screen; IN 2 / IN 8 routes open;
 // N19 closed (CPPDU511 > extension > quad box); three lids; monitor model open; Wing panel side-of-case fallback.
 // 2026-10-01 (Sam): Wing case strip fed by the powerCON link; Wing, ProTools Mac, TL-SG1005P on it (N29 closed).
+// 2026-10-03: UPS load ~280-470W excl. the ProTools Mac (draw open; TL-SG1005P added at <=5W).
 // Props: mode="full" (default), "phone" (stacked, front + panel only, for review/ELIM-layout.png),
 // or "overview" (one-page, plain names, for review/ELIM-PLAN.pdf page 2).
 
@@ -38,7 +39,7 @@ const BAY_A = [
   { uBottom: 7, h: 1, tag: C.neutral, name: "Cable management", front: "lacing bar", rear: "REAR I/O PANEL (3U) behind the upper block" },
   { uBottom: 4, h: 3, tag: C.neutral, name: "Vented blanks (reserve)", front: "airflow + growth", rear: "" },
   { uBottom: 3, h: 1, tag: C.power, name: "CPS1215RM strip (from UPS)", front: "basic 1U, no surge, no meter", rear: "UPS-backed gear + POWER > WING feed" },
-  { uBottom: 1, h: 2, tag: C.power, name: "UPS - CP1500PFCRM2U (2U)", front: "pure sine; backs booth + Wing", rear: "line cord to power drop 1; LCD meters ~275-465W" },
+  { uBottom: 1, h: 2, tag: C.power, name: "UPS - CP1500PFCRM2U (2U)", front: "pure sine; backs booth + Wing", rear: "line cord to power drop 1; LCD meters ~280-470W excl. ProTools Mac" },
 ];
 
 const BAY_B = [
@@ -100,7 +101,7 @@ const NOTES = [
   "Colors = the cable color code. Every cable also carries a number and a source > destination label: match the color, match the number.",
   "Bay A is the whole active system. Every network jumper stays in Bay A; nothing crosses bays. Bay B is storage and utility power; no signal. All cabling is stored with the two cases.",
   "* ATEM IN 2 is always the Hollyland RX and IN 8 is always the UltraStudio. How each connects is open; running the Hollyland RX through the CAM 2 jack is one option. All eight camera jacks stay on the panel.",
-  "Power: two 125ft 12/3 SOOW drops from wall outlets (5-15P > 5-15R). Drop 1 feeds the UPS, which backs the booth and the Wing (~275-465W of 1000W with the laptops charging, ~535-725W spare). The desk laptops plug into the CPS1215RM. Drop 2 feeds the Bay B CPPDU511 (+ RS1215-RA for camera chargers), which passes power through an extension (details open) to a quad box at the separate charging station. No surge behind the UPS.",
+  "Power: two 125ft 12/3 SOOW drops from wall outlets (5-15P > 5-15R). Drop 1 feeds the UPS, which backs the booth and the Wing case strip (~280-470W of 1000W with the laptops charging, ~530-720W spare, excl. the ProTools Mac: draw open). The desk laptops plug into the CPS1215RM. Drop 2 feeds the Bay B CPPDU511 (+ RS1215-RA for camera chargers), which passes power through an extension (details open) to a quad box at the separate charging station. No surge behind the UPS.",
   "Cooling: the open back is primary. The fan exhausts toward the back. Reserve U's are vented blanks. Keep the back clear at venues.",
   "Umbilical = 5 short cables (15ft; the cases sit side by side): PROD, DANTE, TALKBACK, IEM and POWER (powerCON TRUE1 on 14/3 SJOOW). AES50 is stage-side.",
   "Wing panel is planned, pending inspection of the BXWING at delivery (likely doable). Without it, the connections run out the side of the case to the Wing's own jacks.",

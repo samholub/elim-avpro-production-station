@@ -1,9 +1,9 @@
 {
-  "version": "v8",
-  "date": "2026-10-01",
+  "version": "v9",
+  "date": "2026-10-03",
   "first_order": 4641.84,
-  "wing_block": 100,
-  "all": 4741.84,
+  "wing_block": 125.88,
+  "all": 4767.72,
   "cases_placeholder": 1650,
   "first_order_ex_cases": 2991.84,
   "quad_box": 89.88,
@@ -22,7 +22,7 @@
     "Cabling | First order": 276.1,
     "Venue power | First order": 561.38,
     "Monitors | First order": 320,
-    "Wing panel | Wing block": 100
+    "Wing panel | Wing block": 125.88
   },
   "check": {
     "BNC": {

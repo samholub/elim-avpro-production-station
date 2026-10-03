@@ -11,7 +11,7 @@ This folder is the master for the ELIM AVPRO workstation and Wing case build. Al
 ## Status
 
 1. Nothing ordered. Locked decisions are in DESIGN §5; open items remain.
-2. BOM v8: **first order $4,641.84** (of which $1,650.00 is the case + freight placeholder, to verify with Matt). Wing panel block **$100.00**, only if the BXWING can take a panel. All lines $4,741.84.
+2. BOM v9: **first order $4,641.84** (of which $1,650.00 is the case + freight placeholder, to verify with Matt). Wing panel block **$125.88**, only if the BXWING can take a panel. All lines $4,767.72.
 3. Target order date: **2026-10-19**, pending Matt's quote.
 4. Waiting on: Matt's case and freight quote; the powerCON and etherCON part check (D7); whether the lid legs come with the case. Sam and Bianca: the case and freight spend ceiling, before the Sunny walkthrough (G8).
 5. Rulings from the 2026-10-01 design session are logged in `../review/src/DESIGN-RULINGS.md`. Working drafts of the explainer, Bianca's decision sheet and the review doc are in `../review/drafts/`.
@@ -35,7 +35,7 @@ Full list with dates: `OPEN-ITEMS.md`.
 | `README.md` | This page | Everyone |
 | `DESIGN.md` | Overview, team, approval chain, principles, locked decisions, network, power, process | Sam, Bianca |
 | `BUILD-SPEC.md` | Dimensions, cameras, signal map, power, both panel maps, connector stock, rack placement, monitors, cooling, cabling, color code | Sam, Bianca, Matt |
-| `BOM.xlsx` | The buy list (v8). Tabs: Buy, Owned, Check, Changes. Totals are formulas | Sam, Matt |
+| `BOM.xlsx` | The buy list (v9). Tabs: Buy, Owned, Check, Changes. Totals are formulas | Sam, Matt |
 | `OPEN-ITEMS.md` | Every open item with owner, due date and whether it gates the order. Resolved log | Sam |
 | `BACKLOG.md` | Order → fabricate → assemble → prove, as checkboxes | Sam, Bianca |
 | `ROADMAP.md` | What comes after the build: stage power, Stream Deck, Mac Minis, parked items | Sam |

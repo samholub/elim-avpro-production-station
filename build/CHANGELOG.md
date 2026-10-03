@@ -4,6 +4,18 @@ Build milestones, decisions, and significant changes. Most recent first.
 
 -----
 
+## 2026-10-03 -- Wing Case Power Adapter (BOM v9)
+
+Sam's rulings, 2026-10-03. **BOM v9: first order $4,641.84** (unchanged), **Wing block $125.88** (from $100.00), all lines $4,767.72. Check tab 18/18.
+
+- **Wing case power (decided):** the powerCON TRUE1 inlet on the case stays, so the feed keeps its twist lock and can't be pulled by accident. Inside the case a short pigtail adapts the inlet to a 5-15R socket for the strip's standard plug. Exact parts are open until Sam reviews the BOM (N32).
+- **BOM, Wing block:** inlet pigtail IEC C13 cord $8.00 → 2ft 14/3 SJOOW + Hubbell HBL5269C 5-15R connector body $19.88 (part assumed); + quick-connect terminals $8.00 and strain relief $6.00 (placeholders, Sam to review). Fallback jumper (qty 0): strip end C13 → 5-15R, $30.00 → $37.88.
+- **ProTools Mac:** model and draw open. Sam's judgment that the load fits the UPS: assumed. The UPS-side load table now lists the Wing case strip (Wing, TL-SG1005P at ≤5W, ProTools Mac open): **~280–470W excl. the Mac**, ~530–720W spare.
+- Earlier on 2026-10-01: the powerCON link feeds the Wing case strip (N29 closed); converter and antenna checks opened (N30, N31).
+- **Stale until regenerated:** matt/ and review/ELIM-PLAN.pdf (Wing power chain, BOM v9). review/src/elim-data.js is updated to v9.
+
+-----
+
 ## 2026-10-01 -- Design-Session Rulings Applied (BOM v8)
 
 Rulings 1–43 from the design session (log in `review/src/DESIGN-RULINGS.md`) applied to build/. **BOM v8: first order $4,641.84** (from $4,671.84: laptop strip −$30.00), Wing block $100.00, all lines $4,741.84. Check tab 18/18.

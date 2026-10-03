@@ -114,7 +114,7 @@ Static IPs, router settings and the switch topology rules (one uplink per switch
 ## 7. Power
 
 - **Venue drops:** two 125ft 12/3 SOOW cords from wall outlets, 5-15P at the wall, 5-15R at the rig. Drop 1 feeds the AVPRO. Drop 2 feeds the Bay B CPPDU511, which passes power through an extension to a quad box at a separate charging station. *Decided (N19, 2026-09-29).* The extension's details are open (OPEN-ITEMS N28). A second wall circuit is preferred, not required.
-- **UPS side:** drop 1 → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, the two desk laptops, and the powerCON outlet feeding the Wing case strip over a short powerCON link. The Wing, the ProTools Mac and the TL-SG1005P plug into that strip *(decided, 2026-10-01)*. Estimated load **~275–465W of 1000W** (the high end is the laptops charging), leaving ~535–725W spare.
+- **UPS side:** drop 1 → CP1500PFCRM2U → CPS1215RM → Bay A and desk gear, lids, the two desk laptops, and the powerCON outlet feeding the Wing case strip over a short powerCON link. The Wing, the ProTools Mac and the TL-SG1005P plug into that strip *(decided, 2026-10-01)*. Estimated load **~280–470W of 1000W, excl. ProTools Mac (open)** (the high end is the laptops charging), leaving ~530–720W spare excl. the Mac. Fits the UPS with the Mac included: assumed (Sam, 2026-10-03).
 - **Charging side:** drop 2 → CPPDU511 → RS1215-RA (camera chargers), and CPPDU511 → extension → quad box at the charging station. Labeled "chargers + lights only".
 - Detail and the draw table: `BUILD-SPEC.md` §4.
 

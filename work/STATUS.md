@@ -1,13 +1,22 @@
 # Status
 
-**Updated:** 2026-10-01 (session 10)
+**Updated:** 2026-10-03 (session 11)
 **State: this repo (samholub/elim-avpro-production-station) is the master copy; `build/` is the master set.** samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source.
+
+## 2026-10-03: Wing case power adapter (BOM v9)
+
+- **Rulings (Sam, 2026-10-03):** ProTools Mac model and draw open; that the load fits the UPS is assumed. The powerCON TRUE1 inlet on the Wing case stays (twist lock); inside the case it adapts to a 5-15R socket for the strip's standard plug (decided). Exact parts open until Sam reviews the BOM (N32).
+- **Load table (BUILD-SPEC §4):** "Wing case strip (over the umbilical)" with the Wing ~90–100W, the TL-SG1005P ≤5W (spec sheet 4.29W with no PoE load; 74.24W only with a full 65W PoE load) and the ProTools Mac open. UPS side ~280–470W excl. the Mac, 28–47%, ~530–720W spare. Repeats updated in BUILD-SPEC, DESIGN §7, root README, rack-layout.jsx (re-rendered). The 14/3 link and the voltage-drop note still hold.
+- **BOM v9** (`work/make_bom.py`): first order $4,641.84 (unchanged), Wing block $100.00 → $125.88, all lines $4,767.72. Row 55 inlet-to-strip pigtail (2ft 14/3 SJOOW + HBL5269C 5-15R, $19.88), rows 56–57 placeholders (terminals $8.00, strain relief $6.00), row 59 fallback jumper TRUE1-to-5-15R ($37.88, qty 0). Check 18/18; pycel totals match. review/src/elim-data.js matches line for line. CHANGELOG entry; N32 added.
+- **review/src/elim-data.js:** Wing power chain now powerCON → Wing case strip → Wing, ProTools Mac, TL-SG1005P; BOM rows at v9. ELIM-PLAN.pdf is stale on the Wing power chain and BOM v9. Rebuild in one batch with the next round of review changes.
+- **work/SOURCE-INVENTORY.md:** the 11 source/images/ files added.
+- matt/ stale on the Wing power chain and BOM (MATT-PACK.md:80, images). Regenerate before sending.
 
 ## 2026-10-01: elim-avpro review
 
 elim-avpro review done (work/ELIM-AVPRO-REVIEW.md). Nothing to port. 305339d duplicates 04a77ff + fe91bde. Repo cleared to archive. Done: converters, UA8, Wing case strip aligned to rig/; R1 logged in PROPOSALS.md (R2, R3 not taken).
 
-Wing case strip ruled: powerCON feeds strip; Wing, ProTools Mac, TL-SG1005P on strip. Mac on strip today added to rig/. Converter and antenna open items added. Reference images committed. elim-avpro not yet archived.
+Wing case strip ruled: powerCON feeds strip; Wing, ProTools Mac, TL-SG1005P on strip. Mac on strip today added to rig/. Converter and antenna open items added. Reference images committed. elim-avpro archived on GitHub 2026-10-01.
 
 ## Session 9 (2026-10-01): repo presentation (Part 2; not committed until Sam's OK)
 
@@ -57,6 +66,7 @@ Wing case strip ruled: powerCON feeds strip; Wing, ProTools Mac, TL-SG1005P on s
 
 ## Where things stand
 
+- **BOM v9 (2026-10-03):** first order **$4,641.84** (unchanged), Wing block **$125.88**, all lines **$4,767.72**. Wing case power adapter lines; parts open until Sam's review (N32). *The v8 note below is history.*
 - **BOM v8 (2026-10-01):** first order **$4,641.84** (incl. $1,650.00 case + freight placeholders, Matt to verify; incl. the $89.88 quad box, now decided), Wing block **$100.00**, all lines **$4,741.84**. *The v7 notes below are history.*
 - **BOM v7:** first order **$4,671.84** (incl. $1,650.00 case + freight placeholders, Matt to verify; incl. the tentative $89.88 quad box), Wing block **$100.00**, all lines **$4,771.84**. Check tab 18/18 PASS; pycel formula check clean; the Changes tab's numeric rows sum to +$710.28 on v5's $3,961.56 = the first-order total.
 - **What changed from v6:** etherCON cable ends NE8MX6-B (CAT6A, wrong family) → NE8MX-1 carriers ×11 (−$165.55); + shielded RJ45 plug pack (+$12.00); Wing case Dante switch 5-port → 8-port TL-SG108 or equivalent (−$27.00).

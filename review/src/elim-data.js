@@ -1,4 +1,4 @@
-// Shared ELIM build data (BOM v7, OPEN-ITEMS, DESIGN section 5), lifted from the review doc.
+// Shared ELIM build data (BOM v9, OPEN-ITEMS, DESIGN section 5), lifted from the review doc.
 export function elimData() {
     const C = { sdi:'#2F6BDE', hdmi:'#A9B1BD', dante:'#12936B', prod:'#C98A0B', net:'#D0342C', led:'#8A3FD6', xlr:'#E0621A', pwr:'#1D2230', oth:'#C9D0DA', blank:'#9AA5B4' };
     const K = {
@@ -13,7 +13,7 @@ export function elimData() {
     const money = c => '$' + (c / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const U = 22, Up = 11;
 
-    // BOM v7 (Buy tab). [group, item, model, qty, unit, status]
+    // BOM v9 (Buy tab). [group, item, model, qty, unit, status]
     const FO = [
       ['Cases','Rolling dual-bay workstation','ProX XZF-AVPRO2X12U2X4U',1,500,'placeholder, to verify (Matt)'],
       ['Cases','Wing hydraulic flip case','ProX XZF-BXWING',1,900,'placeholder, to verify (Matt)'],
@@ -66,9 +66,11 @@ export function elimData() {
       ['Wing panel','XLR male chassis','Neutrik NC3MD-L-B-1',1,6,'est'],
       ['Wing panel','XLR female chassis','Neutrik NC3FD-L-B-1',1,6,'est'],
       ['Wing panel','powerCON TRUE1 chassis inlet','Neutrik NAC3MPX (family TBC, D7)',1,20,'est'],
-      ['Wing panel','Inlet-to-Wing power pigtail','IEC C13 cord, cut and wired to the inlet',1,8,'est'],
+      ['Wing panel','Inlet-to-strip power pigtail (inside the Wing case)','2ft 14/3 SJOOW + Hubbell HBL5269C 5-15R connector body',1,19.88,'est; part assumed (Sam to review, N32)'],
+      ['Wing panel','Quick-connect terminals for the inlet tabs (pack)','Insulated female quick-connects sized to the NAC3MPX tabs',1,8,'PLACEHOLDER: Sam to review'],
+      ['Wing panel','Strain relief for the pigtail inside the case','Cable clamp + screw-mount tie anchors',1,6,'PLACEHOLDER: Sam to review'],
       ['Wing panel','D-hole blanking plate','Neutrik DBA-BL',2,2,'est'],
-      ['Wing panel','FALLBACK ONLY: powerCON TRUE1 to IEC C13 jumper','TRUE1 male to C13, short',0,30,'est; qty 0. Only if the connections run out the side of the case: the Wing power link then needs it to reach the Wing\'s IEC inlet']
+      ['Wing panel','FALLBACK ONLY: powerCON TRUE1 to 5-15R jumper','Neutrik NAC3MX-W (TBC, D7) + 2ft 14/3 SJOOW + Hubbell HBL5269C',0,37.88,'est; qty 0. Only if the connections run out the side of the case: the Wing power link then feeds the Wing case strip through it']
     ];
     const cents = r => Math.round(r[3] * r[4] * 100);
     const row = r => ({ group:r[0], item:r[1], model:r[2], qty:String(r[3]), unit:money(Math.round(r[4]*100)), ext:money(cents(r)), status:r[5] });
@@ -85,7 +87,7 @@ export function elimData() {
       S('Network','Bay A Dante satellite switch, 8-port PoE','net',[st('open','Placeholder')],'PoE model not priced'),
       S('Monitors','two lid monitors, right-angle adapters','mon',[st('estimate')],''),
       { cat:'First order total', sub:'', cost: money(foC), status:[], note:'', fw:'700', bg:'oklch(0.95 0.006 250)' },
-      { cat:'Conditional items', sub:'Wing block', cost: money(wbC), status:[st('conditional')], note:"Only if the Wing case can take the plate (N1). If it can't, the connections run out the side of the case, and a TRUE1-to-IEC jumper (not costed) carries the Wing power link to the Wing's IEC inlet.", fw:'400', bg:'transparent' },
+      { cat:'Conditional items', sub:'Wing block', cost: money(wbC), status:[st('conditional')], note:"Only if the Wing case can take the plate (N1). If it can't, the connections run out the side of the case, and a TRUE1-to-5-15R jumper (qty 0) carries the Wing power link to the Wing case strip, which powers the Wing, the ProTools Mac and the TL-SG1005P.", fw:'400', bg:'transparent' },
       { cat:'All lines', sub:'', cost: money(foC + wbC), status:[], note:'', fw:'700', bg:'oklch(0.95 0.006 250)' },
       { cat:'Already owned', sub:'almost all the gear inside', cost:'not in any total', status:[], note:'', fw:'400', bg:'transparent' }
     ];
@@ -120,7 +122,7 @@ export function elimData() {
     const mapVideo = ['Pocket 4K (wired)|HDMI:hdmi|Converter|SDI 100ft:sdi|Panel CAM 1|SDI jumper:sdi|ATEM IN 1','Pocket 4K|HDMI:hdmi|Hollyland TX|wireless:oth|Hollyland RX (on the lid)|SDI (route open):sdi|ATEM IN 2','DJI|HDMI:hdmi|Converter|SDI 100ft:sdi|Panel CAM 3|SDI jumper:sdi|ATEM IN 3','Rented cameras|SDI:sdi|Panel CAM 4-7|SDI jumper:sdi|ATEM IN 4-7','ProPresenter Mac|USB-C:oth|UltraStudio (placement open)|SDI:sdi|ATEM IN 8','ATEM AUX|SDI:sdi|HyperDeck HD Mini|USB-C:oth|SSD','ATEM OUT 8|SDI:sdi|Resi|Cat:prod|AX21 > internet','ATEM multiview|HDMI:hdmi|LEFT lid','ProPresenter Mac|HDMI:hdmi|LED wall transcoder|Cat x2:led|Panel LED 1-2|field:led|LED wall','ProPresenter Mac|USB-C:oth|Anker hub|HDMI:hdmi|Panel CONF OUT|HDMI field:hdmi|Confidence monitor','ProPresenter Mac|second screen (route open):oth|RIGHT lid'].map(chain);
     const mapAudio = ['Stage box (DL251)|AES50:xlr|Wing','Wing Dante card|Cat:dante|Wing case switch (TL-SG1005P, 5-port)|trunk 15ft:dante|DANTE TRUNK|Cat:dante|Bay A satellite|Cat + PoE:dante|AVIO (PoE)','AVIO|XLR pigtails:xlr|ATEM Ch 1-2',"ProPresenter Mac|USB-C Cat:dante|Bay A satellite","ProTools Mac (in case)|Cat (Dante):dante|Wing case switch","Bianca's talkback mic|XLR:xlr|Panel TALKBACK|XLR 15ft:xlr|Wing In 8","Wing Out 8|XLR 15ft:xlr|Panel IEM|XLR:xlr|Bianca's IEM","Wing|USB-C:oth|ProTools Mac (in case)"].map(chain);
     const mapNet = ['Venue / Starlink|Cat field:net|Panel INTERNET IN|Cat:net|AX21 WAN','AX21 LAN|Cat:prod|TL-SG105|Cat:prod|ATEM, HD Mini, streaming laptop, Anker hub','AX21 LAN|Cat:prod|Resi','AX21 LAN|Cat:prod|PROD TRUNK|trunk 15ft:prod|Wing CONTROL','AX21 LAN|Cat:prod|Panel SPARE'].map(chain);
-    const mapPower = ['Wall outlet|5-15P:pwr|Drop 1 (125ft 12/3 SOOW)|5-15R:pwr|UPS CP1500PFCRM2U|mains:pwr|CPS1215RM|5-15P > C13:pwr|Bay A + desk gear, lids','CPS1215RM|feed cord:pwr|POWER > WING outlet|powerCON 15ft 14/3:pwr|Wing','Wall outlet (2nd circuit preferred, not required)|5-15P:pwr|Drop 2 (125ft 12/3 SOOW)|5-15R:pwr|CPPDU511 (Bay B front)|chained:pwr|RS1215-RA (rear)|mains:pwr|Camera chargers','CPPDU511|extension (details open, not costed):pwr|Quad box|mains:pwr|Separate charging station','CPS1215RM (battery-backed)|mains:pwr|Laptops'].map(chain);
+    const mapPower = ['Wall outlet|5-15P:pwr|Drop 1 (125ft 12/3 SOOW)|5-15R:pwr|UPS CP1500PFCRM2U|mains:pwr|CPS1215RM|5-15P > C13:pwr|Bay A + desk gear, lids','CPS1215RM|feed cord:pwr|POWER > WING outlet|powerCON 15ft 14/3:pwr|Wing case strip|mains:pwr|Wing, ProTools Mac, TL-SG1005P','Wall outlet (2nd circuit preferred, not required)|5-15P:pwr|Drop 2 (125ft 12/3 SOOW)|5-15R:pwr|CPPDU511 (Bay B front)|chained:pwr|RS1215-RA (rear)|mains:pwr|Camera chargers','CPPDU511|extension (details open, not costed):pwr|Quad box|mains:pwr|Separate charging station','CPS1215RM (battery-backed)|mains:pwr|Laptops'].map(chain);
 
     const O = (id, title, detail, owner, due, gates, status, snote, extra) => ({ id, title, detail, owner, due, gates, status, snote: snote || '', extra: extra || '' });
     const p3Items = [
