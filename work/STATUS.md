@@ -5,7 +5,7 @@
 
 ## 2026-10-03: Freeze
 
-Freeze. Plan ready for go/no-go. Sunny and Bianca decide after the 2026-10-11 event, from the Explainer PDF only (sent 2026-10-03, no rush until after the 11th). ELIM-PLAN.pdf and the Review draft are superseded. Matt reviews after a yes.
+Freeze. Plan ready for go/no-go. Sunny and Bianca decide after the 2026-10-11 event, from the Explainer PDF only (to send after the Claude Design export, no rush until after the 11th). ELIM-PLAN.pdf and the Review draft are superseded. Matt reviews after a yes.
 No build/ edits until the decision, except fixes reviewers ask for or errors that change cost or design.
 Order date: 2026-10-19, assumed.
 Oct 4: only N15 setup/teardown times and a photo of the Dante Controller grid during service. The rest of work/2026-10-04-CHECKLIST.md waits.

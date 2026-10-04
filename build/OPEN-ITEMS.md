@@ -28,8 +28,8 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; G7 (laptop power) closed 2026
 | N3 | **M3:** do the AVPRO side doors open to usable storage, and what are the inside dimensions? The design doesn't use them | Sam (ask Matt/ProX) | on case delivery (assumed by 2026-11-15) | No |
 | N4 | **U10 shelf fit:** the 10in AC Infinity shelf takes the HD Mini, the new 8-port PoE switch and its power brick side by side | Sam | on shelf delivery (assumed by 2026-10-15) | No |
 | N5 | **M5:** LG 24GS60F-B panel height without stand + right-angle adapter depth vs the 16.1in lid; two widths vs 49.6in | Sam | on case delivery (assumed by 2026-11-15) | No |
-| N7 | **ProTools Mac recording path** (Wing USB-C → the ProTools Mac, inside the BXWING) settled for the case layout. The ProTools Mac is also a Dante endpoint on the Wing case switch and runs the live and stream mixes, so the case needs room for both cables | Tyler | 2026-10-04 | No |
-| N8 | **Camera-cable trial:** Emily runs the SDI cables we already own (100ft) over a real deploy. Checks pull-through, cable and connector reliability, and picture over length. No camera control. **AOC instead of SDI is an open decision:** about $150 for a 50m run on a spool (estimate), not in the BOM. *Open* | Emily (trial); Sam, with Matt (AOC spec and cost) | not set | No |
+| N7 | **ProTools Mac recording path** (Wing USB-C → the ProTools Mac, inside the BXWING) settled for the case layout. The ProTools Mac is also a Dante endpoint on the Wing case switch, runs the live mix and is planned to take over the stream mix (open), so the case needs room for both cables | Tyler | 2026-10-04 | No |
+| N8 | **Camera-cable trial:** Emily runs the SDI cables we already own (100ft) over a real deploy. Checks pull-through, cable and connector reliability, and picture over length. No camera control. **AOC instead of SDI is an open decision:** about $150 for a 50m run on a spool (estimate), not in the BOM. With AOC, the converters could live in the Wing case (per Sam, index note, 2026-09; open). *Open* | Emily (trial); Sam, with Matt (AOC spec and cost) | not set | No |
 | N10 | **M2:** read the AVIO model label (AVIOAO2 per the port map). It's confirmed PoE-powered (2026-09-30) | Sam | 2026-10-04 | No |
 | N11 | **R-019:** does Omar have a separate Dante device at the drum kit? (yes/no) | Sam | 2026-10-04 | No |
 | N12 | **R-024:** read the Shure transmit combiner label (UA844+SWB? typed "ua344") | Sam | 2026-10-04 | No |
@@ -78,7 +78,7 @@ G3 (P-04) and G4 (owned cables) closed 2026-09-28; G7 (laptop power) closed 2026
 - **Switch swap (2026-10-01).** The owned TL-SG1005P moves to the Wing case as its Dante switch (3 ports used). A new 8-port PoE switch is the Bay A Dante satellite at U10 and powers the AVIO. BOM $19.99 placeholder; the PoE model isn't priced (N27).
 - **Wing case model (2026-10-01):** ProX XZF-BXWING.
 - **Field camera cable (2026-10-01).** Owned SDI runs are 100ft and we implement with them; the trial checks the owned cables and has no due date. AOC is an open decision (N8). New field cables for power, HDMI or data are 125ft or more.
-- **The ProTools Mac runs the live and stream mixes (2026-10-01, decided).** The stream-mix laptop is still in use today; its retirement is happening separately from the AVPRO plan (open).
+- **The ProTools Mac runs the live mix (2026-10-01, decided).** It's planned to take over the stream mix; until it does, the stream-mix laptop stays in use (open; Sam, 2026-10-03). That handover is happening separately from the AVPRO plan.
 - **Target order date** moved from 2026-10-01 to **2026-10-19**.
 - New open items: G8 (spend ceiling), N21–N29. N2 narrowed to the internet drop's far end (the LED receiver takes standard Ethernet).
 

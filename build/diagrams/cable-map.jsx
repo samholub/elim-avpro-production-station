@@ -45,7 +45,7 @@ const GROUPS = [
       { nodes: ["Wing Dante card", "Wing case switch (TL-SG1005P)", "DANTE TRUNK", "Bay A satellite", "AVIO (PoE)"], links: [["Cat", C.dante], ["trunk 15ft", C.dante], ["Cat", C.dante], ["Cat + PoE", C.dante]] },
       { nodes: ["AVIO", "ATEM Ch 1-2"], links: [["XLR pigtails", C.audio]] },
       { nodes: ["Bianca's Mac", "Bay A satellite"], links: [["USB-C Cat", C.dante]] },
-      { nodes: ["Tyler's ProTools Mac (in case; live + stream mix)", "Wing case switch"], links: [["Cat (Dante)", C.dante]] },
+      { nodes: ["Tyler's ProTools Mac (in case; live mix; stream mix planned, open)", "Wing case switch"], links: [["Cat (Dante)", C.dante]] },
       { nodes: ["Bianca's talkback mic", "Panel TALKBACK", "Wing In 8"], links: [["XLR", C.audio], ["XLR 15ft", C.audio]] },
       { nodes: ["Wing Out 8", "Panel IEM", "Bianca's IEM"], links: [["XLR 15ft", C.audio], ["XLR", C.audio]] },
       { nodes: ["Wing", "Tyler's Mac (in case)"], links: [["USB-C", C.neutral]] },

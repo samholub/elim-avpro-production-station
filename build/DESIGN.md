@@ -23,7 +23,7 @@ ELIM Church runs a portable production rig that deploys once or twice a week at 
 | Sam | ATEM / switcher, stream management, hardware build lead. At production |
 | Bianca | Production manager and project co-driver. ProPresenter. At the workstation |
 | Tyler | Wing and live recording (USB-C to the ProTools Mac). At the Wing |
-| Omar / Mitch | Stream mix over Dante. In the design, the ProTools Mac in the Wing case runs the live and stream mixes (decided). The stream-mix laptop is still in use today; its retirement is happening separately from the AVPRO plan (open). Omar is the drummer |
+| Omar / Mitch | Stream mix over Dante. In the design, the ProTools Mac in the Wing case runs the live mix (decided). It's planned to take over the stream mix; until it does, the stream-mix laptop stays in use (open). That handover is happening separately from the AVPRO plan. Omar is the drummer |
 | Emily | Camera ops |
 | Matt | External AV pro at another church. Technical resource and vendor (quotes, freight) |
 | Sunny | Worship leader. Final sign-off |
@@ -97,7 +97,7 @@ A locked decision changes only by a written proposal (`work/PROPOSALS.md`) that 
 **Two physical networks.** Only Dante is isolated.
 
 **Dante** (isolated, no internet path):
-- Wing case Dante switch (owned TL-SG1005P, 5-port): the Wing's Dante card, the trunk uplink, and Tyler's ProTools Mac (which also records over USB-C and runs the live and stream mixes). 3 of 5 ports used. While the stream-mix laptop stays in use, it takes a fourth: 4 of 5. *Decided (2026-10-01).*
+- Wing case Dante switch (owned TL-SG1005P, 5-port): the Wing's Dante card, the trunk uplink, and Tyler's ProTools Mac (which also records over USB-C and runs the live mix; it's planned to take over the stream mix, open). 3 of 5 ports used. While the stream-mix laptop stays in use, it takes a fourth: 4 of 5. *Decided (2026-10-01).*
 - Bay A satellite (new 8-port PoE switch, model open): the trunk, the AVIO (PoE-powered, confirmed), Bianca's Mac (USB-C ethernet adapter; it also plays music and media over Dante). 3 of 8 ports used.
 - One DANTE trunk joins the two switches through the panels.
 
