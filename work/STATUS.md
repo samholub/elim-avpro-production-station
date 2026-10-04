@@ -3,6 +3,14 @@
 **Updated:** 2026-10-03 (session 11)
 **State: this repo (samholub/elim-avpro-production-station) is the master copy; `build/` is the master set.** samholub/elim-avpro is a dormant presentation experiment built from this repo at tag v1.1-baseline. It is not a source.
 
+## 2026-10-03: Freeze
+
+Freeze. Plan ready for go/no-go. Sunny and Bianca decide after the 2026-10-11 event, from the Explainer PDF only (sent 2026-10-03, no rush until after the 11th). ELIM-PLAN.pdf and the Review draft are superseded. Matt reviews after a yes.
+No build/ edits until the decision, except fixes reviewers ask for or errors that change cost or design.
+Order date: 2026-10-19, assumed.
+Oct 4: only N15 setup/teardown times and a photo of the Dante Controller grid during service. The rest of work/2026-10-04-CHECKLIST.md waits.
+Parked until decision: N32, R1, matt/ regen, label reads.
+
 ## 2026-10-03: Wing case power adapter (BOM v9)
 
 - **Rulings (Sam, 2026-10-03):** ProTools Mac model and draw open; that the load fits the UPS is assumed. The powerCON TRUE1 inlet on the Wing case stays (twist lock); inside the case it adapts to a 5-15R socket for the strip's standard plug (decided). Exact parts open until Sam reviews the BOM (N32).
