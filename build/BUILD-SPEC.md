@@ -149,7 +149,7 @@ drop 2 → **Clear Power CPPDU511** (Bay B front, metered, drawer down-lights) �
 | 2 × laptops (0 when charged) | ~0–180W |
 | Wing case strip (over the umbilical) | ~95–105W excl. ProTools Mac (open) |
 | ↳ Wing | ~90–100W |
-| ↳ TL-SG1005P | ≤5W (spec sheet max with no PoE load: 4.29W) |
+| ↳ TL-SG1005P | ≤5W (spec sheet max with no PoE load: 4.29W). ≤5 W assumed: no PoE loads in the Wing case (Sam, 2026-10-03). Worst case with full PoE is 74 W; revisit if a PoE device moves into the case. |
 | ↳ ProTools Mac | open (model and draw not recorded) |
 | **Total** | **~280–470W excl. ProTools Mac (open)** |
 

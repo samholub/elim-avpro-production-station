@@ -11,6 +11,7 @@
 - **review/src/elim-data.js:** Wing power chain now powerCON → Wing case strip → Wing, ProTools Mac, TL-SG1005P; BOM rows at v9. ELIM-PLAN.pdf is stale on the Wing power chain and BOM v9. Rebuild in one batch with the next round of review changes.
 - **work/SOURCE-INVENTORY.md:** the 11 source/images/ files added.
 - matt/ stale on the Wing power chain and BOM (MATT-PACK.md:80, images). Regenerate before sending.
+- Inlet stays in the conditional Wing block; decision 25 unchanged (Sam, 2026-10-03).
 
 ## 2026-10-01: elim-avpro review
 
