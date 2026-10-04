@@ -10,6 +10,7 @@ No build/ edits until the decision, except fixes reviewers ask for or errors tha
 Order date: 2026-10-19, assumed.
 Oct 4: only N15 setup/teardown times and a photo of the Dante Controller grid during service. The rest of work/2026-10-04-CHECKLIST.md waits.
 Parked until decision: N32, R1, matt/ regen, label reads.
+Explainer PDF rendered from repo 2026-10-03. support.js and doc-page.js are in review/drafts/, so future PDFs render here without Claude Design. Repo is the master for the Explainer.
 
 ## 2026-10-03: Wing case power adapter (BOM v9)
 

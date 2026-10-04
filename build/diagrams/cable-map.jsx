@@ -5,7 +5,7 @@ import React from "react";
 // Step 10 fixes: quad box drawn as tentative; Tyler's Mac on the Wing case Dante switch; 8-port Wing switch.
 // 2026-09-29: drop 1 labeled 12/3 SOOW; laptop strip assumed on the CPS1215RM (Sam, replaces D4).
 // 2026-10-01: design-session rulings: owned 100ft SDI; Hollyland RX on the lid; IN 2 / IN 8 and RIGHT lid routes open;
-// TL-SG1005P is the Wing case switch; ProTools Mac runs the live + stream mix (stream-mix laptop retirement is separate, open); N6 closed; N19 closed (CPPDU511 > extension > quad box);
+// TL-SG1005P is the Wing case switch; ProTools Mac runs the live mix; stream mix planned, open (the stream-mix laptop stays until then); N6 closed; N19 closed (CPPDU511 > extension > quad box);
 // laptops on the CPS1215RM; caption "decided except where a route is marked open".
 // 2026-10-01 (Sam): powerCON link feeds the Wing case strip; Wing, ProTools Mac, TL-SG1005P on it (N29 closed).
 // Each row is one signal chain. Arrows are cables; the label is the type, the color is the cable color code.
