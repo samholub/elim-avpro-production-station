@@ -42,8 +42,8 @@ Full list with dates: `OPEN-ITEMS.md`.
 | `CHANGELOG.md` | Decisions and milestones, most recent first | Sam |
 | `OPS-CONFIG.md` | Running config: ATEM, HyperDeck, levels, cameras, IPs, day-of checklist | Sam, crew |
 | `diagrams/` | Rack layout and cable map (JSX source + PNG) | Everyone |
-| `../review/drafts/` | Working drafts: the explainer (for meetings), Bianca's decision sheet, the review doc. PDFs are the readable copies | Team |
-| `../review/ELIM-PLAN.pdf` | The earlier plan. Superseded for meetings by the explainer (2026-09-30); kept for history | Team |
+| `../review/drafts/` | The Explainer: the one doc Sunny and Bianca decide from, sent as its PDF. Also Bianca's decision sheet and the retired review draft | Team |
+| `../review/ELIM-PLAN.pdf` | The earlier plan. **Superseded by the Explainer** (`../review/drafts/ELIM-Workstation-Explainer-WORKING-DRAFT`). Kept for history; not rebuilt | Team |
 | `../matt/` | The pack for Matt. **Generated from build/ by `work/make_matt.py`; don't hand-edit** | Matt |
 
 ## How it connects

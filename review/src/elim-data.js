@@ -130,6 +130,7 @@ export function elimData() {
       O('G2','One matched powerCON TRUE1 family:','AVPRO chassis outlet, both umbilical cable ends, and the Wing chassis inlet (only if the Wing panel happens). Plus the etherCON pair: NE8FDP-B panel jacks with NE8MX-1 carriers (standard etherCON), checked against the Neutrik compatibility table before the BOM calls them firm','Matt / vendor; Sam checks the datasheets','2026-10-19','Yes, for the connector lines',[st('open')]),
       O('G5','CPS1215RM listing:','confirm Amazon B00077IG3O is the CPS1215RM','Sam','2026-10-19','That line only',[st('open')]),
       O('G6','Rack rails and thread:','tapped 10-32, or square-hole for M6 cage nuts? Both are open. Also confirm whether the AVPRO comes with rails built in or they\'re added after purchase. Matt may know; otherwise it\'s checked at delivery','Sam (ask Matt first)','on case delivery (assumed by 2026-11-15)','Screw line only. Order it after delivery if Matt doesn\'t know',[st('open')]),
+      O('G8','Case and freight spend ceiling','for Matt\'s quote. Bianca and Sam set it before the Sunny walkthrough','Sam, Bianca','before the Sunny walkthrough','Not stated',[st('open')]),
       O('N1','BXWING inspection: can it take a panel-mount D-series plate?','Yes → buy the Wing block. No → the connections run out the side of the case.','Sam (ask Matt first)','on case delivery (assumed by 2026-11-15)','Wing block only',[st('open'),st('conditional','Wing block')]),
       O('N8','Camera-cable trial:','Emily runs the SDI cables we already own (100ft) over a real deploy. Checks pull-through, cable and connector reliability, and picture over length. No camera control.','Emily (trial); Sam, with Matt (spec and cost)','No date set','No',[st('open')],'',"Whether to switch field camera cable to AOC is an open decision. AOC would let the BMD converters live in the Wing case."),
       O('N15','Measure today\'s setup and teardown time','before the cutover, and again after, to test the ~40 → ~15 connections and ~30 minutes each way estimates','Sam','2026-10-04, then at the first event after cutover','No',[st('open')]),
@@ -139,7 +140,8 @@ export function elimData() {
       O('N19','Where is the AV charging station?','Drop 2 feeds the Bay B CPPDU511, which passes power through to a separate charging station on a quad box. The quad box is in the first order. Details of the extension are open. A second wall circuit is preferred, not required.','Sam','Closed','No',[st('decided','Decided')]),
       O('N6','Wing talkback and IEM:','Wing XLR In 8 is Bianca\'s talkback; Out 8 is her IEM, per the ELIM Production App.','Tyler','Closed','No',[st('closed','Closed')]),
       O('N13','Streaming laptop','The app\'s "video stream laptop" and the switcher laptop are the same machine, now called the streaming laptop.','Sam','Closed','No',[st('closed','Closed')]),
-      O('G7','Laptop power','The desk laptops plug into the battery-backed CPS1215RM strip. The separate laptop strip is dropped from the BOM.','Sam','Closed','No',[st('closed','Closed')])
+      O('G7','Laptop power','The desk laptops plug into the battery-backed CPS1215RM strip. The separate laptop strip is dropped from the BOM.','Sam','Closed','No',[st('closed','Closed')]),
+      O('N29','Power inside the Wing case','The powerCON link feeds the Wing case strip; the Wing, the ProTools Mac and the TL-SG1005P plug into it. The inlet keeps its twist lock, and inside the case it adapts to a 5-15R socket for the strip.','Sam','Closed','No',[st('closed','Closed')])
     ];
     const restItems = [
       O('N2','M7: LED wall and internet ends','The LED wall receiver takes standard Ethernet. The internet drop\'s far end is still open. It sets the etherCON end count; the BOM already buys the high count.','Sam','2026-10-04 (next service)','No',[st('open')]),
@@ -150,7 +152,17 @@ export function elimData() {
       O('N10','M2: AVIO label','Read the AVIO model label (AVIOAO2 per the port map). It\'s confirmed PoE-powered.','Sam','2026-10-04','No',[st('open')]),
       O('N11','R-019: drum kit Dante','Does Omar have a separate Dante device at the drum kit? (yes/no)','Sam','2026-10-04','No',[st('open')]),
       O('N12','R-024: Shure combiner label','Read the Shure transmit combiner label (UA844+SWB? typed "ua344").','Sam','2026-10-04','No',[st('open')]),
-      O('N14','The "regret ask"','Long-lead items, freight consolidation, anything hard to add later.','Matt','2026-10-19, with the quote','No',[st('open')])
+      O('N14','The "regret ask"','Long-lead items, freight consolidation, anything hard to add later.','Matt','2026-10-19, with the quote','No',[st('open')]),
+      O('N22','Lid monitor model (brightness)','The 300-nit LG may not be bright enough even under a tent or canopy. Research brighter screens or a used option; the recorded fallback is a 1000-nit unit for the LEFT lid only. A brighter screen costs more.','Sam','Not set','Not stated (the monitor line\'s cost)',[st('open')]),
+      O('N23','UltraStudio placement','Rack-mounted or near the Mac Mini, or the desk near the ATEM.','Sam','Not set','No',[st('open')]),
+      O('N24','Connection routes','How the Hollyland RX reaches ATEM IN 2 (the CAM 2 jack is one option), how the UltraStudio reaches IN 8, and the ProPresenter Mac\'s second-screen route to the RIGHT lid.','Sam','Not set','No',[st('open')]),
+      O('N25','Hollyland RX lid mount','On top of the flip-up lid: not specced or costed.','Sam','Not set','Not stated (not costed)',[st('open')]),
+      O('N26','ATEM retention tray','Open, not costed. Build a foam or plywood tray, or secure the ATEM another way.','Sam (ask Matt for suggestions)','Not set','Not stated (not costed)',[st('open')]),
+      O('N27','Bay A 8-port PoE switch model','Not priced. The BOM carries $19.99 as a placeholder; a PoE model will cost more.','Sam','Not set','Not stated (the switch line\'s cost)',[st('open')]),
+      O('N28','Charging-station extension','From the Bay B CPPDU511 to the quad box at the separate charging station: details open, not costed.','Sam','Not set','Not stated (not costed)',[st('open')]),
+      O('N30','Camera converters','Record the models and count, and whether they\'re bidirectional.','Sam','Not set','No',[st('open')]),
+      O('N31','Shure antennas','Confirm the UA8 reading from the label. Read it with the combiner label (N12).','Sam','Not set','No',[st('open')]),
+      O('N32','Wing case power adapter parts','Review the placeholder BOM lines 55-57 and 59: inlet-to-strip pigtail, terminals, strain relief, fallback TRUE1-to-5-15R jumper.','Sam','Not set','Wing block only',[st('open')])
     ];
 
     const D = (n, d, why) => ({ n:String(n), d, why });
@@ -169,7 +181,7 @@ export function elimData() {
       D(12,'Runs on one 15A circuit, two preferred, never tied. Power arrives on two 125ft 12/3 SOOW drops with Edison ends: drop 1 → AVPRO (and the Wing through it), drop 2 → the charging station','The whole rig draws well under 15A; venue circuit counts are unknowable (D20)'),
       D(13,'Bay B power: CPPDU511 front (metered, drawer lights) + RS1215-RA rear (camera chargers), chained, utility side','Front lights the drawers; rear outlets face the chargers; one meter (D3)'),
       D(14,'The desk laptops plug into the battery-backed CPS1215RM strip. Decided.','They keep running if venue power drops'),
-      D(15,'Switches: owned TL-SG1005P (5-port) = Wing case Dante switch, 3 ports used; owned TL-SG105 = Bay A production switch; new 8-port PoE switch = Bay A Dante satellite at U10, powers the AVIO','The AVIO needs PoE in Bay A, and the Wing case needs only 3 ports'),
+      D(15,'Switches: owned TL-SG1005P (5-port) = Wing case Dante switch, 3 ports used (4 while the stream-mix laptop stays in use); owned TL-SG105 = Bay A production switch; new 8-port PoE switch = Bay A Dante satellite at U10, powers the AVIO','The AVIO needs PoE in Bay A, and the Wing case needs only 3 ports'),
       D(16,'Bay A mounting: Resi U11; HD Mini + new 8-port PoE switch U10; TL-SG105 + AX21 U8; all on the same 1U vented shelf; Etsy dual mount and Teranex shelf dropped','Every network jumper stays in Bay A; cheapest shelf (D5, D19)'),
       D(17,'Two networks, not three: Dante (isolated) and Production; internet is the AX21\'s WAN','That\'s the physical wiring; "three" was a zoning aid'),
       D(18,'Router is the AX21 (older docs say AX55 for the same router)','D11'),
